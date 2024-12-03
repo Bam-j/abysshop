@@ -25,10 +25,11 @@
     <%-- 로고, 로그인/로그아웃 버튼, (로그인시)사용자 정보/관리 페이지 버튼  --%>
 </header>
 <nav>
-    <%-- 메인, 상품, 포인트 List를 출력하는 메뉴 이동 버튼 --%>
+    <%-- 상품, 포인트 List를 출력하는 메뉴 이동 버튼 --%>
+    <%-- default는 상품 --%>
 </nav>
 <section>
-    <%-- nav에 맞는 상품 List 출력 --%>
+    <%-- include action tag를 사용해서 nav에 맞는 상품 List 출력 --%>
 </section>
 </body>
 </html>

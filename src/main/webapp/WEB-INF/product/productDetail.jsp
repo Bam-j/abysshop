@@ -2,11 +2,11 @@
   Created by IntelliJ IDEA.
   User: juhyu
   Date: 2024-12-03
-  Time: 오후 8:09
+  Time: 오후 8:30
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page
-        info="관리자 페이지입니다."
+        info="상품, 포인트의 상세 페이지입니다."
         contentType="text/html;charset=UTF-8"
         language="java"
         pageEncoding="UTF-8"
@@ -16,8 +16,8 @@
     <title>Title</title>
 </head>
 <body>
-<nav>
-    <%-- 주문 관리(default), 포인트 관리, 상품 추가, 상품 삭제 --%>
-</nav>
+<%--
+  상품 이미지, 상품명, 가격, 상품 상세 설명, 수량, 장바구니 담기 버튼
+--%>
 </body>
 </html>

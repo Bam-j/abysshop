@@ -43,3 +43,18 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+sourceSets {
+	main {
+		java {
+			srcDirs = ['src/main/java']
+		}
+		resources {
+			srcDirs = ['src/main/resources', 'src/main/webapp']
+		}
+	}
+}
+
+war {
+	from 'src/main/webapp'
+}

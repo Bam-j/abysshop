@@ -4,6 +4,10 @@
   Date: 2024-12-01
   Time: 오후 3:17
   To change this template use File | Settings | File Templates.
+
+  메모: 두 가지 include 방식 (추후 삭제)
+  <%@ include file=""%>: 컴파일 시점에 include, 헤더 푸터와 같은 변경이 적은 부분 적용시
+  <jsp:include page=""/> 실행 시점에 include, 동적 변경 내용이 포함될 때 사용
 --%>
 <%@ page
         info="Abysshop의 메인 페이지입니다. 상품 목록을 보여줍니다."
@@ -22,14 +26,17 @@
 </head>
 <body>
 <header>
-    <%-- 로고, 로그인/로그아웃 버튼, (로그인시)사용자 정보/관리 페이지 버튼  --%>
+    <%@ include file="views/common/header.jsp" %>
 </header>
 <nav>
-    <%-- 상품, 포인트 List를 출력하는 메뉴 이동 버튼 --%>
     <%-- default는 상품 --%>
+    <%@ include file="views/product/productNav.jsp" %>
 </nav>
 <section>
-    <%-- include action tag를 사용해서 nav에 맞는 상품 List 출력 --%>
+    <jsp:include page="views/product/productPurchase.jsp"/>
 </section>
+<footer>
+    <%@ include file="views/common/footer.jsp" %>
+</footer>
 </body>
 </html>

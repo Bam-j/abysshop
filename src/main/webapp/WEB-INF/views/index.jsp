@@ -18,6 +18,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Abysshop 홈</title>
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -26,17 +27,17 @@
 </head>
 <body>
 <header>
-    <%@ include file="views/common/header.jsp" %>
+    <%@ include file="common/header.jsp" %>
 </header>
 <nav>
     <%-- default는 상품 --%>
-    <%@ include file="views/product/productNav.jsp" %>
+    <%@ include file="product/productNav.jsp" %>
 </nav>
 <section>
-    <jsp:include page="views/product/productPurchase.jsp"/>
+    <jsp:include page="product/productPurchase.jsp"/>
 </section>
 <footer>
-    <%@ include file="views/common/footer.jsp" %>
+    <%@ include file="common/footer.jsp" %>
 </footer>
 </body>
 </html>

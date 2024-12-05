@@ -4,9 +4,9 @@
   Date: 2024-12-03
   Time: 오후 7:53
   To change this template use File | Settings | File Templates.
+  info="사용자 계정 정보를 확인/수정하는 뷰 입니다."
 --%>
 <%@ page
-        info="사용자 계정 정보를 확인/수정하는 뷰 입니다."
         contentType="text/html;charset=UTF-8"
         language="java"
         pageEncoding="UTF-8"

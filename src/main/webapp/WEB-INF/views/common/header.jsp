@@ -10,12 +10,39 @@
         contentType="text/html;charset=UTF-8"
         language="java"
         pageEncoding="UTF-8"
+        isELIgnored="false"
 %>
 <html>
 <head>
-    <title>Title</title>
+    <title>header</title>
 </head>
 <body>
-
+<%
+    boolean isLoggedIn = false;
+%>
+<header>
+    <div class="logo">
+        <a href="../../index.jsp">
+            <img src="" alt="어비스 블록 로고">
+        </a>
+    </div>
+    <nav>
+        <ul>
+            <% if (isLoggedIn) { %>
+            <li>
+                <%-- TODO: 일반 회원은 userMyPage.jsp로 이동하고 관리자는 adminMyPage.jsp로 이동 --%>
+                <button>마이페이지</button>
+            </li>
+            <li>
+                <button>로그아웃</button>
+            </li>
+            <% } else { %>
+            <li>
+                <button>로그인</button>
+            </li>
+            <% } %>
+        </ul>
+    </nav>
+</header>
 </body>
 </html>

@@ -13,9 +13,15 @@
 %>
 <html>
 <head>
-    <title>Title</title>
+    <title>일반 회원 마이페이지 메뉴바</title>
 </head>
 <body>
-
+<nav>
+    <ul>
+        <%-- 해당 메뉴 선택시 볼드체로 나타나도록 --%>
+        <li><a href="#">주문 관리</a></li>
+        <li><a href="#">회원 정보 관리</a></li>
+    </ul>
+</nav>
 </body>
 </html>

@@ -7,14 +7,14 @@
   info="사용자의 주문 내역 리스트를 보여주는 뷰 입니다."
 --%>
 <%@ page
-        contentType="text/html;charset=UTF-8"
-        language="java"
-        pageEncoding="UTF-8"
+    contentType="text/html;charset=UTF-8"
+    language="java"
+    pageEncoding="UTF-8"
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>주문 관리</title>
+  <title>주문 관리</title>
 </head>
 <body>
 <table>

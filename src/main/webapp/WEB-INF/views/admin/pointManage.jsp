@@ -7,13 +7,13 @@
   info="관리자 페이지의 포인트 관리 뷰 입니다."
 --%>
 <%@ page
-        contentType="text/html;charset=UTF-8"
-        language="java"
-        pageEncoding="UTF-8"
+    contentType="text/html;charset=UTF-8"
+    language="java"
+    pageEncoding="UTF-8"
 %>
 <html>
 <head>
-    <title>Title</title>
+  <title>Title</title>
 </head>
 <body>
 

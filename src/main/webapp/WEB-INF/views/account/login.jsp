@@ -14,6 +14,7 @@
 <html>
 <head>
   <title>로그인</title>
+  <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <main>

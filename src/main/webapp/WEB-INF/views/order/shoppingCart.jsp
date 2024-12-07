@@ -15,6 +15,7 @@
 <html>
 <head>
   <title>장바구니</title>
+  <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>

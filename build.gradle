@@ -29,11 +29,13 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.4'
 	implementation 'javax.servlet:jstl:1.2'
+	implementation 'taglibs:standard:1.1.2'
 	implementation "org.apache.tomcat.embed:tomcat-embed-jasper"
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	providedCompile 'javax.servlet.jsp:javax.servlet.jsp-api:2.3.3'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.4'
 	testImplementation 'org.springframework.security:spring-security-test'

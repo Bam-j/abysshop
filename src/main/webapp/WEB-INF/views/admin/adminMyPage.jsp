@@ -14,6 +14,7 @@
 <html>
 <head>
   <title>관리자 페이지</title>
+  <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>

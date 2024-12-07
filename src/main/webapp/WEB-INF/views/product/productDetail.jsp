@@ -19,6 +19,7 @@
 <html>
 <head>
   <title>상품 상세 페이지</title>
+  <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <%-- 상품 이미지, 상품명, 가격, 상품 상세 설명, 수량, 장바구니 담기 버튼 --%>

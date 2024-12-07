@@ -14,6 +14,7 @@
 <html>
 <head>
   <title>회원 가입</title>
+  <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <main>

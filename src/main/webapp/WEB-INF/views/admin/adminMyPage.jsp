@@ -13,11 +13,20 @@
 %>
 <html>
 <head>
-  <title>Title</title>
+  <title>관리자 페이지</title>
 </head>
 <body>
+<header>
+  <%@ include file="../common/header.jsp" %>
+</header>
 <nav>
-  <%-- 주문 관리(default), 포인트 관리, 상품 추가, 상품 삭제 --%>
+  <%@ include file="adminPageNav.jsp" %>
 </nav>
+<section>
+  <jsp:include page="orderManage.jsp" />
+</section>
+<footer>
+  <%@ include file="../common/footer.jsp" %>
+</footer>
 </body>
 </html>

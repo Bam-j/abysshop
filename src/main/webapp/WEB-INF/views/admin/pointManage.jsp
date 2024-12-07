@@ -11,11 +11,33 @@
     language="java"
     pageEncoding="UTF-8"
 %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-  <title>Title</title>
+  <title>포인트 관리 페이지</title>
 </head>
 <body>
-
+<table>
+  <thead>
+  <tr>
+    <td>회원 닉네임</td>
+    <td>요청 포인트</td>
+    <td>이체 확인 후 버튼 클릭</td>
+  </tr>
+  </thead>
+  <tbody>
+  <c:forEach items="${pointsRechargeRequest}" var="request">
+    <tr>
+      <td>${request.nickname}</td>
+      <td>${request.points}</td>
+      <td>
+        <form>
+          <button>승인</button>
+        </form>
+      </td>
+    </tr>
+  </c:forEach>
+  </tbody>
+</table>
 </body>
 </html>

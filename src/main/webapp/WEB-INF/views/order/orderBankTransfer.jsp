@@ -19,7 +19,7 @@
 <%@ include file="../common/header.jsp" %>
 <main>
   <section>
-    <div>
+    <div class="logo">
       <img src="" alt="abyssblock 로고">
     </div>
     <div>

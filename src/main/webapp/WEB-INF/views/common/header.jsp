@@ -21,9 +21,9 @@
   boolean isLoggedIn = false;
 %>
 <header>
-  <div class="logo">
+  <div class="minimal-logo">
     <a href="../../index.jsp">
-      <img src="" alt="어비스 블록 로고">
+      <img src="" alt="어비스 블록 미니멀 로고">
     </a>
   </div>
   <ul>

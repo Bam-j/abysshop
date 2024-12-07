@@ -19,7 +19,7 @@
 <%@ include file="../common/header.jsp" %>
 <main>
   <section>
-    <div>
+    <div id="logo">
       <img src="" alt="abyssblock 로고">
     </div>
     <h3>결제가 완료되었습니다.</h3>

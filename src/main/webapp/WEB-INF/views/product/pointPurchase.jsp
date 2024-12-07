@@ -20,7 +20,7 @@
 <section>
   <%-- 상품 이미지, 상품명, 가격 --%>
   <h3>포인트 상품 목록</h3>
-  <table class="itemList">
+  <table class="product-list">
     <tbody>
     <c:forEach items="${pointProductList}" var="pointProduct">
       <tr>

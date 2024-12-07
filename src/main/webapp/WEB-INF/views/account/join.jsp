@@ -16,11 +16,11 @@
   <title>회원 가입</title>
 </head>
 <body>
-<header>
-  <img src="../../../images/abyssblock_logo_1500x700.png" alt="abyssblock 로고">
-</header>
 <main>
   <section>
+    <div id="logo">
+      <img src="" alt="어비스블록 로고">
+    </div>
     <%-- TODO: action을 요청 방식 결정하고 변경할 것. 현재는 임시 요청 사용 --%>
     <form action="/account/join" method="post">
       <input type="text" placeholder="계정">

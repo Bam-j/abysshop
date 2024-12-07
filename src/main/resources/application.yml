@@ -10,7 +10,7 @@ spring:
     username: jh
     password: 1234
   mvc:
-    static-path-pattern: /resources/**
+    static-path-pattern: /resources/static/**
     view:
       suffix: .jsp
       prefix: /WEB-INF/views/

@@ -16,12 +16,10 @@
   <title>상품 목록 전환 메뉴바</title>
 </head>
 <body>
-<nav class="menuBar">
-  <ul>
-    <%-- 해당 메뉴 선택시 볼드체로 나타나도록 --%>
-    <li><a href="#">상품</a></li>
-    <li><a href="#">포인트</a></li>
-  </ul>
-</nav>
+<ul>
+  <%-- 해당 메뉴 선택시 볼드체로 나타나도록 --%>
+  <li><a href="#">상품</a></li>
+  <li><a href="#">포인트</a></li>
+</ul>
 </body>
 </html>

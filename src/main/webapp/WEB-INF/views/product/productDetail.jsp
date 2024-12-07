@@ -22,22 +22,20 @@
 </head>
 <body>
 <%-- 상품 이미지, 상품명, 가격, 상품 상세 설명, 수량, 장바구니 담기 버튼 --%>
-<header>
-  <%@ include file="../common/header.jsp" %>
-</header>
+<%@ include file="../common/header.jsp" %>
 <nav>
   <a href="#">목록으로</a>
 </nav>
-<section>
-  <ul>
-    <li><img src="${product.imgUrl}" alt="상품 이미지"></li>
-    <li><h2><strong>${product.name}</strong></h2></li>
-    <li><h3>${product.price}</h3></li>
-    <li>${product.description}</li>
-  </ul>
-</section>
-<footer>
-  <%@ include file="../common/footer.jsp" %>
-</footer>
+<main>
+  <section>
+    <ul>
+      <li><img src="${product.imgUrl}" alt="상품 이미지"></li>
+      <li><h2><strong>${product.name}</strong></h2></li>
+      <li><h3>${product.price}</h3></li>
+      <li>${product.description}</li>
+    </ul>
+  </section>
+</main>
+<%@ include file="../common/footer.jsp" %>
 </body>
 </html>

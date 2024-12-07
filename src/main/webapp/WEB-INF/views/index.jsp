@@ -26,18 +26,15 @@
         crossorigin="anonymous">
 </head>
 <body>
-<header>
-  <%@ include file="common/header.jsp" %>
-</header>
-<nav>
-  <%-- default는 상품 --%>
-  <%@ include file="product/productNav.jsp" %>
-</nav>
-<section>
+<%@ include file="common/header.jsp" %>
+
+<%-- default는 상품 --%>
+<%@ include file="product/productNav.jsp" %>
+
+<main>
   <jsp:include page="product/productPurchase.jsp" />
-</section>
-<footer>
-  <%@ include file="common/footer.jsp" %>
-</footer>
+</main>
+
+<%@ include file="common/footer.jsp" %>
 </body>
 </html>

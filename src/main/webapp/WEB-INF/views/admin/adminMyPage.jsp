@@ -16,17 +16,14 @@
   <title>관리자 페이지</title>
 </head>
 <body>
-<header>
-  <%@ include file="../common/header.jsp" %>
-</header>
-<nav>
-  <%@ include file="adminPageNav.jsp" %>
-</nav>
-<section>
+<%@ include file="../common/header.jsp" %>
+
+<%@ include file="adminPageNav.jsp" %>
+
+<main>
   <jsp:include page="orderManage.jsp" />
-</section>
-<footer>
-  <%@ include file="../common/footer.jsp" %>
-</footer>
+</main>
+
+<%@ include file="../common/footer.jsp" %>
 </body>
 </html>

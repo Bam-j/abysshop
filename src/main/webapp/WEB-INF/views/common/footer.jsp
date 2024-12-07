@@ -16,14 +16,16 @@
   <title>footer</title>
 </head>
 <body>
-<div class="logo">
-  <a href="../../index.jsp">
-    <img src="" alt="어비스 블록 로고">
-  </a>
-</div>
-<ul>
-  <li>서버 주소</li>
-  <li>디스코드 주소</li>
-</ul>
+<footer>
+  <div class="logo">
+    <a href="../../index.jsp">
+      <img src="" alt="어비스 블록 로고">
+    </a>
+  </div>
+  <ul>
+    <li>서버 주소</li>
+    <li>디스코드 주소</li>
+  </ul>
+</footer>
 </body>
 </html>

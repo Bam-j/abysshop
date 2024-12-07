@@ -17,45 +17,43 @@
   <title>장바구니</title>
 </head>
 <body>
-<header>
-  <%@ include file="../common/header.jsp" %>
-</header>
+<%@ include file="../common/header.jsp" %>
 <nav>
   <a href="#">목록으로</a>
 </nav>
-<section>
-  <table>
-    <thead>
-    <tr>
-      <td>상품명</td>
-      <td>구매 수량</td>
-      <td>금액/포인트</td>
-      <td>삭제</td>
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach items="${shoppingCart}" var="item">
+<main>
+  <section>
+    <table>
+      <thead>
       <tr>
-        <td>${item.name}</td>
-        <td>${item.quantity}</td>
-        <td>${item.price}</td>
-        <td><a href="#">삭제</a></td>
+        <td>상품명</td>
+        <td>구매 수량</td>
+        <td>금액/포인트</td>
+        <td>삭제</td>
       </tr>
-    </c:forEach>
-    </tbody>
-    <tfoot>
-    <tr>
-      <td>합계</td>
-      <td>0000</td>
-    </tr>
-    </tfoot>
-  </table>
-  <form action="/payment/instructions" method="post">
-    <button>장바구니 결제하기</button>
-  </form>
-</section>
-<footer>
-  <%@ include file="../common/footer.jsp" %>
-</footer>
+      </thead>
+      <tbody>
+      <c:forEach items="${shoppingCart}" var="item">
+        <tr>
+          <td>${item.name}</td>
+          <td>${item.quantity}</td>
+          <td>${item.price}</td>
+          <td><a href="#">삭제</a></td>
+        </tr>
+      </c:forEach>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td>합계</td>
+        <td>0000</td>
+      </tr>
+      </tfoot>
+    </table>
+    <form action="/payment/instructions" method="post">
+      <button>장바구니 결제하기</button>
+    </form>
+  </section>
+</main>
+<%@ include file="../common/footer.jsp" %>
 </body>
 </html>

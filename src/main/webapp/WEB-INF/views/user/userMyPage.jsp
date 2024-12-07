@@ -16,17 +16,14 @@
   <title>마이 페이지</title>
 </head>
 <body>
-<header>
-  <%@ include file="../common/header.jsp" %>
-</header>
-<nav>
-  <%@ include file="userMyPageNav.jsp" %>
-</nav>
-<section>
+<%@ include file="../common/header.jsp" %>
+
+<%@ include file="userMyPageNav.jsp" %>
+
+<main>
   <jsp:include page="userOrder.jsp" />
-</section>
-<footer>
-  <%@ include file="../common/footer.jsp" %>
-</footer>
+</main>
+
+<%@ include file="../common/footer.jsp" %>
 </body>
 </html>

@@ -16,11 +16,13 @@
   <title>관리자 페이지 메뉴바</title>
 </head>
 <body>
-<ul>
-  <li>주문 관리</li>
-  <li>포인트 관리</li>
-  <li>상품 추가</li>
-  <li>상품 삭제</li>
-</ul>
+<nav>
+  <ul>
+    <li>주문 관리</li>
+    <li>포인트 관리</li>
+    <li>상품 추가</li>
+    <li>상품 삭제</li>
+  </ul>
+</nav>
 </body>
 </html>

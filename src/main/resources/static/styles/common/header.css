@@ -1,0 +1,14 @@
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.square-logo img {
+  width: 16px;
+  height: 16px;
+  object-fit: scale-down;
+}
+
+ul {
+  display: flex;
+}

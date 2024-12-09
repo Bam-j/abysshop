@@ -36,7 +36,7 @@
 <section>
 <img id="featured-product-banner" src="../../images/abyssblock_logo.png" alt="상품 홍보용 배너">
 </section>
-  <%--<jsp:include page="product/productPurchase.jsp" />--%>
+  <jsp:include page="product/productPurchase.jsp" />
 </main>
 
 <%@ include file="common/footer.jsp" %>

@@ -1,0 +1,18 @@
+table {
+  max-width: 90%;
+  max-height: 100%;
+  border: 1px solid #000; /* border는 추후 삭제 */
+  text-align: center;
+}
+
+thead {
+  background-color: #3f99f5;
+}
+
+thead th {
+  line-height: 1.2;
+}
+
+tbody td {
+  line-height: 1.5;
+}

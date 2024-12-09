@@ -16,10 +16,15 @@
   String id = (String) session.getAttribute("productId");
   //id를 사용하여 DB로부터 상품 정보(이미지, 이름, 가격, 설명) 취득
 %>
+<!DOCTYPE html>
 <html>
 <head>
   <title>상품 상세 페이지</title>
-  <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+        crossorigin="anonymous">
+  <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <%-- 상품 이미지, 상품명, 가격, 상품 상세 설명, 수량, 장바구니 담기 버튼 --%>

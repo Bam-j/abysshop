@@ -21,17 +21,18 @@
   <table>
     <thead>
     <tr>
-      <td>주문 번호</td>
-      <td>주문 상품</td>
-      <td>주문 금액/포인트</td>
-      <td>구매일</td>
-      <td>주문 상태</td>
+      <th>주문 번호</th>
+      <th>주문 상품</th>
+      <th>주문 금액/포인트</th>
+      <th>구매일</th>
+      <th>주문 상태</th>
     </tr>
     </thead>
     <tbody>
     <c:forEach items="${orderHistory}" var="order">
       <tr>
         <td>${order.orderId}</td>
+        <%-- orderItems: 3건 이상은 [상품명 외 n건]으로 표시하기 --%>
         <td>${order.orderItems}</td>
         <td>${order.totalAmount}</td>
         <td>${order.orderDate}</td>

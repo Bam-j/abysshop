@@ -27,10 +27,10 @@
     <table>
       <thead>
       <tr>
-        <td>상품명</td>
-        <td>구매 수량</td>
-        <td>금액/포인트</td>
-        <td>삭제</td>
+        <th>상품명</th>
+        <th>구매 수량</th>
+        <th>금액/포인트</th>
+        <th>삭제</th>
       </tr>
       </thead>
       <tbody>

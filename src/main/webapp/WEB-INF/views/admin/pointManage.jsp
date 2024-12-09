@@ -21,9 +21,9 @@
   <table>
     <thead>
     <tr>
-      <td>회원 닉네임</td>
-      <td>요청 포인트</td>
-      <td>이체 확인 후 버튼 클릭</td>
+      <th>회원 닉네임</th>
+      <th>요청 포인트</th>
+      <th>이체 확인 후 버튼 클릭</th>
     </tr>
     </thead>
     <tbody>

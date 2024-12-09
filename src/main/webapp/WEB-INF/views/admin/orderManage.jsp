@@ -21,11 +21,11 @@
   <table>
     <thead>
     <tr>
-      <td>주문 번호</td>
-      <td>주문 상품</td>
-      <td>주문 금액/포인트</td>
-      <td>구매일</td>
-      <td>주문 상태</td>
+      <th>주문 번호</th>
+      <th>주문 상품</th>
+      <th>주문 금액/포인트</th>
+      <th>구매일</th>
+      <th>주문 상태</th>
     </tr>
     </thead>
     <tbody>

@@ -18,20 +18,16 @@
 </head>
 <body>
 <section>
-  <%-- 상품 이미지, 상품명, 가격 --%>
-  <h3>상품 목록</h3>
-  <table class="product-list">
-    <tbody>
+  <h2>상품 목록</h2>
+  <div class="item-list">
     <c:forEach items="${productList}" var="product">
-      <%-- TODO: 추후 onclick 이벤트 js파일로 분리할 것 --%>
-      <tr onclick="location.href='productDetail.jsp?productId=${product.id}'">
-        <td><img src="${product.imgUrl}" alt="${product.imgUrl}"></td>
-        <td>${product.name}</td>
-        <td>${product.price}</td>
-      </tr>
+      <div class="item">
+        <img src="${product.imgUrl}" alt="${product.name} 이미지">
+        <h3>${product.name}</h3>
+        <p>${product.price}</p>
+      </div>
     </c:forEach>
-    </tbody>
-  </table>
+  </div>
 </section>
 </body>
 </html>

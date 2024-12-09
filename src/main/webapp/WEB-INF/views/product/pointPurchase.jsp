@@ -18,19 +18,16 @@
 </head>
 <body>
 <section>
-  <%-- 상품 이미지, 상품명, 가격 --%>
-  <h3>포인트 상품 목록</h3>
-  <table class="product-list">
-    <tbody>
-    <c:forEach items="${pointProductList}" var="pointProduct">
-      <tr>
-        <td><img src="${pointProduct.imgUrl}" alt="${pointProduct.imgUrl}"></td>
-        <td>${pointProduct.name}</td>
-        <td>${pointProduct.price}</td>
-      </tr>
+  <h2>포인트 상품 목록</h2>
+  <div class="item-list">
+    <c:forEach items="${pointList}" var="pointItem">
+      <div class="item">
+        <img src="${pointItem.imgUrl}" alt="${pointItem.name} 이미지">
+        <h3>${pointItem.name}</h3>
+        <p>${pointItem.price}</p>
+      </div>
     </c:forEach>
-    </tbody>
-  </table>
+  </div>
 </section>
 </body>
 </html>

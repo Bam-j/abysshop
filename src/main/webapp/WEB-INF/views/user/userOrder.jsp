@@ -20,7 +20,10 @@
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
         crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../../../resources/static/styles/common/base.css">
+  <link rel="stylesheet" href="../../../resources/static/styles/common/table.css">
   <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -39,7 +42,7 @@
     <c:forEach items="${orderHistory}" var="order">
       <tr>
         <td>${order.orderId}</td>
-        <%-- orderItems: 3건 이상은 [상품명 외 n건]으로 표시하기 --%>
+          <%-- orderItems: 3건 이상은 [상품명 외 n건]으로 표시하기 --%>
         <td>${order.orderItems}</td>
         <td>${order.totalAmount}</td>
         <td>${order.orderDate}</td>

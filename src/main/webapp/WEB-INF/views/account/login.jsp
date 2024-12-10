@@ -23,6 +23,13 @@
   <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
+<nav>
+  <form action="/" method="get">
+    <button type="button" class="btn btn-outline-dark">
+      <i class="bi bi-arrow-left"></i>메인으로
+    </button>
+  </form>
+</nav>
 <main>
   <div id="logo">
     <img src="" alt="어비스블록 로고">

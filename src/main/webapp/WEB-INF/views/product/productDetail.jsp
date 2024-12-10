@@ -24,14 +24,19 @@
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
         crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <%-- 상품 이미지, 상품명, 가격, 상품 상세 설명, 수량, 장바구니 담기 버튼 --%>
 <%@ include file="../common/header.jsp" %>
 <nav>
-  <a href="#">목록으로</a>
+  <form action="/" method="get">
+    <button type="button" class="btn btn-outline-dark">
+      <i class="bi bi-arrow-left"></i>메인으로
+    </button>
+  </form>
 </nav>
 <main>
   <section>
@@ -42,7 +47,9 @@
       <li>${product.description}</li>
     </ul>
     <form>
-      <button type="button" class="btn btn-primary">장바구니 담기</button>
+      <button type="button" class="btn btn-primary">
+        <i class="bi bi-cart"></i> 장바구니 담기
+      </button>
     </form>
   </section>
 </main>

@@ -37,6 +37,7 @@
     <% if (isLoggedIn) { %>
     <li>
       <button type="button" class="btn btn-primary">
+        <i class="bi bi-cart"></i>
         장바구니 <span class="badge text-bg-secondary">${cart.items}</span>
       </button>
     </li>

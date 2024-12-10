@@ -19,6 +19,7 @@
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
         crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -32,11 +33,11 @@
       <input type="text" placeholder="계정">
       <%-- TODO: 개발 완료시 type:"password"로 비밀번호 입력 가리기 --%>
       <input type="text" placeholder="비밀번호">
-      <button type="submit">로그인</button>
+      <button type="submit" class="btn btn-primary">로그인</button>
     </form>
     <hr>
     <form action="/account/join" method="get">
-      <button>회원가입</button>
+      <button type="submit" class="btn btn-secondary">회원가입</button>
     </form>
   </section>
 </main>

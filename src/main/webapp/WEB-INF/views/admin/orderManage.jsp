@@ -20,6 +20,7 @@
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
         crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -42,14 +43,20 @@
         <td>${order.totalAmount}</td>
         <td>${order.orderDate}</td>
         <td>
-          <form>
-            <select id="orderState">
-              <option value="payment_pending" selected>결제 확인 대기</option>
-              <option value="ready_for_delivery">상품 전달 대기</option>
-              <option value="delivered">상품 전달 완료</option>
-            </select>
-            <button>변경</button>
-          </form>
+          <div class="btn-group">
+            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+              결제 확인 대기
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">결제 확인 대기</a></li>
+              <li><a class="dropdown-item" href="#">상품 전달 대기</a></li>
+              <li><a class="dropdown-item" href="#">상품 전달 완료</a></li>
+            </ul>
+            <form>
+              <button type="button" class="btn btn-primary">변경</button>
+            </form>
+          </div>
         </td>
       </tr>
     </c:forEach>

@@ -48,7 +48,7 @@
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="../../images/abyssblock_logo.png" class="d-block w-100"
+          <img src="../resources/static/images/abyssblock_logo.png" class="d-block w-100"
                alt="abyssblock_logo.png">
         </div>
         <%--  carousel에 컨텐츠 추가시 아래 코드를 copy & paste

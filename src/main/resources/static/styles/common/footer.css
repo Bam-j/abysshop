@@ -4,6 +4,14 @@ footer {
   align-items: center;
 }
 
+.square-logo img {
+  width: 50%;
+  height: 50%;
+  margin-top: 0.625rem;
+  margin-left: 0.625rem;
+  object-fit: scale-down;
+}
+
 ul li {
   position: relative;
   margin: 0.625rem;

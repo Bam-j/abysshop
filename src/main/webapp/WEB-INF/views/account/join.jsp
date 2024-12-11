@@ -35,7 +35,7 @@
 <main>
   <section>
     <div id="logo">
-      <img src="" alt="어비스블록 로고">
+      <img src="../resources/static/images/abyssblock_mark_280x280.png" alt="어비스블록 로고">
     </div>
     <%-- TODO: action을 요청 방식 결정하고 변경할 것. 현재는 임시 요청 사용 --%>
     <form action="/account/join" method="post">

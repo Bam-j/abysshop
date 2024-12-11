@@ -29,7 +29,7 @@
 <main>
   <section>
     <div class="logo">
-      <img src="" alt="abyssblock 로고">
+      <img src="../resources/static/images/abyssblock_mark_280x280.png" alt="abyssblock 로고">
     </div>
     <div>
       <h2>계좌 번호를 여기에 작성</h2>

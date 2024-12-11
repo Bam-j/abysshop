@@ -29,7 +29,7 @@
 <main>
   <section>
     <div id="logo">
-      <img src="" alt="abyssblock 로고">
+      <img src="../resources/static/images/abyssblock_mark_280x280.png" alt="abyssblock 로고">
     </div>
     <h3>결제가 완료되었습니다.</h3>
     <div>

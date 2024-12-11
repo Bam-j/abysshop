@@ -27,6 +27,7 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="../../../resources/static/styles/common/base.css">
+  <link rel="stylesheet" href="../../../resources/static/styles/product/productDetail.css">
   <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -41,17 +42,19 @@
 </nav>
 <main>
   <section>
+    <img src="${product.imgUrl}" alt="상품 이미지">
     <ul>
-      <li><img src="${product.imgUrl}" alt="상품 이미지"></li>
       <li><h2><strong>${product.name}</strong></h2></li>
       <li><h3>${product.price}</h3></li>
       <li>${product.description}</li>
+      <li>
+        <form>
+          <button type="button" class="btn btn-primary">
+            <i class="bi bi-cart"></i> 장바구니 담기
+          </button>
+        </form>
+      </li>
     </ul>
-    <form>
-      <button type="button" class="btn btn-primary">
-        <i class="bi bi-cart"></i> 장바구니 담기
-      </button>
-    </form>
   </section>
 </main>
 <%@ include file="../common/footer.jsp" %>

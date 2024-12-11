@@ -1,0 +1,17 @@
+main {
+  display: flex;
+  justify-content: space-between;
+}
+
+section {
+  width: 100%;
+  padding: 1.25px;
+}
+
+img {
+  width: 30%;
+}
+
+ul {
+  width: 70%;
+}

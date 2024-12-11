@@ -4,8 +4,10 @@ header {
 }
 
 .square-logo img {
-  width: 16px;
-  height: 16px;
+  width: 50%;
+  height: 50%;
+  margin-top: 0.625rem;
+  margin-left: 0.625rem;
   object-fit: scale-down;
 }
 

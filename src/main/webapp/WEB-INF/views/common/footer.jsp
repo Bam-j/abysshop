@@ -28,7 +28,7 @@
 <body>
 <footer>
   <div class="square-logo">
-    <a href="../../index.jsp">
+    <a href="../index.jsp">
       <img src="" alt="어비스 블록 미니멀 로고">
     </a>
   </div>

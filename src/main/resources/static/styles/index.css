@@ -1,4 +1,7 @@
-#featured-product-banner {
-  max-width: 100%;
-  max-height: 15.625rem;
+aside {
+  max-width: 93.75rem;
+  max-height: 50rem;
+  margin-top: 0.625rem;
+  margin-left: 0.625rem;
+  margin-right: 0.625rem;
 }

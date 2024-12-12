@@ -17,7 +17,7 @@ public class OrderController {
 
     @GetMapping("/order/bank-transfer")
     public String bankTransfer() {
-        return "order/orderBankTransfer";
+        return "bankTransferInfo";
     }
 
     @GetMapping("/order/complete")

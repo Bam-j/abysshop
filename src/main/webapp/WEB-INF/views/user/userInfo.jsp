@@ -39,13 +39,32 @@
     <input type="text" placeholder="변경할 비밀번호 입력">
     <button type="submit" class="btn btn-primary">비밀번호 변경</button>
   </form>
+
   <hr>
-  <form action="/account/withdraw">
-    <%-- 탈퇴 버튼 -> 모달창 -> 모달창에서 입력 후 버튼 클릭 하는 방식으로 변경 --%>
-    <%-- TODO: 개발 완료시 type:"password"로 비밀번호 입력 가리기 --%>
-    <input type="text" placeholder="비밀번호 입력">
-    <button type="submit" class="btn btn-danger">회원 탈퇴</button>
-  </form>
+
+  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#withdraw-modal">
+    회원 탈퇴
+  </button>
+
+  <div class="modal fade" id="withdraw-modal" tabindex="-1" aria-labelledby="withdraw-modal-label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="withdraw-modal-label">회원 탈퇴 확인</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          탈퇴 하시려면 현재 비밀번호를 입력해주세요.
+          <input type="text">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+          <button type="button" class="btn btn-danger">회원 탈퇴</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

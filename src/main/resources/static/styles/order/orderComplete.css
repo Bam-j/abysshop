@@ -1,0 +1,14 @@
+body {
+  background-color: #c3c3c3;
+}
+
+section {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  width: 100px;
+}

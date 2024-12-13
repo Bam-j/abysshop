@@ -24,6 +24,7 @@
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="../../../resources/static/styles/common/base.css">
   <link rel="stylesheet" href="../../../resources/static/styles/common/table.css">
+  <link rel="stylesheet" href="../../../resources/static/styles/order/shoppingCart.css">
   <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -64,7 +65,7 @@
       </tfoot>
     </table>
     <form action="/payment/instructions" method="post">
-      <button type="button" class="btn btn-primary">장바구니 결제하기</button>
+      <button type="button" class="btn btn-primary">결제하기</button>
     </form>
   </section>
 </main>

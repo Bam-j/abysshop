@@ -22,10 +22,12 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="../../../resources/static/styles/common/base.css">
+  <link rel="stylesheet" href="../../../resources/static/styles/account/signUp.css">
   <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <nav>
+  <%-- 버튼을 a태그 형태로 바꾸고 크기 줄이기 + nav에서 section 좌측상단으로 이동 --%>
   <form action="" method="get">
     <button type="button" class="btn btn-outline-dark">
       <i class="bi bi-arrow-left"></i>로그인
@@ -33,11 +35,14 @@
   </form>
 </nav>
 <main>
+  <%-- section 모서리를 부드러운 곡선으로 만들기 --%>
   <section>
+    <%-- 로고 크기 줄이기--%>
     <div id="logo">
       <img src="../resources/static/images/abyssblock_mark_280x280.png" alt="어비스블록 로고">
     </div>
     <%-- TODO: action을 요청 방식 결정하고 변경할 것. 현재는 임시 요청 사용 --%>
+    <%-- 각 form, button 세로 정렬 --%>
     <form action="/account/sign-up" method="post">
       <input type="text" placeholder="계정">
       <input type="text" data-bs-toggle="tooltip" data-bs-placement="bottom"

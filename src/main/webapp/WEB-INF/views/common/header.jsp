@@ -36,6 +36,7 @@
       <img src="../static/images/abyssblock_square_64x64.png" alt="어비스 블록 미니멀 로고">
     </a>
   </div>
+  <%-- header의 ul, li 사이에는 가로바가 생기지 않도록 처리 --%>
   <ul>
     <% if (isLoggedIn) { %>
     <li>

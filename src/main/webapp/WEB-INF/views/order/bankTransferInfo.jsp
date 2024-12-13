@@ -22,6 +22,7 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="../../../resources/static/styles/common/base.css">
+  <link rel="stylesheet" href="../../../resources/static/styles/order/bankTransferInfo.css">
   <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -32,8 +33,11 @@
       <img src="../resources/static/images/abyssblock_mark_280x280.png" alt="abyssblock 로고">
     </div>
     <div>
+      <%-- 계좌 번호은 가운데 정렬 --%>
+      <%-- 이 부분의 ol, li에는 bullet이 나타나도록 --%>
       <h2>계좌 번호를 여기에 작성</h2>
       <ol>
+        <%-- strong에는 빨간 글씨 등의 강조 표시 --%>
         <li><strong>반드시 아래 안내문을 읽고 송금을 한 후 송금 완료 버튼을 클릭해주세요.</strong></li>
         <li>송금자 명을 닉네임과 동일하게 설정해주세요.</li>
         <li>입금 후 포인트/상품 지급까지 5분에서 최대 20분까지 소요될 수 있습니다.</li>

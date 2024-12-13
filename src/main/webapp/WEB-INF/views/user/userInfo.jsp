@@ -22,12 +22,14 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="../../../resources/static/styles/common/base.css">
+  <link rel="stylesheet" href="../../../resources/static/styles/user/userInfo.css">
   <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <section>
   <form action="/account/change/nickname">
     <input type="text" placeholder="변경할 닉네임 입력">
+    <%-- small 가독성 향상할 방법찾기 --%>
     <small>주의! 반드시 인게임의 마인크래프트 닉네임과 동일한 닉네임을 적어주세요. 후원이 원활하게 이루어지지 않을 수 있습니다.</small>
     <button type="submit" class="btn btn-primary">닉네임 변경</button>
   </form>
@@ -39,9 +41,10 @@
   </form>
   <hr>
   <form action="/account/withdraw">
+    <%-- 탈퇴 버튼 -> 모달창 -> 모달창에서 입력 후 버튼 클릭 하는 방식으로 변경 --%>
     <%-- TODO: 개발 완료시 type:"password"로 비밀번호 입력 가리기 --%>
     <input type="text" placeholder="비밀번호 입력">
-    <button type="submit" class="btn btn-secondary">회원 탈퇴</button>
+    <button type="submit" class="btn btn-danger">회원 탈퇴</button>
   </form>
 </section>
 </body>

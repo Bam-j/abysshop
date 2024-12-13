@@ -22,10 +22,12 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="../../../resources/static/styles/common/base.css">
+  <link rel="stylesheet" href="../../../resources/static/styles/admin/addProduct.css">
   <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <section>
+  <%-- 요소 세로 정렬 --%>
   <form action="/admin/product/add" method="post" enctype="multipart/form-data">
     <label for="product-image">상품 이미지: </label>
     <input type="file" id="product-image">

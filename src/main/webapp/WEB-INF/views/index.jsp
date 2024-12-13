@@ -26,6 +26,10 @@
         crossorigin="anonymous">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <%--
+    TODO: 전체적으로 stylesheet link 손보기.
+        한 페이지에 include된 jsp의 stylesheet도 페이지 전체에 영향을 줌을 명심할 것
+   --%>
   <link rel="stylesheet" href="../../resources/static/styles/common/base.css">
   <link rel="stylesheet" href="../../resources/static/styles/index.css">
   <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
@@ -34,6 +38,7 @@
 <%@ include file="common/header.jsp" %>
 
 <aside>
+  <%-- carousel 크기 고정 크기로 변경 --%>
   <div id="carouselExampleIndicators" class="carousel slide">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"

@@ -22,17 +22,20 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="../../../resources/static/styles/common/base.css">
+  <link rel="stylesheet" href="../../../resources/static/styles/order/orderComplete.css">
   <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>
 <main>
+  <%-- section 모서리를 부드러운 곡선으로 만들기 --%>
   <section>
     <div id="logo">
       <img src="../resources/static/images/abyssblock_mark_280x280.png" alt="abyssblock 로고">
     </div>
     <h3>결제가 완료되었습니다.</h3>
     <div>
+      <%-- 이 부분의 ol, li에는 bullet이 나타나도록 --%>
       <ol>
         <li>주문 상태는 '마이 페이지'의 '주문 관리'에서 확인하실 수 있습니다.</li>
         <li>입금 후 포인트/상품 지급까지 5분에서 최대 20분까지 소요될 수 있습니다.</li>

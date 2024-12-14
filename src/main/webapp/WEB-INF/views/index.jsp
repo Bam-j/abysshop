@@ -26,10 +26,6 @@
         crossorigin="anonymous">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-  <%--
-    TODO: 전체적으로 stylesheet link 손보기.
-        한 페이지에 include된 jsp의 stylesheet도 페이지 전체에 영향을 줌을 명심할 것
-   --%>
   <link rel="stylesheet" href="../../resources/static/styles/common/common.css">
   <link rel="stylesheet" href="../../resources/static/styles/index.css">
   <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
@@ -38,13 +34,14 @@
 <%@ include file="common/header.jsp" %>
 
 <aside>
-  <%-- carousel 크기 고정 크기로 변경 --%>
-  <div id="carouselExampleIndicators" class="carousel slide">
+  <div id="carouselIndicators" class="carousel slide">
     <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+      <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0"
               class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="1"
+              aria-label="Slide 2"></button>
       <%--  carousel에 컨텐츠 추가시 아래 코드를 copy & paste
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+      <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="1"
               aria-label="Slide 2"></button>
       --%>
     </div>
@@ -53,6 +50,10 @@
         <img src="../resources/static/images/abyssblock_logo.png" class="d-block w-100"
              alt="abyssblock_logo.png">
       </div>
+      <div class="carousel-item">
+        <img src="../resources/static/images/abyssblock_mark.png" class="d-block w-100"
+             alt="abyssblock_mark.png">
+      </div>
       <%--  carousel에 컨텐츠 추가시 아래 코드를 copy & paste
       <div class="carousel-item">
         <img src="..." class="d-block w-100" alt="...">
@@ -60,12 +61,12 @@
       --%>
     </div>
     <button class="carousel-control-prev" type="button"
-            data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            data-bs-target="#carouselIndicators" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
     <button class="carousel-control-next" type="button"
-            data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            data-bs-target="#carouselIndicators" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
@@ -79,5 +80,9 @@
 </main>
 
 <%@ include file="common/footer.jsp" %>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 </body>
 </html>

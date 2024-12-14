@@ -1,8 +1,7 @@
 header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1.25rem;
-  margin-top: 1.25rem;
+  margin: 1.25rem;
 }
 
 .square-logo img {

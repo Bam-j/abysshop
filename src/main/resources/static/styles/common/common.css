@@ -23,7 +23,7 @@ html {
 
 body {
   font-family: 'Noto Sans KR', serif, monospace;
-  font-size: 1rem;
+  font-size: 12px;
   line-height: 1.5;
   color: var(--font-primary-color);
   margin-left: 0.625rem;

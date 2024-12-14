@@ -14,12 +14,12 @@ footer {
   object-fit: scale-down;
 }
 
-ul li {
+footer ul li {
   position: relative;
   margin: 0.625rem;
 }
 
-ul li::after {
+footer ul li::after {
   content: "";
   position: absolute;
   right: -10px;

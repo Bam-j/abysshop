@@ -30,7 +30,7 @@
     TODO: 전체적으로 stylesheet link 손보기.
         한 페이지에 include된 jsp의 stylesheet도 페이지 전체에 영향을 줌을 명심할 것
    --%>
-  <link rel="stylesheet" href="../../resources/static/styles/common/base.css">
+  <link rel="stylesheet" href="../../resources/static/styles/common/common.css">
   <link rel="stylesheet" href="../../resources/static/styles/index.css">
   <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
 </head>

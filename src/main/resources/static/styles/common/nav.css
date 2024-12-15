@@ -15,6 +15,6 @@ ul li::after {
 }
 
 /* nav 메뉴 클릭시 Bold 처리하는 CSS */
-.active-nav {
+.nav-link.active {
   font-weight: bold;
 }

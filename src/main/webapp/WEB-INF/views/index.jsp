@@ -15,6 +15,7 @@
     language="java"
     pageEncoding="UTF-8"
 %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,7 +77,14 @@
 <%@ include file="product/productNav.jsp" %>
 
 <main id="index-main-content">
-  <jsp:include page="product/productPurchase.jsp" />
+  <c:choose>
+    <c:when test="${param.menu eq 'point'}">
+      <jsp:include page="product/pointPurchase.jsp" />
+    </c:when>
+    <c:otherwise>
+      <jsp:include page="product/productPurchase.jsp" />
+    </c:otherwise>
+  </c:choose>
 </main>
 
 <%@ include file="common/footer.jsp" %>

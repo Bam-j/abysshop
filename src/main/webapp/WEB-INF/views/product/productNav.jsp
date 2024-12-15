@@ -26,8 +26,17 @@
 </head>
 <body>
 <nav class="nav">
-  <a class="nav-link active" aria-current="page" href="#">상품</a>
-  <a class="nav-link" href="#">포인트</a>
+  <%--
+    TODO: 클릭에 따라 class 속성값 active가 추가/삭제 되도록 js 작성
+          + 새로고침 효과 없애기
+  --%>
+  <a class="nav-link active" aria-current="page" href="?menu=product">상품</a>
+  <a class="nav-link" href="?menu=point">포인트</a>
 </nav>
+
+<script
+    src="https://code.jquery.com/jquery-3.7.1.js"
+    integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
 </body>
 </html>

@@ -21,12 +21,15 @@
         crossorigin="anonymous">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../../../resources/static/styles/common/nav.css">
   <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <nav class="nav">
-  <a class="nav-link active" aria-current="page" href="#">주문 관리</a>
-  <a class="nav-link" href="#">계정 관리</a>
+  <a class="nav-link active" aria-current="page" href="?menu=order-management">주문 관리</a>
+  <a class="nav-link" href="?menu=user-info">계정 관리</a>
 </nav>
+
+<script src="../resources/static/js/common/navEvent.js"></script>
 </body>
 </html>

@@ -11,6 +11,7 @@
     language="java"
     pageEncoding="UTF-8"
 %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +31,16 @@
 <%@ include file="userMyPageNav.jsp" %>
 
 <main>
-  <jsp:include page="userOrder.jsp" />
+  <div id="content">
+    <c:choose>
+      <c:when test="${param.menu eq 'user-info'}">
+        <jsp:include page="userInfo.jsp" />
+      </c:when>
+      <c:otherwise>
+        <jsp:include page="userOrder.jsp" />
+      </c:otherwise>
+    </c:choose>
+  </div>
 </main>
 
 <%@ include file="../common/footer.jsp" %>

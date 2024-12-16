@@ -30,7 +30,22 @@
 <%@ include file="adminPageNav.jsp" %>
 
 <main>
-  <jsp:include page="orderManage.jsp" />
+  <div id="content">
+    <c:choose>
+      <c:when test="${param.menu eq 'point-management'}">
+        <jsp:include page="pointManage.jsp" />
+      </c:when>
+      <c:when test="${param.menu eq 'add-product'}">
+        <jsp:include page="addProduct.jsp" />
+      </c:when>
+      <c:when test="${param.menu eq 'remove-product'}">
+        <jsp:include page="removeProduct.jsp" />
+      </c:when>
+      <c:otherwise>
+        <jsp:include page="orderManage.jsp" />
+      </c:otherwise>
+    </c:choose>
+  </div>
 </main>
 
 <%@ include file="../common/footer.jsp" %>

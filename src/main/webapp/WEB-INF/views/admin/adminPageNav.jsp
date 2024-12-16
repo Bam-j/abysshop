@@ -11,6 +11,7 @@
     language="java"
     pageEncoding="UTF-8"
 %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,14 +22,17 @@
         crossorigin="anonymous">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../../../resources/static/styles/common/nav.css">
   <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <nav class="nav">
-  <a class="nav-link active" aria-current="page" href="#">주문 관리</a>
-  <a class="nav-link" href="#">포인트 관리</a>
-  <a class="nav-link" href="#">상품 추가</a>
-  <a class="nav-link" href="#">상품 삭제</a>
+  <a class="nav-link active" aria-current="page" href="?menu=order-management">주문 관리</a>
+  <a class="nav-link" href="?menu=point-management">포인트 관리</a>
+  <a class="nav-link" href="?menu=add-product">상품 추가</a>
+  <a class="nav-link" href="?menu=remove-product">상품 삭제</a>
 </nav>
+
+<script src="../resources/static/js/common/navEvent.js"></script>
 </body>
 </html>

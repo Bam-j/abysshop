@@ -23,6 +23,6 @@ public class UserController {
 
     @GetMapping("/user/order")
     public String userOrder() {
-        return "user/userOrder";
+        return "userOrderManagement";
     }
 }

@@ -13,12 +13,12 @@ public class AdminController {
 
     @GetMapping("/admin/orderManage")
     public String orderManage() {
-        return "admin/orderManage";
+        return "orderManagement";
     }
 
     @GetMapping("/admin/pointManage")
     public String pointManage() {
-        return "admin/pointManage";
+        return "pointManagement";
     }
 
     @GetMapping("/admin/addProduct")

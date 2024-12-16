@@ -37,7 +37,7 @@
         <jsp:include page="userInfo.jsp" />
       </c:when>
       <c:otherwise>
-        <jsp:include page="userOrder.jsp" />
+        <jsp:include page="userOrderManagement.jsp" />
       </c:otherwise>
     </c:choose>
   </div>

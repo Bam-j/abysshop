@@ -26,10 +26,6 @@
 </head>
 <body>
 <nav class="nav">
-  <%--
-    TODO: 클릭에 따라 class 속성값 active가 추가/삭제 되도록 js 작성
-          + 새로고침 효과 없애기
-  --%>
   <a class="nav-link active" aria-current="page" href="?menu=product">상품</a>
   <a class="nav-link" href="?menu=point">포인트</a>
 </nav>

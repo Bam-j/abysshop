@@ -1,12 +1,29 @@
 body {
-  background-color: #c3c3c3;
+  background-color: var(--third-color);
+}
+
+main {
+  background-color: #fff;
+  margin: 0.5rem auto;
+  padding: 0;
+  border-radius: 10px;
+  width: 500px;
+  height: 425px;
+}
+
+aside a {
+  margin-left: 10px;
+  margin-top: 10px;
 }
 
 section {
-  background-color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+#logo > img {
+  width: 300px;
 }
 
 input {
@@ -23,5 +40,15 @@ input:focus {
 }
 
 input, button {
-  width: 300px;
+  width: 200px;
+}
+
+#sign-up-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form > input, form > button {
+  margin-top: 1rem;
 }

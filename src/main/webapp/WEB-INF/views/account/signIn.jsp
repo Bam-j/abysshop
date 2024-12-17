@@ -33,10 +33,10 @@
     </a>
   </aside>
   <section>
-    <div id="logo">
+    <div class="mark-logo">
       <img src="../resources/static/images/abyssblock_mark_sd.png" alt="어비스블록 로고">
     </div>
-    <%-- TODO: action을 요청 방식 결정하고 변경할 것. 현재는 임시 요청 사용 --%
+    <%-- TODO: action을 요청 방식 결정하고 변경할 것. 현재는 임시 요청 사용 --%>
     <form id="sign-in-form" action="/account/sign-in" method="post">
       <input type="text" placeholder="계정">
       <%-- TODO: 개발 완료시 type:"password"로 비밀번호 입력 가리기 --%>

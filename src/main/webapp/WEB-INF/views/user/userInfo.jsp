@@ -21,15 +21,17 @@
         crossorigin="anonymous">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="../../../resources/static/styles/user/userInfo.css">
   <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <section>
+  <hr>
   <form action="/account/change/nickname">
+    <div class="alert alert-danger" role="alert">
+      반드시 인게임 닉네임과 동일한 닉네임으로 설정해주세요. <br>
+      후원 과정에서 문제가 발생할 가능성이 높습니다.
+    </div>
     <input type="text" placeholder="변경할 닉네임 입력">
-    <%-- small 가독성 향상할 방법찾기 --%>
-    <small>주의! 반드시 인게임의 마인크래프트 닉네임과 동일한 닉네임을 적어주세요. 후원이 원활하게 이루어지지 않을 수 있습니다.</small>
     <button type="submit" class="btn btn-primary">닉네임 변경</button>
   </form>
   <hr>
@@ -41,20 +43,25 @@
 
   <hr>
 
-  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#withdraw-modal">
+  <button id="withdraw-button" type="button" class="btn btn-danger" data-bs-toggle="modal"
+          data-bs-target="#withdraw-modal">
     회원 탈퇴
   </button>
 
-  <div class="modal fade" id="withdraw-modal" tabindex="-1" aria-labelledby="withdraw-modal-label" aria-hidden="true">
+  <div class="modal fade" id="withdraw-modal" tabindex="-1" aria-labelledby="withdraw-modal-label"
+       aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="withdraw-modal-label">회원 탈퇴 확인</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"
+                  aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          탈퇴 하시려면 현재 비밀번호를 입력해주세요.
-          <input type="text">
+          <div class="alert alert-warning" role="alert">
+            탈퇴 하시려면 현재 비밀번호를 입력해주세요.
+          </div>
+          <input type="text" placeholder="현재 비밀번호">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
@@ -64,6 +71,5 @@
     </div>
   </div>
 </section>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

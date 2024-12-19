@@ -9,6 +9,10 @@
   <%@ include file=""%>: 컴파일 시점에 include, 헤더 푸터와 같은 변경이 적은 부분 적용시
   <jsp:include page=""/> 실행 시점에 include, 동적 변경 내용이 포함될 때 사용
 --%>
+<%--
+  TODO: 1차 기본 베이스 디자인 완료. DB, 백엔드 기본 로직 구현 후 리스트 등에 더미 데이터 넣고 리스트 디자인할 것
+    + 필요한 스크립트 작성
+  --%>
 <%@ page
     info="Abysshop의 메인 페이지입니다. 상품 목록을 보여줍니다."
     contentType="text/html;charset=UTF-8"

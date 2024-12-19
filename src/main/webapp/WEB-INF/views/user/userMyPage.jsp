@@ -23,7 +23,9 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="../../../resources/static/styles/common/common.css">
+  <link rel="stylesheet" href="../../../resources/static/styles/common/table.css">
   <link rel="stylesheet" href="../../../resources/static/styles/user/userInfo.css">
+  <link rel="stylesheet" href="../../../resoruces/static.styles/user/userOrderManagement.css">
   <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
 </head>
 <body>

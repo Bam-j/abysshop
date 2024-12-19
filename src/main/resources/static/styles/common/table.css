@@ -1,13 +1,10 @@
 table, th, td {
-  border: 2px solid #999;
   border-collapse: collapse;
-  width: 90%;
-  height: 30px;
   text-align: center;
 }
 
 thead {
-  background-color: #3f99f5;
+  background-color: var(--fourth-color);
 }
 
 thead th {

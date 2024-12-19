@@ -17,6 +17,7 @@ footer {
 footer ul li {
   position: relative;
   margin: 0.625rem;
+  list-style: none;
 }
 
 footer ul li::after {

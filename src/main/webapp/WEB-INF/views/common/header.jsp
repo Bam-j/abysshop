@@ -22,7 +22,6 @@
         crossorigin="anonymous">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="../../../resources/static/styles/common/header.css">
   <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -35,20 +34,19 @@
       <img src="../static/images/abyssblock_square_64x64.png" alt="어비스 블록 미니멀 로고">
     </a>
   </div>
-  <%-- header의 ul, li 사이에는 가로바가 생기지 않도록 처리 --%>
   <ul>
     <% if (isLoggedIn) { %>
-    <li>
+    <li class="logged-in">
       <button type="button" class="btn btn-primary">
         <i class="bi bi-cart"></i>
         장바구니 <span class="badge text-bg-secondary">${cart.items}</span>
       </button>
     </li>
-    <li>
+    <li class="logged-in">
       <%-- TODO: 일반 회원은 userMyPage.jsp로 이동하고 관리자는 adminMyPage.jsp로 이동 --%>
       <button type="submit" class="btn btn-primary">마이페이지</button>
     </li>
-    <li>
+    <li class="logged-in">
       <button type="submit" class="btn btn-primary">로그아웃</button>
     </li>
     <% } else { %>

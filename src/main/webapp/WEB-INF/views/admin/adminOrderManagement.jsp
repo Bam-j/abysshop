@@ -31,6 +31,7 @@
     <thead>
     <tr>
       <th>주문 번호</th>
+      <th>주문자</th>
       <th>주문 상품</th>
       <th>주문 금액/포인트</th>
       <th>구매일</th>
@@ -41,6 +42,7 @@
     <c:forEach items="${orderHistory}" var="order">
       <tr>
         <td>${order.orderId}</td>
+        <td>${order.customer}</td>
         <td>${order.orderItems}</td>
         <td>${order.totalAmount}</td>
         <td>${order.orderDate}</td>

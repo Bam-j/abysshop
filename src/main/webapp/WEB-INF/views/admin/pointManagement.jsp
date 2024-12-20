@@ -20,7 +20,8 @@
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
         crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="../../../resources/static/styles/common/table.css">
   <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
 </head>
@@ -31,14 +32,16 @@
     <tr>
       <th>회원 닉네임</th>
       <th>요청 포인트</th>
+      <th>이체 환산 금액</th>
       <th>이체 확인 후 버튼 클릭</th>
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${pointsRechargeRequest}" var="request">
+    <c:forEach items="${pointsRechargeRequest}" var="rechargeRequest">
       <tr>
-        <td>${request.nickname}</td>
-        <td>${request.points}</td>
+        <td>${rechargeRequest.nickname}</td>
+        <td>${rechargeRequest.points}</td>
+        <td>${rechargeRequest.points * 100} 원</td>
         <td>
           <form>
             <button type="submit" class="btn btn-primary">승인</button>

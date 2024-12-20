@@ -20,7 +20,7 @@ footer ul li {
   list-style: none;
 }
 
-footer ul li::after {
+.divider-elem::after {
   content: "";
   position: absolute;
   right: -10px;

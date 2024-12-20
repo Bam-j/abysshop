@@ -31,7 +31,7 @@
     </a>
   </div>
   <ul>
-    <li>서버 주소</li>
+    <li class="divider-elem">서버 주소</li>
     <li>디스코드 주소</li>
   </ul>
 </footer>

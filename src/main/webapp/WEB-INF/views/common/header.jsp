@@ -36,17 +36,17 @@
   </div>
   <ul>
     <% if (isLoggedIn) { %>
-    <li class="logged-in">
+    <li class="divider-elem">
       <button type="button" class="btn btn-primary">
         <i class="bi bi-cart"></i>
         장바구니 <span class="badge text-bg-secondary">${cart.items}</span>
       </button>
     </li>
-    <li class="logged-in">
+    <li class="divider-elem">
       <%-- TODO: 일반 회원은 userMyPage.jsp로 이동하고 관리자는 adminMyPage.jsp로 이동 --%>
       <button type="submit" class="btn btn-primary">마이페이지</button>
     </li>
-    <li class="logged-in">
+    <li class="divider-elem">
       <button type="submit" class="btn btn-primary">로그아웃</button>
     </li>
     <% } else { %>

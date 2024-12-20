@@ -20,7 +20,7 @@ header ul li {
   list-style: none;
 }
 
-.logged-in::after {
+.divider-elem::after {
   content: "";
   position: absolute;
   right: -10px;

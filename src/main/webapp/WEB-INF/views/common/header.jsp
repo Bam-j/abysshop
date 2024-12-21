@@ -12,6 +12,7 @@
     pageEncoding="UTF-8"
     isELIgnored="false"
 %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +27,10 @@
 </head>
 <body>
 <%
+  //TODO: DB에선 TINYINT(1)로 표기하므로 boolean 타입 추후에 변경
+  //c:set 사용
   boolean isLoggedIn = false;
+  boolean isAdmin = false;
 %>
 <header>
   <div class="square-logo">
@@ -35,25 +39,36 @@
     </a>
   </div>
   <ul>
-    <% if (isLoggedIn) { %>
-    <li class="divider-elem">
-      <button type="button" class="btn btn-primary">
-        <i class="bi bi-cart"></i>
-        장바구니 <span class="badge text-bg-secondary">${cart.items}</span>
-      </button>
-    </li>
-    <li class="divider-elem">
-      <%-- TODO: 일반 회원은 userMyPage.jsp로 이동하고 관리자는 adminMyPage.jsp로 이동 --%>
-      <button type="submit" class="btn btn-primary">마이페이지</button>
-    </li>
-    <li class="divider-elem">
-      <button type="submit" class="btn btn-primary">로그아웃</button>
-    </li>
-    <% } else { %>
-    <li>
-      <button type="submit" class="btn btn-primary">로그인</button>
-    </li>
-    <% } %>
+    <c:choose>
+      <c:when test="${isLoggedIn}">
+        <li class="divider-elem">
+          <button type="button" class="btn btn-primary">
+            <i class="bi bi-cart"></i>
+            장바구니 <span class="badge text-bg-secondary">${cart.items}</span>
+          </button>
+        </li>
+        <c:choose>
+          <c:when test="${isAdmin}">
+            <li class="divider-elem">
+              <button type="submit" class="btn btn-primary">관리자 페이지</button>
+            </li>
+          </c:when>
+          <c:otherwise>
+            <li class="divider-elem">
+              <button type="submit" class="btn btn-primary">마이페이지</button>
+            </li>
+          </c:otherwise>
+        </c:choose>
+        <li>
+          <button type="submit" class="btn btn-primary">로그아웃</button>
+        </li>
+      </c:when>
+      <c:otherwise>
+        <li>
+          <button type="submit" class="btn btn-primary">로그인</button>
+        </li>
+      </c:otherwise>
+    </c:choose>
   </ul>
 </header>
 </body>

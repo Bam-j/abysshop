@@ -10,6 +10,10 @@ header {
   margin-top: 0.625rem;
   margin-left: 0.625rem;
   object-fit: scale-down;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 ul {

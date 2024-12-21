@@ -40,9 +40,9 @@
       </ol>
     </div>
     <form action="/" method="get">
-      <button type="submit" class="btn btn-primary">
+      <a type="button" class="btn btn-primary" href="/">
         <i class="bi bi-house-door"></i> 메인으로
-      </button>
+      </a>
     </form>
     <form action="/" method="get">
       <button type="submit" class="btn btn-success">

@@ -24,6 +24,14 @@ footer ul li {
   list-style: none;
 }
 
+#server-address:hover,
+#server-address:active,
+#discord-address:hover,
+#discord-address:active {
+  cursor: pointer;  !important;
+  font-weight: bold;  !important;
+}
+
 .divider-elem::after {
   content: "";
   position: absolute;

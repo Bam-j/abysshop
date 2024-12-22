@@ -101,5 +101,6 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 <script src="../resources/static/js/index.js"></script>
+<script src="../resources/static/js/common/textCopy.js"></script>
 </body>
 </html>

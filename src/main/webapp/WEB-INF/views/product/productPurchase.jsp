@@ -29,7 +29,7 @@
   <h2>상품 목록</h2>
   <div class="item-list">
     <c:forEach items="${productList}" var="product">
-      <div class="card" style="width: 18rem;">
+      <div class="item">
         <img src="${product.imgUrl}" class="card-img-top" alt="${product.name}">
         <div class="card-body">
           <h5 class="card-title">${product.name}</h5>

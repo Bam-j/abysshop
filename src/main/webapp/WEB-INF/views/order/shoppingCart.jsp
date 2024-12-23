@@ -66,7 +66,7 @@
       </tr>
       </tfoot>
     </table>
-    <form action="/payment/instructions" method="post">
+    <form action="/payment/info" method="post">
       <button type="button" class="btn btn-primary">결제하기</button>
     </form>
   </section>

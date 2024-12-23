@@ -39,11 +39,9 @@
         <li>결제 과정에서 문의는 디스코드에서 받고있습니다.</li>
       </ol>
     </div>
-    <form action="/" method="get">
-      <a type="button" class="btn btn-primary" href="/">
-        <i class="bi bi-house-door"></i> 메인으로
-      </a>
-    </form>
+    <a type="button" class="btn btn-primary" href="/">
+      <i class="bi bi-house-door"></i> 메인으로
+    </a>
     <form action="/user/my-page" method="get">
       <button type="submit" class="btn btn-success">
         <i class="bi bi-card-list"></i> 주문 내역으로

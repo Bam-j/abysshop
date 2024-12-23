@@ -65,7 +65,9 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-          <button type="button" class="btn btn-danger">회원 탈퇴</button>
+          <form action="/account/withdraw">
+            <button type="submit" class="btn btn-danger">회원 탈퇴</button>
+          </form>
         </div>
       </div>
     </div>

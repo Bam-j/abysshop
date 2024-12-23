@@ -26,7 +26,8 @@
 </head>
 <body>
 <section>
-  <form id="add-product-form" action="/admin/product/add" method="post" enctype="multipart/form-data">
+  <form id="add-product-form" action="/admin/product/add" method="post"
+        enctype="multipart/form-data">
     <label for="product-image">
       상품 이미지: <input type="file" id="product-image">
     </label>

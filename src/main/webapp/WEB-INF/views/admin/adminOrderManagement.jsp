@@ -57,7 +57,7 @@
               <li><a class="dropdown-item" href="#">상품 전달 대기</a></li>
               <li><a class="dropdown-item" href="#">상품 전달 완료</a></li>
             </ul>
-            <form>
+            <form action="/admin/order/change-state" method="post">
               <button type="button" class="btn btn-primary">변경</button>
             </form>
           </div>

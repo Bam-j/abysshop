@@ -102,5 +102,6 @@
         crossorigin="anonymous"></script>
 <script src="../resources/static/js/index.js"></script>
 <script src="../resources/static/js/common/textCopy.js"></script>
+<script src="../resources/static/js/product/moveToDetail.js"></script>
 </body>
 </html>

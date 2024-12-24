@@ -28,12 +28,12 @@
 <section>
   <h2>상품 목록</h2>
   <div class="item-list">
-    <c:forEach items="${productList}" var="product">
+    <c:forEach items="${productItemList}" var="item">
       <div class="item">
-        <img src="${product.imgUrl}" class="card-img-top" alt="${product.name}">
+        <img src="${item.imgUrl}" class="card-img-top" alt="${item.name}">
         <div class="card-body">
-          <h5 class="card-title">${product.name}</h5>
-          <p class="card-text">${product.price}</p>
+          <h5 class="card-title">${item.name}</h5>
+          <p class="card-text">${item.price}</p>
         </div>
       </div>
     </c:forEach>

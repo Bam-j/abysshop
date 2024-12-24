@@ -43,9 +43,9 @@
       <tr>
         <td>${order.orderId}</td>
         <td>${order.customer}</td>
-        <td>${order.orderItems}</td>
+        <td>${order.items}</td>
         <td>${order.totalAmount}</td>
-        <td>${order.orderDate}</td>
+        <td>${order.date}</td>
         <td>
           <div class="btn-group">
             <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown"

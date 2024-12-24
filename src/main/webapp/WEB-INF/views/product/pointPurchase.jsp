@@ -28,11 +28,12 @@
 <section>
   <h2>포인트 상품 목록</h2>
   <div class="item-list">
-    <c:forEach items="${pointList}" var="pointItem">
+    <c:forEach items="${pointItemList}" var="item">
       <div class="item">
-        <img src="${pointItem.imgUrl}" alt="${pointItem.name} 이미지">
-        <h3>${pointItem.name}</h3>
-        <p>${pointItem.price}</p>
+        <input type="hidden" name="itemId" value="${item.id}">
+        <img src="${item.imgUrl}" class="card-img-top" alt="${item.name} 이미지">
+        <h3>${item.name}</h3>
+        <p>${item.price}</p>
       </div>
     </c:forEach>
   </div>

@@ -44,7 +44,6 @@
       <thead>
       <tr>
         <th>상품명</th>
-        <th>구매 수량</th>
         <th>금액/포인트</th>
         <th>삭제</th>
       </tr>
@@ -53,7 +52,6 @@
       <c:forEach items="${shoppingCart}" var="item">
         <tr>
           <td>${item.name}</td>
-          <td>${item.quantity}</td>
           <td>${item.price}</td>
           <td><a href="#">삭제</a></td>
         </tr>
@@ -61,8 +59,12 @@
       </tbody>
       <tfoot>
       <tr>
-        <td>합계</td>
-        <td>0000</td>
+        <td>합계 금액</td>
+        <td>
+          <%-- 나중에 value를 총합 계산하는 로직으로 변경하기 --%>
+          <c:set var="totalPrice" value="${item.price}"></c:set>
+          ${totalPrice}
+        </td>
       </tr>
       </tfoot>
     </table>

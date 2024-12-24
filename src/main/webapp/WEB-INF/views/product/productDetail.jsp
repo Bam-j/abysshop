@@ -44,11 +44,11 @@
 </nav>
 <main>
   <section>
-    <img src="${product.imgUrl}" alt="상품 이미지">
+    <img src="${item.imgUrl}" alt="상품 이미지">
     <ul>
-      <li><h2><strong>${product.name}</strong></h2></li>
-      <li><h3>${product.price}</h3></li>
-      <li>${product.description}</li>
+      <li><h2><strong>${item.name}</strong></h2></li>
+      <li><h3>${item.price}</h3></li>
+      <li>${item.description}</li>
       <li>
         <form>
           <button type="button" class="btn btn-primary">

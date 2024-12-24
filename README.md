@@ -26,6 +26,7 @@
 - 상품, 회원, 관리자, 주문, 장바구니, 포인트
 
 ## ERD
+![abysshop-ERD](https://github.com/user-attachments/assets/3abaaa9a-ee5f-4478-980e-1ac363d62ce2)
 
 ---
 # 사용법

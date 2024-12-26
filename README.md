@@ -25,6 +25,7 @@
 # DB
 ## 테이블
 - 상품, 회원, 주문, 장바구니
+- 테이블 생성은 `abysshop.sql` 참조
 
 ## ERD
 ![abysshop-ERD](https://github.com/user-attachments/assets/3abaaa9a-ee5f-4478-980e-1ac363d62ce2)

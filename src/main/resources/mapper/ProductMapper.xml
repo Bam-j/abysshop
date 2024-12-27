@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.joo.abysshop.mapper.ProductMapper">
+  <insert id="insertProduct" parameterType="com.joo.abysshop.entity.Product">
+    INSERT INTO products_table (productname, price, description, image, type)
+    VALUES (#{productname}, #{price}, #{description}, #{image}, #{type})
+  </insert>
+
+  <select id="selectCountByProductName" resultType="int">
+    SELECT COUNT(*) FROM products_table WHERE productname = #{productname}
+  </select>
+</mapper>
+

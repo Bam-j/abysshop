@@ -1,104 +1,62 @@
 CREATE TABLE `users_table`
 (
-    `user_id`  VARCHAR(255) NOT NULL,
-    `username` VARCHAR(30) NULL,
-    `nickname` VARCHAR(30) NULL,
-    `password` VARCHAR(50) NULL,
-    `usertype` ENUM(user, admin) NULL,
-    `points`   INT NULL
+  `user_id`  INT PRIMARY KEY        NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(50)            NOT NULL,
+  `nickname` VARCHAR(50)            NOT NULL,
+  `password` VARCHAR(255)           NOT NULL,
+  `usertype` ENUM ('user', 'admin') NOT NULL DEFAULT 'user',
+  `points`   INT                    NULL     DEFAULT 0
 );
 
 CREATE TABLE `products_table`
 (
-    `product_id`  VARCHAR(255) NOT NULL,
-    `productname` VARCHAR(255) NULL,
-    `price`       INT NULL,
-    `description` VARCHAR(255) NULL,
-    `image`       BLOB NULL,
-    `type`        ENUM(product, point) NULL
+  `product_id`  INT PRIMARY KEY           NOT NULL AUTO_INCREMENT,
+  `productname` VARCHAR(255)              NOT NULL,
+  `price`       INT                       NOT NULL,
+  `description` VARCHAR(255)              NULL,
+  `image`       BLOB                      NULL,
+  `type`        ENUM ('product', 'point') NOT NULL
 );
 
 CREATE TABLE `carts_table`
 (
-    `cart_id`     VARCHAR(255) NOT NULL,
-    `quantity`    INT NULL,
-    `total_price` INT NULL
+  `cart_id`     INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `quantity`    INT             NULL,
+  `total_price` INT             NULL
 );
 
 CREATE TABLE `orders_table`
 (
-    `order_id`   VARCHAR(255) NOT NULL,
-    `user_id`    VARCHAR(255) NOT NULL,
-    `date`       DATE NULL,
-    `totalPrice` INT NULL,
-    `state`      VARCHAR(30) NULL,
-    `type`       ENUM(product, point) NULL
+  `order_id`   INT                       NOT NULL,
+  `user_id`    INT                       NOT NULL,
+  `date`       DATE                      NOT NULL,
+  `totalPrice` INT                       NOT NULL,
+  `state`      VARCHAR(60)               NOT NULL,
+  `type`       ENUM ('product', 'point') NOT NULL
 );
 
 CREATE TABLE `order_products`
 (
-    `user_id`    VARCHAR(255) NOT NULL,
-    `product_id` VARCHAR(255) NOT NULL,
-    `cart_id`    VARCHAR(255) NOT NULL
+  `user_id`    INT NOT NULL,
+  `product_id` INT NOT NULL,
+  `cart_id`    INT NOT NULL
 );
 
-ALTER TABLE `users_table`
-    ADD CONSTRAINT `PK_USERS_TABLE` PRIMARY KEY (
-                                                 `user_id`
-        );
+ALTER TABLE `orders_table`
+  ADD CONSTRAINT `PK_ORDERS_TABLE` PRIMARY KEY (`order_id`, `user_id`);
 
-ALTER TABLE `products_table`
-    ADD CONSTRAINT `PK_PRODUCTS_TABLE` PRIMARY KEY (
-                                                    `product_id`
-        );
-
-ALTER TABLE `carts_table`
-    ADD CONSTRAINT `PK_CARTS_TABLE` PRIMARY KEY (
-                                                 `cart_id`
-        );
+ALTER TABLE `order_products`
+  ADD CONSTRAINT `PK_ORDER_PRODUCTS` PRIMARY KEY (`user_id`, `product_id`, `cart_id`);
 
 ALTER TABLE `orders_table`
-    ADD CONSTRAINT `PK_ORDERS_TABLE` PRIMARY KEY (
-                                                  `order_id`,
-                                                  `user_id`
-        );
+  ADD CONSTRAINT `FK_users_table_TO_orders_table_1` FOREIGN KEY (`user_id`) REFERENCES `users_table` (`user_id`);
 
 ALTER TABLE `order_products`
-    ADD CONSTRAINT `PK_ORDER_PRODUCTS` PRIMARY KEY (
-                                                    `user_id`,
-                                                    `product_id`,
-                                                    `cart_id`
-        );
-
-ALTER TABLE `orders_table`
-    ADD CONSTRAINT `FK_users_table_TO_orders_table_1` FOREIGN KEY (
-                                                                   `user_id`
-        )
-        REFERENCES `users_table` (
-                                  `user_id`
-            );
+  ADD CONSTRAINT `FK_users_table_TO_order_products_1` FOREIGN KEY (`user_id`) REFERENCES `users_table` (`user_id`);
 
 ALTER TABLE `order_products`
-    ADD CONSTRAINT `FK_users_table_TO_order_products_1` FOREIGN KEY (
-                                                                     `user_id`
-        )
-        REFERENCES `users_table` (
-                                  `user_id`
-            );
+  ADD CONSTRAINT `FK_products_table_TO_order_products_1` FOREIGN KEY (`product_id`) REFERENCES `products_table` (`product_id`);
 
 ALTER TABLE `order_products`
-    ADD CONSTRAINT `FK_products_table_TO_order_products_1` FOREIGN KEY (
-                                                                        `product_id`
-        )
-        REFERENCES `products_table` (
-                                     `product_id`
-            );
-
-ALTER TABLE `order_products`
-    ADD CONSTRAINT `FK_carts_table_TO_order_products_1` FOREIGN KEY (
-                                                                     `cart_id`
-        )
-        REFERENCES `carts_table` (
-                                  `cart_id`
-            );
+  ADD CONSTRAINT `FK_carts_table_TO_order_products_1` FOREIGN KEY (`cart_id`) REFERENCES `carts_table` (`cart_id`);
 

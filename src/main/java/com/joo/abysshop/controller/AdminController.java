@@ -7,6 +7,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class AdminController {
 
     @GetMapping("/admin/my-page")
+    public String getAdminMyPage() {
+        //TODO: URL 요청을 방지하기 위해 접근자가 admin 권한이 있는지 검사 후 return
+        return "admin/adminMyPage";
+    }
+
+
+    /*
+        TODO: 개발 완료 후 아래 요청들 삭제할 것
+        디자인 작업용 임시 요청들.
+     */
+    @GetMapping("/admin/my-page")
     public String admin() {
         return "admin/adminMyPage";
     }

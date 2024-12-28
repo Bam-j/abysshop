@@ -42,30 +42,41 @@
     <c:choose>
       <c:when test="${isLoggedIn}">
         <li class="divider-elem">
-          <button type="button" class="btn btn-primary">
-            <i class="bi bi-cart"></i>
-            장바구니 <span class="badge text-bg-secondary">${cart.items}</span>
-          </button>
+          <form action="/user/cart/{id}" method="get">
+            <input type="hidden" name="userCartId" value="${user.cartId}">
+            <button type="submit" class="btn btn-primary">
+              <i class="bi bi-cart"></i>
+              장바구니 <span class="badge text-bg-secondary">${cart.items}</span>
+            </button>
+          </form>
         </li>
         <c:choose>
           <c:when test="${isAdmin}">
             <li class="divider-elem">
-              <button type="submit" class="btn btn-primary">관리자 페이지</button>
+              <form action="/admin/my-page" method="get">
+                <button type="submit" class="btn btn-primary">관리자 페이지</button>
+              </form>
             </li>
           </c:when>
           <c:otherwise>
             <li class="divider-elem">
-              <button type="submit" class="btn btn-primary">마이페이지</button>
+              <form action="/user/my-page/{id}" method="get">
+                <button type="submit" class="btn btn-primary">마이페이지</button>
+              </form>
             </li>
           </c:otherwise>
         </c:choose>
         <li>
-          <button type="submit" class="btn btn-primary">로그아웃</button>
+          <form action="/account/logout" method="post">
+            <button type="submit" class="btn btn-primary">로그아웃</button>
+          </form>
         </li>
       </c:when>
       <c:otherwise>
         <li>
-          <button type="submit" class="btn btn-primary">로그인</button>
+          <form action="/account/sign-in" method="get">
+            <button type="submit" class="btn btn-primary">로그인</button>
+          </form>
         </li>
       </c:otherwise>
     </c:choose>

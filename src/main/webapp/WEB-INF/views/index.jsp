@@ -40,6 +40,10 @@
 <body>
 <%@ include file="common/header.jsp" %>
 
+<%--
+  캐러셀은 주로 신상품 광고에 사용된다.
+  해당 캐러셀 광고 클릭시 해당 상품의 Detail Page로 이동하도록 만들것.
+--%>
 <aside>
   <div id="carouselIndicators" class="carousel slide">
     <div class="carousel-indicators">

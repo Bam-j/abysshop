@@ -21,13 +21,14 @@ CREATE TABLE `products_table`
 CREATE TABLE `carts_table`
 (
   `cart_id`     INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `user_id`     INT             NOT NULL,
   `quantity`    INT             NULL,
   `total_price` INT             NULL
 );
 
 CREATE TABLE `orders_table`
 (
-  `order_id`   INT                       NOT NULL,
+  `order_id`   INT PRIMARY KEY           NOT NULL AUTO_INCREMENT,
   `user_id`    INT                       NOT NULL,
   `date`       DATE                      NOT NULL,
   `totalPrice` INT                       NOT NULL,
@@ -42,11 +43,8 @@ CREATE TABLE `order_products`
   `cart_id`    INT NOT NULL
 );
 
-ALTER TABLE `orders_table`
-  ADD CONSTRAINT `PK_ORDERS_TABLE` PRIMARY KEY (`order_id`, `user_id`);
-
-ALTER TABLE `order_products`
-  ADD CONSTRAINT `PK_ORDER_PRODUCTS` PRIMARY KEY (`user_id`, `product_id`, `cart_id`);
+ALTER TABLE `carts_table`
+  ADD CONSTRAINT `FK_users_table_TO_carts_table_1` FOREIGN KEY (`user_id`) REFERENCES `users_table` (`user_id`);
 
 ALTER TABLE `orders_table`
   ADD CONSTRAINT `FK_users_table_TO_orders_table_1` FOREIGN KEY (`user_id`) REFERENCES `users_table` (`user_id`);

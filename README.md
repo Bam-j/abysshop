@@ -28,7 +28,7 @@
 - 테이블 생성은 `abysshop.sql` 참조
 
 ## ERD
-![abysshop-ERD](https://github.com/user-attachments/assets/d476895c-aab1-4db7-8a65-551d435a4c62)
+![abysshop-ERD](https://github.com/user-attachments/assets/6e7df26d-987c-44a4-afb2-015c11e0cef6)
 
 ---
 # 사용법

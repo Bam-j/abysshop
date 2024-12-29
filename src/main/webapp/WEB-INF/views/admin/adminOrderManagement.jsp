@@ -53,12 +53,21 @@
               결제 확인 대기
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">결제 확인 대기</a></li>
-              <li><a class="dropdown-item" href="#">상품 전달 대기</a></li>
-              <li><a class="dropdown-item" href="#">상품 전달 완료</a></li>
+              <li>
+                <a class="dropdown-item" data-value="awaiting-payment-confirmation" href="#">
+                  결제 확인 대기</a>
+              </li>
+              <li>
+                <a class="dropdown-item" data-value="awaiting-product-delivery" href="#">
+                  상품 전달 대기</a>
+              </li>
+              <li>
+                <a class="dropdown-item" data-value="product-delivery-complete" href="#">
+                  상품 전달 완료</a>
+              </li>
             </ul>
             <form action="/admin/order/change-state" method="post">
-              <button type="button" class="btn btn-primary">변경</button>
+              <button type="submit" class="btn btn-primary">변경</button>
             </form>
           </div>
         </td>

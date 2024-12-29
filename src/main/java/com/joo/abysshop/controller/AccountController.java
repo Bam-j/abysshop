@@ -14,9 +14,23 @@ public class AccountController {
         return "account/signIn";
     }
 
+    @PostMapping("/account/sign-in")
+    public String signIn(@RequestParam String username, @RequestParam String password,
+        Model model) {
+        //TODO: 로그인
+        return "/";
+    }
+
     @GetMapping("/account/sign-up")
     public String getSignUpPage() {
         return "account/signUp";
+    }
+
+    @PostMapping("/account/sign-up")
+    public String signUp(@RequestParam String username,
+        @RequestParam String nickname, @RequestParam String password, Model model) {
+        //TODO: 회원가입
+        return "account/signIn";
     }
 
     @PostMapping("/account/change/nickname")
@@ -40,7 +54,7 @@ public class AccountController {
     @PostMapping("/account/withdraw")
     public String withdraw(@RequestParam("password") String password) {
         /*
-        * TODO: 1. 입력된 비밀 번호 검증 > 로그아웃 > 계정 삭제 > 홈으로 이동
+         * TODO: 1. 입력된 비밀 번호 검증 > 로그아웃 > 계정 삭제 > 홈으로 이동
          */
         return "/";
     }

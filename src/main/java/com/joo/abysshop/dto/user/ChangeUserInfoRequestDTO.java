@@ -1,4 +1,4 @@
-package com.joo.abysshop.dto.account;
+package com.joo.abysshop.dto.user;
 
 import lombok.Builder;
 import lombok.Getter;

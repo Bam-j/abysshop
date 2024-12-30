@@ -12,6 +12,7 @@ form {
 #add-product-form label,
 #add-product-form input,
 #add-product-form textarea,
+#add-product-form div,
 #add-product-form button {
   margin-top: 0.5rem;
 }

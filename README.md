@@ -4,7 +4,7 @@
 ---
 ## 프로젝트 개요
 - 포인트를 결제수단으로 사용하는 쇼핑몰 웹 페이지
-- 디자인은 네이버 쇼핑 페이지를 벤치마킹
+- 디자인 & 동작 매커니즘은 네이버 쇼핑 페이지를 벤치마킹
 - 회원제를 통한 회원과 포인트 관리
 - 관리자가 포인트 지급, 결제 확인, 상품 전달, 상품 등록의 역할을 수행
 - 결제 방식은 실시간 계좌 이체 -> 이체 확인 후 포인트 지급 -> 품목 구매 (1,000원 -> 100포인트) 
@@ -28,7 +28,7 @@
 - 테이블 생성은 `abysshop.sql` 참조
 
 ## ERD
-![abysshop-ERD](https://github.com/user-attachments/assets/4f1cc9af-d296-488c-9678-aab2377f2a2b)
+![abysshop-ERD](https://github.com/user-attachments/assets/8c7f8e28-bfa3-4e53-b271-4fd04f19f568)
 
 ---
 # 사용법

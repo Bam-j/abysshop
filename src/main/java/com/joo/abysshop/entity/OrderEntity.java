@@ -11,7 +11,6 @@ public class OrderEntity {
 
     private Long orderId;
     private Long userId;
-    private Long productId;
     private Date orderDate;
     private Long totalPrice;
     private OrderState orderState;

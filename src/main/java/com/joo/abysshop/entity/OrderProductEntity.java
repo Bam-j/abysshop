@@ -10,4 +10,5 @@ public class OrderProductEntity {
     private Long userId;
     private Long productId;
     private Long cartId;
+    private Long orderId;
 }

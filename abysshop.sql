@@ -1,3 +1,7 @@
+CREATE DATABASE db_abysshop;
+
+USE db_abysshop;
+
 CREATE TABLE `users_table`
 (
   `user_id`   INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -30,7 +34,6 @@ CREATE TABLE `orders_table`
 (
   `order_id`    INT UNSIGNED PRIMARY KEY                          NOT NULL AUTO_INCREMENT,
   `user_id`     INT UNSIGNED                                      NOT NULL,
-  `product_id`  INT UNSIGNED                                      NOT NULL,
   `order_date`  DATE                                              NOT NULL,
   `total_price` INT UNSIGNED                                      NOT NULL,
   `order_state` ENUM ('pending_payment', 'shipping', 'completed') NOT NULL DEFAULT 'pending_payment'
@@ -40,7 +43,8 @@ CREATE TABLE `order_products`
 (
   `user_id`    INT UNSIGNED NOT NULL,
   `product_id` INT UNSIGNED NOT NULL,
-  `cart_id`    INT UNSIGNED NOT NULL
+  `cart_id`    INT UNSIGNED NOT NULL,
+  `order_id`   INT UNSIGNED NOT NULL
 );
 
 ALTER TABLE `carts_table`
@@ -48,9 +52,6 @@ ALTER TABLE `carts_table`
 
 ALTER TABLE `orders_table`
   ADD CONSTRAINT `FK_users_table_TO_orders_table_1` FOREIGN KEY (`user_id`) REFERENCES `users_table` (`user_id`);
-
-ALTER TABLE `orders_table`
-  ADD CONSTRAINT `FK_products_table_TO_orders_table_1` FOREIGN KEY (`product_id`) REFERENCES `products_table` (`product_id`);
 
 ALTER TABLE `order_products`
   ADD CONSTRAINT `FK_users_table_TO_order_products_1` FOREIGN KEY (`user_id`) REFERENCES `users_table` (`user_id`);
@@ -61,3 +62,5 @@ ALTER TABLE `order_products`
 ALTER TABLE `order_products`
   ADD CONSTRAINT `FK_carts_table_TO_order_products_1` FOREIGN KEY (`cart_id`) REFERENCES `carts_table` (`cart_id`);
 
+ALTER TABLE `order_products`
+  ADD CONSTRAINT `FK_orders_table_TO_order_products_1` FOREIGN KEY (`order_id`) REFERENCES `orders_table` (`order_id`);

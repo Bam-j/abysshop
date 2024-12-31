@@ -40,7 +40,7 @@
       <td>${item.name}</td>
       <td>${item.price}</td>
       <td>
-        <form action="/admin/product/remove" method="post">
+        <form action="/admin/productEntity/remove" method="post">
           <button type="submit" class="btn btn-warning">품목 삭제</button>
         </form>
       </td>

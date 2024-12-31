@@ -1,15 +1,17 @@
 package com.joo.abysshop.entity;
 
+import com.joo.abysshop.enums.ProductType;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class Product {
-    private int productId;
+public class ProductEntity {
+
+    private Long productId;
     private String productName;
-    private int price;
+    private Long price;
     private String description;
     private byte[] image;
-    private String type;
+    private ProductType productType;
 }

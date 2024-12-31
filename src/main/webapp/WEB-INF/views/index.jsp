@@ -84,16 +84,16 @@
   </div>
 </aside>
 
-<%@ include file="product/productNav.jsp" %>
+<%@ include file="productEntity/productNav.jsp" %>
 
 <main id="index-main-content">
   <div id="content">
     <c:choose>
       <c:when test="${param.menu eq 'point'}">
-        <jsp:include page="product/pointPurchase.jsp" />
+        <jsp:include page="productEntity/pointPurchase.jsp" />
       </c:when>
       <c:otherwise>
-        <jsp:include page="product/productPurchase.jsp" />
+        <jsp:include page="productEntity/productPurchase.jsp" />
       </c:otherwise>
     </c:choose>
   </div>
@@ -106,6 +106,6 @@
         crossorigin="anonymous"></script>
 <script src="../resources/static/js/index.js"></script>
 <script src="../resources/static/js/common/textCopy.js"></script>
-<script src="../resources/static/js/product/moveToDetail.js"></script>
+<script src="../resources/static/js/productEntity/moveToDetail.js"></script>
 </body>
 </html>

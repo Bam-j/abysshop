@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="../../../resources/static/styles/common/common.css">
   <link rel="stylesheet" href="../../../resources/static/styles/common/header.css">
   <link rel="stylesheet" href="../../../resources/static/styles/common/footer.css">
-  <link rel="stylesheet" href="../../../resources/static/styles/product/productDetail.css">
+  <link rel="stylesheet" href="../../../resources/static/styles/productEntity/productDetail.css">
   <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
 </head>
 <body>

@@ -15,7 +15,7 @@ CREATE TABLE `products_table`
   `price`        INT                       NOT NULL,
   `description`  VARCHAR(255)              NULL,
   `image`        BLOB                      NULL,
-  `productType`  ENUM ('product', 'point') NOT NULL
+  `productType`  ENUM ('productEntity', 'point') NOT NULL
 );
 
 CREATE TABLE `carts_table`
@@ -33,7 +33,7 @@ CREATE TABLE `orders_table`
   `orderDate`   DATE                                              NOT NULL,
   `totalPrice`  INT                                               NOT NULL,
   `state`       ENUM ('pending_payment', 'shipping', 'completed') NOT NULL DEFAULT 'pending_payment',
-  `productType` ENUM ('product', 'point')                         NOT NULL
+  `productType` ENUM ('productEntity', 'point')                         NOT NULL
 );
 
 CREATE TABLE `order_products`

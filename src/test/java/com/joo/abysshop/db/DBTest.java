@@ -1,15 +1,14 @@
 package com.joo.abysshop.db;
 
-import com.joo.abysshop.entity.Product;
+import com.joo.abysshop.entity.ProductEntity;
+import com.joo.abysshop.enums.ProductType;
 import com.joo.abysshop.mapper.ProductMapper;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -23,17 +22,17 @@ class DBTest {
     @DisplayName("products_table insert 수행 테스트")
     void DBProductsTableInsertTest() {
         //given
-        Product product = new Product();
-        product.setProductname("새로운 상품");
-        product.setPrice(10000);
-        product.setDescription("상품 설명");
-        product.setType("product");
+        ProductEntity productEntity = new ProductEntity();
+        productEntity.setProductName("새로운 상품");
+        productEntity.setPrice(10000L);
+        productEntity.setDescription("상품 설명");
+        productEntity.setProductType(ProductType.PRODUCT);
 
         //when
-        productMapper.insertProduct(product);
+        productMapper.insertProduct(productEntity);
 
         //then
-        int count = productMapper.selectCountByProductName(product.getProductname());
+        int count = productMapper.selectCountByProductName(productEntity.getProductName());
         assertEquals(1, count, "삽입된 레코드의 개수가 1개가 아닙니다.");
     }
 }

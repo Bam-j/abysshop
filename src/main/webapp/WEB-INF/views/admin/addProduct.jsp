@@ -26,14 +26,14 @@
 </head>
 <body>
 <section>
-  <form id="add-product-form" action="/admin/product/add" method="post"
+  <form id="add-productEntity-form" action="/admin/productEntity/add" method="post"
         enctype="multipart/form-data">
-    <label for="product-image">
-      상품 이미지: <input type="file" id="product-image">
+    <label for="productEntity-image">
+      상품 이미지: <input type="file" id="productEntity-image">
     </label>
-    <input type="text" id="product-name" placeholder="상품명">
-    <input type="text" id="product-price" placeholder="상품 가격">
-    <textarea id="product-description" placeholder="상품 설명"></textarea>
+    <input type="text" id="productEntity-name" placeholder="상품명">
+    <input type="text" id="productEntity-price" placeholder="상품 가격">
+    <textarea id="productEntity-description" placeholder="상품 설명"></textarea>
     <div class="btn-group">
       <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown"
               aria-expanded="false">
@@ -41,7 +41,7 @@
       </button>
       <ul class="dropdown-menu">
         <li>
-          <a class="dropdown-item" data-value="product" href="#">일반 상품</a>
+          <a class="dropdown-item" data-value="productEntity" href="#">일반 상품</a>
         </li>
         <li>
           <a class="dropdown-item" data-value="point" href="#">포인트</a>

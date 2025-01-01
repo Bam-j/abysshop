@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class ProductController {
 
-    @GetMapping("/product/list/ptoducts")
+    @GetMapping("/product/list/product")
     public String getProductList() {
         //TODO: products_table에서 type이 'product'인 상품들만 뽑아와서 화면에 전달
         return "";
     }
 
-    @GetMapping("/product/list/points")
+    @GetMapping("/product/list/point")
     public String getPointList() {
         //TODO: products_table에서 type이 'points'인 상품들만 뽑아와서 화면에 전달
         return "";

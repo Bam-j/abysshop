@@ -84,16 +84,16 @@
   </div>
 </aside>
 
-<%@ include file="productEntity/productNav.jsp" %>
+<%@ include file="product/productNav.jsp" %>
 
 <main id="index-main-content">
   <div id="content">
     <c:choose>
       <c:when test="${param.menu eq 'point'}">
-        <jsp:include page="productEntity/pointPurchase.jsp" />
+        <jsp:include page="product/pointPurchase.jsp" />
       </c:when>
       <c:otherwise>
-        <jsp:include page="productEntity/productPurchase.jsp" />
+        <jsp:include page="product/productPurchase.jsp" />
       </c:otherwise>
     </c:choose>
   </div>

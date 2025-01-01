@@ -10,8 +10,8 @@ import org.springframework.web.multipart.MultipartFile;
 @Builder
 public class ProductItemListResponseDTO {
 
-    private Integer productId;
+    private Long productId;
     private String productName;
-    private Integer price;
+    private Long price;
     private MultipartFile image;
 }

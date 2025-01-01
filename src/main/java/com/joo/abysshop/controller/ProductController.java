@@ -1,23 +1,32 @@
 package com.joo.abysshop.controller;
 
+import com.joo.abysshop.entity.ProductEntity;
+import com.joo.abysshop.mapper.ProductMapper;
+import com.joo.abysshop.service.ProductService;
+import java.util.List;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
+@RequiredArgsConstructor
 public class ProductController {
 
+    private final ProductMapper productMapper;
+    private final ProductService productService;
+
     @GetMapping("/product/list/product")
-    public String getProductList() {
-        //TODO: products_table에서 type이 'product'인 상품들만 뽑아와서 화면에 전달
-        return "";
+    public void getProductList(Model model) {
+        List<ProductEntity> productItemList = productService.findAllProductItems();
+        model.addAttribute("productItemList", productItemList);
     }
 
     @GetMapping("/product/list/point")
-    public String getPointList() {
-        //TODO: products_table에서 type이 'points'인 상품들만 뽑아와서 화면에 전달
-        return "";
+    public void getPointList(Model model) {
+        List<ProductEntity> pointItemList = productService.findAllPointItems();
+        model.addAttribute("pointItemList", pointItemList);
     }
 
     @GetMapping("/product/detail/{id}")

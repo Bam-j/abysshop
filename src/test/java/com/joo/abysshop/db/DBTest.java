@@ -29,7 +29,7 @@ class DBTest {
         productEntity.setProductType(ProductType.PRODUCT);
 
         //when
-        productMapper.insertProduct(productEntity);
+        productMapper.insertProductForTest(productEntity);
 
         //then
         int count = productMapper.selectCountByProductName(productEntity.getProductName());

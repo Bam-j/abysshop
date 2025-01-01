@@ -8,12 +8,10 @@ import org.springframework.web.multipart.MultipartFile;
 @Getter
 @Setter
 @Builder
-//ProductItemListResponseDTO와 동일한 일을 하므로 명확한 이름의 통일된 ProductListResponse를 사용한다.
-@Deprecated(since = "1.0")
-public class PointItemListResponseDTO {
+public class ProductListResponse {
 
-    private Integer productId;
+    private Long productId;
     private String productName;
-    private Integer price;
+    private Long price;
     private MultipartFile image;
 }

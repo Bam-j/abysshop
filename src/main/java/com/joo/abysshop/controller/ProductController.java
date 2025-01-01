@@ -1,6 +1,8 @@
 package com.joo.abysshop.controller;
 
+import com.joo.abysshop.dto.product.ProductListResponse;
 import com.joo.abysshop.entity.ProductEntity;
+import com.joo.abysshop.enums.ProductType;
 import com.joo.abysshop.mapper.ProductMapper;
 import com.joo.abysshop.service.ProductService;
 import java.util.List;
@@ -19,13 +21,13 @@ public class ProductController {
 
     @GetMapping("/product/list/product")
     public void getProductList(Model model) {
-        List<ProductEntity> productItemList = productService.findAllProductItems();
+        List<ProductListResponse> productItemList = productService.findAllProducts(ProductType.PRODUCT);
         model.addAttribute("productItemList", productItemList);
     }
 
     @GetMapping("/product/list/point")
     public void getPointList(Model model) {
-        List<ProductEntity> pointItemList = productService.findAllPointItems();
+        List<ProductListResponse> pointItemList = productService.findAllProducts(ProductType.POINT);
         model.addAttribute("pointItemList", pointItemList);
     }
 

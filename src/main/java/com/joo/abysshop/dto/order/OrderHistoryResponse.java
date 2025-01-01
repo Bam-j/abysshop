@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class OrderHistoryResponseDTO {
+public class OrderHistoryResponse {
 
     private Integer orderId;
     private Integer userId;

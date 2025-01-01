@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Getter
 @Setter
 @Builder
-public class AddProductRequestDTO {
+public class AddProductRequest {
 
     private String productName;
     private Integer price;

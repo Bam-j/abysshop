@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class UserCartResponseDTO {
+public class UserCartResponse {
 
     private Integer cartId;
     private Integer userId;

@@ -1,4 +1,4 @@
-package com.joo.abysshop.dto.order;
+package com.joo.abysshop.dto.admin;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -7,9 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class AddCartRequestDTO {
+public class RemoveProductRequest {
 
-    private Integer userId;
     private Integer productId;
-    private Integer cartId;
 }

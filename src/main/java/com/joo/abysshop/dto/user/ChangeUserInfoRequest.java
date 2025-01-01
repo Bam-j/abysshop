@@ -1,6 +1,5 @@
 package com.joo.abysshop.dto.user;
 
-import com.joo.abysshop.enums.UserType;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,11 +7,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class UserInfoResponseDTO {
+public class ChangeUserInfoRequest {
 
     private Integer userId;
-    private String username;
     private String nickname;
-    private UserType userType;
-    private Integer points;
+    private String password;
 }

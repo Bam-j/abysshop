@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class AccountWithdrawRequestDTO {
+public class AccountWithdrawRequest {
 
     private Integer userId;
     private String password;

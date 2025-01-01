@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Getter
 @Setter
 @Builder
-public class ProductDetailResponseDTO {
+public class ProductDetailResponse {
 
     private Integer productId;
     private String productName;

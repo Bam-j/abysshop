@@ -21,7 +21,8 @@ public class ProductController {
 
     @GetMapping("/product/list/product")
     public void getProductList(Model model) {
-        List<ProductListResponse> productItemList = productService.findAllProducts(ProductType.PRODUCT);
+        List<ProductListResponse> productItemList = productService.findAllProducts(
+            ProductType.PRODUCT);
         model.addAttribute("productItemList", productItemList);
     }
 
@@ -32,8 +33,8 @@ public class ProductController {
     }
 
     @GetMapping("/product/detail/{id}")
-    public String getProductDetail(@PathVariable int id, Model model) {
-        //TODO: 상품을 찾아서 detail 페이지로 이동
+    public String getProductDetail(@PathVariable Long id, Model model) {
+        model.addAttribute(productService.findById(id));
         return "product/detail";
     }
 

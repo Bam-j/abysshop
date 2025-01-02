@@ -3,11 +3,17 @@ const item = document.getElementsByClassName('item');
 item.forEach(card => {
   card.addEventListener('click', () => {
     //TODO: id 방식 결정하고 id 취득하는 코드 작성
-    const id = '';
-    const url = `/product/detail/${id}`;
+    const itemId = item.dataset.itemId;
+    const url = `/product/detail/${itemId}`;
 
     fetch(url)
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+
+        return response.json();
+      }
+    })
     .then(data => {
       console.log(data);
     })

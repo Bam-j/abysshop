@@ -29,7 +29,8 @@
   <h2>포인트 상품 목록</h2>
   <div class="item-list">
     <c:forEach items="${pointItemList}" var="item">
-      <div class="item">
+      <div class="item" data-item-id="${item.id}">
+        <input type="hidden" value="${item.id}">
         <input type="hidden" name="itemId" value="${item.id}">
         <img src="${item.imgUrl}" class="card-img-top" alt="${item.name} 이미지">
         <h3>${item.name}</h3>

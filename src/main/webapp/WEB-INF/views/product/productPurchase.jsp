@@ -29,7 +29,8 @@
   <h2>상품 목록</h2>
   <div class="item-list">
     <c:forEach items="${productItemList}" var="item">
-      <div class="item">
+      <div class="item" data-item-id="${item.id}">
+        <input type="hidden">
         <img src="${item.imgUrl}" class="card-img-top" alt="${item.name}">
         <div class="card-body">
           <h5 class="card-title">${item.name}</h5>

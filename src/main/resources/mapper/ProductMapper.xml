@@ -14,6 +14,13 @@
     WHERE product_type = 'point'
   </select>
 
+  <select id="findById" parameterType="java.lang.Long"
+    resultType="com.joo.abysshop.entity.ProductEntity">
+    SELECT *
+    FROM products_table
+    WHERE product_id = #{id}
+  </select>
+
   <!-- 테스트용 매퍼 추후 삭제
   <insert id="insertProduct" parameterType="com.joo.abysshop.entity.ProductEntity">
     INSERT INTO products_table (productname, price, description, image, type)

@@ -1,8 +1,7 @@
 package com.joo.abysshop.service;
 
-import com.joo.abysshop.dto.product.PointItemListResponseDTO;
+import com.joo.abysshop.dto.product.ProductDetailResponse;
 import com.joo.abysshop.dto.product.ProductEntityToDTO;
-import com.joo.abysshop.dto.product.ProductItemListResponseDTO;
 import com.joo.abysshop.dto.product.ProductListResponse;
 import com.joo.abysshop.entity.ProductEntity;
 import com.joo.abysshop.enums.ProductType;
@@ -37,5 +36,9 @@ public class ProductService {
             }
         }
         return itemList;
+    }
+
+    public ProductDetailResponse findById(Long id) {
+        return productMapper.findById(id);
     }
 }

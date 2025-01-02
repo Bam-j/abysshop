@@ -64,3 +64,7 @@ ALTER TABLE `order_products`
 
 ALTER TABLE `order_products`
   ADD CONSTRAINT `FK_orders_table_TO_order_products_1` FOREIGN KEY (`order_id`) REFERENCES `orders_table` (`order_id`);
+
+# 테스트용 관리자 계정 생성 SQL
+INSERT INTO users_table (username, nickname, password, user_type, points)
+VALUES ('admin', 'admin_test', 'admin', 'admin', 100000);

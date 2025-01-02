@@ -50,7 +50,7 @@
           <div class="btn-group">
             <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown"
                     aria-expanded="false">
-              결제 확인 대기
+                ${order.state} <!-- TODO: state값에 따라 한글 상태가 출력되도록 변경 -->
             </button>
             <ul class="dropdown-menu">
               <li>
@@ -64,6 +64,8 @@
               </li>
             </ul>
             <form action="/admin/order/change-state" method="post">
+              <input type="hidden" name="orderId" value="${order.orderId}">
+              <input type="hidden" name="newState" id="newState" />
               <button type="submit" class="btn btn-primary">변경</button>
             </form>
           </div>

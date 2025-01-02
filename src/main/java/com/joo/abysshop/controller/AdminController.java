@@ -1,16 +1,29 @@
 package com.joo.abysshop.controller;
 
+import com.joo.abysshop.enums.UserType;
+import com.joo.abysshop.mapper.AdminMapper;
+import com.joo.abysshop.service.AdminService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@RequiredArgsConstructor
 public class AdminController {
 
+    private final AdminMapper adminMapper;
+    private final AdminService adminService;
+
     @GetMapping("/admin/my-page")
-    public String getAdminMyPage() {
-        //TODO: URL 요청을 방지하기 위해 접근자가 admin 권한이 있는지 검사 후 return
+    public String getAdminMyPage(@RequestParam("userId") Long id) {
+        UserType userType = adminMapper.getUserType(id);
+
+        if (!userType.equals(UserType.ADMIN)) {
+            return "/";
+        }
+
         return "admin/adminMyPage";
     }
 
@@ -21,8 +34,9 @@ public class AdminController {
     }
 
     @PostMapping("/admin/order/change-state")
-    public String changeOrderState(@RequestParam("value") String selectedValue) {
-        //TODO: selectedValue를 해당 주문의 state에 적용시키기
+    public String changeOrderState(@RequestParam("orderId") Long orderId,
+        @RequestParam("newState") String newState) {
+        adminService.changeOrderState(orderId, newState);
         return "redirect:/";
     }
 

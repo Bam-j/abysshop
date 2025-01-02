@@ -54,6 +54,7 @@
           <c:when test="${isAdmin}">
             <li class="divider-elem">
               <form action="/admin/my-page" method="get">
+                <input type="hidden" name="userId" value="#{user.id}">
                 <button type="submit" class="btn btn-primary">관리자 페이지</button>
               </form>
             </li>

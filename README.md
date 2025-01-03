@@ -25,7 +25,7 @@
 # DB
 ## 테이블
 - 상품, 회원, 주문, 장바구니
-- 테이블 생성, 테스트를 위한 더미 데이터 삽입은 [sql 디렉토리]()의 `abysshop.sql 및 insertXxxxxDummyData.sql` 파일을 참조해주세요.
+- 테이블 생성, 테스트를 위한 더미 데이터 삽입은 [sql 디렉토리](https://github.com/Bam-j/abysshop/tree/main/sql)의 `abysshop.sql 및 insertXxxxxDummyData.sql` 파일을 참조해주세요.
 
 ## ERD
 ![abysshop-ERD](https://github.com/user-attachments/assets/e65e04af-9e6c-486c-84ac-b2a66323cd16)

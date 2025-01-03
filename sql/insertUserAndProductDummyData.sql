@@ -1,5 +1,5 @@
 DELIMITER $$
-CREATE PROCEDURE insert_dummy_data()
+CREATE PROCEDURE insert_user_and_product_dummy_data()
 BEGIN
   START TRANSACTION;
 
@@ -50,7 +50,9 @@ BEGIN
 END $$
 DELIMITER ;
 
-CALL insert_dummy_data();
+CALL insert_user_and_product_dummy_data();
 
-##TRUNCATE TABLE users_table;
-##TRUNCATE TABLE products_table;
+##DELETE FROM users_table;
+##DELETE FROM products_table;
+##ALTER TABLE users_table AUTO_INCREMENT=1;
+##ALTER TABLE products_table AUTO_INCREMENT=1;

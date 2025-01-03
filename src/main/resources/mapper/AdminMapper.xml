@@ -10,8 +10,9 @@
   </select>
 
   <select id="getOrderHistory" resultType="java.util.List">
-    SELECT *
-    FROM what ?
+    SELECT DISTINCT *
+    FROM order_products
+    JOIN products_table
     WHERE product_type = 'product'
   </select>
 

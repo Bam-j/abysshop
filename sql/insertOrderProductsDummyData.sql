@@ -24,5 +24,3 @@ END $$
 DELIMITER ;
 
 CALL insert_order_product_dummy_data();
-
-##DELETE FROM order_products;

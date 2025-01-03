@@ -20,5 +20,3 @@ END $$
 DELIMITER ;
 
 CALL insert_cart_dummy_data();
-
-##DELETE FROM carts_table;

@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class ProductOrderResponse {
+public class GoodsOrderResponse {
 
     private Long userId;
     private Long productId;

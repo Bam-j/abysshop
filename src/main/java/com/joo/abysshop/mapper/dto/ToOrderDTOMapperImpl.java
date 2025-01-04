@@ -1,6 +1,6 @@
 package com.joo.abysshop.mapper.dto;
 
-import com.joo.abysshop.dto.order.ProductOrderResponse;
+import com.joo.abysshop.dto.order.GoodsOrderResponse;
 import com.joo.abysshop.entity.ProductInOrderEntity;
 import org.springframework.stereotype.Component;
 
@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 public class ToOrderDTOMapperImpl implements ToOrderDTOMapper {
 
     @Override
-    public ProductOrderResponse toProductInOrderResponse(
+    public GoodsOrderResponse toProductInOrderResponse(
         ProductInOrderEntity productInOrderEntity) {
-        return ProductOrderResponse.builder()
+        return GoodsOrderResponse.builder()
             .userId(productInOrderEntity.getUserId())
             .productId(productInOrderEntity.getProductId())
             .orderId(productInOrderEntity.getOrderId())

@@ -11,13 +11,7 @@ public class AdminMyPageService {
 
     private final AdminMapper adminMapper;
 
-    public String findViewByUserType(final Long userId) {
-        UserType userType = adminMapper.getUserType(userId);
-
-        if (userType.equals(UserType.ADMIN)) {
-            return "admin/adminMyPage";
-        } else {
-            return "/";
-        }
+    public UserType getUserType(final Long userId) {
+        return adminMapper.getUserType(userId);
     }
 }

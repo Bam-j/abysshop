@@ -1,6 +1,6 @@
 package com.joo.abysshop.enums;
 
 public enum ProductType {
-    PRODUCT,
+    GOODS,
     POINT
 }

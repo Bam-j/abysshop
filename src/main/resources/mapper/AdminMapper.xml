@@ -9,11 +9,12 @@
     WHERE user_id = #{id};
   </select>
 
-  <select id="findProductInOrder" resultType="java.util.List">
+  <select id="findAllProductInOrder" parameterType="com.joo.abysshop.enums.ProductType"
+    resultType="java.util.List">
     SELECT DISTINCT *
     FROM order_products op
            LEFT OUTER JOIN products_table pt ON op.product_id = pt.product_id
-    WHERE pt.product_type = 'product';
+    WHERE pt.product_type = #{productType};
   </select>
 
   <update id="changeOrderState" parameterType="java.util.Map">
@@ -21,11 +22,4 @@
     SET order_state = #{newState}
     WHERE order_id = #{orderId};
   </update>
-
-  <select id="findPointInOrder" resultType="java.util.List">
-    SELECT DISTINCT *
-    FROM order_products op
-           LEFT OUTER JOIN products_table pt ON op.product_id = pt.product_id
-    WHERE pt.product_type = 'point';
-  </select>
 </mapper>

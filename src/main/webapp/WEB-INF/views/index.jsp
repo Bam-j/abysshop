@@ -90,10 +90,10 @@
   <div id="content">
     <c:choose>
       <c:when test="${param.menu eq 'point'}">
-        <jsp:include page="product/pointPurchase.jsp" />
+        <jsp:include page="product/pointList.jsp" />
       </c:when>
       <c:otherwise>
-        <jsp:include page="product/productPurchase.jsp" />
+        <jsp:include page="product/goodsList.jsp" />
       </c:otherwise>
     </c:choose>
   </div>

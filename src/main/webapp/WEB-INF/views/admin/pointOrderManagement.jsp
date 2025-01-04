@@ -43,7 +43,7 @@
         <td>${rechargeRequest.points}</td>
         <td>${rechargeRequest.points * 100} 원</td>
         <td>
-          <form action="/admin/point/issue" method="post">
+          <form action="/admin/order/point/provide" method="post">
             <button type="submit" class="btn btn-primary">승인</button>
           </form>
         </td>

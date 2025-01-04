@@ -37,8 +37,8 @@
 <main>
   <div id="content">
     <c:choose>
-      <c:when test="${param.menu eq 'point-management'}">
-        <jsp:include page="pointManagement.jsp" />
+      <c:when test="${param.menu eq 'point-order-management'}">
+        <jsp:include page="pointOrderManagement.jsp" />
       </c:when>
       <c:when test="${param.menu eq 'add-productEntity'}">
         <jsp:include page="addProduct.jsp" />
@@ -47,7 +47,7 @@
         <jsp:include page="removeProduct.jsp" />
       </c:when>
       <c:otherwise>
-        <jsp:include page="adminOrderManagement.jsp" />
+        <jsp:include page="goodsOrderManagement.jsp" />
       </c:otherwise>
     </c:choose>
   </div>

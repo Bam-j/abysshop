@@ -1,8 +1,9 @@
 package com.joo.abysshop.controller;
 
 import com.joo.abysshop.dto.product.ProductListResponse;
+import com.joo.abysshop.enums.JspView;
 import com.joo.abysshop.enums.ProductType;
-import com.joo.abysshop.service.ProductService;
+import com.joo.abysshop.service.product.ProductService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -17,9 +18,9 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model) {
-        List<ProductListResponse> productItemList = productService.findAllProducts(
-            ProductType.PRODUCT);
-        model.addAttribute("productItemList", productItemList);
-        return "index";
+        List<ProductListResponse> itemList = productService.findAllProducts(ProductType.GOODS);
+        model.addAttribute("itemList", itemList);
+
+        return JspView.HOME.getView();
     }
 }

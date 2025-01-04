@@ -63,7 +63,7 @@
                 <a class="dropdown-item" data-value="completed" href="#">상품 전달 완료</a>
               </li>
             </ul>
-            <form action="/admin/order/change-state" method="post">
+            <form action="/admin/order/goods/change-state" method="post">
               <input type="hidden" name="orderId" value="${order.orderId}">
               <input type="hidden" name="newState" id="newState" />
               <button type="submit" class="btn btn-primary">변경</button>

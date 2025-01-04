@@ -1,7 +1,11 @@
 package com.joo.abysshop.controller;
 
+import com.joo.abysshop.dto.order.GoodsOrderResponse;
+import com.joo.abysshop.enums.JspView;
+import com.joo.abysshop.enums.UserType;
 import com.joo.abysshop.service.admin.AdminMyPageService;
 import com.joo.abysshop.service.admin.AdminOrderManagementService;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,45 +22,50 @@ public class AdminController {
 
     @GetMapping("/admin/my-page")
     public String getAdminMyPage(@RequestParam("userId") Long userId) {
-        return adminMyPageService.findViewByUserType(userId);
+        UserType userType = adminMyPageService.getUserType(userId);
+
+        if (userType.equals(UserType.ADMIN)) {
+            return "admin/adminMyPage";
+        } else {
+            return JspView.HOME.getView();
+        }
     }
 
-    @GetMapping("/admin/order/history")
-    public void getProductOrders(Model model) {
-        //List<ProductOrdersResponse> productOrders = adminOrderManagementService.filterProductOrders();
-        //model.addAttribute("productOrders", productOrders);
+    @GetMapping("/admin/order/goods")
+    public void getGoodsOrders(Model model) {
+        List<GoodsOrderResponse> goodsOrderList = adminOrderManagementService.filterGoodsOrders();
+        model.addAttribute("goodsOrderList", goodsOrderList);
     }
 
-    @PostMapping("/admin/order/change-state")
+    @PostMapping("/admin/order/goods/change-state")
     public String changeOrderState(@RequestParam("orderId") Long orderId,
         @RequestParam("newState") String newState) {
         adminOrderManagementService.changeOrderState(orderId, newState);
-        return "redirect:/";
+        return JspView.REDIRECT.getView();
     }
 
     @GetMapping("/admin/order/point")
-    public String getPointIssueRequests() {
-        //TODO: orders_table에서 type이 'point'인 항목 전체 가져오기
-        return "";
+    public void getPointOrders(Model model) {
+
     }
 
-    @PostMapping("/admin/point/issue")
-    public String issuePoint() {
+    @PostMapping("/admin/order/point/provide")
+    public String providePoint() {
         //TODO: JSP와 JAVA 설계 변경이 필요해보임.
         //TODO: orders에서 type이 point인 항목만 뺀 뒤 요청 포인트를 user에게 지급 후 해당 항목 disabled
-        return "redirect:/";
+        return JspView.REDIRECT.getView();
     }
 
     @PostMapping("/admin/product/add")
     public String addProduct() {
         //TODO: 폼에 입력된 정보들을 토대로 products_table에 데이터 추가
-        return "redirect:/";
+        return JspView.REDIRECT.getView();
     }
 
     @PostMapping("/admin/product/remove")
     public String removeProduct() {
         //TODO: 폼에 입력된 정보들을 토대로 products_table에서 상품 제거
-        return "redirect:/";
+        return JspView.REDIRECT.getView();
     }
 
     /*

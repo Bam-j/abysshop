@@ -2,16 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.joo.abysshop.mapper.mybatis.ProductMapper">
-  <select id="findAllProductItems" resultType="java.util.List">
+  <select id="findAllProduct" parameterType="com.joo.abysshop.enums.ProductType"
+    resultType="java.util.List">
     SELECT *
     FROM products_table
-    WHERE product_type = 'product'
-  </select>
-
-  <select id="findAllPointItems" resultType="java.util.List">
-    SELECT *
-    FROM products_table
-    WHERE product_type = 'point'
+    WHERE product_type = #{productType}
   </select>
 
   <select id="findById" parameterType="java.lang.Long"

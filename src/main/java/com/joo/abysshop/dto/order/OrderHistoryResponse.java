@@ -10,6 +10,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
+//주문내역은 ItemOrderResponse, PointOrderResponse로 사용
+@Deprecated
 public class OrderHistoryResponse {
 
     private Integer orderId;

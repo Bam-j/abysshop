@@ -1,7 +1,8 @@
 package com.joo.abysshop.service.admin;
 
-import com.joo.abysshop.dto.order.ProductOrderResponse;
+import com.joo.abysshop.dto.order.GoodsOrderResponse;
 import com.joo.abysshop.entity.ProductInOrderEntity;
+import com.joo.abysshop.enums.ProductType;
 import com.joo.abysshop.mapper.dto.ToOrderDTOMapper;
 import com.joo.abysshop.mapper.mybatis.AdminMapper;
 import java.util.ArrayList;
@@ -18,16 +19,17 @@ public class AdminOrderManagementService {
     private final AdminMapper adminMapper;
     private final ToOrderDTOMapper toOrderDTOMapper;
 
-    public List<ProductOrderResponse> filterProductOrders() {
-        List<ProductInOrderEntity> productInOrderList = adminMapper.findProductInOrder();
-        List<ProductOrderResponse> productOrderResponseList = new ArrayList<>();
+    public List<GoodsOrderResponse> filterGoodsOrders() {
+        List<ProductInOrderEntity> productInOrderList =
+            adminMapper.findAllProductInOrder(ProductType.GOODS);
+        List<GoodsOrderResponse> goodsOrderResponseList = new ArrayList<>();
 
         for (ProductInOrderEntity productInOrder : productInOrderList) {
-            productOrderResponseList.add(
+            goodsOrderResponseList.add(
                 toOrderDTOMapper.toProductInOrderResponse(productInOrder));
         }
 
-        return productOrderResponseList;
+        return goodsOrderResponseList;
     }
 
     public void changeOrderState(Long orderId, String newState) {

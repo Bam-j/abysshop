@@ -1,4 +1,4 @@
-package com.joo.abysshop.service;
+package com.joo.abysshop.service.product;
 
 import com.joo.abysshop.dto.product.ProductDetailResponse;
 import com.joo.abysshop.mapper.dto.ProductEntityToDTO;
@@ -18,24 +18,24 @@ public class ProductService {
     private final ProductMapper productMapper;
 
     public List<ProductListResponse> findAllProducts(ProductType productType) {
-        List<ProductListResponse> itemList = new ArrayList<>();
+        List<ProductListResponse> productList = new ArrayList<>();
 
-        if (productType.equals(ProductType.PRODUCT)) {
-            List<ProductEntity> productItemEntityList = productMapper.findAllProductItems();
+        if (productType.equals(ProductType.GOODS)) {
+            List<ProductEntity> itemEntityList = productMapper.findAllGoods();
 
-            for (ProductEntity entity : productItemEntityList) {
-                itemList.add(
-                    ProductEntityToDTO.productEntityToProductListResponse(entity));
+            for (ProductEntity itemEntity : itemEntityList) {
+                productList.add(
+                    ProductEntityToDTO.productEntityToProductListResponse(itemEntity));
             }
         } else if (productType.equals(ProductType.POINT)) {
-            List<ProductEntity> pointItemEntityList = productMapper.findAllPointItems();
+            List<ProductEntity> pointEntityList = productMapper.findAllPoint();
 
-            for (ProductEntity entity : pointItemEntityList) {
-                itemList.add(
-                    ProductEntityToDTO.productEntityToProductListResponse(entity));
+            for (ProductEntity pointEntity : pointEntityList) {
+                productList.add(
+                    ProductEntityToDTO.productEntityToProductListResponse(pointEntity));
             }
         }
-        return itemList;
+        return productList;
     }
 
     public ProductDetailResponse findById(Long id) {

@@ -26,7 +26,7 @@
 </head>
 <body>
 <nav class="nav">
-  <a class="nav-link active" aria-current="page" href="?menu=product">상품</a>
+  <a class="nav-link active" aria-current="page" href="?menu=goods">상품</a>
   <a class="nav-link" href="?menu=point">포인트</a>
 </nav>
 

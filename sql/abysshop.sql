@@ -19,7 +19,7 @@ CREATE TABLE `products_table`
   `price`        INT UNSIGNED              NOT NULL,
   `description`  VARCHAR(255)              NULL,
   `image`        BLOB                      NULL,
-  `product_type` ENUM ('product', 'point') NOT NULL
+  `product_type` ENUM ('item', 'point') NOT NULL
 );
 
 CREATE TABLE `carts_table`

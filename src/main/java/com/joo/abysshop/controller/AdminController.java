@@ -1,10 +1,10 @@
 package com.joo.abysshop.controller;
 
-import com.joo.abysshop.enums.UserType;
-import com.joo.abysshop.mapper.AdminMapper;
-import com.joo.abysshop.service.AdminService;
+import com.joo.abysshop.service.admin.AdminMyPageService;
+import com.joo.abysshop.service.admin.AdminOrderManagementService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,30 +13,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequiredArgsConstructor
 public class AdminController {
 
-    private final AdminMapper adminMapper;
-    private final AdminService adminService;
+    private final AdminMyPageService adminMyPageService;
+    private final AdminOrderManagementService adminOrderManagementService;
 
     @GetMapping("/admin/my-page")
-    public String getAdminMyPage(@RequestParam("userId") Long id) {
-        UserType userType = adminMapper.getUserType(id);
-
-        if (!userType.equals(UserType.ADMIN)) {
-            return "/";
-        }
-
-        return "admin/adminMyPage";
+    public String getAdminMyPage(@RequestParam("userId") Long userId) {
+        return adminMyPageService.findViewByUserType(userId);
     }
 
     @GetMapping("/admin/order/history")
-    public String getProductOrderHistory() {
-        //TODO: orders_table에서 type이 'product'인 항목 전체 가져오기
-        return "";
+    public void getProductOrders(Model model) {
+        //List<ProductOrdersResponse> productOrders = adminOrderManagementService.filterProductOrders();
+        //model.addAttribute("productOrders", productOrders);
     }
 
     @PostMapping("/admin/order/change-state")
     public String changeOrderState(@RequestParam("orderId") Long orderId,
         @RequestParam("newState") String newState) {
-        adminService.changeOrderState(orderId, newState);
+        adminOrderManagementService.changeOrderState(orderId, newState);
         return "redirect:/";
     }
 

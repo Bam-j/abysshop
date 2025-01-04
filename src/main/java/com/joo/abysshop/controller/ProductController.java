@@ -1,9 +1,8 @@
 package com.joo.abysshop.controller;
 
 import com.joo.abysshop.dto.product.ProductListResponse;
-import com.joo.abysshop.entity.ProductEntity;
 import com.joo.abysshop.enums.ProductType;
-import com.joo.abysshop.mapper.ProductMapper;
+import com.joo.abysshop.mapper.mybatis.ProductMapper;
 import com.joo.abysshop.service.ProductService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;

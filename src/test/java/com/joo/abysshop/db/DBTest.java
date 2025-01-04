@@ -2,7 +2,7 @@ package com.joo.abysshop.db;
 
 import com.joo.abysshop.entity.ProductEntity;
 import com.joo.abysshop.enums.ProductType;
-import com.joo.abysshop.mapper.ProductMapper;
+import com.joo.abysshop.mapper.mybatis.ProductMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

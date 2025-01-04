@@ -1,18 +1,17 @@
-package com.joo.abysshop.dto.product;
+package com.joo.abysshop.mapper.dto;
 
+import com.joo.abysshop.dto.product.ProductListResponse;
 import com.joo.abysshop.entity.ProductEntity;
 
 public class ProductEntityToDTO {
 
     public static ProductListResponse productEntityToProductListResponse(
         ProductEntity productEntity) {
-        ProductListResponse productListResponse = ProductListResponse.builder()
+        return ProductListResponse.builder()
             .productId(productEntity.getProductId())
             .productName(productEntity.getProductName())
             .price(productEntity.getPrice())
             //.image() byte[] to MultipartFile 정의하기
             .build();
-
-        return productListResponse;
     }
 }

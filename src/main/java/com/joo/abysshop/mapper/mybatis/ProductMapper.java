@@ -1,4 +1,4 @@
-package com.joo.abysshop.mapper;
+package com.joo.abysshop.mapper.mybatis;
 
 import com.joo.abysshop.dto.product.ProductDetailResponse;
 import com.joo.abysshop.entity.ProductEntity;

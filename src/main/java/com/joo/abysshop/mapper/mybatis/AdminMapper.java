@@ -1,6 +1,6 @@
-package com.joo.abysshop.mapper;
+package com.joo.abysshop.mapper.mybatis;
 
-import com.joo.abysshop.dto.order.OrderHistoryResponse;
+import com.joo.abysshop.entity.ProductInOrderEntity;
 import com.joo.abysshop.enums.UserType;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +10,9 @@ import org.apache.ibatis.annotations.Mapper;
 public interface AdminMapper {
     UserType getUserType(Long id);
 
-    List<OrderHistoryResponse> getOrderHistory();
+    List<ProductInOrderEntity> findProductInOrder();
 
     void changeOrderState(Map changeStateMap);
+
+    List<ProductInOrderEntity> findPointInOrder();
 }

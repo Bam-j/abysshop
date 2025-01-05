@@ -1,7 +1,8 @@
 package com.joo.abysshop.controller;
 
-import com.joo.abysshop.dto.order.GoodsOrderResponse;
+import com.joo.abysshop.dto.order.OrderResponse;
 import com.joo.abysshop.enums.JspView;
+import com.joo.abysshop.enums.ProductType;
 import com.joo.abysshop.enums.UserType;
 import com.joo.abysshop.service.admin.AdminMyPageService;
 import com.joo.abysshop.service.admin.AdminOrderManagementService;
@@ -33,7 +34,8 @@ public class AdminController {
 
     @GetMapping("/admin/order/goods")
     public void getGoodsOrders(Model model) {
-        List<GoodsOrderResponse> goodsOrderList = adminOrderManagementService.filterGoodsOrders();
+        List<OrderResponse> goodsOrderList = adminOrderManagementService.filterOrders(
+            ProductType.GOODS);
         model.addAttribute("goodsOrderList", goodsOrderList);
     }
 
@@ -46,7 +48,9 @@ public class AdminController {
 
     @GetMapping("/admin/order/point")
     public void getPointOrders(Model model) {
-
+        List<OrderResponse> pointOrderList = adminOrderManagementService.filterOrders(
+            ProductType.POINT);
+        model.addAttribute("pointOrderList", pointOrderList);
     }
 
     @PostMapping("/admin/order/point/provide")

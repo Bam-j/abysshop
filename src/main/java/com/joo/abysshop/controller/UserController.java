@@ -28,24 +28,4 @@ public class UserController {
         //TODO: 회원 id 기반으로 주문 기록을 찾음
         return "";
     }
-
-    /*
-        TODO: 개발 완료 후 아래 요청들 삭제할 것
-        디자인 작업용 임시 요청들.
-        실제 요청은 /user/xxxxx/{id} 사용. (id는 회원 id)
-     */
-    @GetMapping("/user/my-page")
-    public String myPage() {
-        return "user/userMyPage";
-    }
-
-    @GetMapping("/user/info")
-    public String userInfo() {
-        return "user/userInfo";
-    }
-
-    @GetMapping("/user/order")
-    public String userOrder() {
-        return "userOrderManagement";
-    }
 }

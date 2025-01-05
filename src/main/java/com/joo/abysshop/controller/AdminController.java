@@ -71,33 +71,4 @@ public class AdminController {
         //TODO: 폼에 입력된 정보들을 토대로 products_table에서 상품 제거
         return JspView.REDIRECT.getView();
     }
-
-    /*
-        TODO: 개발 완료 후 아래 요청들 삭제할 것
-        디자인 작업용 임시 요청들.
-     */
-    @GetMapping("/admin/my-page")
-    public String admin() {
-        return "admin/adminMyPage";
-    }
-
-    @GetMapping("/admin/orderManage")
-    public String orderManage() {
-        return "orderManagement";
-    }
-
-    @GetMapping("/admin/pointManage")
-    public String pointManage() {
-        return "pointManagement";
-    }
-
-    @GetMapping("/admin/addProduct")
-    public String addProductPage() {
-        return "admin/addProduct";
-    }
-
-    @GetMapping("/admin/removeProduct")
-    public String removeProductPage() {
-        return "admin/removeProduct";
-    }
 }

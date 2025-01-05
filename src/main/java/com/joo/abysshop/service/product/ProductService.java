@@ -21,14 +21,14 @@ public class ProductService {
         List<ProductListResponse> productList = new ArrayList<>();
 
         if (productType.equals(ProductType.GOODS)) {
-            List<ProductEntity> itemEntityList = productMapper.findAllGoods();
+            List<ProductEntity> itemEntityList = productMapper.findAllProduct(ProductType.GOODS);
 
             for (ProductEntity itemEntity : itemEntityList) {
                 productList.add(
                     ProductEntityToDTO.productEntityToProductListResponse(itemEntity));
             }
         } else if (productType.equals(ProductType.POINT)) {
-            List<ProductEntity> pointEntityList = productMapper.findAllPoint();
+            List<ProductEntity> pointEntityList = productMapper.findAllProduct(ProductType.POINT);
 
             for (ProductEntity pointEntity : pointEntityList) {
                 productList.add(

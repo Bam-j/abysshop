@@ -21,7 +21,7 @@ public class AdminOrderManagementService {
 
     public List<OrderResponse> filterOrders(ProductType productType) {
         List<ProductInOrderEntity> productInOrderList =
-            adminMapper.findAllProductInOrder(productType);
+            adminMapper.findAllProductInOrder(productType.toString());
         List<OrderResponse> orderResponseList = new ArrayList<>();
 
         for (ProductInOrderEntity productInOrderEntity : productInOrderList) {

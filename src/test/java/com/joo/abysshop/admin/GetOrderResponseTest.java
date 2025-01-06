@@ -35,12 +35,10 @@ class GetOrderResponseTest {
     @DisplayName("하드 코딩 취득")
     void getGoodsOrderResponseList() {
         //given
-        List<ProductInOrderEntity> entityList = new ArrayList<>();
+        List<ProductInOrderEntity> entityList = adminMapper.findAllGoodsOrder();
         List<OrderResponse> orderResponseList = new ArrayList<>();
 
         //when
-        entityList = adminMapper.findAllGoodsOrder();
-
         for (ProductInOrderEntity productInOrderEntity : entityList) {
             orderResponseList.add(
                 toOrderDTOMapper.mapToOrderResponse(productInOrderEntity, ProductType.GOODS));
@@ -51,12 +49,11 @@ class GetOrderResponseTest {
         assertThat(orderResponseList).isNotNull();
     }
 
-    /*
     @Test
     @DisplayName("OrderResponse 취득 테스트")
     void getOrderResponse() {
         //given
-        List<OrderResponse> resultList = adminOrderManagementService.filterOrders(ProductType.GOODS);
+        List<OrderResponse> resultList = adminOrderManagementService.filterOrders(ProductType.POINT);
 
         //when
         System.out.println(resultList);
@@ -64,6 +61,4 @@ class GetOrderResponseTest {
         //then
         assertThat(resultList).isNotNull();
     }
-
-     */
 }

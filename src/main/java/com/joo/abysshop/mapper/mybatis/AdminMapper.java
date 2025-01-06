@@ -12,7 +12,7 @@ public interface AdminMapper {
 
     UserType getUserType(Long id);
 
-    List<ProductInOrderEntity> findAllProductInOrder(ProductType productType);
+    List<ProductInOrderEntity> findAllProductInOrder(String productType);
 
     List<ProductInOrderEntity> findAllGoodsOrder();
 

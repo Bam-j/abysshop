@@ -9,16 +9,14 @@
     WHERE user_id = #{id};
   </select>
 
-  <select id="findAllProductInOrder" parameterType="com.joo.abysshop.enums.ProductType"
-    resultType="java.util.List">
-    SELECT DISTINCT *
+  <select id="findAllProductInOrder" parameterType="java.lang.String" resultType="com.joo.abysshop.entity.ProductInOrderEntity">
+    SELECT DISTINCT user_id, op.product_id, cart_id, order_id, product_name, price, description, product_type
     FROM order_products op
            LEFT OUTER JOIN products_table pt ON op.product_id = pt.product_id
     WHERE pt.product_type = #{productType};
   </select>
 
-  <select id="findAllGoodsOrder"resultType="java.util.List">
-    resultType="java.util.List">
+  <select id="findAllGoodsOrder" resultType="com.joo.abysshop.entity.ProductInOrderEntity">
     SELECT DISTINCT *
     FROM order_products op
            LEFT OUTER JOIN products_table pt ON op.product_id = pt.product_id

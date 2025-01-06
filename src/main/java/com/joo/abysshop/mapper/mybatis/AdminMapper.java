@@ -14,5 +14,7 @@ public interface AdminMapper {
 
     List<ProductInOrderEntity> findAllProductInOrder(ProductType productType);
 
+    List<ProductInOrderEntity> findAllGoodsOrder();
+
     void changeOrderState(Map changeStateMap);
 }

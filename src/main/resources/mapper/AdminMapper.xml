@@ -17,6 +17,14 @@
     WHERE pt.product_type = #{productType};
   </select>
 
+  <select id="findAllGoodsOrder"resultType="java.util.List">
+    resultType="java.util.List">
+    SELECT DISTINCT *
+    FROM order_products op
+           LEFT OUTER JOIN products_table pt ON op.product_id = pt.product_id
+    WHERE pt.product_type = 'goods';
+  </select>
+
   <update id="changeOrderState" parameterType="java.util.Map">
     UPDATE orders_table
     SET order_state = #{newState}

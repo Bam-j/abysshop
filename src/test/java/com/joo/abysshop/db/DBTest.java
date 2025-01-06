@@ -26,7 +26,7 @@ class DBTest {
         productEntity.setProductName("새로운 상품");
         productEntity.setPrice(10000L);
         productEntity.setDescription("상품 설명");
-        productEntity.setProductType(ProductType.PRODUCT);
+        productEntity.setProductType(ProductType.GOODS);
 
         //when
         productMapper.insertProductForTest(productEntity);

@@ -1,17 +1,14 @@
 package com.joo.abysshop.dto.order;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
-@Builder
-public class GoodsOrderResponse implements OrderResponse {
+@SuperBuilder
+public class GoodsOrderResponse extends OrderResponse {
 
-    private Long userId;
-    private Long productId;
-    private Long orderId;
     private String productName;
     private Long price;
 }

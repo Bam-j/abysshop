@@ -3,14 +3,12 @@ package com.joo.abysshop.dto.order;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
-@Builder
-public class PointOrderResponse implements OrderResponse {
+@SuperBuilder
+public class PointOrderResponse extends OrderResponse {
 
-    private Long userId;
-    private Long productId;
-    private Long orderId;
     private Long price;
 }

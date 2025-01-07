@@ -15,16 +15,5 @@
     FROM products_table
     WHERE product_id = #{id}
   </select>
-
-  <!-- 테스트용 매퍼 추후 삭제
-  <insert id="insertProduct" parameterType="com.joo.abysshop.entity.ProductEntity">
-    INSERT INTO products_table (productname, price, description, image, type)
-    VALUES (#{productname}, #{price}, #{description}, #{image}, #{type})
-  </insert>
-
-  <select id="selectCountByProductName" resultType="int">
-    SELECT COUNT(*) FROM products_table WHERE productname = #{productname}
-  </select>
-  !-->
 </mapper>
 

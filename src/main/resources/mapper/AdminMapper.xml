@@ -2,8 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.joo.abysshop.mapper.mybatis.AdminMapper">
-  <select id="getUserType" parameterType="java.lang.Long"
-    resultType="com.joo.abysshop.enums.UserType">
+  <select id="getUserType" parameterType="java.lang.Long" resultType="com.joo.abysshop.enums.UserType">
     SELECT user_type
     FROM users_table
     WHERE user_id = #{id};
@@ -27,5 +26,11 @@
     UPDATE orders_table
     SET order_state = #{newState}
     WHERE order_id = #{orderId};
+  </update>
+
+  <update id="providePoint">
+    UPDATE users_table
+    SET points = points + #{point}
+    WHERE user_id = #{userId}
   </update>
 </mapper>

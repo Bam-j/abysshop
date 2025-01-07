@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -54,9 +55,9 @@ public class AdminController {
     }
 
     @PostMapping("/admin/order/point/provide")
-    public String providePoint() {
-        //TODO: JSP와 JAVA 설계 변경이 필요해보임.
-        //TODO: orders에서 type이 point인 항목만 뺀 뒤 요청 포인트를 user에게 지급 후 해당 항목 disabled
+    public String providePoint(@RequestParam("userId") Long userId, @RequestParam("point") Long point) {
+        //TODO:요청 포인트를 user에게 지급 후 해당 항목 disabled
+        adminOrderManagementService.providePoint(userId, point);
         return JspView.REDIRECT.getView();
     }
 

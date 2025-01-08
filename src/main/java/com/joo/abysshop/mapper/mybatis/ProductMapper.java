@@ -12,4 +12,6 @@ public interface ProductMapper {
     List<ProductEntity> findAllProduct(ProductType productType);
 
     ProductDetailResponse findById(Long id);
+
+    Long findProductIdByProductName(String productName);
 }

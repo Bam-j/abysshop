@@ -1,17 +1,19 @@
 package com.joo.abysshop.controller;
 
+import com.joo.abysshop.dto.admin.AddProductRequest;
 import com.joo.abysshop.dto.order.OrderResponse;
 import com.joo.abysshop.enums.JspView;
 import com.joo.abysshop.enums.ProductType;
 import com.joo.abysshop.enums.UserType;
 import com.joo.abysshop.service.admin.AdminMyPageService;
 import com.joo.abysshop.service.admin.AdminOrderManagementService;
+import java.io.IOException;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -62,8 +64,10 @@ public class AdminController {
     }
 
     @PostMapping("/admin/product/add")
-    public String addProduct() {
+    public String addProduct(@ModelAttribute AddProductRequest addProductRequest)
+        throws IOException {
         //TODO: 폼에 입력된 정보들을 토대로 products_table에 데이터 추가
+        adminMyPageService.addProduct(addProductRequest);
         return JspView.REDIRECT.getView();
     }
 

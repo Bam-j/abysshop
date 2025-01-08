@@ -1,5 +1,7 @@
 package com.joo.abysshop.mapper.mybatis;
 
+import com.joo.abysshop.entity.AddProductEntity;
+import com.joo.abysshop.entity.ProductImageEntity;
 import com.joo.abysshop.entity.ProductInOrderEntity;
 import com.joo.abysshop.enums.UserType;
 import java.util.List;
@@ -14,10 +16,12 @@ public interface AdminMapper {
 
     List<ProductInOrderEntity> findAllProductInOrder(String productType);
 
-    List<ProductInOrderEntity> findAllGoodsOrder();
-
     void changeOrderState(Map changeStateMap);
 
     //parameterType으로 명시하는 방법과 @Param을 통해 타입과 이름을 지정하는 두 가지 방법이 있다.
     void providePoint(@Param("userId") Long userId, @Param("point") Long point);
+
+    void insertProduct(AddProductEntity addProductEntity);
+
+    void insertProductImage(ProductImageEntity productImageEntity);
 }

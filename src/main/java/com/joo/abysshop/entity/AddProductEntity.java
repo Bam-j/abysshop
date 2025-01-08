@@ -5,9 +5,8 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class ProductEntity {
+public class AddProductEntity {
 
-    private Long productId;
     private String productName;
     private Long price;
     private String description;

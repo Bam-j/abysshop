@@ -66,7 +66,7 @@ public class AdminController {
     @PostMapping("/admin/product/add")
     public String addProduct(@ModelAttribute AddProductRequest addProductRequest)
         throws IOException {
-        //TODO: 폼에 입력된 정보들을 토대로 products_table에 데이터 추가
+        //TODO: Image 관련 내용 구현하기
         adminMyPageService.addProduct(addProductRequest);
         return JspView.REDIRECT.getView();
     }

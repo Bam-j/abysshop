@@ -5,8 +5,8 @@ USE db_abysshop;
 CREATE TABLE `users_table`
 (
   `user_id`   INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `username`  VARCHAR(50)              NOT NULL,
-  `nickname`  VARCHAR(50)              NOT NULL,
+  `username`  VARCHAR(50)              NOT NULL UNIQUE,
+  `nickname`  VARCHAR(50)              NOT NULL UNIQUE,
   `password`  VARCHAR(255)             NOT NULL,
   `user_type` ENUM ('user', 'admin')   NOT NULL DEFAULT 'user',
   `points`    INT UNSIGNED             NOT NULL DEFAULT 0
@@ -15,7 +15,7 @@ CREATE TABLE `users_table`
 CREATE TABLE `products_table`
 (
   `product_id`   INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `product_name` VARCHAR(255)             NOT NULL,
+  `product_name` VARCHAR(255)             NOT NULL UNIQUE,
   `price`        INT UNSIGNED             NOT NULL,
   `description`  VARCHAR(255)             NULL,
   `image`        BLOB                     NULL,
@@ -74,7 +74,7 @@ ALTER TABLE `order_products`
   ADD CONSTRAINT `FK_orders_table_TO_order_products_1` FOREIGN KEY (`order_id`) REFERENCES `orders_table` (`order_id`);
 
 ALTER TABLE `product_image_table`
-  ADD CONSTRAINT `FK_products_table_TO_product_image_table_1` FOREIGN KEY (`product_id`) REFERENCES `products_table` (`product_id`);
+  ADD CONSTRAINT `FK_products_table_TO_product_image_table_1` FOREIGN KEY (`product_id`) REFERENCES `products_table` (`product_id`) ON DELETE CASCADE;
 
 # 테스트용 관리자 계정 생성 SQL
 INSERT INTO users_table (username, nickname, password, user_type, points)

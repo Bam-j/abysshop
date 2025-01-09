@@ -41,7 +41,6 @@ public class AdminMyPageService {
             AddProductEntity addProductEntity = toProductEntityMapper.toAddProductEntity(addProductRequest);
             adminMapper.insertProduct(addProductEntity);
 
-            //TODO: product_name 필드를 중복이 없게 만들어주기
             Long productId = productMapper.findProductIdByProductName(addProductRequest.getProductName());
             ProductImageEntity productImageEntity = toProductEntityMapper.toProductImageEntity(
                 addProductRequest, productId);
@@ -50,7 +49,6 @@ public class AdminMyPageService {
     }
 
     public void removeProduct(Long productId) {
-        //TODO: product_image_table에 ON DELETE CASCADE 속성 추가해서 이미지 삭제시키기
         adminMapper.deleteByProductId(productId);
     }
 }

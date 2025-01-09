@@ -48,4 +48,9 @@ public class AdminMyPageService {
             adminMapper.insertProductImage(productImageEntity);
         }
     }
+
+    public void removeProduct(Long productId) {
+        //TODO: product_image_table에 ON DELETE CASCADE 속성 추가해서 이미지 삭제시키기
+        adminMapper.deleteByProductId(productId);
+    }
 }

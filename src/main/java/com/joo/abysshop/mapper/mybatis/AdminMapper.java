@@ -24,4 +24,6 @@ public interface AdminMapper {
     void insertProduct(AddProductEntity addProductEntity);
 
     void insertProductImage(ProductImageEntity productImageEntity);
+
+    void deleteByProductId(Long productId);
 }

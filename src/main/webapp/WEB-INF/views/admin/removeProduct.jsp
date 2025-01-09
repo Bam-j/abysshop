@@ -36,11 +36,11 @@
     </thead>
     <tbody>
     <c:forEach items="${productAndPointItemList}" var="item">
-      <td><input type="hidden">${item.id}</td>
       <td>${item.name}</td>
       <td>${item.price}</td>
       <td>
         <form action="/admin/productEntity/remove" method="post">
+          <input type="hidden" name="productId" value="#{item.productId}">
           <button type="submit" class="btn btn-warning">품목 삭제</button>
         </form>
       </td>

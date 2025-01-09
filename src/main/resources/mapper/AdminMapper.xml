@@ -45,4 +45,10 @@
     INSERT INTO product_image_table (product_id, image, original_file_name)
     VALUES (#{productId}, #{image}, #{originalFileName})
   </insert>
+
+  <delete id="deleteByProductId" parameterType="java.lang.Long">
+    DELETE
+    FROM products_table
+    WHERE product_id = #{productId}
+  </delete>
 </mapper>

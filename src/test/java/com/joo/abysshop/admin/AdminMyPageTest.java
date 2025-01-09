@@ -52,4 +52,26 @@ class AdminMyPageTest {
         assertThat(productId).isNotNull();
         System.out.println(productId);
     }
+
+    @Test
+    @Transactional
+    @DisplayName("ProductType의 변환 및 저장 테스트")
+    void ProductTypeTest() throws IOException {
+        //given
+        AddProductRequest addProductRequest = AddProductRequest.builder()
+            .productName("등록 상품2")
+            .price(100L)
+            .description("등록 상품 설명2")
+            .productType("goods")
+            .build();
+
+        //when
+        ProductEntity productEntity = toProductEntityMapper.toProductEntity(addProductRequest);
+        adminMyPageService.addProduct(addProductRequest);
+
+        //then
+        Long productId = productMapper.findProductIdByProductName(
+            addProductRequest.getProductName());
+        assertThat(productId).isNotNull();
+    }
 }

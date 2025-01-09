@@ -1,13 +1,12 @@
-package com.joo.abysshop.entity;
+package com.joo.abysshop.entity.admin;
 
 import lombok.Builder;
 import lombok.Getter;
 
 @Getter
 @Builder
-public class ProductEntity {
+public class AddProductEntity {
 
-    private Long productId;
     private String productName;
     private Long price;
     private String description;

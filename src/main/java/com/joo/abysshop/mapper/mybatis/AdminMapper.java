@@ -1,8 +1,8 @@
 package com.joo.abysshop.mapper.mybatis;
 
-import com.joo.abysshop.entity.AddProductEntity;
-import com.joo.abysshop.entity.ProductImageEntity;
-import com.joo.abysshop.entity.ProductInOrderEntity;
+import com.joo.abysshop.entity.admin.AddProductEntity;
+import com.joo.abysshop.entity.product.ProductImageEntity;
+import com.joo.abysshop.entity.order.ProductInOrderEntity;
 import com.joo.abysshop.enums.UserType;
 import java.util.List;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package com.joo.abysshop.entity;
+package com.joo.abysshop.entity.order;
 
 import com.joo.abysshop.enums.OrderState;
 import java.util.Date;

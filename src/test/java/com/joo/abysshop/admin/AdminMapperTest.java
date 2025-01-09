@@ -1,6 +1,6 @@
 package com.joo.abysshop.admin;
 
-import com.joo.abysshop.entity.UserEntity;
+import com.joo.abysshop.entity.user.UserEntity;
 import com.joo.abysshop.mapper.mybatis.AdminMapper;
 import com.joo.abysshop.mapper.mybatis.UserMapper;
 import java.util.Optional;
@@ -11,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class AdminMapperTest {

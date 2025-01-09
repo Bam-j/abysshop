@@ -1,7 +1,7 @@
 package com.joo.abysshop.mapper.dto;
 
 import com.joo.abysshop.dto.product.ProductListResponse;
-import com.joo.abysshop.entity.ProductEntity;
+import com.joo.abysshop.entity.product.ProductEntity;
 
 public class ProductEntityToDTO {
 

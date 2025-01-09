@@ -1,6 +1,6 @@
 package com.joo.abysshop.mapper.mybatis;
 
-import com.joo.abysshop.entity.UserEntity;
+import com.joo.abysshop.entity.user.UserEntity;
 import java.util.Optional;
 import org.apache.ibatis.annotations.Mapper;
 

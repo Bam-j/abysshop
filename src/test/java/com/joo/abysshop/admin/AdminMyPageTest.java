@@ -1,14 +1,12 @@
 package com.joo.abysshop.admin;
 
 import com.joo.abysshop.dto.admin.AddProductRequest;
-import com.joo.abysshop.entity.AddProductEntity;
-import com.joo.abysshop.entity.ProductEntity;
-import com.joo.abysshop.enums.ProductType;
+import com.joo.abysshop.entity.admin.AddProductEntity;
+import com.joo.abysshop.entity.product.ProductEntity;
 import com.joo.abysshop.mapper.entity.ToProductEntityMapper;
 import com.joo.abysshop.mapper.mybatis.ProductMapper;
 import com.joo.abysshop.service.admin.AdminMyPageService;
 import java.io.IOException;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +14,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class AdminMyPageTest {

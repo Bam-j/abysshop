@@ -1,4 +1,4 @@
-package com.joo.abysshop.entity;
+package com.joo.abysshop.entity.user;
 
 import com.joo.abysshop.enums.UserType;
 import lombok.Getter;

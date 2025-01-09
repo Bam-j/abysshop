@@ -1,4 +1,4 @@
-package com.joo.abysshop.entity;
+package com.joo.abysshop.entity.product;
 
 import lombok.Builder;
 import lombok.Getter;

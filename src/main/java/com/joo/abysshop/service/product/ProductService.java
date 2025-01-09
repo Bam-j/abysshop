@@ -3,7 +3,7 @@ package com.joo.abysshop.service.product;
 import com.joo.abysshop.dto.product.ProductDetailResponse;
 import com.joo.abysshop.mapper.dto.ProductEntityToDTO;
 import com.joo.abysshop.dto.product.ProductListResponse;
-import com.joo.abysshop.entity.ProductEntity;
+import com.joo.abysshop.entity.product.ProductEntity;
 import com.joo.abysshop.enums.ProductType;
 import com.joo.abysshop.mapper.mybatis.ProductMapper;
 import java.util.ArrayList;

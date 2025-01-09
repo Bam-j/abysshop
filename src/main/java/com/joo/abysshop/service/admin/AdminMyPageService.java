@@ -1,9 +1,8 @@
 package com.joo.abysshop.service.admin;
 
 import com.joo.abysshop.dto.admin.AddProductRequest;
-import com.joo.abysshop.entity.AddProductEntity;
-import com.joo.abysshop.entity.ProductEntity;
-import com.joo.abysshop.entity.ProductImageEntity;
+import com.joo.abysshop.entity.admin.AddProductEntity;
+import com.joo.abysshop.entity.product.ProductImageEntity;
 import com.joo.abysshop.enums.UserType;
 import com.joo.abysshop.mapper.entity.ToProductEntityMapper;
 import com.joo.abysshop.mapper.mybatis.AdminMapper;

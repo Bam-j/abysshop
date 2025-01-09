@@ -2,9 +2,9 @@ package com.joo.abysshop.mapper.entity;
 
 
 import com.joo.abysshop.dto.admin.AddProductRequest;
-import com.joo.abysshop.entity.AddProductEntity;
-import com.joo.abysshop.entity.ProductEntity;
-import com.joo.abysshop.entity.ProductImageEntity;
+import com.joo.abysshop.entity.admin.AddProductEntity;
+import com.joo.abysshop.entity.product.ProductEntity;
+import com.joo.abysshop.entity.product.ProductImageEntity;
 import org.springframework.stereotype.Component;
 
 @Component

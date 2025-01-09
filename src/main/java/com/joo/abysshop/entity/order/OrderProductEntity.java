@@ -1,4 +1,4 @@
-package com.joo.abysshop.entity;
+package com.joo.abysshop.entity.order;
 
 import lombok.Getter;
 import lombok.Setter;

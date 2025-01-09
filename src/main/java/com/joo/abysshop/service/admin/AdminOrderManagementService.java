@@ -1,8 +1,8 @@
 package com.joo.abysshop.service.admin;
 
 import com.joo.abysshop.dto.order.OrderResponse;
-import com.joo.abysshop.entity.ProductInOrderEntity;
-import com.joo.abysshop.entity.UserEntity;
+import com.joo.abysshop.entity.order.ProductInOrderEntity;
+import com.joo.abysshop.entity.user.UserEntity;
 import com.joo.abysshop.enums.ProductType;
 import com.joo.abysshop.mapper.dto.ToOrderDTOMapper;
 import com.joo.abysshop.mapper.mybatis.AdminMapper;

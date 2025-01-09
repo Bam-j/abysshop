@@ -1,6 +1,6 @@
 package com.joo.abysshop.user;
 
-import com.joo.abysshop.entity.UserEntity;
+import com.joo.abysshop.entity.user.UserEntity;
 import com.joo.abysshop.mapper.mybatis.UserMapper;
 import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class UserMapperTest {

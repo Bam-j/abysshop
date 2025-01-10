@@ -57,7 +57,6 @@ public class AccountService {
     }
 
     public ResultStatus signUp(AccountSignUpRequest accountSignUpRequest) {
-        //username, nickname 중복 검사
         String username = accountSignUpRequest.getUsername();
         Optional<AccountEntity> optionalAccountEntity = accountMapper.findByUsername(username);
 

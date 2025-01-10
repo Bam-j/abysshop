@@ -4,9 +4,7 @@ import com.joo.abysshop.dto.admin.AddProductRequest;
 import com.joo.abysshop.entity.admin.AddProductEntity;
 import com.joo.abysshop.entity.product.ProductEntity;
 import com.joo.abysshop.entity.product.ProductImageEntity;
-import org.springframework.stereotype.Component;
 
-@Component
 public interface ToProductEntityMapper {
 
     ProductEntity toProductEntity(AddProductRequest addProductRequest);

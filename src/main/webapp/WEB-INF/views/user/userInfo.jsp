@@ -31,13 +31,15 @@
       반드시 인게임 닉네임과 동일한 닉네임으로 설정해주세요. <br>
       후원 과정에서 문제가 발생할 가능성이 높습니다.
     </div>
-    <input type="text" name="nickname" placeholder="변경할 닉네임 입력">
+    <input type="hidden" name="userId" value="${user.userId}}">
+    <input type="text" name="newNickname" placeholder="변경할 닉네임 입력">
     <button type="submit" class="btn btn-primary">닉네임 변경</button>
   </form>
   <hr>
   <form action="/account/change/password" method="post">
+    <input type="hidden" name="userId" value="${user.userId}}">
     <%-- TODO: 개발 완료시 type:"password"로 비밀번호 입력 가리기 --%>
-    <input type="text" name="password" placeholder="변경할 비밀번호 입력">
+    <input type="text" name="newPassword" placeholder="변경할 비밀번호 입력">
     <button type="submit" class="btn btn-primary">비밀번호 변경</button>
   </form>
 
@@ -66,6 +68,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
           <form action="/account/withdraw" method="post">
+            <input type="hidden" name="userId" value="${user.userId}">
             <button type="submit" name="password" class="btn btn-danger">회원 탈퇴</button>
           </form>
         </div>

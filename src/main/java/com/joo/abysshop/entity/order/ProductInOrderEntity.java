@@ -1,10 +1,10 @@
 package com.joo.abysshop.entity.order;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
-@Setter
+@AllArgsConstructor
 //order_products op LEFT OUTER JOIN products_table
 public class ProductInOrderEntity {
 

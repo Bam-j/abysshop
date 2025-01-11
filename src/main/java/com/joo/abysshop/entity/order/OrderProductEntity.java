@@ -1,11 +1,11 @@
 package com.joo.abysshop.entity.order;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
-@Setter
-public class OrderProductEntity {
+@AllArgsConstructor
+class OrderProductEntity {
 
     private Long userId;
     private Long productId;

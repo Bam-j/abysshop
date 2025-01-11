@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class AccountServiceTest {
-    //TODO: 테스트 로직 전수조사 + 엔티티에 기본 생성자 투입
+    //TODO: 테스트 로직 전수조사
 
     @Autowired
     private AccountService accountService;

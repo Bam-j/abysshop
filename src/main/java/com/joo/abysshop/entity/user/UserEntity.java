@@ -1,11 +1,13 @@
 package com.joo.abysshop.entity.user;
 
 import com.joo.abysshop.enums.UserType;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
-@Setter
+@Builder
+@AllArgsConstructor
 public class UserEntity {
 
     private Long userId;

@@ -2,11 +2,11 @@ package com.joo.abysshop.entity.order;
 
 import com.joo.abysshop.enums.OrderState;
 import java.util.Date;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
-@Setter
+@AllArgsConstructor
 public class OrderEntity {
 
     private Long orderId;

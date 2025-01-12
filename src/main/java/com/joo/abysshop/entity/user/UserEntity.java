@@ -1,6 +1,5 @@
 package com.joo.abysshop.entity.user;
 
-import com.joo.abysshop.enums.UserType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,6 +13,6 @@ public class UserEntity {
     private String username;
     private String nickname;
     private String password;
-    private UserType userType;
+    private String userType;
     private Long points;
 }

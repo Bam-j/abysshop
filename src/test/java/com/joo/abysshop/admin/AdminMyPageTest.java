@@ -1,11 +1,14 @@
 package com.joo.abysshop.admin;
 
 import com.joo.abysshop.dto.admin.AddProductRequest;
+import com.joo.abysshop.dto.admin.RemoveProductRequest;
+import com.joo.abysshop.dto.product.ProductDetailResponse;
 import com.joo.abysshop.entity.admin.AddProductEntity;
 import com.joo.abysshop.entity.product.ProductEntity;
 import com.joo.abysshop.mapper.entity.ToProductEntityMapper;
 import com.joo.abysshop.mapper.mybatis.ProductMapper;
 import com.joo.abysshop.service.admin.AdminMyPageService;
+import com.joo.abysshop.service.product.ProductService;
 import java.io.IOException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -70,5 +73,19 @@ class AdminMyPageTest {
         Long productId = productMapper.findProductIdByProductName(
             addProductRequest.getProductName());
         assertThat(productId).isNotNull();
+    }
+
+    @Test
+    @Transactional
+    @DisplayName("상품 삭제 테스트")
+    void removeProductTest() {
+        //given
+
+        //when
+        adminMyPageService.removeProduct(1L);
+        ProductDetailResponse result = productMapper.findById(1L);
+
+        //then
+        assertThat(result).isNull();
     }
 }

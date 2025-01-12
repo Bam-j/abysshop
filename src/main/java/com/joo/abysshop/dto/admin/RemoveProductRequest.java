@@ -9,5 +9,5 @@ import lombok.Getter;
 @AllArgsConstructor
 public class RemoveProductRequest {
 
-    private Integer productId;
+    private Long productId;
 }

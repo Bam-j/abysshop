@@ -2,6 +2,7 @@ package com.joo.abysshop.account;
 
 import com.joo.abysshop.dto.account.AccountSignInRequest;
 import com.joo.abysshop.dto.account.AccountSignUpRequest;
+import com.joo.abysshop.dto.account.AccountWithdrawRequest;
 import com.joo.abysshop.entity.user.UserEntity;
 import com.joo.abysshop.enums.ResultStatus;
 import com.joo.abysshop.service.account.AccountService;
@@ -56,5 +57,29 @@ class AccountServiceTest {
 
         //then
         assertThat(signInResult).isEqualTo(ResultStatus.SUCCESS);
+    }
+
+    @Test
+    @Transactional
+    @DisplayName("계정 탈퇴 테스트")
+    void withdrawTest() {
+        //given
+        //삭제에 사용된 테스트 더미데이터 userId, password: 1L, "0000"
+        AccountWithdrawRequest wrongPasswordRequest = AccountWithdrawRequest.builder()
+            .userId(1L)
+            .password("hello")
+            .build();
+        AccountWithdrawRequest matchPasswordRequest = AccountWithdrawRequest.builder()
+            .userId(1L)
+            .password("0000")
+            .build();
+
+        //when
+        ResultStatus failureResult = accountService.withdraw(wrongPasswordRequest);
+        ResultStatus successResult = accountService.withdraw(matchPasswordRequest);
+
+        //then
+        assertThat(failureResult).isEqualTo(ResultStatus.FAILURE);
+        assertThat(successResult).isEqualTo(ResultStatus.SUCCESS);
     }
 }

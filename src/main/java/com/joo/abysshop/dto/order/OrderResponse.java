@@ -1,12 +1,12 @@
 package com.joo.abysshop.dto.order;
 
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 @Getter
-@Setter
 @SuperBuilder
+@NoArgsConstructor
 public class OrderResponse {
 
     protected Long userId;

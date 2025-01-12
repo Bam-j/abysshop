@@ -1,12 +1,12 @@
 package com.joo.abysshop.dto.admin;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
-@Setter
 @Builder
+@AllArgsConstructor
 public class RemoveProductRequest {
 
     private Integer productId;

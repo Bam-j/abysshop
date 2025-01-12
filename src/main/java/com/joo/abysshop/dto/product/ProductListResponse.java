@@ -1,13 +1,13 @@
 package com.joo.abysshop.dto.product;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
 
 @Getter
-@Setter
 @Builder
+@AllArgsConstructor
 public class ProductListResponse {
 
     private Long productId;

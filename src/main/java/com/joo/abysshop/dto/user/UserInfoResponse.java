@@ -1,13 +1,13 @@
 package com.joo.abysshop.dto.user;
 
 import com.joo.abysshop.enums.UserType;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
-@Setter
 @Builder
+@AllArgsConstructor
 public class UserInfoResponse {
 
     private Integer userId;

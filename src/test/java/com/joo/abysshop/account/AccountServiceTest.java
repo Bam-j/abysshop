@@ -3,10 +3,8 @@ package com.joo.abysshop.account;
 import com.joo.abysshop.dto.account.AccountSignInRequest;
 import com.joo.abysshop.dto.account.AccountSignUpRequest;
 import com.joo.abysshop.dto.account.AccountWithdrawRequest;
-import com.joo.abysshop.entity.user.UserEntity;
 import com.joo.abysshop.enums.ResultStatus;
 import com.joo.abysshop.service.account.AccountService;
-import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +16,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class AccountServiceTest {
-    //TODO: 테스트 로직 전수조사
-
     @Autowired
     private AccountService accountService;
 

@@ -49,11 +49,21 @@
       </tr>
       </thead>
       <tbody>
-      <c:forEach items="${shoppingCart}" var="item">
+      <c:forEach items="${userOrders}" var="item">
         <tr>
+          <!--
+            TODO: 테이블 구조에 따라 장바구니 표현 방식을 변경해야함.
+              + 수량 조절 기능 추가하기
+           -->
           <td>${item.name}</td>
           <td>${item.price}</td>
-          <td><a href="#">삭제</a></td>
+          <td>
+            <form action="/order/cart/remove/item" method="post">
+              <input type="hidden" name="cartId" value="${cartId}">
+              <input type="hidden" name="productId" value="${item.productId}">
+              <button id="item-remove-button">X</button>
+            </form>
+          </td>
         </tr>
       </c:forEach>
       </tbody>
@@ -68,7 +78,8 @@
       </tr>
       </tfoot>
     </table>
-    <form action="/payment/info" method="post">
+    <form action="/order/create" method="post">
+      <input type="hidden" name="cartId" value="${cartId}">
       <button type="button" class="btn btn-primary">결제하기</button>
     </form>
   </section>

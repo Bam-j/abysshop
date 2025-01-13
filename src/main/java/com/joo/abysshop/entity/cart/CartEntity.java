@@ -1,4 +1,4 @@
-package com.joo.abysshop.entity.order;
+package com.joo.abysshop.entity.cart;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

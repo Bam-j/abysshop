@@ -42,7 +42,7 @@ CREATE TABLE `orders_table`
 (
   `order_id`    INT UNSIGNED PRIMARY KEY                          NOT NULL AUTO_INCREMENT,
   `user_id`     INT UNSIGNED                                      NOT NULL,
-  `order_date`  DATE                                              NOT NULL,
+  `order_date`  DATETIME                                          NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `total_price` INT UNSIGNED                                      NOT NULL,
   `order_state` ENUM ('pending_payment', 'shipping', 'completed') NOT NULL DEFAULT 'pending_payment'
 );

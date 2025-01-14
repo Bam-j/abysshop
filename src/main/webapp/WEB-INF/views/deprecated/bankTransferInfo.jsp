@@ -4,6 +4,8 @@
   Date: 2024-12-03
   Time: 오후 8:06
   To change this template use File | Settings | File Templates.
+
+  !!! 포인트 요청 페이지가 생김에 따라 더 이상 사용되지 않음 !!!
 --%>
 <%@ page
     info="포인트 주문 후 이체용 계좌를 표시하는 페이지입니다."

@@ -86,19 +86,15 @@
     </button>
   </div>
 </aside>
+<![CDATA[
 
-<%@ include file="product/productNav.jsp" %>
+<%--<%@ include file="product/productNav.jsp" %>--%>
+
+<%@ include file="point/pointRechargeRequestForm.jsp" %>
 
 <main id="index-main-content">
   <div id="content">
-    <c:choose>
-      <c:when test="${param.menu eq 'point'}">
-        <jsp:include page="product/pointList.jsp" />
-      </c:when>
-      <c:otherwise>
-        <jsp:include page="product/goodsList.jsp" />
-      </c:otherwise>
-    </c:choose>
+    <jsp:include page="product/productList.jsp" />
   </div>
 </main>
 

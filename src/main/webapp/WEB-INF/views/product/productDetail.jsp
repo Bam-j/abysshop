@@ -12,8 +12,7 @@
     pageEncoding="UTF-8"
 %>
 <%
-  //TODO: 추후 DB id 저장값에 따라서 자료형 변경하기
-  String id = (String) session.getAttribute("productId");
+  Long id = (Long) session.getAttribute("productId");
   //id를 사용하여 DB로부터 상품 정보(이미지, 이름, 가격, 설명) 취득
 %>
 <!DOCTYPE html>

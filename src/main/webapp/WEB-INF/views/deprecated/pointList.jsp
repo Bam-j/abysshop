@@ -5,6 +5,8 @@
   Time: 오후 8:01
   To change this template use File | Settings | File Templates.
   info="결제에 사용되는 포인트 상품 리스트를 보여주는 뷰 입니다."
+
+  !!! 포인트 요청을 일반 상품에서 명확하게 분리함에 따라 deprecated 합니다 !!!
 --%>
 <%@ page
     contentType="text/html;charset=UTF-8"

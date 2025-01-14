@@ -42,6 +42,9 @@
     <c:choose>
       <c:when test="${isLoggedIn}">
         <li class="divider-elem">
+          보유 포인트: ${user.points}
+        </li>
+        <li class="divider-elem">
           <form action="/user/cart/{id}" method="get">
             <input type="hidden" name="userCartId" value="${user.cartId}">
             <button type="submit" class="btn btn-primary">

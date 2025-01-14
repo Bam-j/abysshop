@@ -40,6 +40,7 @@
 </nav>
 <main>
   <section>
+    <%--
     <table>
       <thead>
       <tr>
@@ -51,10 +52,8 @@
       <tbody>
       <c:forEach items="${userOrders}" var="item">
         <tr>
-          <!--
             TODO: 테이블 구조에 따라 장바구니 표현 방식을 변경해야함.
               + 수량 조절 기능 추가하기
-           -->
           <td>${item.name}</td>
           <td>${item.price}</td>
           <td>
@@ -71,7 +70,6 @@
       <tr>
         <td>합계 금액</td>
         <td>
-          <%-- 나중에 value를 총합 계산하는 로직으로 변경하기 --%>
           <c:set var="totalPrice" value="${item.price}"></c:set>
           ${totalPrice}
         </td>
@@ -82,6 +80,7 @@
       <input type="hidden" name="cartId" value="${cartId}">
       <button type="button" class="btn btn-primary">결제하기</button>
     </form>
+    --%>
   </section>
 </main>
 <%@ include file="../common/footer.jsp" %>

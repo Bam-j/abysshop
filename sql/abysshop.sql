@@ -5,8 +5,8 @@ USE db_abysshop;
 CREATE TABLE `users_table`
 (
   `user_id`   INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `username`  VARCHAR(50)              NOT NULL UNIQUE,
-  `nickname`  VARCHAR(50)              NOT NULL UNIQUE,
+  `username`  VARCHAR(100)              NOT NULL UNIQUE,
+  `nickname`  VARCHAR(100)              NOT NULL UNIQUE,
   `password`  VARCHAR(255)             NOT NULL,
   `user_type` ENUM ('user', 'admin')   NOT NULL DEFAULT 'user',
   `points`    INT UNSIGNED             NOT NULL DEFAULT 0
@@ -40,11 +40,11 @@ CREATE TABLE `carts_table`
 
 CREATE TABLE `orders_table`
 (
-  `order_id`    INT UNSIGNED PRIMARY KEY                          NOT NULL AUTO_INCREMENT,
-  `user_id`     INT UNSIGNED                                      NOT NULL,
-  `order_date`  DATETIME                                          NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `total_price` INT UNSIGNED                                      NOT NULL,
-  `order_state` ENUM ('pending_payment', 'shipping', 'completed') NOT NULL DEFAULT 'pending_payment'
+  `order_id`    INT UNSIGNED PRIMARY KEY                   NOT NULL AUTO_INCREMENT,
+  `user_id`     INT UNSIGNED                               NOT NULL,
+  `order_date`  DATETIME                                   NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `total_price` INT UNSIGNED                               NOT NULL,
+  `order_state` ENUM ('shipping', 'completed', 'refunded') NOT NULL DEFAULT 'shipping'
 );
 
 CREATE TABLE `order_products`
@@ -53,6 +53,26 @@ CREATE TABLE `order_products`
   `product_id` INT UNSIGNED NOT NULL,
   `cart_id`    INT UNSIGNED NOT NULL,
   `order_id`   INT UNSIGNED NOT NULL
+);
+
+CREATE TABLE `point_recharge_table`
+(
+  `recharge_id`            INT UNSIGNED PRIMARY KEY                                                   NOT NULL AUTO_INCREMENT,
+  `user_id`                INT UNSIGNED                                                               NOT NULL,
+  `nickname`               VARCHAR(200)                                                               NOT NULL,
+  `points`                 INT UNSIGNED                                                               NOT NULL,
+  `request_time`           DATETIME                                                                   NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `recharge_request_state` ENUM ('pending_payment', 'pending_point_deposit', 'completed', 'refunded') NOT NULL DEFAULT 'pending_payment'
+);
+
+CREATE TABLE `point_recharge_management_table`
+(
+  `point_request_id`       INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `recharge_id`            INT UNSIGNED             NOT NULL,
+  `user_id`                INT UNSIGNED             NOT NULL,
+  `bank`                   VARCHAR(100)             NULL,
+  `account_number`         VARCHAR(255)             NULL,
+  `deposit_confirmed_time` DATETIME                 NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 ALTER TABLE `carts_table`
@@ -76,6 +96,15 @@ ALTER TABLE `order_products`
 ALTER TABLE `product_image_table`
   ADD CONSTRAINT `FK_products_table_TO_product_image_table_1` FOREIGN KEY (`product_id`) REFERENCES `products_table` (`product_id`) ON DELETE CASCADE;
 
-# 테스트용 관리자 계정 생성 SQL
+ALTER TABLE `point_recharge_table`
+  ADD CONSTRAINT `FK_users_table_TO_point_recharge_table_1` FOREIGN KEY (`user_id`) REFERENCES `users_table` (`user_id`) ON DELETE CASCADE;
+
+ALTER TABLE `point_recharge_management_table`
+  ADD CONSTRAINT `FK_point_recharge_table_TO_point_recharge_management_table_1` FOREIGN KEY (`recharge_id`) REFERENCES `point_recharge_table` (`recharge_id`);
+
+ALTER TABLE `point_recharge_management_table`
+  ADD CONSTRAINT `FK_point_recharge_table_TO_point_recharge_management_table_2` FOREIGN KEY (`user_id`) REFERENCES `point_recharge_table` (`user_id`);
+
+# 테스트용 관리자 계정 생성 쿼리
 INSERT INTO users_table (username, nickname, password, user_type, points)
 VALUES ('admin', 'admin_test', 'admin', 'admin', 100000);

@@ -33,7 +33,7 @@
       <th>주문 번호</th>
       <th>주문자</th>
       <th>주문 상품</th>
-      <th>주문 금액/포인트</th>
+      <th>주문 포인트</th>
       <th>구매일</th>
       <th>주문 상태</th>
     </tr>
@@ -54,13 +54,13 @@
             </button>
             <ul class="dropdown-menu">
               <li>
-                <a class="dropdown-item" data-value="pending-payment" href="#">결제 확인 대기</a>
+                <a class="dropdown-item" data-value="shipping" href="#">상품 지급 대기</a>
               </li>
               <li>
-                <a class="dropdown-item" data-value="shipping" href="#">상품 전달 대기</a>
+                <a class="dropdown-item" data-value="completed" href="#">상품 지급 완료</a>
               </li>
               <li>
-                <a class="dropdown-item" data-value="completed" href="#">상품 전달 완료</a>
+                <a class="dropdown-item" data-value="refunded" href="#">환불 처리 완료</a>
               </li>
             </ul>
             <form action="/admin/order/goods/change-state" method="post">

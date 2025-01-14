@@ -1,36 +1,49 @@
 <%--
   Created by IntelliJ IDEA.
   User: juhyu
-  Date: 2024-12-03
-  Time: 오후 8:54
+  Date: 2025-01-14
+  Time: 오후 9:06
   To change this template use File | Settings | File Templates.
-  info="회원의 개인 페이지의 nav에서 사용되는 메뉴 바입니다."
 --%>
 <%@ page
     contentType="text/html;charset=UTF-8"
     language="java"
     pageEncoding="UTF-8"
 %>
-<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-  <title>일반 회원 마이페이지 메뉴바</title>
+  <title>회원 포인트 지급 요청 관리</title>
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
         crossorigin="anonymous">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="../../../resources/static/styles/common/nav.css">
   <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
-<nav class="nav">
-  <a class="nav-link active" aria-current="page" href="?menu=order-management">주문 관리</a>
-  <a class="nav-link" href="?menu=user-info">계정 관리</a>
-  <a class="nav-link" href="?menu=point-request">포인트 지급 요청</a>
-</nav>
-
-<script src="../resources/static/js/common/navEvent.js"></script>
+<section>
+  <table>
+    <thead>
+    <tr>
+      <th>요청 번호</th>
+      <th>요청 포인트</th>
+      <th>요청일</th>
+      <th>요청 상태</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach items="${pointRechargeRequest}" var="request">
+      <tr>
+        <td>${request.requestId}</td>
+        <td>${request.points}</td>
+        <td>${request.date}</td>
+        <td>${request.state}</td>
+      </tr>
+    </c:forEach>
+    </tbody>
+  </table>
+</section>
 </body>
 </html>

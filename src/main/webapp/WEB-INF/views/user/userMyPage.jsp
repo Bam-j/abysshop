@@ -41,6 +41,9 @@
       <c:when test="${param.menu eq 'user-info'}">
         <jsp:include page="userInfo.jsp" />
       </c:when>
+      <c:when test="${param.menu eq 'point-request'}">
+        <jsp:include page="userPointRechargeManagement.jsp" />
+      </c:when>
       <c:otherwise>
         <jsp:include page="userOrderManagement.jsp" />
       </c:otherwise>

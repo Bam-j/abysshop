@@ -15,7 +15,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>주문 관리</title>
+  <title>회원 주문 관리</title>
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
@@ -31,7 +31,7 @@
     <tr>
       <th>주문 번호</th>
       <th>주문 상품</th>
-      <th>주문 금액/포인트</th>
+      <th>주문 총 포인트</th>
       <th>구매일</th>
       <th>주문 상태</th>
     </tr>
@@ -39,7 +39,7 @@
     <tbody>
     <c:forEach items="${orderHistory}" var="order">
       <tr>
-        <td>${order.id}</td>
+        <td>${order.orderId}</td>
           <%-- orderItems: 3건 이상은 [상품명 외 n건]으로 표시하기 --%>
         <td>${order.items}</td>
         <td>${order.totalPrice}</td>

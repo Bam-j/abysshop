@@ -33,10 +33,13 @@ public class AccountController {
     }
 
     @PostMapping("/account/sign-in")
-    public String signIn(@ModelAttribute AccountSignInRequest accountSignInRequest) {
+    public String signIn(@ModelAttribute AccountSignInRequest accountSignInRequest, Model model) {
         ResultStatus signInResult = accountService.signIn(accountSignInRequest);
 
         if (signInResult == ResultStatus.SUCCESS) {
+            List<ProductListResponse> productList = productService.findAllProducts();
+            model.addAttribute("productList", productList);
+
             return JspView.HOME.getView();
         } else {
             //TODO: 프론트에 응답 보내고 스크립트를 사용해서 에러 메세지 출력하기
@@ -89,23 +92,25 @@ public class AccountController {
     public String logout(HttpSession session, Model model) {
         session.invalidate();
 
-        List<ProductListResponse> itemList = productService.findAllProducts(ProductType.GOODS);
-        model.addAttribute("itemList", itemList);
+        List<ProductListResponse> productList = productService.findAllProducts();
+        model.addAttribute("productList", productList);
 
         return JspView.HOME.getView();
     }
 
     @PostMapping("/account/withdraw")
-    public String withdraw(@ModelAttribute AccountWithdrawRequest accountWithdrawRequest, HttpSession session) {
-        /*
-         * TODO: 1. 입력된 비밀 번호 검증 > 로그아웃 > 계정 삭제 > 홈으로 이동
-         */
+    public String withdraw(@ModelAttribute AccountWithdrawRequest accountWithdrawRequest,
+        HttpSession session, Model model) {
         ResultStatus withdrawResult = accountService.withdraw(accountWithdrawRequest);
 
         if (withdrawResult == ResultStatus.SUCCESS) {
             session.invalidate();
+            List<ProductListResponse> productList = productService.findAllProducts();
+            model.addAttribute("productList", productList);
+
             return JspView.HOME.getView();
         } else {
+            //TODO: 프론트에 응답 보내고 스크립트를 사용해서 에러 메세지 출력하기
             return JspView.REDIRECT.getView();
         }
     }

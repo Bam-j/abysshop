@@ -2,6 +2,7 @@ package com.joo.abysshop.enums;
 
 import lombok.RequiredArgsConstructor;
 
+@Deprecated
 @RequiredArgsConstructor
 public enum ProductType {
     GOODS("goods"),

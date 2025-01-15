@@ -10,9 +10,9 @@ import org.springframework.web.multipart.MultipartFile;
 @AllArgsConstructor
 public class ProductDetailResponse {
 
-    private Integer productId;
+    private Long productId;
     private String productName;
-    private Integer price;
+    private Long price;
     private String description;
     private MultipartFile image;
 }

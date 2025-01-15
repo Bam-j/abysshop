@@ -1,10 +1,9 @@
 package com.joo.abysshop.service.product;
 
 import com.joo.abysshop.dto.product.ProductDetailResponse;
-import com.joo.abysshop.mapper.dto.ProductEntityToDTO;
 import com.joo.abysshop.dto.product.ProductListResponse;
 import com.joo.abysshop.entity.product.ProductEntity;
-import com.joo.abysshop.enums.ProductType;
+import com.joo.abysshop.mapper.dto.ToProductDTOMapper;
 import com.joo.abysshop.mapper.mybatis.ProductMapper;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,29 +15,22 @@ import org.springframework.stereotype.Service;
 public class ProductService {
 
     private final ProductMapper productMapper;
+    private final ToProductDTOMapper toProductDTOMapper;
 
-    public List<ProductListResponse> findAllProducts(ProductType productType) {
+    public List<ProductListResponse> findAllProducts() {
+        List<ProductEntity> productEntityList = productMapper.findAllProducts();
         List<ProductListResponse> productList = new ArrayList<>();
 
-        if (productType.equals(ProductType.GOODS)) {
-            List<ProductEntity> itemEntityList = productMapper.findAllProduct(ProductType.GOODS);
-
-            for (ProductEntity itemEntity : itemEntityList) {
-                productList.add(
-                    ProductEntityToDTO.productEntityToProductListResponse(itemEntity));
-            }
-        } else if (productType.equals(ProductType.POINT)) {
-            List<ProductEntity> pointEntityList = productMapper.findAllProduct(ProductType.POINT);
-
-            for (ProductEntity pointEntity : pointEntityList) {
-                productList.add(
-                    ProductEntityToDTO.productEntityToProductListResponse(pointEntity));
-            }
+        for (ProductEntity productEntity : productEntityList) {
+            productList.add(toProductDTOMapper.toProductListResponse(productEntity));
         }
+
         return productList;
     }
 
     public ProductDetailResponse findById(Long id) {
-        return productMapper.findById(id);
+        ProductEntity productEntity = productMapper.findById(id);
+
+        return toProductDTOMapper.toProductDetailResponse(productEntity);
     }
 }

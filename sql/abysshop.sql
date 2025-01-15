@@ -5,8 +5,8 @@ USE db_abysshop;
 CREATE TABLE `users_table`
 (
   `user_id`   INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `username`  VARCHAR(100)              NOT NULL UNIQUE,
-  `nickname`  VARCHAR(100)              NOT NULL UNIQUE,
+  `username`  VARCHAR(100)             NOT NULL UNIQUE,
+  `nickname`  VARCHAR(100)             NOT NULL UNIQUE,
   `password`  VARCHAR(255)             NOT NULL,
   `user_type` ENUM ('user', 'admin')   NOT NULL DEFAULT 'user',
   `points`    INT UNSIGNED             NOT NULL DEFAULT 0
@@ -17,9 +17,7 @@ CREATE TABLE `products_table`
   `product_id`   INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `product_name` VARCHAR(255)             NOT NULL UNIQUE,
   `price`        INT UNSIGNED             NOT NULL,
-  `description`  VARCHAR(255)             NULL,
-  `image`        BLOB                     NULL,
-  `product_type` ENUM ('goods', 'point')  NOT NULL
+  `description`  VARCHAR(255)             NULL
 );
 
 CREATE TABLE `product_image_table`

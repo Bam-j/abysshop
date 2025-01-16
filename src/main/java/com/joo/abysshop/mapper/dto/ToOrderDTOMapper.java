@@ -1,16 +1,9 @@
 package com.joo.abysshop.mapper.dto;
 
-import com.joo.abysshop.dto.order.GoodsOrderResponse;
-import com.joo.abysshop.dto.order.OrderResponse;
-import com.joo.abysshop.dto.order.PointOrderResponse;
-import com.joo.abysshop.entity.order.ProductInOrderEntity;
-import com.joo.abysshop.enums.ProductType;
+import com.joo.abysshop.dto.order.OrderListResponse;
+import com.joo.abysshop.entity.order.OrderEntity;
 
-public interface ToOrderDTOMapper<T extends OrderResponse> {
+public interface ToOrderDTOMapper {
 
-    OrderResponse mapToOrderResponse(ProductInOrderEntity productInOrderEntity, ProductType productType);
-
-    GoodsOrderResponse toGoodsOrderResponse(ProductInOrderEntity productInOrderEntity);
-
-    PointOrderResponse toPointOrderResponse(ProductInOrderEntity productInOrderEntity);
+    OrderListResponse toOrderListResponse(OrderEntity orderEntity);
 }

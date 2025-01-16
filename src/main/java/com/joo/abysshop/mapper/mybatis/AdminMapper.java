@@ -1,9 +1,8 @@
 package com.joo.abysshop.mapper.mybatis;
 
 import com.joo.abysshop.entity.admin.AddProductEntity;
+import com.joo.abysshop.entity.order.OrderEntity;
 import com.joo.abysshop.entity.product.ProductImageEntity;
-import com.joo.abysshop.entity.order.ProductInOrderEntity;
-import com.joo.abysshop.enums.UserType;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
@@ -12,9 +11,7 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface AdminMapper {
 
-    UserType getUserType(Long id);
-
-    List<ProductInOrderEntity> findAllProductInOrder(String productType);
+    List<OrderEntity> findAllOrders();
 
     void changeOrderState(Map changeStateMap);
 

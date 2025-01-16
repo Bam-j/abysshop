@@ -7,6 +7,7 @@ import com.joo.abysshop.enums.UserType;
 import com.joo.abysshop.mapper.entity.ToProductEntityMapper;
 import com.joo.abysshop.mapper.mybatis.AdminMapper;
 import com.joo.abysshop.mapper.mybatis.ProductMapper;
+import com.joo.abysshop.service.user.UserService;
 import java.io.File;
 import java.io.IOException;
 import lombok.RequiredArgsConstructor;
@@ -18,11 +19,12 @@ import org.springframework.web.multipart.MultipartFile;
 public class AdminMyPageService {
 
     private final AdminMapper adminMapper;
-    private final ToProductEntityMapper toProductEntityMapper;
     private final ProductMapper productMapper;
+    private final ToProductEntityMapper toProductEntityMapper;
+    private final UserService userService;
 
     public UserType getUserType(final Long userId) {
-        return adminMapper.getUserType(userId);
+        return userService.getUserType(userId);
     }
 
     public void addProduct(AddProductRequest addProductRequest) throws IOException {

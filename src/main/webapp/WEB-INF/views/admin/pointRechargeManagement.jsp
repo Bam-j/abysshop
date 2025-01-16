@@ -34,6 +34,7 @@
       <th>요청일</th>
       <th>요청 상태</th>
       <th>요청 상세 정보</th>
+      <th>요청 승인</th>
     </tr>
     </thead>
     <tbody>
@@ -72,6 +73,11 @@
         </td>
         <td>
           <%@ include file="pointRechargeDetail.jsp" %>
+        </td>
+        <td>
+          <form action="/admin/point/provide" method="post">
+            <button type="submit">지급 승인</button>
+          </form>
         </td>
       </tr>
     </c:forEach>

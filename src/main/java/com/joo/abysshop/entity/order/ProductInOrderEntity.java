@@ -1,9 +1,11 @@
 package com.joo.abysshop.entity.order;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
+@Builder
 @AllArgsConstructor
 //order_products op LEFT OUTER JOIN products_table
 public class ProductInOrderEntity {
@@ -15,5 +17,4 @@ public class ProductInOrderEntity {
     private String productName;
     private Long price;
     private String description;
-    private String productType;
 }

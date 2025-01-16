@@ -2,32 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.joo.abysshop.mapper.mybatis.AdminMapper">
-  <select id="getUserType" parameterType="java.lang.Long"
-    resultType="com.joo.abysshop.enums.UserType">
-    SELECT user_type
-    FROM users_table
-    WHERE user_id = #{id};
-  </select>
-
-  <select id="findAllProductInOrder" parameterType="java.lang.String"
-    resultType="com.joo.abysshop.entity.order.ProductInOrderEntity">
-    SELECT DISTINCT user_id,
-                    op.product_id,
-                    cart_id,
-                    order_id,
-                    product_name,
-                    price,
-                    description,
-                    product_type
-    FROM order_products op
-           LEFT OUTER JOIN products_table pt ON op.product_id = pt.product_id
-    WHERE pt.product_type = #{productType};
+  <select id="findAllOrders" resultType="java.util.List">
+    SELECT *
+    FROM orders_table
   </select>
 
   <update id="changeOrderState" parameterType="java.util.Map">
     UPDATE orders_table
     SET order_state = #{newState}
-    WHERE order_id = #{orderId};
+    WHERE order_id = #{orderId}
   </update>
 
   <update id="providePoint">
@@ -37,8 +20,8 @@
   </update>
 
   <insert id="insertProduct" parameterType="com.joo.abysshop.entity.admin.AddProductEntity">
-    INSERT INTO products_table (product_name, price, description, product_type)
-    VALUES (#{productName}, #{price}, #{description}, #{productType})
+    INSERT INTO products_table (product_name, price, description)
+    VALUES (#{productName}, #{price}, #{description})
   </insert>
 
   <insert id="insertProductImage" parameterType="com.joo.abysshop.entity.product.ProductImageEntity">

@@ -1,12 +1,13 @@
 package com.joo.abysshop.controller;
 
 import com.joo.abysshop.dto.admin.AddProductRequest;
-import com.joo.abysshop.dto.order.OrderResponse;
+import com.joo.abysshop.dto.order.OrderListResponse;
+import com.joo.abysshop.dto.point.PointRechargeListResponse;
 import com.joo.abysshop.enums.JspView;
-import com.joo.abysshop.enums.ProductType;
 import com.joo.abysshop.enums.UserType;
 import com.joo.abysshop.service.admin.AdminMyPageService;
 import com.joo.abysshop.service.admin.AdminOrderManagementService;
+import com.joo.abysshop.service.admin.AdminPointManagementService;
 import java.io.IOException;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,7 @@ public class AdminController {
 
     private final AdminMyPageService adminMyPageService;
     private final AdminOrderManagementService adminOrderManagementService;
+    private final AdminPointManagementService adminPointManagementService;
 
     @GetMapping("/admin/my-page")
     public String getAdminMyPage(@RequestParam("userId") Long userId) {
@@ -31,35 +33,38 @@ public class AdminController {
         if (userType.equals(UserType.ADMIN)) {
             return "admin/adminMyPage";
         } else {
-            return JspView.HOME.getView();
+            return JspView.REDIRECT.getView();
         }
     }
 
-    @GetMapping("/admin/order/goods")
-    public void getGoodsOrders(Model model) {
-        List<OrderResponse> goodsOrderList = adminOrderManagementService.filterOrders(
-            ProductType.GOODS);
-        model.addAttribute("goodsOrderList", goodsOrderList);
+    @GetMapping("/admin/order/list")
+    public void getProductOrderList(Model model) {
+        List<OrderListResponse> orderList = adminOrderManagementService.getAllOrders();
+        model.addAttribute("orderList", orderList);
     }
 
-    @PostMapping("/admin/order/goods/change-state")
+    @PostMapping("/admin/order/product/change-state")
     public String changeOrderState(@RequestParam("orderId") Long orderId,
-        @RequestParam("newState") String newState) {
+        @RequestParam("newState") String newState, Model model) {
         adminOrderManagementService.changeOrderState(orderId, newState);
+
+        List<OrderListResponse> orderList = adminOrderManagementService.getAllOrders();
+        model.addAttribute("orderList", orderList);
+
         return JspView.REDIRECT.getView();
     }
 
-    @GetMapping("/admin/order/point")
+    @GetMapping("/admin/point/recharge/list")
     public void getPointOrders(Model model) {
-        List<OrderResponse> pointOrderList = adminOrderManagementService.filterOrders(
-            ProductType.POINT);
-        model.addAttribute("pointOrderList", pointOrderList);
+        List<PointRechargeListResponse> pointRechargeList = adminPointManagementService.getAllPointRecharge();
+        model.addAttribute("pointRechargeList", pointRechargeList);
     }
 
-    @PostMapping("/admin/order/point/provide")
-    public String providePoint(@RequestParam("userId") Long userId, @RequestParam("point") Long point) {
+    @PostMapping("/admin/point/provide")
+    public String providePoint(@RequestParam("userId") Long userId,
+        @RequestParam("point") Long point) {
         //TODO:요청 포인트를 user에게 지급 후 해당 항목 disabled
-        adminOrderManagementService.providePoint(userId, point);
+        adminPointManagementService.providePoint(userId, point);
         return JspView.REDIRECT.getView();
     }
 

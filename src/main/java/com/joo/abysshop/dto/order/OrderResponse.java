@@ -7,6 +7,7 @@ import lombok.experimental.SuperBuilder;
 @Getter
 @SuperBuilder
 @NoArgsConstructor
+@Deprecated
 public class OrderResponse {
 
     protected Long userId;

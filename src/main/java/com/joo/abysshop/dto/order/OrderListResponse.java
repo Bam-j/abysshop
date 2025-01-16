@@ -1,4 +1,4 @@
-package com.joo.abysshop.entity.order;
+package com.joo.abysshop.dto.order;
 
 import java.util.Date;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.Getter;
 @Getter
 @Builder
 @AllArgsConstructor
-public class OrderEntity {
+public class OrderListResponse {
 
     private Long orderId;
     private Long userId;

@@ -6,4 +6,31 @@
     SELECT *
     FROM point_recharge_table
   </select>
+
+  <insert id="insertPointRecharge"
+    parameterType="com.joo.abysshop.entity.point.CreatePointRechargeEntity">
+    INSERT INTO point_recharge_table (user_id, nickname, points, request_time,
+                                      recharge_request_state)
+    VALUES (#{userId}, #{nickname}, #{points}, NOW(), 'pending_payment')
+  </insert>
+
+  <update id="changePointRechargeState" parameterType="java.util.Map">
+    UPDATE point_recharge_table
+    SET recharge_request_state = #{newState}
+    WHERE recharge_id = #{rechargeId}
+  </update>
+
+  <select id="findPointRechargeDetail" parameterType="java.lang.Long"
+    resultType="com.joo.abysshop.entity.point.PointRechargeDetailEntity">
+    SELECT *
+    FROM point_recharge_management_table
+    WHERE recharge_id = #{rechargeId}
+  </select>
+
+  <insert id="insertPointRechargeDetail"
+    parameterType="com.joo.abysshop.entity.point.SavePointRechargeDetailEntity">
+    INSERT INTO point_recharge_management_table (recharge_id, user_id, bank, account_number,
+                                                 deposit_confirmed_time)
+    VALUES (#{rechargeId}, #{userId}, #{bank}, #{accountNumber}, NOW())
+  </insert>
 </mapper>

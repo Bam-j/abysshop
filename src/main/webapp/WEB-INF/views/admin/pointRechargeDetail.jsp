@@ -24,11 +24,14 @@
 </head>
 <body>
 <section>
-  <button id="manage-recharge-detail-button" type="button" class="btn btn-primary"
-          data-bs-toggle="modal"
-          data-bs-target="#manage-recharge-detail-modal">
-    포인트 충전
-  </button>
+  <form action="point/recharge/request/detail" method="get">
+    <input type="hidden" name="pointRequestId" value="${pointRecharge.rechargeId}">
+    <button id="manage-recharge-detail-button" type="button" class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#manage-recharge-detail-modal">
+      포인트 충전
+    </button>
+  </form>
 
   <div class="modal fade" id="manage-recharge-detail-modal" tabindex="-1"
        aria-labelledby="manage-recharge-detail-modal-label"
@@ -37,17 +40,16 @@
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="manage-recharge-detail-modal-label">포인트 충전 요청</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"
-                  aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="alert alert-warning" role="alert">
             정확한 정보를 입력해주세요. 입력된 정보는 환불 등 처리에 사용됩니다.
           </div>
           <div class="modal-footer">
-            <!-- 닫았다가 열 때 저장했던 정보가 남아있도록 or 다시 뜨도록 -->
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-            <form action="/point/recharge/request/management" method="post">
+            <form action="/point/recharge/request/detail" method="post">
+              <%-- TODO: GET 요청에서 받은 pointRechargeDetail의 내용 반영하기 --%>
               <input type="hidden" name="rechargeId" value="${request.rechargeId}">
               <input type="hidden" name="userId" value="${user.userId}">
               <input type="text" name="bank" placeholder="은행">
@@ -58,6 +60,7 @@
         </div>
       </div>
     </div>
+  </div>
 </section>
 </body>
 </html>

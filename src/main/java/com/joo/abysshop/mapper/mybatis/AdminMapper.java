@@ -13,7 +13,7 @@ public interface AdminMapper {
 
     List<OrderEntity> findAllOrders();
 
-    void changeOrderState(Map changeStateMap);
+    void changeOrderState(Map<String, Object> changeStateMap);
 
     //parameterType으로 명시하는 방법과 @Param을 통해 타입과 이름을 지정하는 두 가지 방법이 있다.
     void providePoint(@Param("userId") Long userId, @Param("point") Long point);

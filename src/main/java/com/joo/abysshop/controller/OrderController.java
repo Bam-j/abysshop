@@ -27,16 +27,10 @@ public class OrderController {
         return "order/shoppingCart";
     }
 
-    @PostMapping("/order/cart/remove/item")
-    public String removeItem(@PathVariable Long productId, Model model) {
-        //cart에서 상품 제거하고, 카트 리스트를 다시 불러와서 redirect
-
-        return "redirect:/order/shoppingCart/" + productId;
-    }
-
     @PostMapping("/order/create")
     public String createOrder() {
-        //장바구니 상품들 가져와서 order로 만들기
+        //장바구니 상품들 가져와서 order로 만들기 + 보유 포인트에서 총합 포인트 빼기
+        //if -> 잔액 부족시 error retrun
         return "order/bankTransferInfo";
     }
 
@@ -44,15 +38,6 @@ public class OrderController {
         페이지 디자인 작업용으로 사용하는 임시 GET 요청.
         실제 동작은 /order/cart/{id}로 사용할 것. (id는 회원의 id)
      */
-    @GetMapping("/order/cart")
-    public String cart() {
-        return "order/shoppingCart";
-    }
-
-    @GetMapping("/order/bank-transfer")
-    public String bankTransfer() {
-        return "order/bankTransferInfo";
-    }
 
     @GetMapping("/order/complete")
     public String complete() {

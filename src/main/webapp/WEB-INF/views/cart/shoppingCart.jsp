@@ -40,24 +40,34 @@
 </nav>
 <main>
   <section>
-    <%--
     <table>
       <thead>
       <tr>
         <th>상품명</th>
-        <th>금액/포인트</th>
+        <th>포인트</th>
+        <th>수량</th>
         <th>삭제</th>
       </tr>
       </thead>
       <tbody>
       <c:forEach items="${userOrders}" var="item">
         <tr>
-            TODO: 테이블 구조에 따라 장바구니 표현 방식을 변경해야함.
-              + 수량 조절 기능 추가하기
           <td>${item.name}</td>
           <td>${item.price}</td>
           <td>
-            <form action="/order/cart/remove/item" method="post">
+          <%-- TODO: 증감 설정 버튼 CSS 입히기 --%>
+            <div style='display: flex;'>
+              <input type='button'
+                     onclick='count("plus")'
+                     value='+' />
+              <div id='result'>0</div>
+              <input type='button'
+                     onclick='count("minus")'
+                     value='-' />
+            </div>
+          </td>
+          <td>
+            <form action="/cart/remove/item" method="post">
               <input type="hidden" name="cartId" value="${cartId}">
               <input type="hidden" name="productId" value="${item.productId}">
               <button id="item-remove-button">X</button>
@@ -68,21 +78,25 @@
       </tbody>
       <tfoot>
       <tr>
-        <td>합계 금액</td>
+        <td>주문 합계 포인트</td>
         <td>
-          <c:set var="totalPrice" value="${item.price}"></c:set>
-          ${totalPrice}
+          <%-- TODO: 스크립트로 총합 계산 후 합계 포인트 나타내기--%>
+          ${cart.totalPoints}
+        </td>
+        <td>
+          <form action="/order/create" method="post">
+            <input type="hidden" name="cartId", value="${cartId}">
+            <button type="submit">구매하기</button>
+          </form>
         </td>
       </tr>
       </tfoot>
     </table>
-    <form action="/order/create" method="post">
-      <input type="hidden" name="cartId" value="${cartId}">
-      <button type="button" class="btn btn-primary">결제하기</button>
-    </form>
-    --%>
   </section>
 </main>
+
 <%@ include file="../common/footer.jsp" %>
+
+<script src="../resources/static/js/cart/quantityControl.js"></script>
 </body>
 </html>

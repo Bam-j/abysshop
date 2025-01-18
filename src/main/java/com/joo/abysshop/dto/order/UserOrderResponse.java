@@ -12,6 +12,6 @@ public class UserOrderResponse {
 
     private Long orderId;
     private Date orderDate;
-    private Long totalPrice;
+    private Long totalPoints;
     private String orderState;
 }

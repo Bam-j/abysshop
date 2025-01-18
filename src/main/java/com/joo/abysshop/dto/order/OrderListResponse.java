@@ -13,6 +13,6 @@ public class OrderListResponse {
     private Long orderId;
     private Long userId;
     private Date orderDate;
-    private Long totalPrice; //TODO: 구조상 totalPoints로 변경하는게 좋아보임
+    private Long totalPoints;
     private String orderState;
 }

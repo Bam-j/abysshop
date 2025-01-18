@@ -12,5 +12,5 @@ public class UserCartItemResponse {
     private Integer cartId;
     private Integer userId;
     private Integer quantity;
-    private Integer totalPrice;
+    private Integer totalPoints;
 }

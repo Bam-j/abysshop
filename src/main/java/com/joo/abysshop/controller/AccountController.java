@@ -7,7 +7,6 @@ import com.joo.abysshop.dto.account.ChangeNicknameRequest;
 import com.joo.abysshop.dto.account.ChangePasswordRequest;
 import com.joo.abysshop.dto.product.ProductListResponse;
 import com.joo.abysshop.enums.JspView;
-import com.joo.abysshop.enums.ProductType;
 import com.joo.abysshop.enums.ResultStatus;
 import com.joo.abysshop.service.account.AccountService;
 import com.joo.abysshop.service.product.ProductService;

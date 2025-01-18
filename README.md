@@ -24,11 +24,11 @@
 ---
 # DB
 ## 테이블
-- 상품, 회원, 주문, 장바구니, 포인트 충전 요청
+- 상품, 회원, 주문, 장바구니, 포인트 충전 요청, 포인트 요청 상세 정보(입금자 계좌 정보)
 - 테이블 생성, 테스트를 위한 더미 데이터 삽입은 [sql 디렉토리](https://github.com/Bam-j/abysshop/tree/main/sql)의 `abysshop.sql 및 insertXxxxxDummyData.sql` 파일을 참조해주세요.
 
 ## ERD
-![abysshop_erd](https://github.com/user-attachments/assets/9a18bed6-6e4d-4466-88d8-1ce452a87d9d)
+![abysshop_erd](https://github.com/user-attachments/assets/68624488-9925-4677-b29f-2a6eba95177f)
 
 ---
 # 사용법

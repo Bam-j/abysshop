@@ -30,19 +30,19 @@ CREATE TABLE `product_image_table`
 
 CREATE TABLE `carts_table`
 (
-  `cart_id`     INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `user_id`     INT UNSIGNED             NOT NULL,
-  `quantity`    INT UNSIGNED             NOT NULL DEFAULT 0,
-  `total_price` INT UNSIGNED             NOT NULL DEFAULT 0
+  `cart_id`      INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `user_id`      INT UNSIGNED             NOT NULL,
+  `quantity`     INT UNSIGNED             NOT NULL DEFAULT 0,
+  `total_points` INT UNSIGNED             NOT NULL DEFAULT 0
 );
 
 CREATE TABLE `orders_table`
 (
-  `order_id`    INT UNSIGNED PRIMARY KEY                   NOT NULL AUTO_INCREMENT,
-  `user_id`     INT UNSIGNED                               NOT NULL,
-  `order_date`  DATETIME                                   NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `total_price` INT UNSIGNED                               NOT NULL,
-  `order_state` ENUM ('shipping', 'completed', 'refunded') NOT NULL DEFAULT 'shipping'
+  `order_id`     INT UNSIGNED PRIMARY KEY                   NOT NULL AUTO_INCREMENT,
+  `user_id`      INT UNSIGNED                               NOT NULL,
+  `order_date`   DATETIME                                   NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `total_points` INT UNSIGNED                               NOT NULL,
+  `order_state`  ENUM ('shipping', 'completed', 'refunded') NOT NULL DEFAULT 'shipping'
 );
 
 CREATE TABLE `order_products`
@@ -63,9 +63,9 @@ CREATE TABLE `point_recharge_table`
   `recharge_request_state` ENUM ('pending_payment', 'pending_point_deposit', 'completed', 'refunded') NOT NULL DEFAULT 'pending_payment'
 );
 
-CREATE TABLE `point_recharge_management_table`
+CREATE TABLE `point_recharge_detail_table`
 (
-  `point_request_id`       INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `recharge_detail_id`     INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `recharge_id`            INT UNSIGNED             NOT NULL,
   `user_id`                INT UNSIGNED             NOT NULL,
   `bank`                   VARCHAR(100)             NULL,
@@ -97,11 +97,11 @@ ALTER TABLE `product_image_table`
 ALTER TABLE `point_recharge_table`
   ADD CONSTRAINT `FK_users_table_TO_point_recharge_table_1` FOREIGN KEY (`user_id`) REFERENCES `users_table` (`user_id`) ON DELETE CASCADE;
 
-ALTER TABLE `point_recharge_management_table`
-  ADD CONSTRAINT `FK_point_recharge_table_TO_point_recharge_management_table_1` FOREIGN KEY (`recharge_id`) REFERENCES `point_recharge_table` (`recharge_id`);
+ALTER TABLE `point_recharge_detail_table`
+  ADD CONSTRAINT `FK_point_recharge_table_TO_point_recharge_detail_table_1` FOREIGN KEY (`recharge_id`) REFERENCES `point_recharge_table` (`recharge_id`);
 
-ALTER TABLE `point_recharge_management_table`
-  ADD CONSTRAINT `FK_point_recharge_table_TO_point_recharge_management_table_2` FOREIGN KEY (`user_id`) REFERENCES `point_recharge_table` (`user_id`);
+ALTER TABLE `point_recharge_detail_table`
+  ADD CONSTRAINT `FK_point_recharge_table_TO_point_recharge_detail_table_2` FOREIGN KEY (`user_id`) REFERENCES `point_recharge_table` (`user_id`) ON DELETE CASCADE;
 
 # 테스트용 관리자 계정 생성 쿼리
 INSERT INTO users_table (username, nickname, password, user_type, points)

@@ -3,7 +3,7 @@ CREATE PROCEDURE insert_cart_dummy_data()
 BEGIN
   START TRANSACTION;
 
-  INSERT INTO carts_table (user_id, quantity, total_price)
+  INSERT INTO carts_table (user_id, quantity, total_points)
   VALUES (1, 1, 5000),
          (1, 2, 5000),
          (2, 1, 5000),

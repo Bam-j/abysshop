@@ -3,7 +3,7 @@ CREATE PROCEDURE insert_order_dummy_data()
 BEGIN
   START TRANSACTION;
 
-  INSERT INTO orders_table (user_id, order_date, total_price, order_state)
+  INSERT INTO orders_table (user_id, order_date, total_points, order_state)
   VALUES (1, CURRENT_DATE, 5000, 'shipping'),
          (1, CURRENT_DATE, 5000, 'shipping'),
          (2, CURRENT_DATE, 5000, 'shipping'),

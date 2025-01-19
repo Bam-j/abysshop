@@ -1,36 +1,25 @@
 package com.joo.abysshop.controller;
 
-import com.joo.abysshop.dto.cart.CartResponse;
-import com.joo.abysshop.mapper.mybatis.CartMapper;
-import java.util.List;
+import com.joo.abysshop.dto.order.CreateOrderRequest;
+import com.joo.abysshop.service.order.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @RequiredArgsConstructor
 public class OrderController {
 
-    private final CartMapper cartMapper;
-
-    @GetMapping("/order/cart/{userId}")
-    public String cart(@PathVariable Long userId, Model model) {
-        //TODO: JSP에서 product_type에 따라서 분리해서 보여주도록 만들기
-        List<CartResponse> cartResponseList = cartMapper.findAllItems(userId);
-        Long cartId = cartMapper.getCartId(userId);
-        model.addAttribute("userOrders", cartResponseList);
-        model.addAttribute("cartId", cartId);
-
-        return "order/shoppingCart";
-    }
+    private final OrderService orderService;
 
     @PostMapping("/order/create")
-    public String createOrder() {
+    public String createOrder(@ModelAttribute CreateOrderRequest createOrderRequest) {
         //장바구니 상품들 가져와서 order로 만들기 + 보유 포인트에서 총합 포인트 빼기
-        //if -> 잔액 부족시 error retrun
+
+        orderService.createOrder(createOrderRequest);
+
         return "order/bankTransferInfo";
     }
 

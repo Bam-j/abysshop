@@ -87,7 +87,8 @@
         </td>
         <td>
           <form action="/order/create" method="post">
-            <input type="hidden" name="cartId", value="${cartId}">
+            <input type="hidden" name="userId" value="${user.userId}">
+            <input type="hidden" name="cartId" value="${cartId}">
             <button type="submit">구매하기</button>
           </form>
         </td>

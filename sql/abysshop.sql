@@ -73,6 +73,16 @@ CREATE TABLE `point_recharge_detail_table`
   `deposit_confirmed_time` DATETIME                 NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE `cart_items_table`
+(
+  `cart_item_id` INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `cart_id`      INT UNSIGNED             NOT NULL,
+  `product_id`   INT UNSIGNED             NOT NULL,
+  `product_name` VARCHAR(255)             NULL,
+  `price`        INT UNSIGNED             NULL,
+  `quantity`     INT UNSIGNED             NULL
+);
+
 ALTER TABLE `carts_table`
   ADD CONSTRAINT `FK_users_table_TO_carts_table_1` FOREIGN KEY (`user_id`) REFERENCES `users_table` (`user_id`) ON DELETE CASCADE;
 
@@ -102,6 +112,12 @@ ALTER TABLE `point_recharge_detail_table`
 
 ALTER TABLE `point_recharge_detail_table`
   ADD CONSTRAINT `FK_point_recharge_table_TO_point_recharge_detail_table_2` FOREIGN KEY (`user_id`) REFERENCES `point_recharge_table` (`user_id`) ON DELETE CASCADE;
+
+ALTER TABLE `cart_items_table`
+  ADD CONSTRAINT `FK_carts_table_TO_cart_items_table_1` FOREIGN KEY (`cart_id`) REFERENCES `carts_table` (`cart_id`) ON DELETE CASCADE;
+
+ALTER TABLE `cart_items_table`
+  ADD CONSTRAINT `FK_products_table_TO_cart_items_table_1` FOREIGN KEY (`product_id`) REFERENCES `products_table` (`product_id`) ON DELETE CASCADE;
 
 # 테스트용 관리자 계정 생성 쿼리
 INSERT INTO users_table (username, nickname, password, user_type, points)

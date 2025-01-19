@@ -28,7 +28,7 @@
 - 테이블 생성, 테스트를 위한 더미 데이터 삽입은 [sql 디렉토리](https://github.com/Bam-j/abysshop/tree/main/sql)의 `abysshop.sql 및 insertXxxxxDummyData.sql` 파일을 참조해주세요.
 
 ## ERD
-![abysshop_erd](https://github.com/user-attachments/assets/68624488-9925-4677-b29f-2a6eba95177f)
+![abysshop_erd](https://github.com/user-attachments/assets/ec96b4f5-51a3-442c-bb84-8b9da60b98d9)
 
 ---
 # 사용법

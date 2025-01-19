@@ -7,7 +7,7 @@ import lombok.Getter;
 @Getter
 @Builder
 @AllArgsConstructor
-public class UserCartItemResponse {
+public class CartItemResponse {
 
     private Long cartItemId;
     private Long cartId;

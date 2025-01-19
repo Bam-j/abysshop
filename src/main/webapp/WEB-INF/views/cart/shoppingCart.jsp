@@ -56,6 +56,7 @@
           <td>${item.price}</td>
           <td>
           <%-- TODO: 증감 설정 버튼 CSS 입히기 --%>
+          <%-- 페이지에 보여질 totalPoints는 스크립트에서 계산, order 저장시는 백엔드에서 계산 --%>
             <div style='display: flex;'>
               <input type='button'
                      onclick='count("plus")'
@@ -63,13 +64,14 @@
               <div id='result'>0</div>
               <input type='button'
                      onclick='count("minus")'
-                     value='-' />
+                     value='-'
             </div>
           </td>
           <td>
-            <form action="/cart/remove/item" method="post">
-              <input type="hidden" name="cartId" value="${cartId}">
+            <form action="/cart/item/remove" method="post">
+              <input type="hidden" name="cartId" value="${cart.cartId}">
               <input type="hidden" name="productId" value="${item.productId}">
+              <input type="hidden" name="userId" value="${user.userId}">
               <button id="item-remove-button">X</button>
             </form>
           </td>

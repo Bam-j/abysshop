@@ -7,10 +7,9 @@ import lombok.Getter;
 @Getter
 @Builder
 @AllArgsConstructor
-public class UserCartResponse {
+public class RemoveItemRequest {
 
-    private Integer cartId;
-    private Integer userId;
-    private Integer quantity;
-    private Integer totalPoints;
+    private Long cartId;
+    private Long productId;
+    private Long userId;
 }

@@ -7,7 +7,7 @@ import lombok.Getter;
 @Getter
 @Builder
 @AllArgsConstructor
-public class CartItemEntuty {
+public class CartItemEntity {
 
     private Long cartItemId;
     private Long cartId;

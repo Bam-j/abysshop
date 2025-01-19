@@ -16,6 +16,9 @@
 <%--
   TODO: 환불 규정, 결제 안내 등을 표시할 모달 페이지 추가하기
 --%>
+<%--
+  TODO: JSP 파일 전반에 걸쳐서 변수명 체크하고 변경하기
+--%>
 <%@ page
     info="Abysshop의 메인 페이지입니다. 상품 목록을 보여줍니다."
     contentType="text/html;charset=UTF-8"

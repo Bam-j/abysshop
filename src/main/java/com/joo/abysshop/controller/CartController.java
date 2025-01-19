@@ -1,6 +1,8 @@
 package com.joo.abysshop.controller;
 
-import com.joo.abysshop.dto.order.UserOrderResponse;
+import com.joo.abysshop.dto.cart.UserCartItemResponse;
+import com.joo.abysshop.dto.cart.UserCartResponse;
+import com.joo.abysshop.service.cart.CartService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -13,10 +15,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequiredArgsConstructor
 public class CartController {
 
+    private final CartService cartService;
+
     @GetMapping("/user/cart/{id}")
-    public String getUserCartPage(@PathVariable int id, Model model) {
+    public String getUserCartPage(@PathVariable Long userId, Model model) {
         //TODO: id를 통해 장바구니에 담긴 상품 목록들을 가져와서 페이지로 넘긴다.
-        List<UserOrderResponse> userOrderResponseList;
+        UserCartResponse userCart = cartService.getUserCart(userId);
+        List<UserCartItemResponse> userCartItems = cartService.getUserCartItems();
+
+        model.addAttribute("userCartItems", userCartItems);
+        model.addAttribute("userCartInfo", userCart);
         return "order/shoppingCart";
     }
 

@@ -1,4 +1,4 @@
-package com.joo.abysshop.dto.cart;
+package com.joo.abysshop.entity.cart;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,7 +7,7 @@ import lombok.Getter;
 @Getter
 @Builder
 @AllArgsConstructor
-public class UserCartItemResponse {
+public class CartItemEntuty {
 
     private Long cartItemId;
     private Long cartId;

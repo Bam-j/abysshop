@@ -1,6 +1,6 @@
 package com.joo.abysshop.controller;
 
-import com.joo.abysshop.dto.cart.UserCartItemResponse;
+import com.joo.abysshop.dto.cart.UserCartResponse;
 import com.joo.abysshop.mapper.mybatis.CartMapper;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -19,9 +19,9 @@ public class OrderController {
     @GetMapping("/order/cart/{userId}")
     public String cart(@PathVariable Long userId, Model model) {
         //TODO: JSP에서 product_type에 따라서 분리해서 보여주도록 만들기
-        List<UserCartItemResponse> userCartItemResponseList = cartMapper.findAllItems(userId);
+        List<UserCartResponse> userCartResponseList = cartMapper.findAllItems(userId);
         Long cartId = cartMapper.getCartId(userId);
-        model.addAttribute("userOrders", userCartItemResponseList);
+        model.addAttribute("userOrders", userCartResponseList);
         model.addAttribute("cartId", cartId);
 
         return "order/shoppingCart";

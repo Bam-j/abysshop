@@ -8,6 +8,7 @@ import lombok.Getter;
 @Getter
 @Builder
 @AllArgsConstructor
+@Deprecated //OrderListResponse로 통합
 public class UserOrderResponse {
 
     private Long orderId;

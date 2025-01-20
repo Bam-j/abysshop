@@ -42,10 +42,10 @@
         <jsp:include page="userInfo.jsp" />
       </c:when>
       <c:when test="${param.menu eq 'point-request'}">
-        <jsp:include page="userPointRechargeManagement.jsp" />
+        <jsp:include page="userPointRechargeList.jsp" />
       </c:when>
       <c:otherwise>
-        <jsp:include page="userOrderManagement.jsp" />
+        <jsp:include page="userOrderList.jsp" />
       </c:otherwise>
     </c:choose>
   </div>

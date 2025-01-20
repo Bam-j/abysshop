@@ -2,8 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.joo.abysshop.mapper.mybatis.OrderMapper">
-  <select id="insertOrder" parameterType="com.joo.abysshop.entity.order.CreateOrderEntity">
+  <insert id="insertOrder" parameterType="com.joo.abysshop.entity.order.CreateOrderEntity">
     INSERT INTO orders_table (user_id, order_date, total_points, order_state)
     VALUES (#{userId}, NOW(), #{totalPoints}, 'shipping')
+  </insert>
+
+  <select id="getUserOrders" parameterType="java.lang.Long" resultType="java.util.List">
+    SELECT *
+    FROM orders_table
+    WHERE user_id = #{userId}
   </select>
 </mapper>

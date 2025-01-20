@@ -13,7 +13,7 @@ public class ToOrderDTOMapperImpl implements ToOrderDTOMapper {
             .orderId(orderEntity.getOrderId())
             .userId(orderEntity.getUserId())
             .orderDate(orderEntity.getOrderDate())
-            .totalPrice(orderEntity.getTotalPrice())
+            .totalPoints(orderEntity.getTotalPoints())
             .orderState(orderEntity.getOrderState())
             .build();
     }

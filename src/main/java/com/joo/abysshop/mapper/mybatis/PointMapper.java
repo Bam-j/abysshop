@@ -20,4 +20,6 @@ public interface PointMapper {
     PointRechargeDetailEntity findPointRechargeDetail(Long rechargeId);
 
     void insertPointRechargeDetail(SavePointRechargeDetailEntity savePointRechargeDetailEntity);
+
+    List<PointRechargeEntity> getUserPointRecharges(Long userId);
 }

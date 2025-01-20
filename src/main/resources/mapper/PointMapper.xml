@@ -23,14 +23,20 @@
   <select id="findPointRechargeDetail" parameterType="java.lang.Long"
     resultType="com.joo.abysshop.entity.point.PointRechargeDetailEntity">
     SELECT *
-    FROM point_recharge_management_table
+    FROM point_recharge_detail_table
     WHERE recharge_id = #{rechargeId}
   </select>
 
   <insert id="insertPointRechargeDetail"
     parameterType="com.joo.abysshop.entity.point.SavePointRechargeDetailEntity">
-    INSERT INTO point_recharge_management_table (recharge_id, user_id, bank, account_number,
+    INSERT INTO point_recharge_detail_table (recharge_id, user_id, bank, account_number,
                                                  deposit_confirmed_time)
     VALUES (#{rechargeId}, #{userId}, #{bank}, #{accountNumber}, NOW())
   </insert>
+
+  <select id="getUserPointRecharges" parameterType="java.lang.Long" resultType="java.util.List">
+    SELECT *
+    FROM point_recharge_table
+    WHERE user_id = #{userId}
+  </select>
 </mapper>

@@ -1,0 +1,14 @@
+.item-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.item {
+  flex: 0 0 calc(25% - 20px);
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  text-align: center;
+  cursor: pointer;
+}

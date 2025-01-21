@@ -22,11 +22,13 @@
         crossorigin="anonymous">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../../../resources/static/styles/product/productList.css">
   <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <section>
   <h2>상품 목록</h2>
+  <%-- TODO: 한 페이지에 아이템이 8개씩(4개씩 2줄) 노출되도록 페이지네이션 --%>
   <div class="item-list">
     <c:forEach items="${productList}" var="product">
       <div class="item" data-item-id="${product.productId}">

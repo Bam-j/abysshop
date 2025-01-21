@@ -38,9 +38,10 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="../../resources/static/styles/common/common.css">
-  <link rel="stylesheet" href="../../../resources/static/styles/common/header.css">
-  <link rel="stylesheet" href="../../../resources/static/styles/common/footer.css">
+  <link rel="stylesheet" href="../../resources/static/styles/common/header.css">
+  <link rel="stylesheet" href="../../resources/static/styles/common/footer.css">
   <link rel="stylesheet" href="../../resources/static/styles/index.css">
+  <link rel="stylesheet" href="../../resources/static/styles/product/productList.css">
   <link rel="shortcut icon" href="../../resources/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -108,6 +109,6 @@
         crossorigin="anonymous"></script>
 <script src="../resources/static/js/index.js"></script>
 <script src="../resources/static/js/common/textCopy.js"></script>
-<script src="../resources/static/js/productEntity/moveToDetail.js"></script>
+<script src="../resources/static/js/product/moveToDetail.js"></script>
 </body>
 </html>

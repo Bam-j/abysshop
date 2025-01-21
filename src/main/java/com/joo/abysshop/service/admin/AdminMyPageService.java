@@ -32,7 +32,6 @@ public class AdminMyPageService {
             AddProductEntity addProductEntity = toProductEntityMapper.toAddProductEntity(addProductRequest);
             adminMapper.insertProduct(addProductEntity);
         } else if (addProductRequest.getImage() != null) {
-            //TODO: 이미지 관련 내용은 추후에 테스트하고 완성시키기
             //이미지를 C 드라이브 아래의 별도의 디렉토리에 저장
             MultipartFile imageFile = addProductRequest.getImage();
             String originalFileName = addProductRequest.getOriginalFileName();

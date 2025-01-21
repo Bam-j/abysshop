@@ -14,7 +14,6 @@ public class ToProductDTOMapperImpl implements ToProductDTOMapper {
             .productId(productEntity.getProductId())
             .productName(productEntity.getProductName())
             .price(productEntity.getPrice())
-            //.image() TODO: 이미지 변환 구현
             .build();
     }
 

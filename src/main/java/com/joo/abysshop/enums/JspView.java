@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum JspView {
-    HOME("/"),
+    HOME("index"),
     REDIRECT("redirect:/");
 
     private final String view;

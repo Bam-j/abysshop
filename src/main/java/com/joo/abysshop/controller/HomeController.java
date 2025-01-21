@@ -20,6 +20,6 @@ public class HomeController {
         List<ProductListResponse> productList = productService.findAllProducts();
         model.addAttribute("productList", productList);
 
-        return JspView.HOME.getView();
+        return "index";
     }
 }

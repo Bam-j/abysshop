@@ -27,7 +27,7 @@
 <footer>
   <div class="square-logo">
     <a href="/">
-      <img src="../static/images/abyssblock_square_64x64.png" alt="어비스 블록 미니멀 로고">
+      <img src="../../../resources/static/images/abyssblock_square_64x64.png" alt="어비스 블록 미니멀 로고">
     </a>
   </div>
   <ul>

@@ -32,12 +32,13 @@
   <div class="item-list">
     <c:forEach items="${productList}" var="product">
       <div class="item" data-item-id="${product.productId}">
-        <input type="hidden">
-        <img src="" class="card-img-top" alt="${product.productName}">
-        <div class="card-body">
-          <h5 class="card-title">${product.productName}</h5>
-          <p class="card-text">${product.price}</p>
-        </div>
+        <a href="/product/detail/${product.productId}">
+          <img src="" class="card-img-top" alt="${product.productName}">
+          <div class="card-body">
+            <h5 class="card-title">${product.productName}</h5>
+            <p class="card-text">${product.price}</p>
+          </div>
+        </a>
       </div>
     </c:forEach>
   </div>

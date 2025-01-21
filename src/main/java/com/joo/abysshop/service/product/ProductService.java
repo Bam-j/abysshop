@@ -28,8 +28,8 @@ public class ProductService {
         return productList;
     }
 
-    public ProductDetailResponse findById(Long id) {
-        ProductEntity productEntity = productMapper.findById(id);
+    public ProductDetailResponse findById(Long productId) {
+        ProductEntity productEntity = productMapper.findById(productId);
 
         return toProductDTOMapper.toProductDetailResponse(productEntity);
     }

@@ -11,10 +11,6 @@
     language="java"
     pageEncoding="UTF-8"
 %>
-<%
-  Long id = (Long) session.getAttribute("productId");
-  //id를 사용하여 DB로부터 상품 정보(이미지, 이름, 가격, 설명) 취득
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,26 +24,26 @@
   <link rel="stylesheet" href="../../../resources/static/styles/common/common.css">
   <link rel="stylesheet" href="../../../resources/static/styles/common/header.css">
   <link rel="stylesheet" href="../../../resources/static/styles/common/footer.css">
-  <link rel="stylesheet" href="../../../resources/static/styles/productEntity/productDetail.css">
+  <%-- productDetail.css 좀 더 꾸며주기 --%>
+  <link rel="stylesheet" href="../../../resources/static/styles/product/productDetail.css">
   <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
-<%-- 상품 이미지, 상품명, 가격, 상품 상세 설명, 수량, 장바구니 담기 버튼 --%>
 <%@ include file="../common/header.jsp" %>
 <nav>
   <form action="/" method="get">
-    <button type="button" class="btn btn-outline-dark">
+    <button type="submit" class="btn btn-outline-dark">
       <i class="bi bi-arrow-left"></i>메인으로
     </button>
   </form>
 </nav>
 <main>
   <section>
-    <img src="${item.imgUrl}" alt="상품 이미지">
+    <img src="" alt="상품 이미지">
     <ul>
-      <li><h2><strong>${item.name}</strong></h2></li>
-      <li><h3>${item.price}</h3></li>
-      <li>${item.description}</li>
+      <li><h2><strong>${product.productName}</strong></h2></li>
+      <li><h3>${product.price}</h3></li>
+      <li>${product.description}</li>
       <li>
         <form>
           <button type="button" class="btn btn-primary">

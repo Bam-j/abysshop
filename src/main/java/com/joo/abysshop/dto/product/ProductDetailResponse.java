@@ -14,5 +14,5 @@ public class ProductDetailResponse {
     private String productName;
     private Long price;
     private String description;
-    private MultipartFile image;
+    //private MultipartFile image;
 }

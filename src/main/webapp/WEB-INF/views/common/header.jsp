@@ -27,7 +27,6 @@
 </head>
 <body>
 <%
-  //TODO: DB에선 TINYINT(1)로 표기하므로 boolean 타입 추후에 변경
   //c:set 사용
   boolean isLoggedIn = false;
   boolean isAdmin = false;

@@ -23,11 +23,18 @@
   <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
+<c:set var="isLoggedIn" value="false" scope="session" />
+<%-- <c:set var="isLoggedIn" value="${isLoggedIn}" scope="session" /> --%>
 <nav>
-  <button id="point-recharge-button" type="button" class="btn btn-primary" data-bs-toggle="modal"
-          data-bs-target="#point-recharge-modal">
-    포인트 충전
-  </button>
+  <c:choose>
+    <c:when test="${isLoggedIn}">
+      <button id="point-recharge-button" type="button" class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#point-recharge-modal">
+        포인트 충전
+      </button>
+    </c:when>
+  </c:choose>
 
   <div class="modal fade" id="point-recharge-modal" tabindex="-1"
        aria-labelledby="point-recharge-modal-label"

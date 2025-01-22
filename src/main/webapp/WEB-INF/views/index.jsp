@@ -90,7 +90,6 @@
     </button>
   </div>
 </aside>
-<![CDATA[
 
 <%--<%@ include file="product/productNav.jsp" %>--%>
 

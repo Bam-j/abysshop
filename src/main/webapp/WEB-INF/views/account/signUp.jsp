@@ -38,16 +38,17 @@
     </div>
     <%-- TODO: action을 요청 방식 결정하고 변경할 것. 현재는 임시 요청 사용 --%>
     <form id="sign-up-form" action="/account/sign-up" method="post">
-      <input type="text" placeholder="계정">
-      <input type="text" data-bs-toggle="tooltip" data-bs-placement="bottom"
+      <input class="username-input" type="text" placeholder="계정">
+      <input class="nickname-input" type="text" data-bs-toggle="tooltip" data-bs-placement="bottom"
              data-bs-custom-class="custom-tooltip"
              data-bs-title="주의! 반드시 인게임의 마인크래프트 닉네임과 동일한 닉네임을 적어주세요. 후원이 원활하게 이루어지지 않을 수 있습니다."
              placeholder="마인크래프트 닉네임">
       <%-- TODO: 개발 완료시 type:"password"로 비밀번호 입력 가리기 --%>
-      <input type="text" placeholder="비밀번호">
+      <input class="password-input" type="text" placeholder="비밀번호">
       <button type="submit" class="btn btn-primary">회원가입</button>
     </form>
   </section>
 </main>
+<script src="../../../../resources/static/js/account/signUpValidation.js"></script>
 </body>
 </html>

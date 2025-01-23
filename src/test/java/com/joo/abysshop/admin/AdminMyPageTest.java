@@ -83,7 +83,7 @@ class AdminMyPageTest {
 
         //when
         adminMyPageService.removeProduct(1L);
-        ProductDetailResponse result = productMapper.findById(1L);
+        ProductEntity result = productMapper.findById(1L);
 
         //then
         assertThat(result).isNull();

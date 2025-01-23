@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const signUpForm = document.getElementById("sign-up-form");
+  const failureMessageElem = document.getElementById("failure-message")
+  let failureMessage;
 
   signUpForm.addEventListener("submit", event => {
     const usernameInput = document.querySelector(".username-input");
@@ -39,4 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
     }
   });
+
+  failureMessage = failureMessage.getAttribute("data-message");
+
+  if (failureMessage !== null) {
+    window.alert(failureMessage);
+  }
 });

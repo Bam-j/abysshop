@@ -39,6 +39,24 @@ class AccountServiceTest {
 
     @Test
     @Transactional
+    @DisplayName("회원가입 실패 테스트")
+    void signUpFailureTest() {
+        //given
+        AccountSignUpRequest accountSignUpRequest = AccountSignUpRequest.builder()
+            .username("user1")
+            .nickname("user1")
+            .password("0000")
+            .build();
+
+        //when
+        ResultStatus signUpResult = accountService.signUp(accountSignUpRequest);
+
+        //then
+        assertThat(signUpResult).isEqualTo(ResultStatus.FAILURE);
+    }
+
+    @Test
+    @Transactional
     @DisplayName("로그인 테스트")
     void signInTest() {
         //given

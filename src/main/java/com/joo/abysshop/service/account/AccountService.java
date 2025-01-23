@@ -18,6 +18,7 @@ import com.joo.abysshop.mapper.mybatis.UserMapper;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 @Service
 @RequiredArgsConstructor
@@ -28,12 +29,13 @@ public class AccountService {
     private final ToAccountDTOMapper toAccountDTOMapper;
     private final ToAccountEntityMapper toAccountEntityMapper;
 
-    public ResultStatus signIn(AccountSignInRequest accountSignInRequest) {
+    public ResultStatus signIn(AccountSignInRequest accountSignInRequest, Model model) {
         String username = accountSignInRequest.getUsername();
         Optional<AccountEntity> optionalAccountEntity = accountMapper.findByUsername(username);
         SignInEntity signInEntity;
 
         if (optionalAccountEntity.isEmpty()) {
+            model.addAttribute("failureMessage", "존재하지 않는 계정입니다.");
             return ResultStatus.FAILURE;
         } else {
             AccountEntity accountEntity = optionalAccountEntity.get();
@@ -52,6 +54,7 @@ public class AccountService {
         if (password.equals(savedPassword)) {
             return ResultStatus.SUCCESS;
         } else {
+            model.addAttribute("failureMessage", "패스워드가 일치하지 않습니다.");
             return ResultStatus.FAILURE;
         }
     }

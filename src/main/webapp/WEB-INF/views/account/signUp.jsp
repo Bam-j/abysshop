@@ -47,6 +47,7 @@
       <input class="password-input" type="text" placeholder="비밀번호">
       <button type="submit" class="btn btn-primary">회원가입</button>
     </form>
+    <div id="failure-message" data-message="<%= request.getAttribute("failureMessage") %>"></div>
   </section>
 </main>
 <script src="../../../../resources/static/js/account/signUpValidation.js"></script>

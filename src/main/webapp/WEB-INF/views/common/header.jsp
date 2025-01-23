@@ -26,11 +26,6 @@
   <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
-<%
-  //c:set 사용
-  boolean isLoggedIn = false;
-  boolean isAdmin = false;
-%>
 <header>
   <div class="square-logo">
     <a href="/">

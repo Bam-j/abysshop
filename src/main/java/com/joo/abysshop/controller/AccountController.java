@@ -32,16 +32,17 @@ public class AccountController {
     }
 
     @PostMapping("/account/sign-in")
-    public String signIn(@ModelAttribute AccountSignInRequest accountSignInRequest, Model model) {
-        ResultStatus signInResult = accountService.signIn(accountSignInRequest);
+    public String signIn(@ModelAttribute AccountSignInRequest accountSignInRequest,
+        HttpSession session, Model model) {
+        ResultStatus signInResult = accountService.signIn(accountSignInRequest, model);
 
         if (signInResult == ResultStatus.SUCCESS) {
             List<ProductListResponse> productList = productService.findAllProducts();
             model.addAttribute("productList", productList);
+            session.setAttribute("isLoggedIn", true);
 
             return JspView.HOME.getView();
         } else {
-            //TODO: 프론트에 응답 보내고 스크립트를 사용해서 에러 메세지 출력하기
             return JspView.REDIRECT.getView();
         }
     }

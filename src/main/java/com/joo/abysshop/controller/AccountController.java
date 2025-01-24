@@ -42,6 +42,8 @@ public class AccountController {
             session.setAttribute("isLoggedIn", true);
 
             return JspView.HOME.getView();
+
+
         } else {
             return JspView.REDIRECT.getView();
         }
@@ -60,6 +62,7 @@ public class AccountController {
             return "account/signIn";
         } else {
             //TODO: 프론트에 응답 보내고 스크립트를 사용해서 에러 메세지 출력하기
+            //TODO: redirect를 잘못 사용하였음 redirect 사용처를 전부 수정
             return JspView.REDIRECT.getView();
         }
     }

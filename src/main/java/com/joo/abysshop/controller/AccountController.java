@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 @RequiredArgsConstructor
 public class AccountController {
+    //TODO: 모든 redirect return 다시 정의하기
 
     private final AccountService accountService;
     private final ProductService productService;
@@ -42,10 +43,8 @@ public class AccountController {
             session.setAttribute("isLoggedIn", true);
 
             return JspView.HOME.getView();
-
-
         } else {
-            return JspView.REDIRECT.getView();
+            return "redirect:account/signIn";
         }
     }
 
@@ -62,8 +61,7 @@ public class AccountController {
             return "account/signIn";
         } else {
             //TODO: 프론트에 응답 보내고 스크립트를 사용해서 에러 메세지 출력하기
-            //TODO: redirect를 잘못 사용하였음 redirect 사용처를 전부 수정
-            return JspView.REDIRECT.getView();
+            return "redirect:/account/sign-up";
         }
     }
 
@@ -72,10 +70,10 @@ public class AccountController {
         ResultStatus changeNicknameResult = accountService.changeNickname(changeNicknameRequest);
 
         if (changeNicknameResult == ResultStatus.SUCCESS) {
-            return JspView.REDIRECT.getView();
+            return "redirect:user/userMyPage?menu=user-info";
         } else {
             //TODO: 프론트에 응답 보내고 스크립트를 사용해서 에러 메세지 출력하기
-            return JspView.REDIRECT.getView();
+            return "redirect:user/userMyPage?menu=user-info";
         }
     }
 
@@ -84,10 +82,10 @@ public class AccountController {
         ResultStatus changePasswordResult = accountService.changePassword(changePasswordRequest);
 
         if (changePasswordResult == ResultStatus.SUCCESS) {
-            return JspView.REDIRECT.getView();
+            return "redirect:user/userMyPage?menu=user-info";
         } else {
             //TODO: 프론트에 응답 보내고 스크립트를 사용해서 에러 메세지 출력하기
-            return JspView.REDIRECT.getView();
+            return "redirect:user/userMyPage?menu=user-info";
         }
     }
 
@@ -114,7 +112,7 @@ public class AccountController {
             return JspView.HOME.getView();
         } else {
             //TODO: 프론트에 응답 보내고 스크립트를 사용해서 에러 메세지 출력하기
-            return JspView.REDIRECT.getView();
+            return "redirect:user/userMyPage?menu=user-info";
         }
     }
 }

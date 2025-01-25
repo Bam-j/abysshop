@@ -43,6 +43,6 @@ public class UserController {
 
     @GetMapping("/user/my-page/info")
     public String getUserMyPageInfo(Model model) {
-        return "user/userMyPageInfo";
+        return "user/userInfo";
     }
 }

@@ -33,7 +33,7 @@ public class AdminController {
         if (userType.equals(UserType.ADMIN)) {
             return "admin/adminMyPage";
         } else {
-            return JspView.REDIRECT.getView();
+            return JspView.HOME.getView();
         }
     }
 
@@ -51,7 +51,8 @@ public class AdminController {
         List<OrderListResponse> orderList = adminOrderManagementService.getAllOrders();
         model.addAttribute("orderList", orderList);
 
-        return JspView.REDIRECT.getView();
+        //TODO: 파라미터 이름 바꾸기
+        return "redirect:admin/adminMyPage?menu=goods-order-management";
     }
 
     @GetMapping("/admin/point/recharge/list")
@@ -65,7 +66,7 @@ public class AdminController {
         @RequestParam("point") Long point) {
         //TODO:요청 포인트를 user에게 지급 후 해당 항목 disabled
         adminPointManagementService.providePoint(userId, point);
-        return JspView.REDIRECT.getView();
+        return "redirect:admin/adminMyPage?menu=point-recharge-management";
     }
 
     @PostMapping("/admin/product/add")
@@ -73,13 +74,14 @@ public class AdminController {
         throws IOException {
         //TODO: Image 관련 내용 구현하기
         adminMyPageService.addProduct(addProductRequest);
-        return JspView.REDIRECT.getView();
+        //파라미터 변경
+        return "redirect:admin/adminMyPage?menu=add-productEntity";
     }
 
     @PostMapping("/admin/product/remove")
     public String removeProduct(@RequestParam("productId") Long productId) {
         //TODO: 폼에 입력된 정보들을 토대로 products_table에서 상품 제거
         adminMyPageService.removeProduct(productId);
-        return JspView.REDIRECT.getView();
+        return "redirect:admin/adminMyPage?menu=remove-productEntity";
     }
 }

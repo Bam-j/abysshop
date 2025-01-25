@@ -29,7 +29,7 @@ public class CartController {
 
         model.addAttribute("userCartItems", userCartItems);
         model.addAttribute("userCartInfo", userCart);
-        return "order/shoppingCart";
+        return "cart/shoppingCart";
     }
 
     @PostMapping("/cart/item/remove")
@@ -45,7 +45,7 @@ public class CartController {
         model.addAttribute("userCartItems", userCartItems);
         model.addAttribute("userCartInfo", userCart);
 
-        return JspView.REDIRECT.getView();
+        return "redirect:/user/cart/" + userId;
     }
 
     /*

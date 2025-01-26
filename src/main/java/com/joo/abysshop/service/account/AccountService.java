@@ -64,7 +64,7 @@ public class AccountService {
 
         //username 조회 결과가 존재하면 회원가입 요청 실패
         if (optionalAccountEntity.isPresent()) {
-            return ResultStatus.FAILURE;
+            return ResultStatus.USERNAME_FOUND;
         }
 
         String nickname = accountSignUpRequest.getNickname();
@@ -72,7 +72,7 @@ public class AccountService {
 
         //nickname 조회 결과가 존재하면 회원가입 요청 실패
         if (optionalAccountEntity.isPresent()) {
-            return ResultStatus.FAILURE;
+            return ResultStatus.NICKNAME_FOUND;
         }
 
         SignUpEntity signUpEntity = toAccountEntityMapper.toSignUpEntity(accountSignUpRequest);

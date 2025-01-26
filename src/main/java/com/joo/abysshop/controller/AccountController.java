@@ -62,13 +62,19 @@ public class AccountController {
     }
 
     @PostMapping("/account/sign-up")
-    public String signUp(@ModelAttribute AccountSignUpRequest accountSignUpRequest) {
+    public String signUp(@ModelAttribute AccountSignUpRequest accountSignUpRequest,
+        RedirectAttributes redirectAttributes) {
         ResultStatus signUpResult = accountService.signUp(accountSignUpRequest);
 
         if (signUpResult == ResultStatus.SUCCESS) {
             return "account/signIn";
+        } else if (signUpResult == ResultStatus.USERNAME_FOUND) {
+            redirectAttributes.addFlashAttribute("failureMessage", "이미 존재하는 계정입니다.");
+            return "redirect:/account/sign-up";
+        } else if (signUpResult == ResultStatus.NICKNAME_FOUND) {
+            redirectAttributes.addFlashAttribute("failureMessage", "이미 존재하는 닉네임입니다.");
+            return "redirect:/account/sign-up";
         } else {
-            //TODO: 프론트에 응답 보내고 스크립트를 사용해서 에러 메세지 출력하기
             return "redirect:/account/sign-up";
         }
     }

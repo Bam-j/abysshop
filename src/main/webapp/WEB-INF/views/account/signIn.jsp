@@ -45,11 +45,11 @@
     <form action="/account/sign-up" method="get">
       <button type="submit" class="btn btn-secondary">회원가입</button>
     </form>
-    <%--<div id="failure-message" data-message="<%= request.getAttribute("failureMessage") %>"></div>--%>
   </section>
 </main>
 <script src="../../../../resources/static/js/account/signInValidation.js"></script>
 <script>
+  //window.alert 대신 모달 alert 형식으로 변경할 것을 고려
   window.onload = () => {
     let failureMessage = "${failureMessage}";
 

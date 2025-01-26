@@ -16,10 +16,4 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
     }
   });
-
-  failureMessage = failureMessage.getAttribute("data-message");
-
-  if (failureMessage !== null) {
-    window.alert(failureMessage);
-  }
 });

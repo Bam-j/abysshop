@@ -29,14 +29,14 @@ public class AccountService {
     private final ToAccountDTOMapper toAccountDTOMapper;
     private final ToAccountEntityMapper toAccountEntityMapper;
 
-    public ResultStatus signIn(AccountSignInRequest accountSignInRequest, Model model) {
+    public ResultStatus signIn(AccountSignInRequest accountSignInRequest) {
         String username = accountSignInRequest.getUsername();
         Optional<AccountEntity> optionalAccountEntity = accountMapper.findByUsername(username);
         SignInEntity signInEntity;
 
+        //잘못된 username
         if (optionalAccountEntity.isEmpty()) {
-            model.addAttribute("failureMessage", "존재하지 않는 계정입니다.");
-            return ResultStatus.FAILURE;
+            return ResultStatus.WRONG_USERNAME;
         } else {
             AccountEntity accountEntity = optionalAccountEntity.get();
             signInEntity = SignInEntity.builder()
@@ -54,8 +54,7 @@ public class AccountService {
         if (password.equals(savedPassword)) {
             return ResultStatus.SUCCESS;
         } else {
-            model.addAttribute("failureMessage", "패스워드가 일치하지 않습니다.");
-            return ResultStatus.FAILURE;
+            return ResultStatus.WRONG_PASSWORD;
         }
     }
 

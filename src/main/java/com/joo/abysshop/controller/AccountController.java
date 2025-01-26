@@ -18,11 +18,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequiredArgsConstructor
 public class AccountController {
     //TODO: 모든 redirect return 다시 정의하기
+    //redirect는 GET 요청을 보낸다. 따라서 return이 view의 이름이 아닌, get 요청 url이어야 한다.
 
     private final AccountService accountService;
     private final ProductService productService;
@@ -34,8 +36,8 @@ public class AccountController {
 
     @PostMapping("/account/sign-in")
     public String signIn(@ModelAttribute AccountSignInRequest accountSignInRequest,
-        HttpSession session, Model model) {
-        ResultStatus signInResult = accountService.signIn(accountSignInRequest, model);
+        HttpSession session, Model model, RedirectAttributes redirectAttributes) {
+        ResultStatus signInResult = accountService.signIn(accountSignInRequest);
 
         if (signInResult == ResultStatus.SUCCESS) {
             List<ProductListResponse> productList = productService.findAllProducts();
@@ -43,8 +45,14 @@ public class AccountController {
             session.setAttribute("isLoggedIn", true);
 
             return JspView.HOME.getView();
+        } else if (signInResult == ResultStatus.WRONG_USERNAME) {
+            redirectAttributes.addFlashAttribute("failureMessage", "존재하지 않는 계정입니다.");
+            return "redirect:/account/sign-in";
+        } else if (signInResult == ResultStatus.WRONG_PASSWORD) {
+            redirectAttributes.addFlashAttribute("failureMessage", "패스워드가 일치하지 않습니다.");
+            return "redirect:/account/sign-in";
         } else {
-            return "redirect:account/signIn";
+            return "redirect:/account/sign-in";
         }
     }
 

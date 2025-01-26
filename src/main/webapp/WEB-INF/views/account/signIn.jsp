@@ -37,17 +37,26 @@
       <img src="../resources/static/images/abyssblock_mark_sd.png" alt="어비스블록 로고">
     </div>
     <form id="sign-in-form" action="/account/sign-in" method="post">
-      <input class="username-input" type="text" placeholder="계정">
+      <input class="username-input" name="username" type="text" placeholder="계정">
       <%-- TODO: 개발 완료시 type:"password"로 비밀번호 입력 가리기 --%>
-      <input class="password-input" type="text" placeholder="비밀번호">
+      <input class="password-input" name="password" type="text" placeholder="비밀번호">
       <button type="submit" class="btn btn-primary">로그인</button>
     </form>
     <form action="/account/sign-up" method="get">
       <button type="submit" class="btn btn-secondary">회원가입</button>
     </form>
-    <div id="failure-message" data-message="<%= request.getAttribute("failureMessage") %>"></div>
+    <%--<div id="failure-message" data-message="<%= request.getAttribute("failureMessage") %>"></div>--%>
   </section>
 </main>
 <script src="../../../../resources/static/js/account/signInValidation.js"></script>
+<script>
+  window.onload = () => {
+    let failureMessage = "${failureMessage}";
+
+    if (failureMessage !== "") {
+      window.alert(failureMessage)
+    }
+  }
+</script>
 </body>
 </html>

@@ -6,10 +6,12 @@ import com.joo.abysshop.dto.account.AccountWithdrawRequest;
 import com.joo.abysshop.dto.account.ChangeNicknameRequest;
 import com.joo.abysshop.dto.account.ChangePasswordRequest;
 import com.joo.abysshop.dto.product.ProductListResponse;
+import com.joo.abysshop.dto.user.UserInfoResponse;
 import com.joo.abysshop.enums.JspView;
 import com.joo.abysshop.enums.ResultStatus;
 import com.joo.abysshop.service.account.AccountService;
 import com.joo.abysshop.service.product.ProductService;
+import com.joo.abysshop.service.user.UserService;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +30,7 @@ public class AccountController {
 
     private final AccountService accountService;
     private final ProductService productService;
+    private final UserService userService;
 
     @GetMapping("/account/sign-in")
     public String getSignInPage() {
@@ -42,6 +45,9 @@ public class AccountController {
         if (signInResult == ResultStatus.SUCCESS) {
             List<ProductListResponse> productList = productService.findAllProducts();
             model.addAttribute("productList", productList);
+
+            UserInfoResponse userInfo = userService.getUserInfo(accountSignInRequest.getUsername());
+            session.setAttribute("user", userInfo);
             session.setAttribute("isLoggedIn", true);
 
             return JspView.HOME.getView();

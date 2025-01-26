@@ -16,4 +16,6 @@ public interface UserMapper {
     Long getUserPoints(Long userId);
 
     void consumePoint(Map<String, Object> remainPointsMap);
+
+    Optional<UserEntity> findByUsername(String username);
 }

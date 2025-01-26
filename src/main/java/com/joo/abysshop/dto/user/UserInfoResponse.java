@@ -1,6 +1,5 @@
 package com.joo.abysshop.dto.user;
 
-import com.joo.abysshop.enums.UserType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -10,9 +9,9 @@ import lombok.Getter;
 @AllArgsConstructor
 public class UserInfoResponse {
 
-    private Integer userId;
+    private Long userId;
     private String username;
     private String nickname;
-    private UserType userType;
-    private Integer points;
+    private String userType;
+    private Long points;
 }

@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="../../../resources/static/styles/common/footer.css">
   <link rel="stylesheet" href="../../../resources/static/styles/common/table.css">
   <link rel="stylesheet" href="../../../resources/static/styles/order/shoppingCart.css">
-  <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
+  <%--<link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">--%>
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>

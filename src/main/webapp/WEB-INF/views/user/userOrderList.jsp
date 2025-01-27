@@ -12,6 +12,7 @@
     pageEncoding="UTF-8"
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,18 +30,17 @@
     <thead>
     <tr>
       <th>주문 번호</th>
-      <th>주문 상품</th>
       <th>주문 총 포인트</th>
       <th>구매일</th>
       <th>주문 상태</th>
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${orderHistory}" var="order">
+    <c:forEach items="${userOrderList}" var="order">
       <tr>
         <td>${order.orderId}</td>
         <td>${order.totalPoints}</td>
-        <td>${order.orderDate}</td>
+        <td><fmt:formatDate value="${order.orderDate}" pattern="yyyy-MM-dd" /></td>
         <td>${order.orderState}</td>
       </tr>
     </c:forEach>

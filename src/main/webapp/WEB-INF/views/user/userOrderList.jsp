@@ -39,11 +39,9 @@
     <c:forEach items="${orderHistory}" var="order">
       <tr>
         <td>${order.orderId}</td>
-          <%-- orderItems: 3건 이상은 [상품명 외 n건]으로 표시하기 --%>
-        <td>${order.items}</td>
-        <td>${order.totalPrice}</td>
-        <td>${order.date}</td>
-        <td>${order.state}</td>
+        <td>${order.totalPoints}</td>
+        <td>${order.orderDate}</td>
+        <td>${order.orderState}</td>
       </tr>
     </c:forEach>
     </tbody>

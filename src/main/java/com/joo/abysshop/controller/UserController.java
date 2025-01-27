@@ -18,7 +18,7 @@ public class UserController {
 
     //주문 기록(default), 포인트 요청 기록, 유저 정보 수정 페이지 요청
     @GetMapping("/user/my-page/{userId}")
-    public String getUserMyPage(@PathVariable Long userId, Model model) {
+    public String getUserMyPage(@PathVariable("userId") Long userId, Model model) {
         List<OrderListResponse> userOrderList = userService.getOrderList(userId);
         model.addAttribute("userOrderList", userOrderList);
 
@@ -26,7 +26,7 @@ public class UserController {
     }
 
     @GetMapping("/user/my-page/{userId}/order/list")
-    public String getUserMyPageOrderList(@PathVariable Long userId, Model model) {
+    public String getUserMyPageOrderList(@PathVariable("userId") Long userId, Model model) {
         List<OrderListResponse> userOrderList = userService.getOrderList(userId);
         model.addAttribute("userOrderList", userOrderList);
 
@@ -34,7 +34,7 @@ public class UserController {
     }
 
     @GetMapping("/user/my-page/{userId}/point/recharge/list")
-    public String getUserMyPagePointRecharge(@PathVariable Long userId, Model model) {
+    public String getUserMyPagePointRecharge(@PathVariable("userId") Long userId, Model model) {
         List<PointRechargeListResponse> userPointRechargeList = userService.getPointRechargeList(userId);
         model.addAttribute("userPointRechargeList", userPointRechargeList);
 

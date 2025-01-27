@@ -38,8 +38,8 @@
       <td>${item.name}</td>
       <td>${item.price}</td>
       <td>
-        <form action="/admin/productEntity/remove" method="post">
-          <input type="hidden" name="productId" value="#{item.productId}">
+        <form action="/admin/product/remove" method="post">
+          <input type="hidden" name="productId" value="${item.productId}">
           <button type="submit" class="btn btn-warning">품목 삭제</button>
         </form>
       </td>

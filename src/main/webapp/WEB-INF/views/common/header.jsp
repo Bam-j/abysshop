@@ -40,8 +40,7 @@
           보유 포인트: ${user.points}
         </li>
         <li class="divider-elem">
-          <form action="/user/cart/{id}" method="get">
-              <%--<input type="hidden" name="userCartId" value="${user.cartId}">--%>
+          <form action="/user/cart/{user.cartId}" method="get">
             <input type="hidden" name="userId" value="${user.userId}">
             <button type="submit" class="btn btn-primary">
               <i class="bi bi-cart"></i>
@@ -53,15 +52,13 @@
           <c:when test="${isAdmin}">
             <li class="divider-elem">
               <form action="/admin/my-page" method="get">
-                <input type="hidden" name="userId" value="${user.userId}">
                 <button type="submit" class="btn btn-primary">관리자 페이지</button>
               </form>
             </li>
           </c:when>
           <c:otherwise>
             <li class="divider-elem">
-              <form action="/user/my-page/{userId}" method="get">
-                <input type="hidden" name="userId" value="${user.userId}">
+              <form action="/user/my-page/${user.userId}" method="get">
                 <button type="submit" class="btn btn-primary">마이페이지</button>
               </form>
             </li>

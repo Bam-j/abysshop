@@ -40,10 +40,10 @@
       <c:when test="${param.menu eq 'point-recharge-management'}">
         <jsp:include page="pointRechargeManagement.jsp" />
       </c:when>
-      <c:when test="${param.menu eq 'add-productEntity'}">
+      <c:when test="${param.menu eq 'add-product'}">
         <jsp:include page="addProduct.jsp" />
       </c:when>
-      <c:when test="${param.menu eq 'remove-productEntity'}">
+      <c:when test="${param.menu eq 'remove-product'}">
         <jsp:include page="removeProduct.jsp" />
       </c:when>
       <c:otherwise>

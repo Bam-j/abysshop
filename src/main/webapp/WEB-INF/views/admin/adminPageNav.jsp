@@ -28,8 +28,8 @@
 <nav class="nav">
   <a class="nav-link active" aria-current="page" href="?menu=goods-order-management">주문 관리</a>
   <a class="nav-link" href="?menu=point-recharge-management">포인트 지급 요청</a>
-  <a class="nav-link" href="?menu=add-productEntity">상품 추가</a>
-  <a class="nav-link" href="?menu=remove-productEntity">상품 삭제</a>
+  <a class="nav-link" href="?menu=add-product">상품 추가</a>
+  <a class="nav-link" href="?menu=remove-product">상품 삭제</a>
 </nav>
 
 <script src="../resources/static/js/common/navEvent.js"></script>

@@ -27,9 +27,11 @@
 <body>
 <header>
   <div class="square-logo">
-    <a href="/">
-      <img src="../../../resources/static/images/abyssblock_square_64x64.png" alt="어비스 블록 미니멀 로고">
-    </a>
+    <form action="/" method="get">
+      <button type="submit">
+        <img src="../../../resources/static/images/abyssblock_square_64x64.png" alt="어비스 블록 미니멀 로고">
+      </button>
+    </form>
   </div>
   <ul>
     <c:choose>
@@ -39,7 +41,8 @@
         </li>
         <li class="divider-elem">
           <form action="/user/cart/{id}" method="get">
-            <input type="hidden" name="userCartId" value="${user.cartId}">
+              <%--<input type="hidden" name="userCartId" value="${user.cartId}">--%>
+            <input type="hidden" name="userId" value="${user.userId}">
             <button type="submit" class="btn btn-primary">
               <i class="bi bi-cart"></i>
               장바구니 <span class="badge text-bg-secondary">${cart.items}</span>
@@ -50,14 +53,15 @@
           <c:when test="${isAdmin}">
             <li class="divider-elem">
               <form action="/admin/my-page" method="get">
-                <input type="hidden" name="userId" value="${user.id}">
+                <input type="hidden" name="userId" value="${user.userId}">
                 <button type="submit" class="btn btn-primary">관리자 페이지</button>
               </form>
             </li>
           </c:when>
           <c:otherwise>
             <li class="divider-elem">
-              <form action="/user/my-page/{id}" method="get">
+              <form action="/user/my-page/{userId}" method="get">
+                <input type="hidden" name="userId" value="${user.userId}">
                 <button type="submit" class="btn btn-primary">마이페이지</button>
               </form>
             </li>

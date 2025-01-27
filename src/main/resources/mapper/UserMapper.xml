@@ -42,7 +42,7 @@
 
   <select id="findByUsername" parameterType="java.lang.String"
     resultType="com.joo.abysshop.entity.user.UserEntity" resultMap="userEntityResultMap">
-    SELECT user_id, username, nickname, user_type, points
+    SELECT *
     FROM users_table
     WHERE username = #{username}
   </select>

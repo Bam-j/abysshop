@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequiredArgsConstructor
@@ -86,14 +87,19 @@ public class AccountController {
     }
 
     @PostMapping("/account/change/nickname")
-    public String changeNickname(@ModelAttribute ChangeNicknameRequest changeNicknameRequest) {
+    public RedirectView changeNickname(@ModelAttribute ChangeNicknameRequest changeNicknameRequest) {
         ResultStatus changeNicknameResult = accountService.changeNickname(changeNicknameRequest);
+        Long userId = changeNicknameRequest.getUserId();
 
         if (changeNicknameResult == ResultStatus.SUCCESS) {
-            return "redirect:user/userMyPage?menu=user-info";
+            //return "redirect:user/userMyPage?menu=user-info";
+            String url = "/user/userMyPage/" + userId + "?menu=user-info";
+            return new RedirectView(url);
         } else {
             //TODO: 프론트에 응답 보내고 스크립트를 사용해서 에러 메세지 출력하기
-            return "redirect:user/userMyPage?menu=user-info";
+            //return "redirect:user/my-page?menu=user-info";
+            String url = "/user/my-page/" + userId + "?menu=user-info";
+            return new RedirectView(url);
         }
     }
 

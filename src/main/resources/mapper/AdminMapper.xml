@@ -2,7 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.joo.abysshop.mapper.mybatis.AdminMapper">
-  <select id="findAllOrders" resultType="java.util.List">
+  <resultMap id="orderEntityResultMap" type="com.joo.abysshop.entity.order.OrderEntity">
+    <result property="orderId" column="order_id"/>
+    <result property="userId" column="user_id"/>
+    <result property="orderDate" column="order_date"/>
+    <result property="totalPoints" column="total_points"/>
+    <result property="orderState" column="order_state"/>
+  </resultMap>
+
+  <select id="findAllOrders" resultType="java.util.List" resultMap="orderEntityResultMap">
     SELECT *
     FROM orders_table
   </select>
@@ -24,7 +32,8 @@
     VALUES (#{productName}, #{price}, #{description})
   </insert>
 
-  <insert id="insertProductImage" parameterType="com.joo.abysshop.entity.product.ProductImageEntity">
+  <insert id="insertProductImage"
+    parameterType="com.joo.abysshop.entity.product.ProductImageEntity">
     INSERT INTO product_image_table (product_id, image, original_file_name)
     VALUES (#{productId}, #{image}, #{originalFileName})
   </insert>

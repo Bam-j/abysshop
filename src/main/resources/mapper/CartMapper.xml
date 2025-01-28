@@ -2,26 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.joo.abysshop.mapper.mybatis.CartMapper">
-  <select id="findAllItems" parameterType="java.lang.Long" resultType="java.util.List">
-    SELECT *
-    FROM carts_table
-    WHERE user_id = #{userId}
-  </select>
+  <resultMap id="cartEntityResultMap" type="com.joo.abysshop.entity.cart.CartEntity">
+    <result property="cartId" column="cart_id"/>
+    <result property="userId" column="user_id"/>
+    <result property="quantity" column="quantity"/>
+    <result property="totalPoints" column="total_points"/>
+  </resultMap>
 
-  <select id="getCartId" parameterType="java.lang.Long" resultType="java.lang.Long">
-    SELECT cart_id
-    FROM carts_table
-    WHERE user_id = #{userId}
-  </select>
+  <resultMap id="cartItemEntityResultMap" type="com.joo.abysshop.entity.cart.CartItemEntity">
+    <result property="cartItemId" column="cart_item_id"/>
+    <result property="cartId" column="cart_id"/>
+    <result property="productId" column="product_id"/>
+    <result property="productName" column="prodcut_name"/>
+    <result property="price" column="price"/>
+    <result property="quantity" column="quantity"/>
+  </resultMap>
 
   <select id="getCart" parameterType="java.lang.Long"
-    resultType="com.joo.abysshop.entity.cart.CartEntity">
+    resultType="com.joo.abysshop.entity.cart.CartEntity"
+    resultMap="cartEntityResultMap">
     SELECT *
     FROM carts_table
     WHERE user_id = #{userId}
   </select>
 
-  <select id="getCartItem" parameterType="java.lang.Long" resultType="java.util.List">
+  <select id="getCartItem" parameterType="java.lang.Long" resultType="java.util.List"
+    resultMap="cartItemEntityResultMap">
     SELECT *
     FROM cart_items_table
     WHERE cart_id = #{cartId}

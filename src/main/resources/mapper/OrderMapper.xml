@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.joo.abysshop.mapper.mybatis.OrderMapper">
-  <resultMap id="OrderEntityResultMap" type="com.joo.abysshop.entity.order.OrderEntity">
+  <resultMap id="orderEntityResultMap" type="com.joo.abysshop.entity.order.OrderEntity">
     <result property="orderId" column="order_id"/>
-    <result property="userId" column="user_id" />
-    <result property="orderDate" column="order_date" />
-    <result property="totalPoints" column="total_points" />
-    <result property="orderState" column="order_state" />
+    <result property="userId" column="user_id"/>
+    <result property="orderDate" column="order_date"/>
+    <result property="totalPoints" column="total_points"/>
+    <result property="orderState" column="order_state"/>
   </resultMap>
 
   <insert id="insertOrder" parameterType="com.joo.abysshop.entity.order.CreateOrderEntity">
@@ -15,7 +15,8 @@
     VALUES (#{userId}, NOW(), #{totalPoints}, 'shipping')
   </insert>
 
-  <select id="getUserOrders" parameterType="java.lang.Long" resultType="java.util.List" resultMap="OrderEntityResultMap">
+  <select id="getUserOrders" parameterType="java.lang.Long" resultType="java.util.List"
+    resultMap="orderEntityResultMap">
     SELECT *
     FROM orders_table
     WHERE user_id = #{userId}

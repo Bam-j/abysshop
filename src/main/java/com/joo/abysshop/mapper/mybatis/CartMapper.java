@@ -1,6 +1,5 @@
 package com.joo.abysshop.mapper.mybatis;
 
-import com.joo.abysshop.dto.cart.CartResponse;
 import com.joo.abysshop.entity.cart.CartEntity;
 import com.joo.abysshop.entity.cart.CartItemEntity;
 import java.util.List;
@@ -9,10 +8,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface CartMapper {
-
-    List<CartResponse> findAllItems(Long userId);
-
-    Long getCartId(Long userId);
 
     CartEntity getCart(Long userId);
 

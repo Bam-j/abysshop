@@ -18,11 +18,12 @@
     resultType="com.joo.abysshop.enums.UserType" resultMap="userTypeResultMap">
     SELECT user_type
     FROM users_table
-    WHERE user_id = #{id};
+    WHERE user_id = #{userId};
   </select>
 
   <select id="findByUserId" parameterType="java.lang.Long"
-    resultType="com.joo.abysshop.entity.user.UserEntity">
+    resultType="com.joo.abysshop.entity.user.UserEntity"
+    resultMap="userEntityResultMap">
     SELECT *
     FROM users_table
     WHERE user_id = #{userId};
@@ -41,7 +42,8 @@
   </update>
 
   <select id="findByUsername" parameterType="java.lang.String"
-    resultType="com.joo.abysshop.entity.user.UserEntity" resultMap="userEntityResultMap">
+    resultType="com.joo.abysshop.entity.user.UserEntity"
+    resultMap="userEntityResultMap">
     SELECT *
     FROM users_table
     WHERE username = #{username}

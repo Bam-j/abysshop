@@ -2,7 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.joo.abysshop.mapper.mybatis.PointMapper">
-  <select id="findAllPointRecharge" resultType="java.util.List">
+  <resultMap id="pointRechargeEntityResultMap"
+    type="com.joo.abysshop.entity.point.PointRechargeEntity">
+    <result property="rechargeId" column="recharge_id"/>
+    <result property="userId" column="userId"/>
+    <result property="nickname" column="nickname"/>
+    <result property="points" column="points"/>
+    <result property="requestTime" column="request_time"/>
+    <result property="rechargeRequestState" column="recharge_Request_state"/>
+  </resultMap>
+
+  <resultMap id="pointRechargeDetailEntityResultMap"
+    type="com.joo.abysshop.entity.point.PointRechargeDetailEntity">
+    <result property="rechargeDetailId" column="recharge_detail_id"/>
+    <result property="rechargeId" column="recharge_id"/>
+    <result property="userId" column="user_id"/>
+    <result property="bank" column="bank"/>
+    <result property="accountNumber" column="account_number"/>
+    <result property="depositConfirmedTime" column="deposit_confirmed_time"/>
+  </resultMap>
+
+  <select id="findAllPointRecharge" resultType="java.util.List"
+    resultMap="pointRechargeEntityResultMap">
     SELECT *
     FROM point_recharge_table
   </select>
@@ -21,7 +42,8 @@
   </update>
 
   <select id="findPointRechargeDetail" parameterType="java.lang.Long"
-    resultType="com.joo.abysshop.entity.point.PointRechargeDetailEntity">
+    resultType="com.joo.abysshop.entity.point.PointRechargeDetailEntity"
+    resultMap="pointRechargeDetailEntityResultMap">
     SELECT *
     FROM point_recharge_detail_table
     WHERE recharge_id = #{rechargeId}
@@ -30,11 +52,12 @@
   <insert id="insertPointRechargeDetail"
     parameterType="com.joo.abysshop.entity.point.SavePointRechargeDetailEntity">
     INSERT INTO point_recharge_detail_table (recharge_id, user_id, bank, account_number,
-                                                 deposit_confirmed_time)
+                                             deposit_confirmed_time)
     VALUES (#{rechargeId}, #{userId}, #{bank}, #{accountNumber}, NOW())
   </insert>
 
-  <select id="getUserPointRecharges" parameterType="java.lang.Long" resultType="java.util.List">
+  <select id="getUserPointRecharges" parameterType="java.lang.Long" resultType="java.util.List"
+    resultMap="pointRechargeEntityResultMap">
     SELECT *
     FROM point_recharge_table
     WHERE user_id = #{userId}

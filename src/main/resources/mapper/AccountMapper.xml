@@ -2,21 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.joo.abysshop.mapper.mybatis.AccountMapper">
-  <resultMap id="AccountEntityResultMap" type="com.joo.abysshop.entity.account.AccountEntity">
+  <resultMap id="accountEntityResultMap" type="com.joo.abysshop.entity.account.AccountEntity">
     <result property="username" column="username"/>
     <result property="nickname" column="nickname"/>
     <result property="password" column="password"/>
   </resultMap>
 
   <select id="findByUsername" parameterType="java.lang.String"
-    resultMap="AccountEntityResultMap">
+    resultMap="accountEntityResultMap">
     SELECT username, nickname, password
     FROM users_table
     WHERE username = #{username}
   </select>
 
   <select id="findByNickname" parameterType="java.lang.String"
-    resultType="com.joo.abysshop.entity.account.AccountEntity">
+    resultType="com.joo.abysshop.entity.account.AccountEntity"
+    resultMap="accountEntityResultMap">
     SELECT *
     FROM users_table
     WHERE nickname = #{nickname}

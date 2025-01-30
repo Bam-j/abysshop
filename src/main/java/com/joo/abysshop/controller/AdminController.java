@@ -27,10 +27,13 @@ public class AdminController {
     private final AdminPointManagementService adminPointManagementService;
 
     @GetMapping("/admin/my-page")
-    public String getAdminMyPage(@RequestParam("userId") Long userId) {
+    public String getAdminMyPage(@RequestParam("userId") Long userId, Model model) {
         UserType userType = adminMyPageService.getUserType(userId);
 
         if (userType.equals(UserType.ADMIN)) {
+            List<OrderListResponse> orderList = adminOrderManagementService.getAllOrders();
+            model.addAttribute("orderList", orderList);
+
             return "admin/adminMyPage";
         } else {
             return JspView.HOME.getView();
@@ -51,8 +54,7 @@ public class AdminController {
         List<OrderListResponse> orderList = adminOrderManagementService.getAllOrders();
         model.addAttribute("orderList", orderList);
 
-        //TODO: 파라미터 이름 바꾸기
-        return "redirect:admin/adminMyPage?menu=goods-order-management";
+        return "redirect:admin/adminMyPage?menu=order-management";
     }
 
     @GetMapping("/admin/point/recharge/list")
@@ -75,13 +77,13 @@ public class AdminController {
         //TODO: Image 관련 내용 구현하기
         adminMyPageService.addProduct(addProductRequest);
         //파라미터 변경
-        return "redirect:admin/adminMyPage?menu=add-productEntity";
+        return "redirect:admin/adminMyPage?menu=add-product";
     }
 
     @PostMapping("/admin/product/remove")
     public String removeProduct(@RequestParam("productId") Long productId) {
         //TODO: 폼에 입력된 정보들을 토대로 products_table에서 상품 제거
         adminMyPageService.removeProduct(productId);
-        return "redirect:admin/adminMyPage?menu=remove-productEntity";
+        return "redirect:admin/adminMyPage?menu=remove-product";
     }
 }

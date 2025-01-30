@@ -28,6 +28,8 @@ import org.springframework.web.servlet.view.RedirectView;
 public class AccountController {
     //TODO: 모든 redirect return 다시 정의하기
     //redirect는 GET 요청을 보낸다. 따라서 return이 view의 이름이 아닌, get 요청 url이어야 한다.
+    //할 일 메모 1. 프론트 요청 alert는 redirectAttributes.addFlashAttribute를 사용하도록 교체 + todos 삭제
+    //2. 파라미터 포함된 redirect를 RedirectView로 교체
 
     private final AccountService accountService;
     private final ProductService productService;
@@ -89,16 +91,14 @@ public class AccountController {
     @PostMapping("/account/change/nickname")
     public RedirectView changeNickname(@ModelAttribute ChangeNicknameRequest changeNicknameRequest) {
         ResultStatus changeNicknameResult = accountService.changeNickname(changeNicknameRequest);
+
         Long userId = changeNicknameRequest.getUserId();
+        String url = "/user/my-page/" + userId + "?menu=user-info";
 
         if (changeNicknameResult == ResultStatus.SUCCESS) {
-            //return "redirect:user/userMyPage?menu=user-info";
-            String url = "/user/userMyPage/" + userId + "?menu=user-info";
             return new RedirectView(url);
         } else {
             //TODO: 프론트에 응답 보내고 스크립트를 사용해서 에러 메세지 출력하기
-            //return "redirect:user/my-page?menu=user-info";
-            String url = "/user/my-page/" + userId + "?menu=user-info";
             return new RedirectView(url);
         }
     }

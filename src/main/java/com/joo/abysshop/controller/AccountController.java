@@ -84,12 +84,14 @@ public class AccountController {
             redirectAttributes.addFlashAttribute("failureMessage", "이미 존재하는 닉네임입니다.");
             return "redirect:/account/sign-up";
         } else {
+            redirectAttributes.addFlashAttribute("failureMessage", "처리 오류");
             return "redirect:/account/sign-up";
         }
     }
 
     @PostMapping("/account/change/nickname")
-    public RedirectView changeNickname(@ModelAttribute ChangeNicknameRequest changeNicknameRequest) {
+    public RedirectView changeNickname(@ModelAttribute ChangeNicknameRequest changeNicknameRequest,
+        RedirectAttributes redirectAttributes) {
         ResultStatus changeNicknameResult = accountService.changeNickname(changeNicknameRequest);
 
         Long userId = changeNicknameRequest.getUserId();
@@ -97,21 +99,40 @@ public class AccountController {
 
         if (changeNicknameResult == ResultStatus.SUCCESS) {
             return new RedirectView(url);
+        } else if (changeNicknameResult == ResultStatus.BAD_REQUEST) {
+            redirectAttributes.addFlashAttribute("failureMessage", "잘못된 요청입니다.");
+            return new RedirectView(url);
+        } else if (changeNicknameResult == ResultStatus.SAME_NICKNAME) {
+            redirectAttributes.addFlashAttribute("failureMessage", "동일한 닉네임으로의 변경은 불가능합니다.");
+            return new RedirectView(url);
+        } else if (changeNicknameResult == ResultStatus.DUPLICATE_NICKNAME) {
+            redirectAttributes.addFlashAttribute("failureMessage", "이미 사용중인 닉네임입니다.");
+            return new RedirectView(url);
         } else {
-            //TODO: flashAttribute 사용되는 모든 부분에 alert를 띄우는 js 스크립트 삽입하기
+            redirectAttributes.addFlashAttribute("failureMessage", "처리 오류");
             return new RedirectView(url);
         }
     }
 
     @PostMapping("/account/change/password")
-    public String changePassword(@ModelAttribute ChangePasswordRequest changePasswordRequest) {
+    public RedirectView changePassword(@ModelAttribute ChangePasswordRequest changePasswordRequest,
+        RedirectAttributes redirectAttributes) {
         ResultStatus changePasswordResult = accountService.changePassword(changePasswordRequest);
 
+        Long userId = changePasswordRequest.getUserId();
+        String url = "/user/my-page/" + userId + "?menu=user-info";
+
         if (changePasswordResult == ResultStatus.SUCCESS) {
-            return "redirect:user/userMyPage?menu=user-info";
+            return new RedirectView(url);
+        } else if (changePasswordResult == ResultStatus.BAD_REQUEST) {
+            redirectAttributes.addFlashAttribute("failureMessage", "잘못된 요청입니다.");
+            return new RedirectView(url);
+        } else if (changePasswordResult == ResultStatus.SAME_PASSWORD) {
+            redirectAttributes.addFlashAttribute("failureMessage", "동일한 패스워드로의 변경은 불가능합니다.");
+            return new RedirectView(url);
         } else {
-            //TODO: 프론트에 응답 보내고 스크립트를 사용해서 에러 메세지 출력하기
-            return "redirect:user/userMyPage?menu=user-info";
+            redirectAttributes.addFlashAttribute("failureMessage", "처리 오류");
+            return new RedirectView(url);
         }
     }
 
@@ -126,19 +147,21 @@ public class AccountController {
     }
 
     @PostMapping("/account/withdraw")
-    public String withdraw(@ModelAttribute AccountWithdrawRequest accountWithdrawRequest,
+    public RedirectView withdraw(@ModelAttribute AccountWithdrawRequest accountWithdrawRequest,
         HttpSession session, Model model) {
         ResultStatus withdrawResult = accountService.withdraw(accountWithdrawRequest);
 
         if (withdrawResult == ResultStatus.SUCCESS) {
             session.invalidate();
+
             List<ProductListResponse> productList = productService.findAllProducts();
             model.addAttribute("productList", productList);
 
-            return JspView.HOME.getView();
+            return new RedirectView("/");
         } else {
-            //TODO: 프론트에 응답 보내고 스크립트를 사용해서 에러 메세지 출력하기
-            return "redirect:user/userMyPage?menu=user-info";
+            Long userId = accountWithdrawRequest.getUserId();
+            String url = "/user/my-page/" + userId + "?menu=user-info";
+            return new RedirectView(url);
         }
     }
 }

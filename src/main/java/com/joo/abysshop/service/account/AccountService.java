@@ -114,7 +114,6 @@ public class AccountService {
         Optional<UserEntity> optionalUserEntity = userMapper.findByUserId(userId);
 
         if (optionalUserEntity.isEmpty()) {
-            //TODO: 각 FAILURE 상황에 따른 실패 메세지 전달
             //id 조회 결과 users_table에 유저가 없음 = 잘못된 요청
             return ResultStatus.BAD_REQUEST;
         }

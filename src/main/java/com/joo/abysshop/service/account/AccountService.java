@@ -18,7 +18,6 @@ import com.joo.abysshop.mapper.mybatis.UserMapper;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 @Service
 @RequiredArgsConstructor
@@ -36,7 +35,7 @@ public class AccountService {
 
         //잘못된 username
         if (optionalAccountEntity.isEmpty()) {
-            return ResultStatus.WRONG_USERNAME;
+            return ResultStatus.INVALID_USERNAME;
         } else {
             AccountEntity accountEntity = optionalAccountEntity.get();
             signInEntity = SignInEntity.builder()
@@ -54,7 +53,7 @@ public class AccountService {
         if (password.equals(savedPassword)) {
             return ResultStatus.SUCCESS;
         } else {
-            return ResultStatus.WRONG_PASSWORD;
+            return ResultStatus.INVALID_PASSWORD;
         }
     }
 
@@ -64,7 +63,7 @@ public class AccountService {
 
         //username 조회 결과가 존재하면 회원가입 요청 실패
         if (optionalAccountEntity.isPresent()) {
-            return ResultStatus.USERNAME_FOUND;
+            return ResultStatus.DUPLICATE_USERNAME;
         }
 
         String nickname = accountSignUpRequest.getNickname();
@@ -72,7 +71,7 @@ public class AccountService {
 
         //nickname 조회 결과가 존재하면 회원가입 요청 실패
         if (optionalAccountEntity.isPresent()) {
-            return ResultStatus.NICKNAME_FOUND;
+            return ResultStatus.DUPLICATE_NICKNAME;
         }
 
         SignUpEntity signUpEntity = toAccountEntityMapper.toSignUpEntity(accountSignUpRequest);
@@ -86,9 +85,8 @@ public class AccountService {
         Optional<UserEntity> optionalUserEntity = userMapper.findByUserId(userId);
 
         if (optionalUserEntity.isEmpty()) {
-            //TODO: 각 FAILURE 상황에 따른 실패 메세지 전달
             //id 조회 결과 users_table에 유저가 없음 = 잘못된 요청
-            return ResultStatus.FAILURE;
+            return ResultStatus.BAD_REQUEST;
         }
 
         UserEntity userEntity = optionalUserEntity.get();
@@ -97,14 +95,14 @@ public class AccountService {
 
         if (oldNickname.equals(newNickname)) {
             //바꾸려는 nickname과 현재 사용 중인 nickname이 동일함
-            return ResultStatus.FAILURE;
+            return ResultStatus.SAME_NICKNAME;
         }
 
         Optional<AccountEntity> optionalAccountEntity = accountMapper.findByNickname(newNickname);
 
         if (optionalAccountEntity.isPresent()) {
             //바꾸려는 nickname을 가진 유저가 users_table에 존재함
-            return ResultStatus.FAILURE;
+            return ResultStatus.DUPLICATE_NICKNAME;
         }
 
         accountMapper.updateNickname(userId, newNickname);
@@ -118,7 +116,7 @@ public class AccountService {
         if (optionalUserEntity.isEmpty()) {
             //TODO: 각 FAILURE 상황에 따른 실패 메세지 전달
             //id 조회 결과 users_table에 유저가 없음 = 잘못된 요청
-            return ResultStatus.FAILURE;
+            return ResultStatus.BAD_REQUEST;
         }
 
         UserEntity userEntity = optionalUserEntity.get();
@@ -126,8 +124,8 @@ public class AccountService {
         String newPassword = changePasswordRequest.getNewPassword();
 
         if (oldPassword.equals(newPassword)) {
-            //바꾸려는 nickname과 현재 사용 중인 nickname이 동일함
-            return ResultStatus.FAILURE;
+            //바꾸려는 password과 현재 사용 중인 password이 동일함
+            return ResultStatus.SAME_PASSWORD;
         }
 
         accountMapper.updatePassword(userId, newPassword);
@@ -141,18 +139,17 @@ public class AccountService {
 
         if (optionalUserEntity.isEmpty()) {
             //조회된 유저 없음 = 잘못된 요청
-            return ResultStatus.FAILURE;
+            return ResultStatus.BAD_REQUEST;
         }
 
         UserEntity userEntity = optionalUserEntity.get();
 
         if (!password.equals(userEntity.getPassword())) {
             //유저의 password와 입력된 password가 불일치함
-            return ResultStatus.FAILURE;
+            return ResultStatus.INVALID_PASSWORD;
         }
 
         accountMapper.deleteUser(userId);
-
         return ResultStatus.SUCCESS;
     }
 }

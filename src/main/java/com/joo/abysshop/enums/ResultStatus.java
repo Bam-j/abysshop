@@ -5,11 +5,14 @@ public enum ResultStatus {
     SUCCESS,
     FAILURE,
 
-    //Sign In 과정에서 실패 상태
-    WRONG_USERNAME,
-    WRONG_PASSWORD,
+    //잘못된 요청의 실패 상태
+    BAD_REQUEST,
 
-    //Sign Up 과정에서 실패 상태
-    USERNAME_FOUND,
-    NICKNAME_FOUND;
+    //계정 정보 입력 관련 실패 상태
+    INVALID_USERNAME,
+    INVALID_PASSWORD,
+    DUPLICATE_USERNAME,
+    DUPLICATE_NICKNAME,
+    SAME_NICKNAME,
+    SAME_PASSWORD,
 }

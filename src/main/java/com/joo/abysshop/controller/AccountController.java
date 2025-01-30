@@ -54,10 +54,10 @@ public class AccountController {
             session.setAttribute("isLoggedIn", true);
 
             return JspView.HOME.getView();
-        } else if (signInResult == ResultStatus.WRONG_USERNAME) {
+        } else if (signInResult == ResultStatus.INVALID_USERNAME) {
             redirectAttributes.addFlashAttribute("failureMessage", "존재하지 않는 계정입니다.");
             return "redirect:/account/sign-in";
-        } else if (signInResult == ResultStatus.WRONG_PASSWORD) {
+        } else if (signInResult == ResultStatus.INVALID_PASSWORD) {
             redirectAttributes.addFlashAttribute("failureMessage", "패스워드가 일치하지 않습니다.");
             return "redirect:/account/sign-in";
         } else {
@@ -77,10 +77,10 @@ public class AccountController {
 
         if (signUpResult == ResultStatus.SUCCESS) {
             return "account/signIn";
-        } else if (signUpResult == ResultStatus.USERNAME_FOUND) {
+        } else if (signUpResult == ResultStatus.DUPLICATE_USERNAME) {
             redirectAttributes.addFlashAttribute("failureMessage", "이미 존재하는 계정입니다.");
             return "redirect:/account/sign-up";
-        } else if (signUpResult == ResultStatus.NICKNAME_FOUND) {
+        } else if (signUpResult == ResultStatus.DUPLICATE_NICKNAME) {
             redirectAttributes.addFlashAttribute("failureMessage", "이미 존재하는 닉네임입니다.");
             return "redirect:/account/sign-up";
         } else {
@@ -98,7 +98,7 @@ public class AccountController {
         if (changeNicknameResult == ResultStatus.SUCCESS) {
             return new RedirectView(url);
         } else {
-            //TODO: 프론트에 응답 보내고 스크립트를 사용해서 에러 메세지 출력하기
+            //TODO: flashAttribute 사용되는 모든 부분에 alert를 띄우는 js 스크립트 삽입하기
             return new RedirectView(url);
         }
     }

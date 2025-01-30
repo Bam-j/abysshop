@@ -16,11 +16,9 @@ public class OrderController {
 
     @PostMapping("/order/create")
     public String createOrder(@ModelAttribute CreateOrderRequest createOrderRequest) {
-        //장바구니 상품들 가져와서 order로 만들기 + 보유 포인트에서 총합 포인트 빼기
-
         orderService.createOrder(createOrderRequest);
 
-        return "order/bankTransferInfo";
+        return "order/orderComplete";
     }
 
     /*

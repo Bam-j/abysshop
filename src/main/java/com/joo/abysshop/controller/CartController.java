@@ -3,7 +3,6 @@ package com.joo.abysshop.controller;
 import com.joo.abysshop.dto.cart.CartItemResponse;
 import com.joo.abysshop.dto.cart.CartResponse;
 import com.joo.abysshop.dto.cart.RemoveItemRequest;
-import com.joo.abysshop.enums.JspView;
 import com.joo.abysshop.service.cart.CartService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequiredArgsConstructor
@@ -21,7 +21,7 @@ public class CartController {
     private final CartService cartService;
 
     @GetMapping("/user/cart/{userId}")
-    public String getUserCartPage(@PathVariable Long userId, Model model) {
+    public String getUserCartPage(@PathVariable("userId") Long userId, Model model) {
         CartResponse userCart = cartService.getCart(userId);
 
         Long cartId = userCart.getCartId();
@@ -33,7 +33,7 @@ public class CartController {
     }
 
     @PostMapping("/cart/item/remove")
-    public String removeItem(@ModelAttribute RemoveItemRequest removeItemRequest, Model model) {
+    public RedirectView removeItem(@ModelAttribute RemoveItemRequest removeItemRequest, Model model) {
         cartService.removeItem(removeItemRequest);
 
         Long userId = removeItemRequest.getUserId();
@@ -45,7 +45,7 @@ public class CartController {
         model.addAttribute("userCartItems", userCartItems);
         model.addAttribute("userCartInfo", userCart);
 
-        return "redirect:/user/cart/" + userId;
+        return new RedirectView("/user/cart/" + userId);
     }
 
     /*

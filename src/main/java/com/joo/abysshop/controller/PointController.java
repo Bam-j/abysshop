@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequiredArgsConstructor
@@ -34,14 +35,14 @@ public class PointController {
     }
 
     @PostMapping("/point/recharge/change-state")
-    public String changePointRechargeState(@RequestParam("rechargeId") Long rechargeId,
+    public RedirectView changePointRechargeState(@RequestParam("rechargeId") Long rechargeId,
         @RequestParam("newState") String newState, Model model) {
         pointRechargeService.changePointRechargeState(rechargeId, newState);
 
         List<PointRechargeListResponse> pointRechargeList = adminPointManagementService.getAllPointRecharge();
         model.addAttribute("pointRechargeList", pointRechargeList);
 
-        return JspView.REDIRECT.getView();
+        return new RedirectView("/admin/my-page?menu=point-recharge-management");
     }
 
     @GetMapping("/point/recharge/request/detail")
@@ -55,9 +56,9 @@ public class PointController {
     }
 
     @PostMapping("/point/recharge/request/detail")
-    public String managePointRechargeDetail(
+    public RedirectView managePointRechargeDetail(
         @ModelAttribute SavePointRechargeDetailRequest savePointRechargeDetailRequest) {
         pointRechargeManagementService.saveDetail(savePointRechargeDetailRequest);
-        return JspView.REDIRECT.getView();
+        return new RedirectView("/admin/my-page?menu=point-recharge-management");
     }
 }

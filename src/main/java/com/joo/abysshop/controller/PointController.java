@@ -29,7 +29,6 @@ public class PointController {
     @PostMapping("/point/recharge/request")
     public String createPointRecharge(
         @ModelAttribute CreatePointRechargeRequest createPointRechargeRequest) {
-        //TODO: 입력 유효값 검사 등은 프론트 스크립트에서 수행
         pointRechargeService.createPointRecharge(createPointRechargeRequest);
         return "order/orderComplete";
     }

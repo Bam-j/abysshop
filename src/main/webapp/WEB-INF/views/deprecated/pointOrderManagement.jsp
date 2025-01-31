@@ -37,7 +37,6 @@
     </tr>
     </thead>
     <tbody>
-    <!-- TODO: 구조를 좀 더 통일감 있게 변경 -->
     <c:forEach items="${pointsRechargeRequest}" var="rechargeRequest">
       <tr>
         <td>${rechargeRequest.nickname}</td>

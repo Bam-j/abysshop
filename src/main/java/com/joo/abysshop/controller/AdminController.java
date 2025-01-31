@@ -83,7 +83,6 @@ public class AdminController {
 
     @PostMapping("/admin/product/remove")
     public RedirectView removeProduct(@RequestParam("productId") Long productId) {
-        //TODO: 폼에 입력된 정보들을 토대로 products_table에서 상품 제거
         adminMyPageService.removeProduct(productId);
         return new RedirectView("admin/my-page?menu=remove-product");
     }

@@ -26,10 +26,6 @@ import org.springframework.web.servlet.view.RedirectView;
 @Controller
 @RequiredArgsConstructor
 public class AccountController {
-    //TODO: 모든 redirect return 다시 정의하기
-    //redirect는 GET 요청을 보낸다. 따라서 return이 view의 이름이 아닌, get 요청 url이어야 한다.
-    //할 일 메모 1. 프론트 요청 alert는 redirectAttributes.addFlashAttribute를 사용하도록 교체 + todos 삭제
-    //2. 파라미터 포함된 redirect를 RedirectView로 교체
 
     private final AccountService accountService;
     private final ProductService productService;

@@ -1,5 +1,9 @@
 package com.joo.abysshop.controller;
 
+import com.joo.abysshop.constants.Messages;
+import com.joo.abysshop.constants.ModelAttributeNames;
+import com.joo.abysshop.constants.RedirectMappings;
+import com.joo.abysshop.constants.ViewNames;
 import com.joo.abysshop.dto.account.AccountSignInRequest;
 import com.joo.abysshop.dto.account.AccountSignUpRequest;
 import com.joo.abysshop.dto.account.AccountWithdrawRequest;
@@ -7,7 +11,6 @@ import com.joo.abysshop.dto.account.ChangeNicknameRequest;
 import com.joo.abysshop.dto.account.ChangePasswordRequest;
 import com.joo.abysshop.dto.product.ProductListResponse;
 import com.joo.abysshop.dto.user.UserInfoResponse;
-import com.joo.abysshop.enums.JspView;
 import com.joo.abysshop.enums.ResultStatus;
 import com.joo.abysshop.service.account.AccountService;
 import com.joo.abysshop.service.product.ProductService;
@@ -33,7 +36,7 @@ public class AccountController {
 
     @GetMapping("/account/sign-in")
     public String getSignInPage() {
-        return "account/signIn";
+        return ViewNames.SIGN_IN_PAGE;
     }
 
     @PostMapping("/account/sign-in")
@@ -43,27 +46,27 @@ public class AccountController {
 
         if (signInResult == ResultStatus.SUCCESS) {
             List<ProductListResponse> productList = productService.findAllProducts();
-            model.addAttribute("productList", productList);
+            model.addAttribute(ModelAttributeNames.PRODUCT_LIST, productList);
 
             UserInfoResponse userInfo = userService.getUserInfo(accountSignInRequest.getUsername());
             session.setAttribute("user", userInfo);
             session.setAttribute("isLoggedIn", true);
 
-            return JspView.HOME.getView();
+            return ViewNames.HOME_PAGE;
         } else if (signInResult == ResultStatus.INVALID_USERNAME) {
-            redirectAttributes.addFlashAttribute("failureMessage", "존재하지 않는 계정입니다.");
-            return "redirect:/account/sign-in";
+            redirectAttributes.addFlashAttribute(Messages.FAILURE_MESSAGE, "존재하지 않는 계정입니다.");
+            return RedirectMappings.REDIRECT_SIGN_IN;
         } else if (signInResult == ResultStatus.INVALID_PASSWORD) {
-            redirectAttributes.addFlashAttribute("failureMessage", "패스워드가 일치하지 않습니다.");
-            return "redirect:/account/sign-in";
+            redirectAttributes.addFlashAttribute(Messages.FAILURE_MESSAGE, "패스워드가 일치하지 않습니다.");
+            return RedirectMappings.REDIRECT_SIGN_IN;
         } else {
-            return "redirect:/account/sign-in";
+            return RedirectMappings.REDIRECT_SIGN_IN;
         }
     }
 
     @GetMapping("/account/sign-up")
     public String getSignUpPage() {
-        return "account/signUp";
+        return ViewNames.SIGN_UP_PAGE;
     }
 
     @PostMapping("/account/sign-up")
@@ -72,16 +75,16 @@ public class AccountController {
         ResultStatus signUpResult = accountService.signUp(accountSignUpRequest);
 
         if (signUpResult == ResultStatus.SUCCESS) {
-            return "account/signIn";
+            return ViewNames.SIGN_IN_PAGE;
         } else if (signUpResult == ResultStatus.DUPLICATE_USERNAME) {
-            redirectAttributes.addFlashAttribute("failureMessage", "이미 존재하는 계정입니다.");
-            return "redirect:/account/sign-up";
+            redirectAttributes.addFlashAttribute(Messages.FAILURE_MESSAGE, "이미 존재하는 계정입니다.");
+            return RedirectMappings.REDIRECT_SIGN_UP;
         } else if (signUpResult == ResultStatus.DUPLICATE_NICKNAME) {
-            redirectAttributes.addFlashAttribute("failureMessage", "이미 존재하는 닉네임입니다.");
-            return "redirect:/account/sign-up";
+            redirectAttributes.addFlashAttribute(Messages.FAILURE_MESSAGE, "이미 존재하는 닉네임입니다.");
+            return RedirectMappings.REDIRECT_SIGN_UP;
         } else {
-            redirectAttributes.addFlashAttribute("failureMessage", "처리 오류");
-            return "redirect:/account/sign-up";
+            redirectAttributes.addFlashAttribute(Messages.FAILURE_MESSAGE, "처리 오류");
+            return RedirectMappings.REDIRECT_SIGN_UP;
         }
     }
 
@@ -96,16 +99,17 @@ public class AccountController {
         if (changeNicknameResult == ResultStatus.SUCCESS) {
             return new RedirectView(url);
         } else if (changeNicknameResult == ResultStatus.BAD_REQUEST) {
-            redirectAttributes.addFlashAttribute("failureMessage", "잘못된 요청입니다.");
+            redirectAttributes.addFlashAttribute(Messages.FAILURE_MESSAGE, "잘못된 요청입니다.");
             return new RedirectView(url);
         } else if (changeNicknameResult == ResultStatus.SAME_NICKNAME) {
-            redirectAttributes.addFlashAttribute("failureMessage", "동일한 닉네임으로의 변경은 불가능합니다.");
+            redirectAttributes.addFlashAttribute(Messages.FAILURE_MESSAGE,
+                "동일한 닉네임으로의 변경은 불가능합니다.");
             return new RedirectView(url);
         } else if (changeNicknameResult == ResultStatus.DUPLICATE_NICKNAME) {
-            redirectAttributes.addFlashAttribute("failureMessage", "이미 사용중인 닉네임입니다.");
+            redirectAttributes.addFlashAttribute(Messages.FAILURE_MESSAGE, "이미 사용중인 닉네임입니다.");
             return new RedirectView(url);
         } else {
-            redirectAttributes.addFlashAttribute("failureMessage", "처리 오류");
+            redirectAttributes.addFlashAttribute(Messages.FAILURE_MESSAGE, "처리 오류");
             return new RedirectView(url);
         }
     }
@@ -121,13 +125,14 @@ public class AccountController {
         if (changePasswordResult == ResultStatus.SUCCESS) {
             return new RedirectView(url);
         } else if (changePasswordResult == ResultStatus.BAD_REQUEST) {
-            redirectAttributes.addFlashAttribute("failureMessage", "잘못된 요청입니다.");
+            redirectAttributes.addFlashAttribute(Messages.FAILURE_MESSAGE, "잘못된 요청입니다.");
             return new RedirectView(url);
         } else if (changePasswordResult == ResultStatus.SAME_PASSWORD) {
-            redirectAttributes.addFlashAttribute("failureMessage", "동일한 패스워드로의 변경은 불가능합니다.");
+            redirectAttributes.addFlashAttribute(Messages.FAILURE_MESSAGE,
+                "동일한 패스워드로의 변경은 불가능합니다.");
             return new RedirectView(url);
         } else {
-            redirectAttributes.addFlashAttribute("failureMessage", "처리 오류");
+            redirectAttributes.addFlashAttribute(Messages.FAILURE_MESSAGE, "처리 오류");
             return new RedirectView(url);
         }
     }
@@ -137,9 +142,9 @@ public class AccountController {
         session.invalidate();
 
         List<ProductListResponse> productList = productService.findAllProducts();
-        model.addAttribute("productList", productList);
+        model.addAttribute(ModelAttributeNames.PRODUCT_LIST, productList);
 
-        return JspView.HOME.getView();
+        return ViewNames.HOME_PAGE;
     }
 
     @PostMapping("/account/withdraw")
@@ -151,9 +156,9 @@ public class AccountController {
             session.invalidate();
 
             List<ProductListResponse> productList = productService.findAllProducts();
-            model.addAttribute("productList", productList);
+            model.addAttribute(ModelAttributeNames.PRODUCT_LIST, productList);
 
-            return new RedirectView("/");
+            return new RedirectView(ViewNames.HOME_PAGE);
         } else {
             Long userId = accountWithdrawRequest.getUserId();
             String url = "/user/my-page/" + userId + "?menu=user-info";

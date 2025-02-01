@@ -1,5 +1,7 @@
 package com.joo.abysshop.controller;
 
+import com.joo.abysshop.constants.ModelAttributeNames;
+import com.joo.abysshop.constants.ViewNames;
 import com.joo.abysshop.dto.cart.CartItemResponse;
 import com.joo.abysshop.dto.cart.CartResponse;
 import com.joo.abysshop.dto.cart.RemoveItemRequest;
@@ -22,28 +24,28 @@ public class CartController {
 
     @GetMapping("/user/cart/{userId}")
     public String getUserCartPage(@PathVariable("userId") Long userId, Model model) {
-        CartResponse userCart = cartService.getCart(userId);
+        CartResponse cart = cartService.getCart(userId);
+        model.addAttribute(ModelAttributeNames.CART, cart);
 
-        Long cartId = userCart.getCartId();
-        List<CartItemResponse> userCartItems = cartService.getUserCartItems(cartId);
+        Long cartId = cart.getCartId();
+        List<CartItemResponse> cartItemList = cartService.getUserCartItems(cartId);
+        model.addAttribute(ModelAttributeNames.CART_ITEM_LIST, cartItemList);
 
-        model.addAttribute("userCartItems", userCartItems);
-        model.addAttribute("userCartInfo", userCart);
-        return "cart/shoppingCart";
+        return ViewNames.SHOPPING_CART_PAGE;
     }
 
     @PostMapping("/cart/item/remove")
-    public RedirectView removeItem(@ModelAttribute RemoveItemRequest removeItemRequest, Model model) {
+    public RedirectView removeItem(@ModelAttribute RemoveItemRequest removeItemRequest,
+        Model model) {
         cartService.removeItem(removeItemRequest);
 
         Long userId = removeItemRequest.getUserId();
-        CartResponse userCart = cartService.getCart(userId);
+        CartResponse cart = cartService.getCart(userId);
+        model.addAttribute(ModelAttributeNames.CART, cart);
 
-        Long cartId = userCart.getCartId();
-        List<CartItemResponse> userCartItems = cartService.getUserCartItems(cartId);
-
-        model.addAttribute("userCartItems", userCartItems);
-        model.addAttribute("userCartInfo", userCart);
+        Long cartId = cart.getCartId();
+        List<CartItemResponse> cartItemList = cartService.getUserCartItems(cartId);
+        model.addAttribute(ModelAttributeNames.CART_ITEM_LIST, cartItemList);
 
         return new RedirectView("/user/cart/" + userId);
     }

@@ -1,9 +1,10 @@
 package com.joo.abysshop.controller;
 
+import com.joo.abysshop.constants.ModelAttributeNames;
+import com.joo.abysshop.constants.ViewNames;
 import com.joo.abysshop.dto.admin.AddProductRequest;
 import com.joo.abysshop.dto.order.OrderListResponse;
 import com.joo.abysshop.dto.point.PointRechargeListResponse;
-import com.joo.abysshop.enums.JspView;
 import com.joo.abysshop.enums.UserType;
 import com.joo.abysshop.service.admin.AdminMyPageService;
 import com.joo.abysshop.service.admin.AdminOrderManagementService;
@@ -33,18 +34,18 @@ public class AdminController {
 
         if (userType.equals(UserType.ADMIN)) {
             List<OrderListResponse> orderList = adminOrderManagementService.getAllOrders();
-            model.addAttribute("orderList", orderList);
+            model.addAttribute(ModelAttributeNames.ORDER_LIST, orderList);
 
-            return "admin/adminMyPage";
+            return ViewNames.ADMIN_MY_PAGE;
         } else {
-            return JspView.HOME.getView();
+            return ViewNames.HOME_PAGE;
         }
     }
 
     @GetMapping("/admin/order/list")
     public void getProductOrderList(Model model) {
         List<OrderListResponse> orderList = adminOrderManagementService.getAllOrders();
-        model.addAttribute("orderList", orderList);
+        model.addAttribute(ModelAttributeNames.ORDER_LIST, orderList);
     }
 
     @PostMapping("/admin/order/product/change-state")
@@ -53,7 +54,7 @@ public class AdminController {
         adminOrderManagementService.changeOrderState(orderId, newState);
 
         List<OrderListResponse> orderList = adminOrderManagementService.getAllOrders();
-        model.addAttribute("orderList", orderList);
+        model.addAttribute(ModelAttributeNames.ORDER_LIST, orderList);
 
         return new RedirectView("admin/my-page?menu=order-management");
     }
@@ -61,7 +62,7 @@ public class AdminController {
     @GetMapping("/admin/point/recharge/list")
     public void getPointOrders(Model model) {
         List<PointRechargeListResponse> pointRechargeList = adminPointManagementService.getAllPointRecharge();
-        model.addAttribute("pointRechargeList", pointRechargeList);
+        model.addAttribute(ModelAttributeNames.POINT_RECHARGE_LIST, pointRechargeList);
     }
 
     @PostMapping("/admin/point/provide")

@@ -1,5 +1,6 @@
 package com.joo.abysshop.controller;
 
+import com.joo.abysshop.constants.ViewNames;
 import com.joo.abysshop.dto.order.CreateOrderRequest;
 import com.joo.abysshop.service.order.OrderService;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,7 @@ public class OrderController {
     public String createOrder(@ModelAttribute CreateOrderRequest createOrderRequest) {
         orderService.createOrder(createOrderRequest);
 
-        return "order/orderComplete";
+        return ViewNames.ORDER_COMPLETE_PAGE;
     }
 
     /*

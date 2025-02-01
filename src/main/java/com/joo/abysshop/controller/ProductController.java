@@ -1,5 +1,7 @@
 package com.joo.abysshop.controller;
 
+import com.joo.abysshop.constants.ModelAttributeNames;
+import com.joo.abysshop.constants.ViewNames;
 import com.joo.abysshop.service.product.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -15,7 +17,7 @@ public class ProductController {
 
     @GetMapping("/product/detail/{productId}")
     public String getProductDetail(@PathVariable Long productId, Model model) {
-        model.addAttribute("product", productService.findById(productId));
-        return "product/productDetail";
+        model.addAttribute(ModelAttributeNames.PRODUCT, productService.findById(productId));
+        return ViewNames.PRODUCT_DETAIL_PAGE;
     }
 }

@@ -1,10 +1,11 @@
 package com.joo.abysshop.controller;
 
+import com.joo.abysshop.constants.ModelAttributeNames;
+import com.joo.abysshop.constants.ViewNames;
 import com.joo.abysshop.dto.point.CreatePointRechargeRequest;
 import com.joo.abysshop.dto.point.PointRechargeDetailResponse;
 import com.joo.abysshop.dto.point.PointRechargeListResponse;
 import com.joo.abysshop.dto.point.SavePointRechargeDetailRequest;
-import com.joo.abysshop.enums.JspView;
 import com.joo.abysshop.service.admin.AdminPointManagementService;
 import com.joo.abysshop.service.point.PointRechargeManagementService;
 import com.joo.abysshop.service.point.PointRechargeService;
@@ -30,7 +31,7 @@ public class PointController {
     public String createPointRecharge(
         @ModelAttribute CreatePointRechargeRequest createPointRechargeRequest) {
         pointRechargeService.createPointRecharge(createPointRechargeRequest);
-        return "order/orderComplete";
+        return ViewNames.ORDER_COMPLETE_PAGE;
     }
 
     @PostMapping("/point/recharge/change-state")
@@ -39,18 +40,18 @@ public class PointController {
         pointRechargeService.changePointRechargeState(rechargeId, newState);
 
         List<PointRechargeListResponse> pointRechargeList = adminPointManagementService.getAllPointRecharge();
-        model.addAttribute("pointRechargeList", pointRechargeList);
+        model.addAttribute(ModelAttributeNames.POINT_RECHARGE_LIST, pointRechargeList);
 
         return new RedirectView("/admin/my-page?menu=point-recharge-management");
     }
 
     @GetMapping("/point/recharge/request/detail")
     public void getPointRechargeDetail(@RequestParam("rechargeId") Long rechargeId, Model model) {
-        PointRechargeDetailResponse pointRechargeDetailResponse = pointRechargeManagementService.getDetail(
+        PointRechargeDetailResponse pointRechargeDetail = pointRechargeManagementService.getDetail(
             rechargeId);
 
-        if (pointRechargeDetailResponse != null) {
-            model.addAttribute("pointRechargeDetail", pointRechargeDetailResponse);
+        if (pointRechargeDetail != null) {
+            model.addAttribute(ModelAttributeNames.POINT_RECHARGE_DETAIL, pointRechargeDetail);
         }
     }
 

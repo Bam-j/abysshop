@@ -1,7 +1,8 @@
 package com.joo.abysshop.controller;
 
+import com.joo.abysshop.constants.ModelAttributeNames;
+import com.joo.abysshop.constants.ViewNames;
 import com.joo.abysshop.dto.product.ProductListResponse;
-import com.joo.abysshop.enums.JspView;
 import com.joo.abysshop.service.product.ProductService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -18,8 +19,8 @@ public class HomeController {
     @GetMapping("/")
     public String home(Model model) {
         List<ProductListResponse> productList = productService.findAllProducts();
-        model.addAttribute("productList", productList);
+        model.addAttribute(ModelAttributeNames.PRODUCT_LIST, productList);
 
-        return "index";
+        return ViewNames.INDEX_PAGE;
     }
 }

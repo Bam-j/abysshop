@@ -50,6 +50,7 @@
       </tr>
       </thead>
       <tbody>
+      <%--cartItemList--%>
       <c:forEach items="${userOrders}" var="item">
         <tr>
           <td>${item.name}</td>
@@ -68,6 +69,7 @@
             </div>
           </td>
           <td>
+          <%--cart--%>
             <form action="/cart/item/remove" method="post">
               <input type="hidden" name="cartId" value="${cart.cartId}">
               <input type="hidden" name="productId" value="${item.productId}">

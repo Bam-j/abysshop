@@ -7,7 +7,15 @@ import lombok.NoArgsConstructor;
 public class ModelAttributeNames {
 
     public static final String PRODUCT_LIST = "productList";
+    public static final String PRODUCT = "product";
+
     public static final String ORDER_LIST = "orderList";
-    public static final String CART_LIST = "cartList";
+    public static final String USER_ORDER_LIST = "userOrderList";
+
+    public static final String CART = "cart";
     public static final String CART_ITEM_LIST = "cartItemList";
+
+    public static final String POINT_RECHARGE_LIST = "pointRechargeList";
+    public static final String USER_POINT_RECHARGE_LIST = "userPointRechargeList";
+    public static final String POINT_RECHARGE_DETAIL = "pointRechargeDetail";
 }

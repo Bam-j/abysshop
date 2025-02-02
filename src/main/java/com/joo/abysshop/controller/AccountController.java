@@ -52,7 +52,7 @@ public class AccountController {
             session.setAttribute("user", userInfo);
             session.setAttribute("isLoggedIn", true);
 
-            return ViewNames.HOME_PAGE;
+            return ViewNames.INDEX_PAGE;
         } else if (signInResult == ResultStatus.INVALID_USERNAME) {
             redirectAttributes.addFlashAttribute(Messages.FAILURE_MESSAGE, "존재하지 않는 계정입니다.");
             return RedirectMappings.REDIRECT_SIGN_IN;
@@ -144,7 +144,7 @@ public class AccountController {
         List<ProductListResponse> productList = productService.findAllProducts();
         model.addAttribute(ModelAttributeNames.PRODUCT_LIST, productList);
 
-        return ViewNames.HOME_PAGE;
+        return ViewNames.INDEX_PAGE;
     }
 
     @PostMapping("/account/withdraw")
@@ -158,7 +158,7 @@ public class AccountController {
             List<ProductListResponse> productList = productService.findAllProducts();
             model.addAttribute(ModelAttributeNames.PRODUCT_LIST, productList);
 
-            return new RedirectView(ViewNames.HOME_PAGE);
+            return new RedirectView(ViewNames.INDEX_PAGE);
         } else {
             Long userId = accountWithdrawRequest.getUserId();
             String url = "/user/my-page/" + userId + "?menu=user-info";

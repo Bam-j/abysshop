@@ -38,7 +38,7 @@ public class AdminController {
 
             return ViewNames.ADMIN_MY_PAGE;
         } else {
-            return ViewNames.HOME_PAGE;
+            return ViewNames.INDEX_PAGE;
         }
     }
 

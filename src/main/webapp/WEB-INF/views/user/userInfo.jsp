@@ -25,20 +25,20 @@
 <body>
 <section>
   <hr>
-  <form action="/account/change/nickname" method="post">
+  <form id="change-nickname-form" action="/account/change/nickname" method="post">
     <div class="alert alert-danger" role="alert">
       반드시 인게임 닉네임과 동일한 닉네임으로 설정해주세요. <br>
       후원 과정에서 문제가 발생할 가능성이 높습니다.
     </div>
     <input type="hidden" name="userId" value="${user.userId}">
-    <input type="text" name="newNickname" placeholder="변경할 닉네임 입력">
+    <input type="text" class="nickname-input" name="newNickname" placeholder="변경할 닉네임 입력">
     <button type="submit" class="btn btn-primary">닉네임 변경</button>
   </form>
   <hr>
-  <form action="/account/change/password" method="post">
+  <form id="change-password-form" action="/account/change/password" method="post">
     <input type="hidden" name="userId" value="${user.userId}">
     <%-- TODO: 개발 완료시 type:"password"로 비밀번호 입력 가리기 --%>
-    <input type="text" name="newPassword" placeholder="변경할 비밀번호 입력">
+    <input type="text" class="password-input" name="newPassword" placeholder="변경할 비밀번호 입력">
     <button type="submit" class="btn btn-primary">비밀번호 변경</button>
   </form>
 
@@ -62,11 +62,11 @@
           <div class="alert alert-warning" role="alert">
             탈퇴 하시려면 현재 비밀번호를 입력해주세요.
           </div>
-          <input type="text" placeholder="현재 비밀번호">
+          <input class="password-input" type="text" placeholder="현재 비밀번호">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-          <form action="/account/withdraw" method="post">
+          <form id="withdraw-form" action="/account/withdraw" method="post">
             <input type="hidden" name="userId" value="${user.userId}">
             <button type="submit" name="password" class="btn btn-danger">회원 탈퇴</button>
           </form>
@@ -75,5 +75,16 @@
     </div>
   </div>
 </section>
+
+<script src="../../../../resources/static/js/user/userInfoValidation.js"></script>
+<script>
+  window.onload = () => {
+    let failureMessage = "${failureMessage}";
+
+    if (failureMessage !== "") {
+      window.alert(failureMessage)
+    }
+  }
+</script>
 </body>
 </html>

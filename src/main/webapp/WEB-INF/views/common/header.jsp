@@ -27,11 +27,9 @@
 <body>
 <header>
   <div class="square-logo">
-    <form action="/" method="get">
-      <button type="submit">
-        <img src="../../../resources/static/images/abyssblock_square_64x64.png" alt="어비스 블록 미니멀 로고">
-      </button>
-    </form>
+    <a href="/">
+      <img src="../../../resources/static/images/abyssblock_square_64x64.png" alt="어비스 블록 미니멀 로고">
+    </a>
   </div>
   <ul>
     <c:choose>

@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="../../../resources/static/styles/common/footer.css">
   <link rel="stylesheet" href="../../../resources/static/styles/common/table.css">
   <link rel="stylesheet" href="../../../resources/static/styles/user/userInfo.css">
-  <link rel="stylesheet" href="../../../resoruces/static.styles/user/userOrderManagement.css">
+  <link rel="stylesheet" href="../../../resources/static/styles/user/userOrderManagement.css">
   <%--<link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">--%>
 </head>
 <body>
@@ -56,5 +56,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+<script src="../../resources/static/js/common/navEvent.js"></script>
 </body>
 </html>

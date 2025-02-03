@@ -52,6 +52,7 @@ public class AccountController {
             session.setAttribute("user", userInfo);
             session.setAttribute("isLoggedIn", true);
 
+            //login 이후 url이 http~/이 아니라 /account/sign-in에 남아있음
             return ViewNames.INDEX_PAGE;
         } else if (signInResult == ResultStatus.INVALID_USERNAME) {
             redirectAttributes.addFlashAttribute(Messages.FAILURE_MESSAGE, "존재하지 않는 계정입니다.");

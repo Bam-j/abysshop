@@ -58,9 +58,10 @@
           </c:when>
           <c:otherwise>
             <li class="divider-elem">
-              <form action="/user/my-page/${user.userId}" method="get">
-                <button type="submit" class="btn btn-primary">마이페이지</button>
-              </form>
+                <%-- nav 메뉴 클릭시 쿼리 파라미터가 변경되도록 바꾸기 --%>
+              <a href="/user/my-page/${user.userId}?menu=order-management" class="btn btn-primary">
+                마이페이지
+              </a>
             </li>
           </c:otherwise>
         </c:choose>

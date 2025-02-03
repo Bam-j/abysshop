@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequiredArgsConstructor
@@ -19,11 +20,30 @@ public class UserController {
     private final UserService userService;
 
     //주문 기록(default), 포인트 요청 기록, 유저 정보 수정 페이지 요청
+    /*
     @GetMapping("/user/my-page/{userId}")
     public String getUserMyPage(@PathVariable("userId") Long userId, Model model) {
         List<OrderListResponse> userOrderList = userService.getOrderList(userId);
         model.addAttribute(ModelAttributeNames.USER_ORDER_LIST, userOrderList);
 
+        return ViewNames.USER_MY_PAGE;
+    }*/
+
+    @GetMapping("/user/my-page/{userId}")
+    public String getUserMyPage(@PathVariable("userId") Long userId,
+        @RequestParam("menu") String menu, Model model) {
+        if ("order-management".equals(menu)) {
+            List<OrderListResponse> userOrderList = userService.getOrderList(userId);
+            model.addAttribute(ModelAttributeNames.USER_ORDER_LIST, userOrderList);
+        } else if ("user-info".equals(menu)) {
+            // 계정 관리 페이지 처리 로직
+        } else if ("point-request".equals(menu)) {
+            List<PointRechargeListResponse> userPointRechargeList = userService.getPointRechargeList(
+                userId);
+            model.addAttribute(ModelAttributeNames.USER_POINT_RECHARGE_LIST, userPointRechargeList);
+        } else {
+            // 잘못된 메뉴 요청 처리 로직
+        }
         return ViewNames.USER_MY_PAGE;
     }
 

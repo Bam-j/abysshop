@@ -25,11 +25,10 @@
 </head>
 <body>
 <nav class="nav">
-  <a class="nav-link active" aria-current="page" href="?menu=order-management">주문 관리</a>
-  <a class="nav-link" href="?menu=user-info">계정 관리</a>
-  <a class="nav-link" href="?menu=point-request">포인트 지급 요청</a>
+  <a class="nav-link active" aria-current="page"
+     href="/user/my-page/${user.userId}?menu=order-management">주문 관리</a>
+  <a class="nav-link" href="/user/my-page/${user.userId}?menu=user-info">계정 관리</a>
+  <a class="nav-link" href="/user/my-page/${user.userId}?menu=point-request">포인트 지급 요청</a>
 </nav>
-
-<script src="../resources/static/js/common/navEvent.js"></script>
 </body>
 </html>

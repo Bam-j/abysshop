@@ -11,6 +11,7 @@
     pageEncoding="UTF-8"
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
   <title>회원 포인트 지급 요청 관리</title>
@@ -33,12 +34,12 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${pointRechargeRequest}" var="request">
+    <c:forEach items="${userPointRechargeList}" var="request">
       <tr>
-        <td>${request.requestId}</td>
+        <td>${request.rechargeId}</td>
         <td>${request.points}</td>
-        <td>${request.date}</td>
-        <td>${request.state}</td>
+        <td><fmt:formatDate value="${request.requestTime}" pattern="yyyy-MM-dd" /></td>
+        <td>${request.rechargeRequestState}</td>
       </tr>
     </c:forEach>
     </tbody>

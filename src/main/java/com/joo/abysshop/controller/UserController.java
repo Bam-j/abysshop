@@ -36,26 +36,4 @@ public class UserController {
         }
         return ViewNames.USER_MY_PAGE;
     }
-
-    @GetMapping("/user/my-page/{userId}/order/list")
-    public String getUserMyPageOrderList(@PathVariable("userId") Long userId, Model model) {
-        List<OrderListResponse> userOrderList = userService.getOrderList(userId);
-        model.addAttribute(ModelAttributeNames.USER_ORDER_LIST, userOrderList);
-
-        return "user/userOrderList";
-    }
-
-    @GetMapping("/user/my-page/{userId}/point/recharge/list")
-    public String getUserMyPagePointRecharge(@PathVariable("userId") Long userId, Model model) {
-        List<PointRechargeListResponse> userPointRechargeList = userService.getPointRechargeList(
-            userId);
-        model.addAttribute(ModelAttributeNames.USER_POINT_RECHARGE_LIST, userPointRechargeList);
-
-        return "user/userPointRechargeList";
-    }
-
-    @GetMapping("/user/my-page/info")
-    public String getUserMyPageInfo() {
-        return "user/userInfo";
-    }
 }

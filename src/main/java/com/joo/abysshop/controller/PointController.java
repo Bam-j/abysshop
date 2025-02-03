@@ -1,6 +1,7 @@
 package com.joo.abysshop.controller;
 
 import com.joo.abysshop.constants.ModelAttributeNames;
+import com.joo.abysshop.constants.RedirectMappings;
 import com.joo.abysshop.constants.ViewNames;
 import com.joo.abysshop.dto.point.CreatePointRechargeRequest;
 import com.joo.abysshop.dto.point.PointRechargeDetailResponse;
@@ -31,7 +32,7 @@ public class PointController {
     public String createPointRecharge(
         @ModelAttribute CreatePointRechargeRequest createPointRechargeRequest) {
         pointRechargeService.createPointRecharge(createPointRechargeRequest);
-        return ViewNames.ORDER_COMPLETE_PAGE;
+        return RedirectMappings.REDIRECT_ORDER_COMPLETE;
     }
 
     @PostMapping("/point/recharge/change-state")

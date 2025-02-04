@@ -37,17 +37,8 @@
         <li class="divider-elem">
           보유 포인트: ${user.points}
         </li>
-        <li class="divider-elem">
-          <form action="/user/cart/{user.cartId}" method="get">
-            <input type="hidden" name="userId" value="${user.userId}">
-            <button type="submit" class="btn btn-primary">
-              <i class="bi bi-cart"></i>
-              장바구니 <span class="badge text-bg-secondary">${cart.items}</span>
-            </button>
-          </form>
-        </li>
         <c:choose>
-          <c:when test="${isAdmin}">
+          <c:when test="${user.userType == 'admin'}">
             <li class="divider-elem">
               <form action="/admin/my-page" method="get">
                 <button type="submit" class="btn btn-primary">관리자 페이지</button>
@@ -55,6 +46,16 @@
             </li>
           </c:when>
           <c:otherwise>
+            <li class="divider-elem">
+              <form action="/user/cart/${user.cartId}" method="get">
+                <input type="hidden" name="userId" value="${user.userId}">
+                <button type="submit" class="btn btn-primary">
+                  <i class="bi bi-cart"></i>
+                  장바구니 <span class="badge text-bg-secondary">${cart.items}</span>
+                </button>
+              </form>
+            </li>
+
             <li class="divider-elem">
                 <%-- nav 메뉴 클릭시 쿼리 파라미터가 변경되도록 바꾸기 --%>
               <a href="/user/my-page/${user.userId}?menu=order-management" class="btn btn-primary">

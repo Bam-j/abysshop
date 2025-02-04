@@ -24,7 +24,7 @@
 <body>
 <section>
   <form action="point/recharge/request/detail" method="get">
-    <input type="hidden" name="pointRequestId" value="${pointRecharge.rechargeId}">
+    <input type="hidden" name="pointRequestId" value="${pointRechargeDetail.rechargeId}">
     <button id="manage-recharge-detail-button" type="button" class="btn btn-primary"
             data-bs-toggle="modal"
             data-bs-target="#manage-recharge-detail-modal">
@@ -49,8 +49,8 @@
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
             <form action="/point/recharge/request/detail" method="post">
               <%-- TODO: GET 요청에서 받은 pointRechargeDetail의 내용 반영하기 --%>
-              <input type="hidden" name="rechargeId" value="${request.rechargeId}">
-              <input type="hidden" name="userId" value="${user.userId}">
+              <input type="hidden" name="rechargeId" value="${pointRechargeDetail.rechargeId}">
+              <input type="hidden" name="userId" value="${pointRechargeDetail.userId}">
               <input type="text" name="bank" placeholder="은행">
               <input type="text" name="accountNumber" placeholder="계좌 번호">
               <button type="submit" class="btn btn-primary">상세 정보 저장</button>

@@ -26,12 +26,26 @@
 </head>
 <body>
 <nav class="nav">
-  <a class="nav-link active" aria-current="page" href="?menu=order-management">주문 관리</a>
-  <a class="nav-link" href="?menu=point-recharge-management">포인트 지급 요청</a>
-  <a class="nav-link" href="?menu=add-product">상품 추가</a>
-  <a class="nav-link" href="?menu=remove-product">상품 삭제</a>
+  <a class="nav-link active" aria-current="page" href="?menu=order-management"
+     onclick="changeURL('order-management')">주문 관리</a>
+  <a class="nav-link" href="?menu=point-recharge-management"
+     onclick="changeURL('point-recharge-management')">포인트 지급 요청</a>
+  <a class="nav-link" href="?menu=add-product" onclick="changeURL('add-product')">상품 추가</a>
+  <a class="nav-link" href="?menu=remove-product" onclick="changeURL('remove-product')">상품 삭제</a>
 </nav>
 
-<script src="../resources/static/js/common/navEvent.js"></script>
+<script type="text/javascript">
+  function changeURL(menu) {
+    if (menu === "order-management") {
+      history.replaceState(null, null, "/admin/my-page?menu=order-management");
+    } else if (menu === "point-recharge-management") {
+      history.replaceState(null, null, "/admin/my-page?menu=user-info");
+    } else if (menu === "add-product") {
+      history.replaceState(null, null, "/admin/my-page?menu=user-info");
+    } else if (menu === "remove-product") {
+      history.replaceState(null, null, "/admin/my-page?menu=point-request");
+    }
+  }
+</script>
 </body>
 </html>

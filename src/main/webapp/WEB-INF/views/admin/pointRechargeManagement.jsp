@@ -37,17 +37,17 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${pointRechargeRequest}" var="request">
+    <c:forEach items="${pointRechargeList}" var="pointRecharge">
       <tr>
-        <td>${request.rechargeId}</td>
-        <td>${request.nickname}</td>
-        <td>${request.points}</td>
-        <td>${request.time}</td>
+        <td>${pointRecharge.rechargeId}</td>
+        <td>${pointRecharge.nickname}</td>
+        <td>${pointRecharge.points}</td>
+        <td>${pointRecharge.requestTime}</td>
         <td>
           <div class="btn-group">
             <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown"
                     aria-expanded="false">
-                ${request.state} <!-- TODO: state값에 따라 한글 상태가 출력되도록 변경 -->
+                ${pointRecharge.rechargeRequestState} <!-- TODO: state값에 따라 한글 상태가 출력되도록 변경 -->
             </button>
             <ul class="dropdown-menu">
               <li>
@@ -64,7 +64,7 @@
               </li>
             </ul>
             <form action="/point/recharge/change-state" method="post">
-              <input type="hidden" name="rechargeId" value="${request.rechargeId}">
+              <input type="hidden" name="rechargeId" value="${pointRecharge.rechargeId}">
               <input type="hidden" name="newState" id="newState" />
               <button type="submit" class="btn btn-primary">변경</button>
             </form>

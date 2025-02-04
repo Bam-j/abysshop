@@ -54,5 +54,7 @@
 </main>
 
 <%@ include file="../common/footer.jsp" %>
+
+<script src="../resources/static/js/common/navEvent.js"></script>
 </body>
 </html>

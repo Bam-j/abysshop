@@ -31,25 +31,25 @@
     <tr>
       <th>주문 번호</th>
       <th>주문자</th>
-      <th>주문 상품</th>
-      <th>주문 포인트</th>
+      <%--<th>주문 상품</th>
+      <th>주문 포인트</th>--%>
       <th>구매일</th>
       <th>주문 상태</th>
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${orderHistory}" var="order">
+    <c:forEach items="${orderList}" var="order">
       <tr>
         <td>${order.orderId}</td>
-        <td>${order.customer}</td>
-        <td>${order.items}</td>
-        <td>${order.totalAmount}</td>
-        <td>${order.date}</td>
+        <td>${order.userId}</td>
+        <%--<td>${order.items}</td>
+        <td>${order.totalAmount}</td>--%>
+        <td>${order.orderDate}</td>
         <td>
           <div class="btn-group">
             <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown"
                     aria-expanded="false">
-                ${order.state} <!-- TODO: state값에 따라 한글 상태가 출력되도록 변경 -->
+                ${order.orderState} <!-- TODO: state값에 따라 한글 상태가 출력되도록 변경 -->
             </button>
             <ul class="dropdown-menu">
               <li>

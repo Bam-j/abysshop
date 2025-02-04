@@ -34,12 +34,12 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${productAndPointItemList}" var="item">
-      <td>${item.name}</td>
-      <td>${item.price}</td>
+    <c:forEach items="${productList}" var="product">
+      <td>${product.productName}</td>
+      <td>${product.price}</td>
       <td>
         <form action="/admin/product/remove" method="post">
-          <input type="hidden" name="productId" value="${item.productId}">
+          <input type="hidden" name="productId" value="${product.productId}">
           <button type="submit" class="btn btn-warning">품목 삭제</button>
         </form>
       </td>

@@ -26,9 +26,24 @@
 <body>
 <nav class="nav">
   <a class="nav-link active" aria-current="page"
-     href="/user/my-page/${user.userId}?menu=order-management">주문 관리</a>
-  <a class="nav-link" href="/user/my-page/${user.userId}?menu=user-info">계정 관리</a>
-  <a class="nav-link" href="/user/my-page/${user.userId}?menu=point-request">포인트 지급 요청</a>
+     href="/user/my-page/${user.userId}?menu=order-management"
+     onclick="changeURL('order-management')">주문 관리</a>
+  <a class="nav-link" href="/user/my-page/${user.userId}?menu=user-info"
+     onclick="changeURL('user-info')">계정 관리</a>
+  <a class=" nav-link" href="/user/my-page/${user.userId}?menu=point-request"
+     onclick="changeURL('point-request')">포인트 지급 요청</a>
 </nav>
+
+<script type="text/javascript">
+  function changeURL(menu) {
+    if (menu === "order-management") {
+      history.replaceState(null, null, "/user/my-page/${user.userId}?menu=order-management");
+    } else if (menu === "user-info") {
+      history.replaceState(null, null, "/user/my-page/${user.userId}?menu=user-info");
+    } else if (menu === "point-request") {
+      history.replaceState(null, null, "/user/my-page/${user.userId}?menu=point-request");
+    }
+  }
+</script>
 </body>
 </html>

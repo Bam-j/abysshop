@@ -15,6 +15,8 @@ import com.joo.abysshop.enums.ResultStatus;
 import com.joo.abysshop.service.account.AccountService;
 import com.joo.abysshop.service.product.ProductService;
 import com.joo.abysshop.service.user.UserService;
+import com.joo.abysshop.util.JwtUtil;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -33,6 +35,7 @@ public class AccountController {
     private final AccountService accountService;
     private final ProductService productService;
     private final UserService userService;
+    private final JwtUtil jwtUtil;
 
     @GetMapping("/account/sign-in")
     public String getSignInPage() {
@@ -41,7 +44,9 @@ public class AccountController {
 
     @PostMapping("/account/sign-in")
     public String signIn(@ModelAttribute AccountSignInRequest accountSignInRequest,
-        HttpSession session, Model model, RedirectAttributes redirectAttributes) {
+        HttpSession session, //HttpServletResponse response,
+        Model model,
+        RedirectAttributes redirectAttributes) {
         ResultStatus signInResult = accountService.signIn(accountSignInRequest);
 
         if (signInResult == ResultStatus.SUCCESS) {
@@ -51,6 +56,10 @@ public class AccountController {
             UserInfoResponse userInfo = userService.getUserInfo(accountSignInRequest.getUsername());
             session.setAttribute("user", userInfo);
             session.setAttribute("isLoggedIn", true);
+
+            //String token = jwtUtil.generateToken(accountSignInRequest.getUsername());
+
+            //response.setHeader("Authorization", "Bearer " + token);
 
             return RedirectMappings.REDIRECT_INDEX;
         } else if (signInResult == ResultStatus.INVALID_USERNAME) {

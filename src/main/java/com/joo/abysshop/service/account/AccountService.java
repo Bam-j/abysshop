@@ -96,6 +96,9 @@ public class AccountService {
         if (oldNickname.equals(newNickname)) {
             //바꾸려는 nickname과 현재 사용 중인 nickname이 동일함
             return ResultStatus.SAME_NICKNAME;
+        } else if (newNickname == null || newNickname.trim().isEmpty()) {
+            //form에 공백, 빈 입력이 들어옴
+            return ResultStatus.EMPTY_INPUT_FORM;
         }
 
         Optional<AccountEntity> optionalAccountEntity = accountMapper.findByNickname(newNickname);
@@ -125,6 +128,9 @@ public class AccountService {
         if (oldPassword.equals(newPassword)) {
             //바꾸려는 password과 현재 사용 중인 password이 동일함
             return ResultStatus.SAME_PASSWORD;
+        } else if (newPassword == null || newPassword.trim().isEmpty()) {
+            //form에 공백, 빈 입력이 들어옴
+            return ResultStatus.EMPTY_INPUT_FORM;
         }
 
         accountMapper.updatePassword(userId, newPassword);

@@ -7,6 +7,7 @@ public enum ResultStatus {
 
     //잘못된 요청의 실패 상태
     BAD_REQUEST,
+    EMPTY_INPUT_FORM,
 
     //계정 정보 입력 관련 실패 상태
     INVALID_USERNAME,

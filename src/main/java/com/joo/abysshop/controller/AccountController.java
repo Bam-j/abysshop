@@ -114,6 +114,10 @@ public class AccountController {
             redirectAttributes.addFlashAttribute(Messages.FAILURE_MESSAGE,
                 "동일한 닉네임으로의 변경은 불가능합니다.");
             return new RedirectView(url);
+        } else if (changeNicknameResult == ResultStatus.EMPTY_INPUT_FORM) {
+            //TODO: 페이지 첫 로드 후 공백 입력에선 요청이 들어오는데, 2회차부터는 프론트에서 걸러짐
+            redirectAttributes.addFlashAttribute(Messages.FAILURE_MESSAGE, "공백은 허용되지 않습니다.");
+            return new RedirectView(url);
         } else if (changeNicknameResult == ResultStatus.DUPLICATE_NICKNAME) {
             redirectAttributes.addFlashAttribute(Messages.FAILURE_MESSAGE, "이미 사용중인 닉네임입니다.");
             return new RedirectView(url);
@@ -139,6 +143,9 @@ public class AccountController {
         } else if (changePasswordResult == ResultStatus.SAME_PASSWORD) {
             redirectAttributes.addFlashAttribute(Messages.FAILURE_MESSAGE,
                 "동일한 패스워드로의 변경은 불가능합니다.");
+            return new RedirectView(url);
+        } else if (changePasswordResult == ResultStatus.EMPTY_INPUT_FORM) {
+            redirectAttributes.addFlashAttribute(Messages.FAILURE_MESSAGE, "공백은 허용되지 않습니다.");
             return new RedirectView(url);
         } else {
             redirectAttributes.addFlashAttribute(Messages.FAILURE_MESSAGE, "처리 오류");

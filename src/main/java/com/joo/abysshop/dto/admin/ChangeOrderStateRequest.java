@@ -1,6 +1,5 @@
 package com.joo.abysshop.dto.admin;
 
-import com.joo.abysshop.enums.OrderState;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

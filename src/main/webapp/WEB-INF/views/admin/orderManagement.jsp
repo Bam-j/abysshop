@@ -85,16 +85,13 @@
 
     dropdownItems.forEach(item => {
       item.addEventListener("click", event => {
-        event.preventDefault(); // 링크 이동 방지
+        event.preventDefault();
         const selectedItem = event.target.closest("a");
-        const selectedText = selectedItem.textContent; // 선택한 항목의 텍스트 가져오기
-        const selectedValue = selectedItem.getAttribute("data-value"); // 선택한 항목의 값
+        const selectedText = selectedItem.textContent;
+        const selectedValue = selectedItem.getAttribute("data-value");
 
-        console.log(selectedText);
-        console.log(selectedValue);
-
-        dropdownButton.textContent = selectedText; // 버튼 텍스트 변경
-        newStateInput.value = selectedValue; // 숨겨진 input 값 변경
+        dropdownButton.textContent = selectedText;
+        newStateInput.value = selectedValue;
       });
     });
   });

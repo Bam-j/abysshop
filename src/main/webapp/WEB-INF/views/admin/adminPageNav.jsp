@@ -26,12 +26,14 @@
 </head>
 <body>
 <nav class="nav">
-  <a class="nav-link active" aria-current="page" href="?menu=order-management"
+  <a class="nav-link active" aria-current="page" href="/admin/my-page?menu=order-management"
      onclick="changeURL('order-management')">주문 관리</a>
-  <a class="nav-link" href="?menu=point-recharge-management"
+  <a class="nav-link" href="/admin/my-page?menu=point-recharge-management"
      onclick="changeURL('point-recharge-management')">포인트 지급 요청</a>
-  <a class="nav-link" href="?menu=add-product" onclick="changeURL('add-product')">상품 추가</a>
-  <a class="nav-link" href="?menu=remove-product" onclick="changeURL('remove-product')">상품 삭제</a>
+  <a class="nav-link" href="/admin/my-page?menu=add-product" onclick="changeURL('add-product')">상품
+    추가</a>
+  <a class="nav-link" href="/admin/my-page?menu=remove-product"
+     onclick="changeURL('remove-product')">상품 삭제</a>
 </nav>
 
 <script type="text/javascript">

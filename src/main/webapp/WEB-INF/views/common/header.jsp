@@ -40,9 +40,9 @@
         <c:choose>
           <c:when test="${user.userType == 'admin'}">
             <li class="divider-elem">
-              <form action="/admin/my-page" method="get">
-                <button type="submit" class="btn btn-primary">관리자 페이지</button>
-              </form>
+              <a href="/admin/my-page?menu=order-management" class="btn btn-primary">
+                관리자 페이지
+              </a>
             </li>
           </c:when>
           <c:otherwise>

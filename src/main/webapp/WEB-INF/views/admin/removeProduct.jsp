@@ -28,6 +28,7 @@
   <table>
     <thead>
     <tr>
+      <td>상품 번호</td>
       <td>상품명</td>
       <td>가격</td>
       <td>삭제</td>
@@ -35,6 +36,7 @@
     </thead>
     <tbody>
     <c:forEach items="${productList}" var="product">
+      <td>${product.productId}</td>
       <td>${product.productName}</td>
       <td>${product.price}</td>
       <td>

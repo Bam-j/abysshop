@@ -5,6 +5,7 @@ import com.joo.abysshop.constants.ViewNames;
 import com.joo.abysshop.dto.admin.AddProductRequest;
 import com.joo.abysshop.dto.order.OrderListResponse;
 import com.joo.abysshop.dto.point.PointRechargeListResponse;
+import com.joo.abysshop.dto.product.ProductListResponse;
 import com.joo.abysshop.enums.UserType;
 import com.joo.abysshop.service.admin.AdminMyPageService;
 import com.joo.abysshop.service.admin.AdminOrderManagementService;
@@ -29,9 +30,18 @@ public class AdminController {
     private final AdminPointManagementService adminPointManagementService;
 
     @GetMapping("/admin/my-page")
-    public String getAdminMyPage(Model model) {
-        List<OrderListResponse> orderList = adminOrderManagementService.getAllOrders();
-        model.addAttribute(ModelAttributeNames.ORDER_LIST, orderList);
+    public String getAdminMyPage(@RequestParam("menu") String menu, Model model) {
+        if ("order-management".equals(menu)) {
+            List<OrderListResponse> orderList = adminOrderManagementService.getAllOrders();
+            model.addAttribute(ModelAttributeNames.ORDER_LIST, orderList);
+        } else if ("point-recharge-management".equals(menu)) {
+            List<PointRechargeListResponse> pointRechargeList = adminPointManagementService.getAllPointRecharge();
+            model.addAttribute(ModelAttributeNames.POINT_RECHARGE_LIST, pointRechargeList);
+        } else if ("add-product".equals(menu)) {
+        } else if ("remove-product".equals(menu)) {
+            List<ProductListResponse> productList = adminMyPageService.getAllProducts();
+            model.addAttribute(ModelAttributeNames.PRODUCT_LIST, productList);
+        }
 
         return ViewNames.ADMIN_MY_PAGE;
     }

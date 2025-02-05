@@ -12,6 +12,7 @@
     pageEncoding="UTF-8"
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,8 +32,8 @@
     <tr>
       <th>주문 번호</th>
       <th>주문자</th>
-      <%--<th>주문 상품</th>
-      <th>주문 포인트</th>--%>
+      <%--<th>주문 상품</th>--%>
+      <th>주문 포인트</th>
       <th>구매일</th>
       <th>주문 상태</th>
     </tr>
@@ -42,9 +43,9 @@
       <tr>
         <td>${order.orderId}</td>
         <td>${order.userId}</td>
-        <%--<td>${order.items}</td>
-        <td>${order.totalAmount}</td>--%>
-        <td>${order.orderDate}</td>
+          <%--<td>${order.items}</td>--%>
+        <td>${order.totalPoints}</td>
+        <td><fmt:formatDate value="${order.orderDate}" pattern="yyyy-MM-dd" /></td>
         <td>
           <div class="btn-group">
             <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown"

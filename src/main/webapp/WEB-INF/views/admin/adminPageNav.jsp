@@ -39,7 +39,7 @@
     if (menu === "order-management") {
       history.replaceState(null, null, "/admin/my-page?menu=order-management");
     } else if (menu === "point-recharge-management") {
-      history.replaceState(null, null, "/admin/my-page?menu=user-info");
+      history.replaceState(null, null, "/admin/my-page?menu=point-recharge-management");
     } else if (menu === "add-product") {
       history.replaceState(null, null, "/admin/my-page?menu=user-info");
     } else if (menu === "remove-product") {

@@ -29,17 +29,11 @@ public class AdminController {
     private final AdminPointManagementService adminPointManagementService;
 
     @GetMapping("/admin/my-page")
-    public String getAdminMyPage(@RequestParam("userId") Long userId, Model model) {
-        UserType userType = adminMyPageService.getUserType(userId);
+    public String getAdminMyPage(Model model) {
+        List<OrderListResponse> orderList = adminOrderManagementService.getAllOrders();
+        model.addAttribute(ModelAttributeNames.ORDER_LIST, orderList);
 
-        if (userType.equals(UserType.ADMIN)) {
-            List<OrderListResponse> orderList = adminOrderManagementService.getAllOrders();
-            model.addAttribute(ModelAttributeNames.ORDER_LIST, orderList);
-
-            return ViewNames.ADMIN_MY_PAGE;
-        } else {
-            return ViewNames.INDEX_PAGE;
-        }
+        return ViewNames.ADMIN_MY_PAGE;
     }
 
     @GetMapping("/admin/order/list")

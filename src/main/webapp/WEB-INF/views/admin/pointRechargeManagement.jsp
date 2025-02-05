@@ -11,6 +11,7 @@
     pageEncoding="UTF-8"
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
   <title>포인트 지급 요청 관리</title>
@@ -42,7 +43,7 @@
         <td>${pointRecharge.rechargeId}</td>
         <td>${pointRecharge.nickname}</td>
         <td>${pointRecharge.points}</td>
-        <td>${pointRecharge.requestTime}</td>
+        <td><fmt:formatDate value="${pointRecharge.requestTime}" pattern="yyyy-MM-dd" /></td>
         <td>
           <div class="btn-group">
             <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown"

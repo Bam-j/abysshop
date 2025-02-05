@@ -47,6 +47,7 @@
         <td>${order.totalPoints}</td>
         <td><fmt:formatDate value="${order.orderDate}" pattern="yyyy-MM-dd" /></td>
         <td>
+          <%-- TODO: foreach에서 첫 번째 요소만 변경됨 --%>
           <div class="btn-group">
             <button type="button" id="dropdown-button" class="btn btn-info dropdown-toggle"
                     data-bs-toggle="dropdown"

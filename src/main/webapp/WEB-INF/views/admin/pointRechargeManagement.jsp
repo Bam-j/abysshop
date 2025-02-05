@@ -45,8 +45,10 @@
         <td>${pointRecharge.points}</td>
         <td><fmt:formatDate value="${pointRecharge.requestTime}" pattern="yyyy-MM-dd" /></td>
         <td>
+        <%-- TODO: 동작 X --%>
           <div class="btn-group">
-            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown"
+            <button type="button" id="recharge-dropdown-button" class="btn btn-info dropdown-toggle"
+                    data-bs-toggle="dropdown"
                     aria-expanded="false">
                 ${pointRecharge.rechargeRequestState} <!-- TODO: state값에 따라 한글 상태가 출력되도록 변경 -->
             </button>
@@ -64,9 +66,9 @@
                 <a class="dropdown-item" data-value="refunded" href="#">환불 처리 완료</a>
               </li>
             </ul>
-            <form action="/point/recharge/change-state" method="post">
+            <form action="/admin/recharge/change-state" method="post">
               <input type="hidden" name="rechargeId" value="${pointRecharge.rechargeId}">
-              <input type="hidden" name="newState" id="newState" />
+              <input type="hidden" name="newState" id="recharge-newState" />
               <button type="submit" class="btn btn-primary">변경</button>
             </form>
           </div>
@@ -84,5 +86,25 @@
     </tbody>
   </table>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const dropdownItems = document.querySelectorAll(".dropdown-item");
+    const rechargeDropdownButton = document.getElementById("recharge-dropdown-button");
+    const rechargeNewStateInput = document.getElementById("recharge-newState");
+
+    dropdownItems.forEach(item => {
+      item.addEventListener("click", event => {
+        event.preventDefault();
+        const selectedItem = event.target.closest("a");
+        const selectedText = selectedItem.textContent;
+        const selectedValue = selectedItem.getAttribute("data-value");
+
+        rechargeDropdownButton.textContent = selectedText;
+        rechargeNewStateInput.value = selectedValue;
+      });
+    });
+  });
+</script>
 </body>
 </html>

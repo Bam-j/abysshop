@@ -43,4 +43,10 @@
     FROM products_table
     WHERE product_id = #{productId}
   </delete>
+
+  <update id="changePointRechargeState" parameterType="java.util.Map">
+    UPDATE point_recharge_table
+    SET recharge_request_state = #{newState}
+    WHERE recharge_id = #{rechargeId}
+  </update>
 </mapper>

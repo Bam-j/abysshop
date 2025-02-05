@@ -23,4 +23,6 @@ public interface AdminMapper {
     void insertProductImage(ProductImageEntity productImageEntity);
 
     void deleteByProductId(Long productId);
+
+    void changePointRechargeState(Map<String, Object> changeStateMap);
 }

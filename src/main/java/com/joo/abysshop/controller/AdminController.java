@@ -4,6 +4,7 @@ import com.joo.abysshop.constants.ModelAttributeNames;
 import com.joo.abysshop.constants.ViewNames;
 import com.joo.abysshop.dto.admin.AddProductRequest;
 import com.joo.abysshop.dto.admin.ChangeOrderStateRequest;
+import com.joo.abysshop.dto.admin.ChangePointRechargeStateRequest;
 import com.joo.abysshop.dto.order.OrderListResponse;
 import com.joo.abysshop.dto.point.PointRechargeListResponse;
 import com.joo.abysshop.dto.product.ProductListResponse;
@@ -31,7 +32,8 @@ public class AdminController {
     private final AdminPointManagementService adminPointManagementService;
 
     @GetMapping("/admin/my-page")
-    public String getAdminMyPage(@RequestParam(value = "menu", defaultValue = "order-management") String menu, Model model) {
+    public String getAdminMyPage(
+        @RequestParam(value = "menu", defaultValue = "order-management") String menu, Model model) {
         if ("order-management".equals(menu)) {
             List<OrderListResponse> orderList = adminOrderManagementService.getAllOrders();
             model.addAttribute(ModelAttributeNames.ORDER_LIST, orderList);
@@ -79,5 +81,16 @@ public class AdminController {
     public RedirectView removeProduct(@RequestParam("productId") Long productId) {
         adminMyPageService.removeProduct(productId);
         return new RedirectView("admin/my-page?menu=remove-product");
+    }
+
+    @PostMapping("/admin/recharge/change-state")
+    public RedirectView changePointRechargeState(
+        @ModelAttribute ChangePointRechargeStateRequest changePointRechargeStateRequest, Model model) {
+        adminPointManagementService.changePointRechargeState(changePointRechargeStateRequest);
+
+        List<PointRechargeListResponse> pointRechargeList = adminPointManagementService.getAllPointRecharge();
+        model.addAttribute(ModelAttributeNames.POINT_RECHARGE_LIST, pointRechargeList);
+
+        return new RedirectView("/admin/my-page?menu=point-recharge-management");
     }
 }

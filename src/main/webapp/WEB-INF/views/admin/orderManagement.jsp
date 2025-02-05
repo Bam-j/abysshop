@@ -48,7 +48,8 @@
         <td><fmt:formatDate value="${order.orderDate}" pattern="yyyy-MM-dd" /></td>
         <td>
           <div class="btn-group">
-            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown"
+            <button type="button" id="dropdown-button" class="btn btn-info dropdown-toggle"
+                    data-bs-toggle="dropdown"
                     aria-expanded="false">
                 ${order.orderState} <!-- TODO: state값에 따라 한글 상태가 출력되도록 변경 -->
             </button>
@@ -63,7 +64,7 @@
                 <a class="dropdown-item" data-value="refunded" href="#">환불 처리 완료</a>
               </li>
             </ul>
-            <form action="/admin/order/product/change-state" method="post">
+            <form action="/admin/order/change-state" method="post">
               <input type="hidden" name="orderId" value="${order.orderId}">
               <input type="hidden" name="newState" id="newState" />
               <button type="submit" class="btn btn-primary">변경</button>
@@ -75,5 +76,28 @@
     </tbody>
   </table>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const dropdownItems = document.querySelectorAll(".dropdown-item");
+    const dropdownButton = document.getElementById("dropdown-button");
+    const newStateInput = document.getElementById("newState");
+
+    dropdownItems.forEach(item => {
+      item.addEventListener("click", event => {
+        event.preventDefault(); // 링크 이동 방지
+        const selectedItem = event.target.closest("a");
+        const selectedText = selectedItem.textContent; // 선택한 항목의 텍스트 가져오기
+        const selectedValue = selectedItem.getAttribute("data-value"); // 선택한 항목의 값
+
+        console.log(selectedText);
+        console.log(selectedValue);
+
+        dropdownButton.textContent = selectedText; // 버튼 텍스트 변경
+        newStateInput.value = selectedValue; // 숨겨진 input 값 변경
+      });
+    });
+  });
+</script>
 </body>
 </html>

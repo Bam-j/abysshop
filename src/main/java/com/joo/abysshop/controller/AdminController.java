@@ -3,6 +3,7 @@ package com.joo.abysshop.controller;
 import com.joo.abysshop.constants.ModelAttributeNames;
 import com.joo.abysshop.constants.ViewNames;
 import com.joo.abysshop.dto.admin.AddProductRequest;
+import com.joo.abysshop.dto.admin.ChangeOrderStateRequest;
 import com.joo.abysshop.dto.order.OrderListResponse;
 import com.joo.abysshop.dto.point.PointRechargeListResponse;
 import com.joo.abysshop.dto.product.ProductListResponse;
@@ -30,7 +31,7 @@ public class AdminController {
     private final AdminPointManagementService adminPointManagementService;
 
     @GetMapping("/admin/my-page")
-    public String getAdminMyPage(@RequestParam("menu") String menu, Model model) {
+    public String getAdminMyPage(@RequestParam(value = "menu", defaultValue = "order-management") String menu, Model model) {
         if ("order-management".equals(menu)) {
             List<OrderListResponse> orderList = adminOrderManagementService.getAllOrders();
             model.addAttribute(ModelAttributeNames.ORDER_LIST, orderList);
@@ -46,27 +47,15 @@ public class AdminController {
         return ViewNames.ADMIN_MY_PAGE;
     }
 
-    @GetMapping("/admin/order/list")
-    public void getProductOrderList(Model model) {
-        List<OrderListResponse> orderList = adminOrderManagementService.getAllOrders();
-        model.addAttribute(ModelAttributeNames.ORDER_LIST, orderList);
-    }
-
-    @PostMapping("/admin/order/product/change-state")
-    public RedirectView changeOrderState(@RequestParam("orderId") Long orderId,
-        @RequestParam("newState") String newState, Model model) {
-        adminOrderManagementService.changeOrderState(orderId, newState);
+    @PostMapping("/admin/order/change-state")
+    public RedirectView changeOrderState(
+        @ModelAttribute ChangeOrderStateRequest changeOrderStateRequest, Model model) {
+        adminOrderManagementService.changeOrderState(changeOrderStateRequest);
 
         List<OrderListResponse> orderList = adminOrderManagementService.getAllOrders();
         model.addAttribute(ModelAttributeNames.ORDER_LIST, orderList);
 
-        return new RedirectView("admin/my-page?menu=order-management");
-    }
-
-    @GetMapping("/admin/point/recharge/list")
-    public void getPointOrders(Model model) {
-        List<PointRechargeListResponse> pointRechargeList = adminPointManagementService.getAllPointRecharge();
-        model.addAttribute(ModelAttributeNames.POINT_RECHARGE_LIST, pointRechargeList);
+        return new RedirectView("/admin/my-page");
     }
 
     @PostMapping("/admin/point/provide")

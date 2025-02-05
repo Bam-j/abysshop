@@ -10,6 +10,6 @@ import lombok.Getter;
 @AllArgsConstructor
 public class ChangeOrderStateRequest {
 
-    private Integer orderId;
-    private OrderState orderState;
+    private Long orderId;
+    private String newState;
 }

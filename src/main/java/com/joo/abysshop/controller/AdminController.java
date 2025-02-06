@@ -8,7 +8,6 @@ import com.joo.abysshop.dto.admin.ChangePointRechargeStateRequest;
 import com.joo.abysshop.dto.order.OrderListResponse;
 import com.joo.abysshop.dto.point.PointRechargeListResponse;
 import com.joo.abysshop.dto.product.ProductListResponse;
-import com.joo.abysshop.enums.UserType;
 import com.joo.abysshop.service.admin.AdminMyPageService;
 import com.joo.abysshop.service.admin.AdminOrderManagementService;
 import com.joo.abysshop.service.admin.AdminPointManagementService;

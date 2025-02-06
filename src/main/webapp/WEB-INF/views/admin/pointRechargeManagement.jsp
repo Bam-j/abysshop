@@ -38,19 +38,19 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${pointRechargeList}" var="pointRecharge">
-      <tr>
+    <c:forEach items="${pointRechargeList}" var="pointRecharge" varStatus="status">
+      <tr data-index="${status.index}">
         <td>${pointRecharge.rechargeId}</td>
         <td>${pointRecharge.nickname}</td>
         <td>${pointRecharge.points}</td>
         <td><fmt:formatDate value="${pointRecharge.requestTime}" pattern="yyyy-MM-dd" /></td>
         <td>
-        <%-- TODO: 동작 X --%>
-          <div class="btn-group">
-            <button type="button" id="recharge-dropdown-button" class="btn btn-info dropdown-toggle"
+          <div class="btn-group" data-index="${status.index}">
+            <button type="button" id="dropdown-button" class="btn btn-info dropdown-toggle"
                     data-bs-toggle="dropdown"
                     aria-expanded="false">
-                ${pointRecharge.rechargeRequestState} <!-- TODO: state값에 따라 한글 상태가 출력되도록 변경 -->
+              <!-- TODO: state값에 따라 한글 상태가 출력되도록 변경 -->
+                ${pointRecharge.rechargeRequestState}
             </button>
             <ul class="dropdown-menu">
               <li>
@@ -68,8 +68,11 @@
             </ul>
             <form action="/admin/recharge/change-state" method="post">
               <input type="hidden" name="rechargeId" value="${pointRecharge.rechargeId}">
-              <input type="hidden" name="newState" id="recharge-newState" />
-              <button type="submit" class="btn btn-primary">변경</button>
+              <input type="hidden" name="newState" id="newState" class="newState"
+                     data-index="${status.index}" />
+              <button type="submit" class="btn btn-primary change-button"
+                      data-index="${status.index}">변경
+              </button>
             </form>
           </div>
         </td>
@@ -86,25 +89,6 @@
     </tbody>
   </table>
 </section>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const dropdownItems = document.querySelectorAll(".dropdown-item");
-    const rechargeDropdownButton = document.getElementById("recharge-dropdown-button");
-    const rechargeNewStateInput = document.getElementById("recharge-newState");
-
-    dropdownItems.forEach(item => {
-      item.addEventListener("click", event => {
-        event.preventDefault();
-        const selectedItem = event.target.closest("a");
-        const selectedText = selectedItem.textContent;
-        const selectedValue = selectedItem.getAttribute("data-value");
-
-        rechargeDropdownButton.textContent = selectedText;
-        rechargeNewStateInput.value = selectedValue;
-      });
-    });
-  });
-</script>
+<script src="../../resources/static/js/admin/changeState.js"></script>
 </body>
 </html>

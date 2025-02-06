@@ -39,20 +39,20 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${orderList}" var="order">
-      <tr>
+    <c:forEach items="${orderList}" var="order" varStatus="status">
+      <tr data-index="${status.index}">
         <td>${order.orderId}</td>
         <td>${order.userId}</td>
           <%--<td>${order.items}</td>--%>
         <td>${order.totalPoints}</td>
         <td><fmt:formatDate value="${order.orderDate}" pattern="yyyy-MM-dd" /></td>
         <td>
-          <%-- TODO: foreach에서 첫 번째 요소만 변경됨 --%>
-          <div class="btn-group">
+          <div class="btn-group" data-index="${status.index}">
             <button type="button" id="dropdown-button" class="btn btn-info dropdown-toggle"
                     data-bs-toggle="dropdown"
                     aria-expanded="false">
-                ${order.orderState} <!-- TODO: state값에 따라 한글 상태가 출력되도록 변경 -->
+              <!-- TODO: state값에 따라 한글 상태가 출력되도록 변경 -->
+                ${order.orderState}
             </button>
             <ul class="dropdown-menu">
               <li>
@@ -67,8 +67,11 @@
             </ul>
             <form action="/admin/order/change-state" method="post">
               <input type="hidden" name="orderId" value="${order.orderId}">
-              <input type="hidden" name="newState" id="newState" />
-              <button type="submit" class="btn btn-primary">변경</button>
+              <input type="hidden" name="newState" id="newState" class="newState"
+                     data-index="${status.index}" />
+              <button type="submit" class="btn btn-primary change-button"
+                      data-index="${status.index}">변경
+              </button>
             </form>
           </div>
         </td>
@@ -77,25 +80,5 @@
     </tbody>
   </table>
 </section>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const dropdownItems = document.querySelectorAll(".dropdown-item");
-    const dropdownButton = document.getElementById("dropdown-button");
-    const newStateInput = document.getElementById("newState");
-
-    dropdownItems.forEach(item => {
-      item.addEventListener("click", event => {
-        event.preventDefault();
-        const selectedItem = event.target.closest("a");
-        const selectedText = selectedItem.textContent;
-        const selectedValue = selectedItem.getAttribute("data-value");
-
-        dropdownButton.textContent = selectedText;
-        newStateInput.value = selectedValue;
-      });
-    });
-  });
-</script>
 </body>
 </html>

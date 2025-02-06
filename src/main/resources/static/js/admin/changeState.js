@@ -1,5 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
-  document.addEventListener("click", event => {
+document.addEventListener("click", event => {
     const selectedItem = event.target.closest(".dropdown-item");
     if (!selectedItem) {
       return;
@@ -23,5 +22,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     dropdownButton.textContent = selectedText;
     newStateInput.value = selectedValue;
-  });
 });

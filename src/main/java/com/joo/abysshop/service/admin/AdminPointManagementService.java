@@ -1,6 +1,7 @@
 package com.joo.abysshop.service.admin;
 
 import com.joo.abysshop.dto.admin.ChangePointRechargeStateRequest;
+import com.joo.abysshop.dto.admin.ProvidePointRequest;
 import com.joo.abysshop.dto.point.PointRechargeListResponse;
 import com.joo.abysshop.entity.point.PointRechargeEntity;
 import com.joo.abysshop.entity.user.UserEntity;
@@ -37,7 +38,10 @@ public class AdminPointManagementService {
         return pointRechargeList;
     }
 
-    public void providePoint(Long userId, Long point) {
+    public void providePoint(ProvidePointRequest providePointRequest) {
+        Long userId = providePointRequest.getUserId();
+        Long point = providePointRequest.getPoint();
+
         Optional<UserEntity> optionalUserEntity = userMapper.findByUserId(userId);
         UserEntity userEntity;
 
@@ -47,7 +51,7 @@ public class AdminPointManagementService {
             return;
         }
 
-        adminMapper.providePoint(userEntity.getUserId(), point);
+        adminMapper.providePoint(userId, point);
     }
 
     public void changePointRechargeState(

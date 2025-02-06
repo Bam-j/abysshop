@@ -5,6 +5,7 @@ import com.joo.abysshop.constants.ViewNames;
 import com.joo.abysshop.dto.admin.AddProductRequest;
 import com.joo.abysshop.dto.admin.ChangeOrderStateRequest;
 import com.joo.abysshop.dto.admin.ChangePointRechargeStateRequest;
+import com.joo.abysshop.dto.admin.ProvidePointRequest;
 import com.joo.abysshop.dto.order.OrderListResponse;
 import com.joo.abysshop.dto.point.PointRechargeListResponse;
 import com.joo.abysshop.dto.product.ProductListResponse;
@@ -60,11 +61,9 @@ public class AdminController {
     }
 
     @PostMapping("/admin/point/provide")
-    public RedirectView providePoint(@RequestParam("userId") Long userId,
-        @RequestParam("point") Long point) {
-        //TODO: 지급 후 해당 항목 disabled
-        adminPointManagementService.providePoint(userId, point);
-        return new RedirectView("admin/my-page?menu=point-recharge-management");
+    public RedirectView providePoint(@ModelAttribute ProvidePointRequest providePointRequest) {
+        adminPointManagementService.providePoint(providePointRequest);
+        return new RedirectView("/admin/my-page?menu=point-recharge-management");
     }
 
     @PostMapping("/admin/product/add")
@@ -72,14 +71,14 @@ public class AdminController {
         throws IOException {
         //TODO: Image 관련 내용 구현하기
         adminMyPageService.addProduct(addProductRequest);
-        return new RedirectView("admin/my-page?menu=add-product");
+        return new RedirectView("/admin/my-page?menu=add-product");
 
     }
 
     @PostMapping("/admin/product/remove")
     public RedirectView removeProduct(@RequestParam("productId") Long productId) {
         adminMyPageService.removeProduct(productId);
-        return new RedirectView("admin/my-page?menu=remove-product");
+        return new RedirectView("/admin/my-page?menu=remove-product");
     }
 
     @PostMapping("/admin/recharge/change-state")

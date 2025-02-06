@@ -80,8 +80,11 @@
           <%@ include file="pointRechargeDetail.jsp" %>
         </td>
         <td>
-          <form action="/admin/point/provide" method="post">
-            <button type="submit">지급 승인</button>
+          <form action="/admin/point/provide" method="post" id="provide-confirm-form">
+            <input type="hidden" name="userId" value="${pointRecharge.userId}" />
+            <input type="hidden" name="point" value="${pointRecharge.points}" />
+            <button type="submit" id="provide-confirm-button" data-index="${status.index}">지급 승인
+            </button>
           </form>
         </td>
       </tr>

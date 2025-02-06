@@ -89,6 +89,5 @@
     </tbody>
   </table>
 </section>
-<script src="../../resources/static/js/admin/changeState.js"></script>
 </body>
 </html>

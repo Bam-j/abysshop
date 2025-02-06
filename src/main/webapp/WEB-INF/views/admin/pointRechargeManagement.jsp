@@ -54,10 +54,10 @@
             </button>
             <ul class="dropdown-menu">
               <li>
-                <a class="dropdown-item" data-value="pending-payment" href="#">송금 확인 대기</a>
+                <a class="dropdown-item" data-value="pending_payment" href="#">송금 확인 대기</a>
               </li>
               <li>
-                <a class="dropdown-item" data-value="pending-point-deposit" href="#">포인트 지급 대기</a>
+                <a class="dropdown-item" data-value="pending_point_deposit" href="#">포인트 지급 대기</a>
               </li>
               <li>
                 <a class="dropdown-item" data-value="completed" href="#">포인트 지급 완료</a>

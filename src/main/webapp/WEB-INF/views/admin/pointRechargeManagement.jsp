@@ -83,7 +83,10 @@
           <form action="/admin/point/provide" method="post" id="provide-confirm-form">
             <input type="hidden" name="userId" value="${pointRecharge.userId}" />
             <input type="hidden" name="point" value="${pointRecharge.points}" />
-            <button type="submit" id="provide-confirm-button" data-index="${status.index}">지급 승인
+            <button type="submit" id="provide-confirm-button" data-index="${status.index}"
+              ${pointRecharge.rechargeRequestState == "completed" ||
+                  pointRecharge.rechargeRequestState == "refunded" ? "disabled" : ""}>
+              지급 승인
             </button>
           </form>
         </td>

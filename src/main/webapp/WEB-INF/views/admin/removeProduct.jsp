@@ -36,15 +36,17 @@
     </thead>
     <tbody>
     <c:forEach items="${productList}" var="product">
-      <td>${product.productId}</td>
-      <td>${product.productName}</td>
-      <td>${product.price}</td>
-      <td>
-        <form action="/admin/product/remove" method="post">
-          <input type="hidden" name="productId" value="${product.productId}">
-          <button type="submit" class="btn btn-warning">품목 삭제</button>
-        </form>
-      </td>
+      <tr>
+        <td>${product.productId}</td>
+        <td>${product.productName}</td>
+        <td>${product.price}</td>
+        <td>
+          <form action="/admin/product/remove" method="post">
+            <input type="hidden" name="productId" value="${product.productId}">
+            <button type="submit" class="btn btn-warning">품목 삭제</button>
+          </form>
+        </td>
+      </tr>
     </c:forEach>
     </tbody>
   </table>

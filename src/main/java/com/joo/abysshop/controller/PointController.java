@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
@@ -46,7 +47,7 @@ public class PointController {
         return new RedirectView("/admin/my-page?menu=point-recharge-management");
     }
 
-    @GetMapping("/point/recharge/request/detail")
+    @GetMapping("/point/recharge/detail")
     public void getPointRechargeDetail(@RequestParam("rechargeId") Long rechargeId, Model model) {
         PointRechargeDetailResponse pointRechargeDetail = pointRechargeManagementService.getDetail(
             rechargeId);
@@ -56,7 +57,7 @@ public class PointController {
         }
     }
 
-    @PostMapping("/point/recharge/request/detail")
+    @PostMapping("/point/recharge/detail")
     public RedirectView managePointRechargeDetail(
         @ModelAttribute SavePointRechargeDetailRequest savePointRechargeDetailRequest) {
         pointRechargeManagementService.saveDetail(savePointRechargeDetailRequest);

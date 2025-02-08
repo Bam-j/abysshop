@@ -7,6 +7,7 @@ import com.joo.abysshop.dto.admin.ChangeOrderStateRequest;
 import com.joo.abysshop.dto.admin.ChangePointRechargeStateRequest;
 import com.joo.abysshop.dto.admin.ProvidePointRequest;
 import com.joo.abysshop.dto.order.OrderListResponse;
+import com.joo.abysshop.dto.point.PointRechargeDetailResponse;
 import com.joo.abysshop.dto.point.PointRechargeListResponse;
 import com.joo.abysshop.dto.product.ProductListResponse;
 import com.joo.abysshop.service.admin.AdminMyPageService;
@@ -83,7 +84,8 @@ public class AdminController {
 
     @PostMapping("/admin/recharge/change-state")
     public RedirectView changePointRechargeState(
-        @ModelAttribute ChangePointRechargeStateRequest changePointRechargeStateRequest, Model model) {
+        @ModelAttribute ChangePointRechargeStateRequest changePointRechargeStateRequest,
+        Model model) {
         adminPointManagementService.changePointRechargeState(changePointRechargeStateRequest);
 
         List<PointRechargeListResponse> pointRechargeList = adminPointManagementService.getAllPointRecharge();

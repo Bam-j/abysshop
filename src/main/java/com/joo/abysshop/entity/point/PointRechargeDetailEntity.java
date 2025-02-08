@@ -10,7 +10,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public class PointRechargeDetailEntity {
 
-    private Long rechargeDetailId;    //부자연스러운 필드명 교체
+    private Long rechargeDetailId;
     private Long rechargeId;
     private Long userId;
     private String bank;

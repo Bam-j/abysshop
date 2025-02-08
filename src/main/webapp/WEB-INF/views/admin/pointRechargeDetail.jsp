@@ -23,14 +23,18 @@
 </head>
 <body>
 <section>
-  <form action="point/recharge/request/detail" method="get">
-    <input type="hidden" name="pointRequestId" value="${pointRechargeDetail.rechargeId}">
+  <%--<form action="/point/recharge/detail" method="get">
+    <input type="hidden" name="rechargeId" value="${pointRecharge.rechargeId}">--%>
     <button id="manage-recharge-detail-button" type="button" class="btn btn-primary"
             data-bs-toggle="modal"
-            data-bs-target="#manage-recharge-detail-modal">
-      포인트 충전
+            data-bs-target="#manage-recharge-detail-modal"
+            onclick="getDetailRequest(${pointRecharge.rechargeId})"
+    >
+      상세 정보 입력
     </button>
+<%--
   </form>
+--%>
 
   <div class="modal fade" id="manage-recharge-detail-modal" tabindex="-1"
        aria-labelledby="manage-recharge-detail-modal-label"
@@ -38,23 +42,30 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="manage-recharge-detail-modal-label">포인트 충전 요청</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h1 class="modal-title fs-5" id="manage-recharge-detail-modal-label">포인트 충전 상세 정보</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"
+                  aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="alert alert-warning" role="alert">
-            정확한 정보를 입력해주세요. 입력된 정보는 환불 등 처리에 사용됩니다.
+            정확한 정보를 입력해주세요.<br>
+            입력된 정보는 환불 등 처리에 사용됩니다.
           </div>
+          <form action="/point/recharge/detail" method="post">
+            <%--
+            TODO: GET 요청에서 받은 pointRechargeDetail의 내용 반영하기
+              모달에서 get 요청이 작동할 수 있도록
+            --%>
+            <input type="hidden" name="rechargeId" value="${pointRechargeDetail.rechargeId}">
+            <input type="hidden" name="userId" value="${pointRechargeDetail.userId}">
+            <input type="text" name="bank" value="${pointRechargeDetail.bank != null ?
+            pointRechargeDetail.bank : ''}" placeholder="은행">
+            <input type="text" name="accountNumber" value="${pointRechargeDetail.accountNumber!= null ?
+            pointRechargeDetail.accountNumber : ''}" placeholder="계좌 번호">
+            <button type="submit" class="btn btn-primary">상세 정보 저장</button>
+          </form>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-            <form action="/point/recharge/request/detail" method="post">
-              <%-- TODO: GET 요청에서 받은 pointRechargeDetail의 내용 반영하기 --%>
-              <input type="hidden" name="rechargeId" value="${pointRechargeDetail.rechargeId}">
-              <input type="hidden" name="userId" value="${pointRechargeDetail.userId}">
-              <input type="text" name="bank" placeholder="은행">
-              <input type="text" name="accountNumber" placeholder="계좌 번호">
-              <button type="submit" class="btn btn-primary">상세 정보 저장</button>
-            </form>
           </div>
         </div>
       </div>

@@ -9,6 +9,7 @@
     contentType="text/html;charset=UTF-8"
     language="java"
     pageEncoding="UTF-8"
+    isELIgnored="false"
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -23,18 +24,14 @@
 </head>
 <body>
 <section>
-  <%--<form action="/point/recharge/detail" method="get">
-    <input type="hidden" name="rechargeId" value="${pointRecharge.rechargeId}">--%>
+  <form action="/point/recharge/detail" method="get"  id="rechargeDetailForm">
+    <input type="hidden" name="rechargeId" value="${pointRecharge.rechargeId}">
     <button id="manage-recharge-detail-button" type="button" class="btn btn-primary"
             data-bs-toggle="modal"
-            data-bs-target="#manage-recharge-detail-modal"
-            onclick="getDetailRequest(${pointRecharge.rechargeId})"
-    >
+            data-bs-target="#manage-recharge-detail-modal">
       상세 정보 입력
     </button>
-<%--
   </form>
---%>
 
   <div class="modal fade" id="manage-recharge-detail-modal" tabindex="-1"
        aria-labelledby="manage-recharge-detail-modal-label"

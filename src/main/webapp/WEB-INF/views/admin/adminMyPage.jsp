@@ -10,6 +10,7 @@
     contentType="text/html;charset=UTF-8"
     language="java"
     pageEncoding="UTF-8"
+    isELIgnored="false"
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -61,6 +62,8 @@
         crossorigin="anonymous"></script>
 <script src="../../resources/static/js/common/navEvent.js"></script>
 <script src="../../resources/static/js/admin/changeState.js"></script>
+<%--
 <script src="../../resources/static/js/admin/getDetailRequest.js"></script>
+--%>
 </body>
 </html>

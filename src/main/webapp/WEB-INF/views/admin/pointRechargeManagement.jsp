@@ -76,7 +76,7 @@
             </form>
           </div>
         </td>
-        <td>
+        <td data-index="${status.index}">
           <%@ include file="pointRechargeDetail.jsp" %>
         </td>
         <td>

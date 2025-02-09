@@ -22,10 +22,7 @@ public class PointRechargeManagementService {
         //하나의 주문 당(rechargeId) 하나의 detail이 생기므로 rechargeId로 탐색 수행
         PointRechargeDetailEntity pointRechargeDetailEntity = pointMapper.findPointRechargeDetail(
             rechargeId);
-        PointRechargeDetailResponse pointRechargeDetailResponse = toPointDTOMapper.toPointRechargeDetailResponse(
-            pointRechargeDetailEntity);
-
-        return pointRechargeDetailResponse;
+        return toPointDTOMapper.toPointRechargeDetailResponse(pointRechargeDetailEntity);
     }
 
     public void saveDetail(SavePointRechargeDetailRequest savePointRechargeDetailRequest) {

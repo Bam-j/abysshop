@@ -3,8 +3,9 @@ package com.joo.abysshop.controller;
 import com.joo.abysshop.constants.ModelAttributeNames;
 import com.joo.abysshop.constants.RedirectMappings;
 import com.joo.abysshop.dto.point.CreatePointRechargeRequest;
+import com.joo.abysshop.dto.point.PointRechargeDetailListResponse;
 import com.joo.abysshop.dto.point.PointRechargeListResponse;
-import com.joo.abysshop.dto.point.SavePointRechargeDetailRequest;
+import com.joo.abysshop.dto.point.UpdatePointRechargeDetailRequest;
 import com.joo.abysshop.service.admin.AdminPointManagementService;
 import com.joo.abysshop.service.point.PointRechargeManagementService;
 import com.joo.abysshop.service.point.PointRechargeService;
@@ -43,20 +44,16 @@ public class PointController {
         return new RedirectView("/admin/my-page?menu=point-recharge-management");
     }
 
-    /*@GetMapping("/point/recharge/detail")
-    public void getPointRechargeDetail(@RequestParam("rechargeId") Long rechargeId, Model model) {
-        PointRechargeDetailResponse pointRechargeDetail = pointRechargeManagementService.getDetail(
-            rechargeId);
-
-        if (pointRechargeDetail != null) {
-            model.addAttribute(ModelAttributeNames.POINT_RECHARGE_DETAIL, pointRechargeDetail);
-        }
-    }*/
-
     @PostMapping("/point/recharge/detail")
-    public RedirectView managePointRechargeDetail(
-        @ModelAttribute SavePointRechargeDetailRequest savePointRechargeDetailRequest) {
-        pointRechargeManagementService.saveDetail(savePointRechargeDetailRequest);
+    public RedirectView updatePointRechargeDetail(
+        @ModelAttribute UpdatePointRechargeDetailRequest updatePointRechargeDetailRequest,
+        Model model) {
+        pointRechargeManagementService.updatePointRechargeDetail(updatePointRechargeDetailRequest);
+
+        List<PointRechargeDetailListResponse> pointRechargeDetailList = pointRechargeManagementService.getAllPointRechargeDetail();
+        model.addAttribute(ModelAttributeNames.POINT_RECHARGE_DETAIL_LIST,
+            pointRechargeDetailList);
+
         return new RedirectView("/admin/my-page?menu=point-recharge-management");
     }
 }

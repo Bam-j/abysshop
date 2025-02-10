@@ -41,21 +41,6 @@
     WHERE recharge_id = #{rechargeId}
   </update>
 
-  <select id="findPointRechargeDetail" parameterType="java.lang.Long"
-    resultType="com.joo.abysshop.entity.point.PointRechargeDetailEntity"
-    resultMap="pointRechargeDetailEntityResultMap">
-    SELECT *
-    FROM point_recharge_detail_table
-    WHERE recharge_id = #{rechargeId}
-  </select>
-
-  <insert id="insertPointRechargeDetail"
-    parameterType="com.joo.abysshop.entity.point.SavePointRechargeDetailEntity">
-    INSERT INTO point_recharge_detail_table (recharge_id, user_id, bank, account_number,
-                                             deposit_confirmed_time)
-    VALUES (#{rechargeId}, #{userId}, #{bank}, #{accountNumber}, NOW())
-  </insert>
-
   <select id="getUserPointRecharges" parameterType="java.lang.Long" resultType="java.util.List"
     resultMap="pointRechargeEntityResultMap">
     SELECT *
@@ -69,4 +54,12 @@
     SELECT *
     FROM point_recharge_detail_table
   </select>
+
+  <update id="updatePointRechargeDetail"
+    parameterType="com.joo.abysshop.entity.point.UpdatePointRechargeDetailEntity">
+    UPDATE point_recharge_detail_table
+    SET bank           = #{bank},
+        account_number = #{accountNumber}
+    WHERE recharge_detail_id = #{rechargeDetailId}
+  </update>
 </mapper>

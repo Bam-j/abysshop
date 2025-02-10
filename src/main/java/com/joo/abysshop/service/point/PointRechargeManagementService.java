@@ -1,9 +1,9 @@
 package com.joo.abysshop.service.point;
 
 import com.joo.abysshop.dto.point.PointRechargeDetailListResponse;
-import com.joo.abysshop.dto.point.SavePointRechargeDetailRequest;
+import com.joo.abysshop.dto.point.UpdatePointRechargeDetailRequest;
 import com.joo.abysshop.entity.point.PointRechargeDetailEntity;
-import com.joo.abysshop.entity.point.SavePointRechargeDetailEntity;
+import com.joo.abysshop.entity.point.UpdatePointRechargeDetailEntity;
 import com.joo.abysshop.mapper.dto.ToPointDTOMapper;
 import com.joo.abysshop.mapper.entity.ToPointEntityMapper;
 import com.joo.abysshop.mapper.mybatis.PointMapper;
@@ -36,9 +36,10 @@ public class PointRechargeManagementService {
         return pointRechargeDetailList;
     }
 
-    public void saveDetail(SavePointRechargeDetailRequest savePointRechargeDetailRequest) {
-        SavePointRechargeDetailEntity savePointRechargeDetailEntity = toPointEntityMapper.toSavePointRechargeDetailEntity(
-            savePointRechargeDetailRequest);
-        pointMapper.insertPointRechargeDetail(savePointRechargeDetailEntity);
+    public void updatePointRechargeDetail(
+        UpdatePointRechargeDetailRequest updatePointRechargeDetailRequest) {
+        UpdatePointRechargeDetailEntity updatePointRechargeDetailEntity = toPointEntityMapper.toUpdatePointRechargeDetailEntity(
+            updatePointRechargeDetailRequest);
+        pointMapper.updatePointRechargeDetail(updatePointRechargeDetailEntity);
     }
 }

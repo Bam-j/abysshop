@@ -3,7 +3,7 @@ package com.joo.abysshop.mapper.mybatis;
 import com.joo.abysshop.entity.point.CreatePointRechargeEntity;
 import com.joo.abysshop.entity.point.PointRechargeDetailEntity;
 import com.joo.abysshop.entity.point.PointRechargeEntity;
-import com.joo.abysshop.entity.point.SavePointRechargeDetailEntity;
+import com.joo.abysshop.entity.point.UpdatePointRechargeDetailEntity;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
@@ -17,11 +17,9 @@ public interface PointMapper {
 
     void changePointRechargeState(Map<String, Object> changeStateMap);
 
-    PointRechargeDetailEntity findPointRechargeDetail(Long rechargeId);
-
-    void insertPointRechargeDetail(SavePointRechargeDetailEntity savePointRechargeDetailEntity);
-
     List<PointRechargeEntity> getUserPointRecharges(Long userId);
 
     List<PointRechargeDetailEntity> findAllPointRechargeDetail();
+
+    void updatePointRechargeDetail(UpdatePointRechargeDetailEntity updatePointRechargeDetailEntity);
 }

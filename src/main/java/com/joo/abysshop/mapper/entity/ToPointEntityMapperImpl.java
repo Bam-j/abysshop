@@ -1,9 +1,9 @@
 package com.joo.abysshop.mapper.entity;
 
 import com.joo.abysshop.dto.point.CreatePointRechargeRequest;
-import com.joo.abysshop.dto.point.SavePointRechargeDetailRequest;
+import com.joo.abysshop.dto.point.UpdatePointRechargeDetailRequest;
 import com.joo.abysshop.entity.point.CreatePointRechargeEntity;
-import com.joo.abysshop.entity.point.SavePointRechargeDetailEntity;
+import com.joo.abysshop.entity.point.UpdatePointRechargeDetailEntity;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -20,13 +20,12 @@ public class ToPointEntityMapperImpl implements ToPointEntityMapper {
     }
 
     @Override
-    public SavePointRechargeDetailEntity toSavePointRechargeDetailEntity(
-        SavePointRechargeDetailRequest savePointRechargeDetailRequest) {
-        return SavePointRechargeDetailEntity.builder()
-            .rechargeId(savePointRechargeDetailRequest.getRechargeId())
-            .userId(savePointRechargeDetailRequest.getUserId())
-            .bank(savePointRechargeDetailRequest.getBank())
-            .accountNumber(savePointRechargeDetailRequest.getAccountNumber())
+    public UpdatePointRechargeDetailEntity toUpdatePointRechargeDetailEntity(
+        UpdatePointRechargeDetailRequest updatePointRechargeDetailRequest) {
+        return UpdatePointRechargeDetailEntity.builder()
+            .rechargeDetailId(updatePointRechargeDetailRequest.getRechargeDetailId())
+            .bank(updatePointRechargeDetailRequest.getBank())
+            .accountNumber(updatePointRechargeDetailRequest.getAccountNumber())
             .build();
     }
 }

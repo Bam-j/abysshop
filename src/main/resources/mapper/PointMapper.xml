@@ -62,4 +62,11 @@
     FROM point_recharge_table
     WHERE user_id = #{userId}
   </select>
+
+  <select id="findAllPointRechargeDetail"
+    resultType="com.joo.abysshop.entity.point.PointRechargeDetailEntity"
+    resultMap="pointRechargeDetailEntityResultMap">
+    SELECT *
+    FROM point_recharge_detail_table
+  </select>
 </mapper>

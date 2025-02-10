@@ -3,7 +3,6 @@ package com.joo.abysshop.controller;
 import com.joo.abysshop.constants.ModelAttributeNames;
 import com.joo.abysshop.constants.RedirectMappings;
 import com.joo.abysshop.dto.point.CreatePointRechargeRequest;
-import com.joo.abysshop.dto.point.PointRechargeDetailResponse;
 import com.joo.abysshop.dto.point.PointRechargeListResponse;
 import com.joo.abysshop.dto.point.SavePointRechargeDetailRequest;
 import com.joo.abysshop.service.admin.AdminPointManagementService;
@@ -13,7 +12,6 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,7 +43,7 @@ public class PointController {
         return new RedirectView("/admin/my-page?menu=point-recharge-management");
     }
 
-    @GetMapping("/point/recharge/detail")
+    /*@GetMapping("/point/recharge/detail")
     public void getPointRechargeDetail(@RequestParam("rechargeId") Long rechargeId, Model model) {
         PointRechargeDetailResponse pointRechargeDetail = pointRechargeManagementService.getDetail(
             rechargeId);
@@ -53,7 +51,7 @@ public class PointController {
         if (pointRechargeDetail != null) {
             model.addAttribute(ModelAttributeNames.POINT_RECHARGE_DETAIL, pointRechargeDetail);
         }
-    }
+    }*/
 
     @PostMapping("/point/recharge/detail")
     public RedirectView managePointRechargeDetail(

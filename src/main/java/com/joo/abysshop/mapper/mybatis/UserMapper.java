@@ -18,4 +18,6 @@ public interface UserMapper {
     void consumePoint(Map<String, Object> remainPointsMap);
 
     Optional<UserEntity> findByUsername(String username);
+
+    String getNickname(Long userId);
 }

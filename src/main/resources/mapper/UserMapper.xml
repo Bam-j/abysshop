@@ -48,4 +48,10 @@
     FROM users_table
     WHERE username = #{username}
   </select>
+
+  <select id="getNickname" parameterType="java.lang.Long" resultType="java.lang.String">
+    SELECT nickname
+    FROM users_table
+    WHERE user_id = #{userId}
+  </select>
 </mapper>

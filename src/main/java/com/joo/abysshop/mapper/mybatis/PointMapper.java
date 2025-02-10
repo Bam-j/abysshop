@@ -22,4 +22,6 @@ public interface PointMapper {
     void insertPointRechargeDetail(SavePointRechargeDetailEntity savePointRechargeDetailEntity);
 
     List<PointRechargeEntity> getUserPointRecharges(Long userId);
+
+    List<PointRechargeDetailEntity> findAllPointRechargeDetail();
 }

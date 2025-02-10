@@ -7,12 +7,13 @@ import com.joo.abysshop.dto.admin.ChangeOrderStateRequest;
 import com.joo.abysshop.dto.admin.ChangePointRechargeStateRequest;
 import com.joo.abysshop.dto.admin.ProvidePointRequest;
 import com.joo.abysshop.dto.order.OrderListResponse;
-import com.joo.abysshop.dto.point.PointRechargeDetailResponse;
+import com.joo.abysshop.dto.point.PointRechargeDetailListResponse;
 import com.joo.abysshop.dto.point.PointRechargeListResponse;
 import com.joo.abysshop.dto.product.ProductListResponse;
 import com.joo.abysshop.service.admin.AdminMyPageService;
 import com.joo.abysshop.service.admin.AdminOrderManagementService;
 import com.joo.abysshop.service.admin.AdminPointManagementService;
+import com.joo.abysshop.service.point.PointRechargeManagementService;
 import java.io.IOException;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +32,7 @@ public class AdminController {
     private final AdminMyPageService adminMyPageService;
     private final AdminOrderManagementService adminOrderManagementService;
     private final AdminPointManagementService adminPointManagementService;
+    private final PointRechargeManagementService pointRechargeManagementService;
 
     @GetMapping("/admin/my-page")
     public String getAdminMyPage(
@@ -41,6 +43,10 @@ public class AdminController {
         } else if ("point-recharge-management".equals(menu)) {
             List<PointRechargeListResponse> pointRechargeList = adminPointManagementService.getAllPointRecharge();
             model.addAttribute(ModelAttributeNames.POINT_RECHARGE_LIST, pointRechargeList);
+        } else if ("point-recharge-detail".equals(menu)) {
+            List<PointRechargeDetailListResponse> pointRechargeDetailList = pointRechargeManagementService.getAllPointRechargeDetail();
+            model.addAttribute(ModelAttributeNames.POINT_RECHARGE_DETAIL_LIST,
+                pointRechargeDetailList);
         } else if ("add-product".equals(menu)) {
         } else if ("remove-product".equals(menu)) {
             List<ProductListResponse> productList = adminMyPageService.getAllProducts();

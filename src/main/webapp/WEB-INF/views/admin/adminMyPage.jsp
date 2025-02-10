@@ -42,6 +42,9 @@
       <c:when test="${param.menu eq 'point-recharge-management'}">
         <jsp:include page="pointRechargeManagement.jsp" />
       </c:when>
+      <c:when test="${param.menu eq 'point-recharge-detail'}">
+        <jsp:include page="pointRechargeDetail.jsp" />
+      </c:when>
       <c:when test="${param.menu eq 'add-product'}">
         <jsp:include page="addProduct.jsp" />
       </c:when>

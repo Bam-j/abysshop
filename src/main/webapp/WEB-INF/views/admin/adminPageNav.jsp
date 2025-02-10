@@ -30,8 +30,10 @@
      onclick="changeURL('order-management')">주문 관리</a>
   <a class="nav-link" href="/admin/my-page?menu=point-recharge-management"
      onclick="changeURL('point-recharge-management')">포인트 지급 요청</a>
-  <a class="nav-link" href="/admin/my-page?menu=add-product" onclick="changeURL('add-product')">상품
-    추가</a>
+  <a class="nav-link" href="/admin/my-page?menu=point-recharge-detail"
+     onclick="changeURL('point-recharge-detail')">포인트 지급 요청 정보 관리</a>
+  <a class="nav-link" href="/admin/my-page?menu=add-product"
+     onclick="changeURL('add-product')">상품 추가</a>
   <a class="nav-link" href="/admin/my-page?menu=remove-product"
      onclick="changeURL('remove-product')">상품 삭제</a>
 </nav>
@@ -42,6 +44,8 @@
       history.replaceState(null, null, "/admin/my-page?menu=order-management");
     } else if (menu === "point-recharge-management") {
       history.replaceState(null, null, "/admin/my-page?menu=point-recharge-management");
+    } else if (menu === "point-recharge-detail") {
+      history.replaceState(null, null, "/admin/my-page?menu=point-recharge-detail");
     } else if (menu === "add-product") {
       history.replaceState(null, null, "/admin/my-page?menu=user-info");
     } else if (menu === "remove-product") {

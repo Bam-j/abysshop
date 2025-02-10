@@ -1,17 +1,13 @@
 <%--
   Created by IntelliJ IDEA.
   User: juhyu
-  Date: 2025-01-14
-  Time: 오후 9:42
+  Date: 2025-02-10
+  Time: 오후 4:10
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page
-    contentType="text/html;charset=UTF-8"
-    language="java"
-    pageEncoding="UTF-8"
-    isELIgnored="false"
-%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
   <title>포인트 충전 요청 상세 정보</title>
@@ -24,50 +20,45 @@
 </head>
 <body>
 <section>
-  <form action="/point/recharge/detail" method="get"  id="rechargeDetailForm">
-    <input type="hidden" name="rechargeId" value="${pointRecharge.rechargeId}">
-    <button id="manage-recharge-detail-button" type="button" class="btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#manage-recharge-detail-modal">
-      상세 정보 입력
-    </button>
-  </form>
-
-  <div class="modal fade" id="manage-recharge-detail-modal" tabindex="-1"
-       aria-labelledby="manage-recharge-detail-modal-label"
-       aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="manage-recharge-detail-modal-label">포인트 충전 상세 정보</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"
-                  aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="alert alert-warning" role="alert">
-            정확한 정보를 입력해주세요.<br>
-            입력된 정보는 환불 등 처리에 사용됩니다.
-          </div>
-          <form action="/point/recharge/detail" method="post">
-            <%--
-            TODO: GET 요청에서 받은 pointRechargeDetail의 내용 반영하기
-              모달에서 get 요청이 작동할 수 있도록
-            --%>
-            <input type="hidden" name="rechargeId" value="${pointRechargeDetail.rechargeId}">
-            <input type="hidden" name="userId" value="${pointRechargeDetail.userId}">
-            <input type="text" name="bank" value="${pointRechargeDetail.bank != null ?
-            pointRechargeDetail.bank : ''}" placeholder="은행">
-            <input type="text" name="accountNumber" value="${pointRechargeDetail.accountNumber!= null ?
-            pointRechargeDetail.accountNumber : ''}" placeholder="계좌 번호">
-            <button type="submit" class="btn btn-primary">상세 정보 저장</button>
-          </form>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <table>
+    <thead>
+    <tr>
+      <th>요청 정보 번호</th>
+      <th>요청 번호</th>
+      <th>주문자</th>
+      <th>입금 확인 일</th>
+      <%-- TODO: 입금액 컬럼 추가를 고려해보자 --%>
+      <th>은행</th>
+      <th>계좌 번호</th>
+      <th>입력 제출</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach items="${pointRechargeDetailList}" var="pointRechargeDetail"
+               varStatus="status">
+      <tr data-index="${status.index}">
+        <td>${pointRechargeDetail.rechargeDetailId}</td>
+        <td>${pointRechargeDetail.rechargeId}</td>
+        <td>${pointRechargeDetail.nickname}</td>
+        <td><fmt:formatDate value="${pointRechargeDetail.depositConfirmedTime}"
+                            pattern="yyyy-MM-dd" /></td>
+        <form action="/point/recharge/detail" method="post">
+          <td><input type="text"
+                     value="${pointRechargeDetail.bank != null ? pointRechargeDetail.bank : ''}"
+                     placeholder="은행" /></td>
+          <td><input type="text"
+                     value="${pointRechargeDetail.accountNumber != null ? pointRechargeDetail.accountNumber : ''}"
+                     placeholder="계좌번호" /></td>
+          <td>
+            <input type="hidden" name="rechargeDetailId"
+                   value="${pointRechargeDetail.rechargeDetailId}" data-index="${status.index}" />
+            <button type="submit" data-index="${status.index}">입력</button>
+          </td>
+        </form>
+      </tr>
+    </c:forEach>
+    </tbody>
+  </table>
 </section>
 </body>
 </html>

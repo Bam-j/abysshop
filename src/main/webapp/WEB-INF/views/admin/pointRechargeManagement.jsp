@@ -24,16 +24,15 @@
 </head>
 <body>
 <section>
-  <h3><strong>반드시 포인트 지급 전에 요청 상세 정보에 정보를 입력해주세요</strong></h3>
+  <h3><strong>포인트 지급 전 반드시 상세 정보에 정보를 입력해주세요.</strong></h3>
   <table>
     <thead>
     <tr>
-      <th>주문 번호</th>
+      <th>요청 번호</th>
       <th>요청자</th>
       <th>요청 포인트</th>
       <th>요청일</th>
       <th>요청 상태</th>
-      <th>요청 상세 정보</th>
       <th>요청 승인</th>
     </tr>
     </thead>
@@ -75,9 +74,6 @@
               </button>
             </form>
           </div>
-        </td>
-        <td data-index="${status.index}">
-          <%@ include file="pointRechargeDetail.jsp" %>
         </td>
         <td>
           <form action="/admin/point/provide" method="post" id="provide-confirm-form">

@@ -44,9 +44,11 @@
                             pattern="yyyy-MM-dd" /></td>
         <form action="/point/recharge/detail" method="post">
           <td><input type="text"
+                     name="bank"
                      value="${pointRechargeDetail.bank != null ? pointRechargeDetail.bank : ''}"
                      placeholder="은행" /></td>
           <td><input type="text"
+                     name="accountNumber"
                      value="${pointRechargeDetail.accountNumber != null ? pointRechargeDetail.accountNumber : ''}"
                      placeholder="계좌번호" /></td>
           <td>

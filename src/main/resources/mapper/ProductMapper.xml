@@ -11,6 +11,7 @@
 
   <resultMap id="productIdResultMap" type="com.joo.abysshop.entity.product.ProductEntity">
     <result property="productId" column="product_id"/>
+    <result property="productName" column="product_name" />
   </resultMap>
 
   <select id="findAllProducts" resultType="java.util.List" resultMap="productEntityResultMap">

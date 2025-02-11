@@ -1,6 +1,7 @@
 package com.joo.abysshop.mapper.mybatis;
 
 import com.joo.abysshop.entity.admin.AddProductEntity;
+import com.joo.abysshop.entity.admin.AddProductImageEntity;
 import com.joo.abysshop.entity.order.OrderEntity;
 import com.joo.abysshop.entity.product.ProductImageEntity;
 import java.util.List;
@@ -20,7 +21,7 @@ public interface AdminMapper {
 
     void insertProduct(AddProductEntity addProductEntity);
 
-    void insertProductImage(ProductImageEntity productImageEntity);
+    void insertProductImage(AddProductImageEntity addProductImageEntity);
 
     void deleteByProductId(Long productId);
 

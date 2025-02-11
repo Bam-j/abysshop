@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class AddProductRequest {
 
     private MultipartFile image;
-    private String originalFileName;
+    //private String originalFileName;
 
     private String productName;
     private Long price;

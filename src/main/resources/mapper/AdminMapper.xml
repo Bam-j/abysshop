@@ -27,15 +27,16 @@
     WHERE user_id = #{userId}
   </update>
 
-  <insert id="insertProduct" parameterType="com.joo.abysshop.entity.admin.AddProductEntity">
+  <insert id="insertProduct" parameterType="com.joo.abysshop.entity.admin.AddProductEntity"
+    useGeneratedKeys="true" keyProperty="productId">
     INSERT INTO products_table (product_name, price, description)
     VALUES (#{productName}, #{price}, #{description})
   </insert>
 
   <insert id="insertProductImage"
-    parameterType="com.joo.abysshop.entity.product.ProductImageEntity">
-    INSERT INTO product_image_table (product_id, image, original_file_name)
-    VALUES (#{productId}, #{image}, #{originalFileName})
+    parameterType="com.joo.abysshop.entity.admin.AddProductImageEntity">
+    INSERT INTO product_image_table (product_id, original_file_name)
+    VALUES (#{productId}, #{originalFileName})
   </insert>
 
   <delete id="deleteByProductId" parameterType="java.lang.Long">

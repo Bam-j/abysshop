@@ -25,10 +25,11 @@
 </head>
 <body>
 <section>
+  <%-- TODO: 입력 검증 스크립트 추가하기 --%>
   <form id="add-product-form" action="/admin/product/add" method="post"
         enctype="multipart/form-data">
     <label for="product-image">
-      상품 이미지: <input type="file" id="product-image" name="productImage" multiple>
+      상품 이미지: <input type="file" id="product-image" name="image" multiple>
     </label>
     <input type="text" id="product-name" name="productName" placeholder="상품명">
     <input type="text" id="product-price" name="price" placeholder="상품 가격">

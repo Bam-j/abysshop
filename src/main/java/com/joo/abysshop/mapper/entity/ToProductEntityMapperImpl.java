@@ -35,7 +35,6 @@ public class ToProductEntityMapperImpl implements ToProductEntityMapper {
             .productName(addProductRequest.getProductName())
             .price(addProductRequest.getPrice())
             .description(addProductRequest.getDescription())
-            .productType(addProductRequest.getProductType())
             .build();
     }
 }

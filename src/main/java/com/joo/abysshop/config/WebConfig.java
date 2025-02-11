@@ -8,10 +8,16 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
+
+    private String resourcePath = "/static/**";
+    private String classpath = "classpath:/static/";
+    private String imgResourcePath = "/upload/**";
+    private String imgSavePath = "file:///C:/abysshop_img/";
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/static/**")
-            .addResourceLocations("classpath:/static/");
+        registry.addResourceHandler(resourcePath).addResourceLocations(classpath);
+        registry.addResourceHandler(imgResourcePath).addResourceLocations(imgSavePath);
     }
 
     @Override

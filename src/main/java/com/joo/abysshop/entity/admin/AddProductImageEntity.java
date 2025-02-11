@@ -7,9 +7,8 @@ import lombok.Getter;
 @Getter
 @Builder
 @AllArgsConstructor
-public class AddProductEntity {
+public class AddProductImageEntity {
 
-    private String productName;
-    private Long price;
-    private String description;
+    private Long productId;
+    private String originalFileName;
 }

@@ -65,8 +65,6 @@
         crossorigin="anonymous"></script>
 <script src="../../resources/static/js/common/navEvent.js"></script>
 <script src="../../resources/static/js/admin/changeState.js"></script>
-<%--
-<script src="../../resources/static/js/admin/getDetailRequest.js"></script>
---%>
+<script src="../../resources/static/js/admin/addProductValidation.js"></script>
 </body>
 </html>

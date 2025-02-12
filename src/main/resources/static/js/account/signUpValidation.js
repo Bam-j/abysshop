@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
   const signUpForm = document.getElementById("sign-up-form");
-  const failureMessageElem = document.getElementById("failure-message")
-  let failureMessage;
 
   signUpForm.addEventListener("submit", event => {
     const usernameInput = document.querySelector(".username-input");

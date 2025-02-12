@@ -25,7 +25,6 @@
 </head>
 <body>
 <section>
-  <%-- TODO: 입력 검증 스크립트 추가하기 --%>
   <form id="add-product-form" action="/admin/product/add" method="post"
         enctype="multipart/form-data">
     <label for="product-image">

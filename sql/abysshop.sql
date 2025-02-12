@@ -24,7 +24,6 @@ CREATE TABLE `product_image_table`
 (
   `image_id`           INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `product_id`         INT UNSIGNED             NOT NULL,
-  `image`              BLOB                     NULL,
   `original_file_name` VARCHAR(255)             NULL
 );
 

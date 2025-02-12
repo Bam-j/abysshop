@@ -64,7 +64,7 @@ public class AdminMyPageService {
             adminMapper.insertProduct(addProductEntity);
             Long productId = addProductEntity.getProductId();
 
-            //TODO: image 테이블 구조 변경(image 컬럼 삭제), jsp 수정해서 이미지 제대로 불러오기
+            //TODO: jsp 수정해서 이미지 제대로 불러오기
             
             //상품 이미지 INSERT 작업
         //String productName = addProductRequest.getProductName();

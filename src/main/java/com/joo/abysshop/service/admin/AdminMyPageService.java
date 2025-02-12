@@ -47,31 +47,19 @@ public class AdminMyPageService {
     }
 
     public void addProduct(AddProductRequest addProductRequest) throws IOException {
-        //if (addProductRequest.getImage() == null || addProductRequest.getImage().isEmpty()) {
-        //    AddProductEntity addProductEntity = toProductEntityMapper.toAddProductEntity(
-       //         addProductRequest);
-        //    adminMapper.insertProduct(addProductEntity);
-        //} else if (addProductRequest.getImage() != null) {
-            //이미지를 C 드라이브 아래의 별도의 디렉토리에 저장
-            MultipartFile imageFile = addProductRequest.getImage();
-            String originalFileName = imageFile.getOriginalFilename();
-            String savePath = "C:/abysshop_img/" + originalFileName;
-            imageFile.transferTo(new File(savePath));
+        MultipartFile imageFile = addProductRequest.getImage();
+        String originalFileName = imageFile.getOriginalFilename();
+        String savePath = "C:/abysshop_img/" + originalFileName;
+        imageFile.transferTo(new File(savePath));
 
-            //상품 INSERT 작업
-            AddProductEntity addProductEntity = toProductEntityMapper.toAddProductEntity(
-                addProductRequest);
-            adminMapper.insertProduct(addProductEntity);
-            Long productId = addProductEntity.getProductId();
+        AddProductEntity addProductEntity = toProductEntityMapper.toAddProductEntity(
+            addProductRequest);
+        adminMapper.insertProduct(addProductEntity);
+        Long productId = addProductEntity.getProductId();
 
-            //TODO: jsp 수정해서 이미지 제대로 불러오기
-            
-            //상품 이미지 INSERT 작업
-        //String productName = addProductRequest.getProductName();
-            //Long productId = productMapper.findProductIdByProductName(productName);
-            AddProductImageEntity addProductImageEntity = toProductEntityMapper.toAddProductImageEntity(originalFileName, productId);
-            adminMapper.insertProductImage(addProductImageEntity);
-        //}
+        AddProductImageEntity addProductImageEntity = toProductEntityMapper.toAddProductImageEntity(
+            originalFileName, productId);
+        adminMapper.insertProductImage(addProductImageEntity);
     }
 
     public void removeProduct(Long productId) {

@@ -3,10 +3,12 @@ package com.joo.abysshop.service.product;
 import com.joo.abysshop.dto.product.ProductDetailResponse;
 import com.joo.abysshop.dto.product.ProductListResponse;
 import com.joo.abysshop.entity.product.ProductEntity;
+import com.joo.abysshop.entity.product.ProductImageEntity;
 import com.joo.abysshop.mapper.dto.ToProductDTOMapper;
 import com.joo.abysshop.mapper.mybatis.ProductMapper;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +24,20 @@ public class ProductService {
         List<ProductListResponse> productList = new ArrayList<>();
 
         for (ProductEntity productEntity : productEntityList) {
-            productList.add(toProductDTOMapper.toProductListResponse(productEntity));
+            Long productId = productEntity.getProductId();
+            Optional<ProductImageEntity> optionalProductImageEntity = productMapper.findProductImageEntityByProductId(
+                productId);
+
+            if (optionalProductImageEntity.isPresent()) {
+                ProductImageEntity productImageEntity = optionalProductImageEntity.get();
+                String originalFileName = productImageEntity.getOriginalFileName();
+
+                productList.add(
+                    toProductDTOMapper.toProductListResponseWithImage(productEntity,
+                        originalFileName));
+            } else {
+                productList.add(toProductDTOMapper.toProductListResponse(productEntity));
+            }
         }
 
         return productList;

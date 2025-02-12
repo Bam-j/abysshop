@@ -14,6 +14,18 @@ public class ToProductDTOMapperImpl implements ToProductDTOMapper {
             .productId(productEntity.getProductId())
             .productName(productEntity.getProductName())
             .price(productEntity.getPrice())
+            .originalFileName("")
+            .build();
+    }
+
+    @Override
+    public ProductListResponse toProductListResponseWithImage(ProductEntity productEntity,
+        String originalFilename) {
+        return ProductListResponse.builder()
+            .productId(productEntity.getProductId())
+            .productName(productEntity.getProductName())
+            .price(productEntity.getPrice())
+            .originalFileName(originalFilename)
             .build();
     }
 
@@ -24,7 +36,6 @@ public class ToProductDTOMapperImpl implements ToProductDTOMapper {
             .productName(productEntity.getProductName())
             .price(productEntity.getPrice())
             .description(productEntity.getDescription())
-            //.image()
             .build();
     }
 }

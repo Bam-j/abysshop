@@ -11,6 +11,5 @@ public class ProductImageEntity {
 
     private Long imageId;
     private Long productId;
-    private byte[] image;
     private String originalFileName;
 }

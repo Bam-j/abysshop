@@ -83,7 +83,6 @@
 
 <%--<%@ include file="product/productNav.jsp" %>--%>
 
-<%-- TODO: 두 메뉴의 정렬 필요 --%>
 <%@ include file="point/pointRechargeRequestForm.jsp" %>
 <%@ include file="order/transferAndRefundInfo.jsp" %>
 

@@ -49,10 +49,6 @@
             입력된 정보는 환불 등 처리에 사용됩니다.
           </div>
           <form action="/point/recharge/detail" method="post">
-            <%--
-            TODO: GET 요청에서 받은 pointRechargeDetail의 내용 반영하기
-              모달에서 get 요청이 작동할 수 있도록
-            --%>
             <input type="hidden" name="rechargeId" value="${pointRechargeDetail.rechargeId}">
             <input type="hidden" name="userId" value="${pointRechargeDetail.userId}">
             <input type="text" name="bank" value="${pointRechargeDetail.bank != null ?

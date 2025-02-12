@@ -76,7 +76,6 @@ public class AdminController {
     @PostMapping("/admin/product/add")
     public RedirectView addProduct(@ModelAttribute AddProductRequest addProductRequest)
         throws IOException {
-        //TODO: Image 관련 내용 구현하기
         adminMyPageService.addProduct(addProductRequest);
         return new RedirectView("/admin/my-page?menu=add-product");
 

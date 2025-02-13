@@ -5,5 +5,5 @@ import com.joo.abysshop.entity.user.UserEntity;
 
 public interface ToUserDTOMapper {
 
-    UserInfoResponse toUserInfoResponse(UserEntity userEntity);
+    UserInfoResponse toUserInfoResponse(UserEntity userEntity, Long cartId);
 }

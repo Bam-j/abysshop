@@ -18,4 +18,6 @@ public interface CartMapper {
     Long getQuantity(Long cartId);
 
     Long getTotalPoints(Long cartId);
+
+    Long getCartIdByUserId(Long userId);
 }

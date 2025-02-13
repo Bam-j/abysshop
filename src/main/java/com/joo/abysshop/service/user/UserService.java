@@ -10,6 +10,7 @@ import com.joo.abysshop.enums.UserType;
 import com.joo.abysshop.mapper.dto.ToOrderDTOMapper;
 import com.joo.abysshop.mapper.dto.ToPointDTOMapper;
 import com.joo.abysshop.mapper.dto.ToUserDTOMapper;
+import com.joo.abysshop.mapper.mybatis.CartMapper;
 import com.joo.abysshop.mapper.mybatis.OrderMapper;
 import com.joo.abysshop.mapper.mybatis.PointMapper;
 import com.joo.abysshop.mapper.mybatis.UserMapper;
@@ -26,6 +27,7 @@ public class UserService {
     private final UserMapper userMapper;
     private final OrderMapper orderMapper;
     private final PointMapper pointMapper;
+    private final CartMapper cartMapper;
     private final ToUserDTOMapper toUserDTOMapper;
     private final ToOrderDTOMapper toOrderDTOMapper;
     private final ToPointDTOMapper toPointDTOMapper;
@@ -65,6 +67,9 @@ public class UserService {
             return null;
         }
 
-        return toUserDTOMapper.toUserInfoResponse(optionalUserEntity.get());
+        UserEntity userEntity = optionalUserEntity.get();
+        Long userId =  userEntity.getUserId();
+        Long cartId = cartMapper.getCartIdByUserId(userId);
+        return toUserDTOMapper.toUserInfoResponse(userEntity, cartId);
     }
 }

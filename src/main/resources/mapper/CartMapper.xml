@@ -18,6 +18,10 @@
     <result property="quantity" column="quantity"/>
   </resultMap>
 
+  <resultMap id="cartIdResultMap" type="java.lang.Long">
+    <result property="cartId" column="cart_id"/>
+  </resultMap>
+
   <select id="getCart" parameterType="java.lang.Long"
     resultType="com.joo.abysshop.entity.cart.CartEntity"
     resultMap="cartEntityResultMap">
@@ -50,5 +54,12 @@
     SELECT SUM(price) AS total_points
     FROM cart_items_table
     WHERE cart_id = #{cartId}
+  </select>
+
+  <select id="getCartIdByUserId" parameterType="java.lang.Long" resultMap="cartIdResultMap"
+    resultType="java.lang.Long">
+    SELECT cart_id
+    FROM carts_table
+    WHERE user_id = #{userId}
   </select>
 </mapper>

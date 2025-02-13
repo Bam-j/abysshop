@@ -10,6 +10,7 @@ import lombok.Getter;
 public class UserInfoResponse {
 
     private Long userId;
+    private Long cartId;
     private String username;
     private String nickname;
     private String userType;

@@ -1,12 +1,17 @@
 package com.joo.abysshop.service.cart;
 
+import com.joo.abysshop.dto.cart.AddItemRequest;
 import com.joo.abysshop.dto.cart.CartItemResponse;
 import com.joo.abysshop.dto.cart.CartResponse;
 import com.joo.abysshop.dto.cart.RemoveItemRequest;
+import com.joo.abysshop.dto.product.ProductInfoRequest;
+import com.joo.abysshop.entity.cart.AddCartItemEntity;
 import com.joo.abysshop.entity.cart.CartEntity;
 import com.joo.abysshop.entity.cart.CartItemEntity;
 import com.joo.abysshop.mapper.dto.ToCartDTOMapper;
+import com.joo.abysshop.mapper.entity.ToCartEntityMapper;
 import com.joo.abysshop.mapper.mybatis.CartMapper;
+import com.joo.abysshop.service.product.ProductService;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,8 +23,10 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class CartService {
 
+    private final ProductService productService;
     private final CartMapper cartMapper;
     private final ToCartDTOMapper toCartDTOMapper;
+    private final ToCartEntityMapper toCartEntityMapper;
 
     public CartResponse getCart(Long userId) {
         CartEntity cartEntity = cartMapper.getCart(userId);
@@ -37,6 +44,15 @@ public class CartService {
         }
 
         return cartItemResponseList;
+    }
+
+    public void addItem(AddItemRequest addItemRequest) {
+        Long productId = addItemRequest.getProductId();
+        ProductInfoRequest productInfoRequest = productService.getProductInfo(productId);
+        AddCartItemEntity addCartItemEntity = toCartEntityMapper.toAddCartItemEntity(addItemRequest,
+            productInfoRequest);
+
+        cartMapper.addItem(addCartItemEntity);
     }
 
     public void removeItem(RemoveItemRequest removeItemRequest) {

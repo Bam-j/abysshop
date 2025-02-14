@@ -65,7 +65,7 @@
               <div id='result'>0</div>
               <input type='button'
                      onclick='count("minus")'
-                     value='-'
+                     value='-' />
             </div>
           </td>
           <td>
@@ -102,6 +102,6 @@
 
 <%@ include file="../common/footer.jsp" %>
 
-<script src="../resources/static/js/cart/quantityControl.js"></script>
+<script src="../../resources/static/js/cart/quantityControl.js"></script>
 </body>
 </html>

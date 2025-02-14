@@ -1,6 +1,7 @@
 package com.joo.abysshop.mapper.dto;
 
 import com.joo.abysshop.dto.product.ProductDetailResponse;
+import com.joo.abysshop.dto.product.ProductInfoRequest;
 import com.joo.abysshop.dto.product.ProductListResponse;
 import com.joo.abysshop.entity.product.ProductEntity;
 import org.springframework.stereotype.Component;
@@ -36,6 +37,14 @@ public class ToProductDTOMapperImpl implements ToProductDTOMapper {
             .productName(productEntity.getProductName())
             .price(productEntity.getPrice())
             .description(productEntity.getDescription())
+            .build();
+    }
+
+    @Override
+    public ProductInfoRequest toProductInfoRequest(ProductEntity productEntity) {
+        return ProductInfoRequest.builder()
+            .productName(productEntity.getProductName())
+            .price(productEntity.getPrice())
             .build();
     }
 }

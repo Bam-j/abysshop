@@ -79,7 +79,7 @@ CREATE TABLE `cart_items_table`
   `product_id`   INT UNSIGNED             NOT NULL,
   `product_name` VARCHAR(255)             NULL,
   `price`        INT UNSIGNED             NULL,
-  `quantity`     INT UNSIGNED             NULL
+  `quantity`     INT UNSIGNED             NOT NULL DEFAULT 1
 );
 
 ALTER TABLE `carts_table`

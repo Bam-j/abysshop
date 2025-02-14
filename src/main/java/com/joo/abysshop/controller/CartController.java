@@ -2,6 +2,7 @@ package com.joo.abysshop.controller;
 
 import com.joo.abysshop.constants.ModelAttributeNames;
 import com.joo.abysshop.constants.ViewNames;
+import com.joo.abysshop.dto.cart.AddItemRequest;
 import com.joo.abysshop.dto.cart.CartItemResponse;
 import com.joo.abysshop.dto.cart.CartResponse;
 import com.joo.abysshop.dto.cart.RemoveItemRequest;
@@ -34,8 +35,14 @@ public class CartController {
         return ViewNames.SHOPPING_CART_PAGE;
     }
 
+    @PostMapping("/cart/item/add")
+    public RedirectView addItemToCart(@ModelAttribute AddItemRequest addItemRequest, Model model) {
+        cartService.addItem(addItemRequest);
+        return new RedirectView("/");
+    }
+
     @PostMapping("/cart/item/remove")
-    public RedirectView removeItem(@ModelAttribute RemoveItemRequest removeItemRequest,
+    public RedirectView removeItemFromCart(@ModelAttribute RemoveItemRequest removeItemRequest,
         Model model) {
         cartService.removeItem(removeItemRequest);
 

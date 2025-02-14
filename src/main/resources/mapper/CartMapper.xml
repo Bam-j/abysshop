@@ -62,4 +62,9 @@
     FROM carts_table
     WHERE user_id = #{userId}
   </select>
+
+  <insert id="addItem" parameterType="com.joo.abysshop.entity.cart.AddCartItemEntity">
+    INSERT INTO cart_items_table (cart_id, product_id, product_name, price)
+    VALUES (#{cartId}, #{productId}, #{productName}, #{price})
+  </insert>
 </mapper>

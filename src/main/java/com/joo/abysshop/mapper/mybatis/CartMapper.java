@@ -1,5 +1,6 @@
 package com.joo.abysshop.mapper.mybatis;
 
+import com.joo.abysshop.entity.cart.AddCartItemEntity;
 import com.joo.abysshop.entity.cart.CartEntity;
 import com.joo.abysshop.entity.cart.CartItemEntity;
 import java.util.List;
@@ -20,4 +21,6 @@ public interface CartMapper {
     Long getTotalPoints(Long cartId);
 
     Long getCartIdByUserId(Long userId);
+
+    void addItem(AddCartItemEntity addCartItemEntity);
 }

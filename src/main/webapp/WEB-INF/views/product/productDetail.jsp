@@ -45,8 +45,8 @@
       <li>${product.description}</li>
       <li>
         <form action="/cart/item/add" method="post">
-          <input type="hidden" value="${user.cartId}">
-          <input type="hidden" value="${product.productId}">
+          <input type="hidden" name="cartId" value="${user.cartId}">
+          <input type="hidden" name="productId" value="${product.productId}">
           <button type="submit" class="btn btn-primary">
             <i class="bi bi-cart"></i> 장바구니 담기
           </button>

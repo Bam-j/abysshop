@@ -1,12 +1,15 @@
 package com.joo.abysshop.controller;
 
+import com.joo.abysshop.constants.Messages;
 import com.joo.abysshop.constants.ModelAttributeNames;
+import com.joo.abysshop.constants.RedirectMappings;
 import com.joo.abysshop.constants.ViewNames;
 import com.joo.abysshop.dto.cart.AddItemRequest;
 import com.joo.abysshop.dto.cart.CartItemResponse;
 import com.joo.abysshop.dto.cart.CartResponse;
 import com.joo.abysshop.dto.cart.RemoveItemRequest;
 import com.joo.abysshop.service.cart.CartService;
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
@@ -36,7 +40,13 @@ public class CartController {
     }
 
     @PostMapping("/cart/item/add")
-    public RedirectView addItemToCart(@ModelAttribute AddItemRequest addItemRequest, Model model) {
+    public String addItemToCart(@ModelAttribute AddItemRequest addItemRequest, HttpSession session,
+        RedirectAttributes redirectAttributes) {
+        if (session.getAttribute("user") == null) {
+            redirectAttributes.addFlashAttribute(Messages.FAILURE_MESSAGE, "로그인을 해주세요.");
+            return RedirectMappings.REDIRECT_INDEX;
+        }
+
         if (cartService.isCartItemExists(addItemRequest)) {
             //카트에 상품이 존재하면 레코드를 새로 추가하지 않고, 존재하는 레코드의 quantity를 1 증가
             cartService.increaseQuantity(addItemRequest);
@@ -44,7 +54,7 @@ public class CartController {
             //카트에 상품이 존재하지 않으면 새로 레코드 추가
             cartService.addItem(addItemRequest);
         }
-        return new RedirectView("/");
+        return RedirectMappings.REDIRECT_INDEX;
     }
 
     @PostMapping("/cart/item/remove")

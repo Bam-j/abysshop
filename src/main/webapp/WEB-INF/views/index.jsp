@@ -100,5 +100,16 @@
 <script src="../resources/static/js/index.js"></script>
 <script src="../resources/static/js/common/textCopy.js"></script>
 <script src="../resources/static/js/product/moveToDetail.js"></script>
+<script>
+  //TODO: alert 스크립트를 common script 파일로 만들기
+  //window.alert 대신 모달 alert 형식으로 변경할 것을 고려
+  window.onload = () => {
+    let failureMessage = "${failureMessage}";
+
+    if (failureMessage !== "") {
+      window.alert(failureMessage)
+    }
+  }
+</script>
 </body>
 </html>

@@ -67,4 +67,18 @@
     INSERT INTO cart_items_table (cart_id, product_id, product_name, price)
     VALUES (#{cartId}, #{productId}, #{productName}, #{price})
   </insert>
+
+  <select id="isCartItemExists" resultType="boolean">
+    SELECT COUNT(*) > 0
+    FROM cart_items_table
+    WHERE cart_id = #{cartId}
+      AND product_id = #{productId}
+  </select>
+
+  <update id="increaseQuantity">
+    UPDATE cart_items_table
+    SET quantity = quantity + 1
+    WHERE cart_id = #{cartId}
+      AND product_id = #{productId}
+  </update>
 </mapper>

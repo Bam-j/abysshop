@@ -72,4 +72,16 @@ public class CartService {
     public Long getTotalPoints(Long cartId) {
         return cartMapper.getTotalPoints(cartId);
     }
+
+    public boolean isCartItemExists(AddItemRequest addItemRequest) {
+        Long cartId = addItemRequest.getCartId();
+        Long productId = addItemRequest.getProductId();
+        return cartMapper.isCartItemExists(cartId, productId);
+    }
+
+    public void increaseQuantity(AddItemRequest addItemRequest) {
+        Long cartId = addItemRequest.getCartId();
+        Long productId = addItemRequest.getProductId();
+        cartMapper.increaseQuantity(cartId, productId);
+    }
 }

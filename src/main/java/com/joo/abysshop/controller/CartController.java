@@ -37,7 +37,13 @@ public class CartController {
 
     @PostMapping("/cart/item/add")
     public RedirectView addItemToCart(@ModelAttribute AddItemRequest addItemRequest, Model model) {
-        cartService.addItem(addItemRequest);
+        if (cartService.isCartItemExists(addItemRequest)) {
+            //카트에 상품이 존재하면 레코드를 새로 추가하지 않고, 존재하는 레코드의 quantity를 1 증가
+            cartService.increaseQuantity(addItemRequest);
+        } else {
+            //카트에 상품이 존재하지 않으면 새로 레코드 추가
+            cartService.addItem(addItemRequest);
+        }
         return new RedirectView("/");
     }
 

@@ -6,6 +6,7 @@ import com.joo.abysshop.entity.cart.CartItemEntity;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface CartMapper {
@@ -23,4 +24,8 @@ public interface CartMapper {
     Long getCartIdByUserId(Long userId);
 
     void addItem(AddCartItemEntity addCartItemEntity);
+
+    boolean isCartItemExists(@Param("cartId") Long cartId, @Param("productId") Long productId);
+
+    void increaseQuantity(@Param("cartId") Long cartId, @Param("productId") Long productId);
 }

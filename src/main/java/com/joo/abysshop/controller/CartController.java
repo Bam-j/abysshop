@@ -8,6 +8,7 @@ import com.joo.abysshop.dto.cart.AddItemRequest;
 import com.joo.abysshop.dto.cart.CartItemResponse;
 import com.joo.abysshop.dto.cart.CartResponse;
 import com.joo.abysshop.dto.cart.RemoveItemRequest;
+import com.joo.abysshop.dto.user.UserInfoResponse;
 import com.joo.abysshop.service.cart.CartService;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
@@ -42,8 +43,15 @@ public class CartController {
     @PostMapping("/cart/item/add")
     public String addItemToCart(@ModelAttribute AddItemRequest addItemRequest, HttpSession session,
         RedirectAttributes redirectAttributes) {
-        if (session.getAttribute("user") == null) {
+        UserInfoResponse user = (UserInfoResponse) session.getAttribute("user");
+
+        if (user == null) {
+            //로그인을 하지 않은 경우 장바구에 담기 요청을 수행하지 못하도록
             redirectAttributes.addFlashAttribute(Messages.FAILURE_MESSAGE, "로그인을 해주세요.");
+            return RedirectMappings.REDIRECT_INDEX;
+        } else if (user.getUserType().equals("admin")) {
+            //관리자의 경우 장바구니 담기 요청을 수행하지 못하도록
+            redirectAttributes.addFlashAttribute(Messages.FAILURE_MESSAGE, "불가능한 요청입니다. (관리자 계정)");
             return RedirectMappings.REDIRECT_INDEX;
         }
 

@@ -1,5 +1,6 @@
 package com.joo.abysshop.mapper.mybatis;
 
+import com.joo.abysshop.dto.cart.AddItemRequest;
 import com.joo.abysshop.entity.cart.AddCartItemEntity;
 import com.joo.abysshop.entity.cart.CartEntity;
 import com.joo.abysshop.entity.cart.CartItemEntity;
@@ -25,7 +26,11 @@ public interface CartMapper {
 
     void addItem(AddCartItemEntity addCartItemEntity);
 
+    //mappper dto > entity로 변환 과정이 굳이 필요하지 않다 판단되어서 @Param 사용
     boolean isCartItemExists(@Param("cartId") Long cartId, @Param("productId") Long productId);
 
     void increaseQuantity(@Param("cartId") Long cartId, @Param("productId") Long productId);
+
+    void increaseTotalPrice(@Param("cartId") Long cartId, @Param("productId") Long productId,
+        @Param("price") Long price);
 }

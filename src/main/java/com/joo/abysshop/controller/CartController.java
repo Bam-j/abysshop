@@ -56,8 +56,9 @@ public class CartController {
         }
 
         if (cartService.isCartItemExists(addItemRequest)) {
-            //카트에 상품이 존재하면 레코드를 새로 추가하지 않고, 존재하는 레코드의 quantity를 1 증가
+            //카트에 상품이 존재하면 레코드를 새로 추가하지 않고, 존재하는 레코드의 quantity를 1 증가. price 증가
             cartService.increaseQuantity(addItemRequest);
+            cartService.increaseTotalPrice(addItemRequest);
         } else {
             //카트에 상품이 존재하지 않으면 새로 레코드 추가
             cartService.addItem(addItemRequest);
@@ -69,6 +70,7 @@ public class CartController {
     public RedirectView removeItemFromCart(@ModelAttribute RemoveItemRequest removeItemRequest,
         Model model) {
         cartService.removeItem(removeItemRequest);
+        //cartService.decreaseTotalPrice(removeItemRequest);
 
         Long userId = removeItemRequest.getUserId();
         CartResponse cart = cartService.getCart(userId);

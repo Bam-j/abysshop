@@ -81,4 +81,11 @@
     WHERE cart_id = #{cartId}
       AND product_id = #{productId}
   </update>
+
+  <update id="increaseTotalPrice">
+    UPDATE cart_items_table
+    SET price = price + #{price}
+    WHERE cart_id = #{cartId}
+      AND product_id = #{productId}
+  </update>
 </mapper>

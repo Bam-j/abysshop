@@ -82,4 +82,11 @@ public class CartService {
         Long productId = addItemRequest.getProductId();
         cartMapper.increaseQuantity(cartId, productId);
     }
+
+    public void increaseTotalPrice(AddItemRequest addItemRequest) {
+        Long cartId = addItemRequest.getCartId();
+        Long productId = addItemRequest.getProductId();
+        Long price = productService.getProductInfo(productId).getPrice();
+        cartMapper.increaseTotalPrice(cartId, productId, price);
+    }
 }

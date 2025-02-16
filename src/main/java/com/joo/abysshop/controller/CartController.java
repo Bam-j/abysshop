@@ -69,6 +69,15 @@ public class CartController {
     @PostMapping("/cart/item/remove")
     public RedirectView removeItemFromCart(@ModelAttribute RemoveItemRequest removeItemRequest,
         Model model) {
+        Long quantity = cartService.getItemQuantity(removeItemRequest);
+
+        if (quantity > 0) {
+            cartService.decreaseQuantity(removeItemRequest);
+            cartService.decreaseTotalPrice(removeItemRequest);
+        } else if (quantity <= 0) {
+            cartService.removeItem(removeItemRequest);
+        }
+
         cartService.removeItem(removeItemRequest);
         //cartService.decreaseTotalPrice(removeItemRequest);
 

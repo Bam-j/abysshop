@@ -88,4 +88,25 @@
     WHERE cart_id = #{cartId}
       AND product_id = #{productId}
   </update>
+
+  <select id="getItemQuantity" resultType="java.lang.Long">
+    SELECT quantity
+    FROM cart_items_table
+    WHERE cart_id = #{cartId}
+      AND product_id = #{productId}
+  </select>
+
+  <update id="decreaseQuantity">
+    UPDATE cart_items_table
+    SET quantity = quantity - 1
+    WHERE cart_id = #{cartId}
+      AND product_id = #{productId}
+  </update>
+
+  <update id="decreaseTotalPrice">
+    UPDATE cart_items_table
+    SET price = price - #{price}
+    WHERE cart_id = #{cartId}
+      AND product_id = #{productId}
+  </update>
 </mapper>

@@ -89,4 +89,23 @@ public class CartService {
         Long price = productService.getProductInfo(productId).getPrice();
         cartMapper.increaseTotalPrice(cartId, productId, price);
     }
+
+    public Long getItemQuantity(RemoveItemRequest removeItemRequest) {
+        Long cartId = removeItemRequest.getCartId();
+        Long productId = removeItemRequest.getProductId();
+        return cartMapper.getItemQuantity(cartId, productId);
+    }
+
+    public void decreaseQuantity(RemoveItemRequest removeItemRequest) {
+        Long cartId = removeItemRequest.getCartId();
+        Long productId = removeItemRequest.getProductId();
+        cartMapper.decreaseQuantity(cartId, productId);
+    }
+
+    public void decreaseTotalPrice(RemoveItemRequest removeItemRequest) {
+        Long cartId = removeItemRequest.getCartId();
+        Long productId = removeItemRequest.getProductId();
+        Long price = productService.getProductInfo(productId).getPrice();
+        cartMapper.decreaseTotalPrice(cartId, productId, price);
+    }
 }

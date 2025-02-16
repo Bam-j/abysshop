@@ -1,6 +1,5 @@
 package com.joo.abysshop.mapper.mybatis;
 
-import com.joo.abysshop.dto.cart.AddItemRequest;
 import com.joo.abysshop.entity.cart.AddCartItemEntity;
 import com.joo.abysshop.entity.cart.CartEntity;
 import com.joo.abysshop.entity.cart.CartItemEntity;
@@ -33,4 +32,10 @@ public interface CartMapper {
 
     void increaseTotalPrice(@Param("cartId") Long cartId, @Param("productId") Long productId,
         @Param("price") Long price);
+
+    Long getItemQuantity(@Param("cartId") Long cartId, @Param("productId") Long productId);
+
+    void decreaseQuantity(@Param("cartId") Long cartId, @Param("productId") Long productId);
+
+    void decreaseTotalPrice(@Param("cartId") Long cartId, @Param("productId") Long productId, @Param("price") Long price);
 }

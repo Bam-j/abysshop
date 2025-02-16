@@ -51,18 +51,18 @@
       </thead>
       <tbody>
       <%--cartItemList--%>
-      <c:forEach items="${userOrders}" var="item">
+      <c:forEach items="${cartItemList}" var="item">
         <tr>
-          <td>${item.name}</td>
+          <td>${item.productName}</td>
           <td>${item.price}</td>
           <td>
           <%-- TODO: 증감 설정 버튼 CSS 입히기 --%>
-          <%-- 페이지에 보여질 totalPoints는 스크립트에서 계산, order 저장시는 백엔드에서 계산 --%>
+          <%-- 페이지에 보여질 totalPoints(price), quantity는 스크립트에서 계산, order 저장시는 백엔드에서 계산 --%>
             <div style='display: flex;'>
               <input type='button'
                      onclick='count("plus")'
                      value='+' />
-              <div id='result'>0</div>
+              <div id='result'>${item.quantity}</div>
               <input type='button'
                      onclick='count("minus")'
                      value='-' />

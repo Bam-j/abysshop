@@ -30,9 +30,7 @@ public class CartService {
 
     public CartResponse getCart(Long userId) {
         CartEntity cartEntity = cartMapper.getCart(userId);
-        CartResponse cartResponse = toCartDTOMapper.toCartResponse(cartEntity);
-
-        return cartResponse;
+        return toCartDTOMapper.toCartResponse(cartEntity);
     }
 
     public List<CartItemResponse> getUserCartItems(Long cartId) {

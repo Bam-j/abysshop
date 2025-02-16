@@ -30,7 +30,7 @@
     WHERE user_id = #{userId}
   </select>
 
-  <select id="getCartItem" parameterType="java.lang.Long" resultType="java.util.List"
+  <select id="getCartItems" parameterType="java.lang.Long" resultType="java.util.List"
     resultMap="cartItemEntityResultMap">
     SELECT *
     FROM cart_items_table

@@ -37,5 +37,9 @@ public interface CartMapper {
 
     void decreaseQuantity(@Param("cartId") Long cartId, @Param("productId") Long productId);
 
-    void decreaseTotalPrice(@Param("cartId") Long cartId, @Param("productId") Long productId, @Param("price") Long price);
+    void decreaseTotalPrice(@Param("cartId") Long cartId, @Param("productId") Long productId,
+        @Param("price") Long price);
+
+    void updateCart(@Param("cartId") Long cartId, @Param("totalPoints") Long totalPoints,
+        @Param("totalQuantity") Long totalQuantity);
 }

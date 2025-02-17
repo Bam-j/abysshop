@@ -80,11 +80,8 @@
       </tbody>
       <tfoot>
       <tr>
-        <td>주문 합계 포인트</td>
-        <td>
-          <%-- TODO: 스크립트로 총합 계산 후 합계 포인트 나타내기--%>
-          ${cart.totalPoints}
-        </td>
+        <td>주문 합계 포인트: ${cart.totalPoints}</td>
+        <td>총 수량: ${cart.quantity}</td>
         <td>
           <form action="/order/create" method="post">
             <input type="hidden" name="userId" value="${user.userId}">

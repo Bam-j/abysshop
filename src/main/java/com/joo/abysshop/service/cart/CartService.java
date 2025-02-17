@@ -108,4 +108,11 @@ public class CartService {
         Long price = productService.getProductInfo(productId).getPrice();
         cartMapper.decreaseTotalPrice(cartId, productId, price);
     }
+
+    public void updateCart(Long cartId) {
+        Long totalPoints = cartMapper.getTotalPoints(cartId);
+        Long totalQuantity = getQuantity(cartId);
+
+        cartMapper.updateCart(cartId, totalPoints, totalQuantity);
+    }
 }

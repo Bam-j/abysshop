@@ -51,7 +51,7 @@
   </select>
 
   <select id="getTotalPoints" resultType="java.lang.Long">
-    SELECT SUM(price) AS total_points
+    SELECT SUM(price * quantity) AS total_points
     FROM cart_items_table
     WHERE cart_id = #{cartId}
   </select>
@@ -108,5 +108,12 @@
     SET price = price - #{price}
     WHERE cart_id = #{cartId}
       AND product_id = #{productId}
+  </update>
+
+  <update id="updateCart">
+    UPDATE carts_table
+    SET total_points = #{totalPoints},
+        quantity = #{totalQuantity}
+    WHERE cart_id = #{cartId}
   </update>
 </mapper>

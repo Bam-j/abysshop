@@ -63,6 +63,10 @@ public class CartController {
             //카트에 상품이 존재하지 않으면 새로 레코드 추가
             cartService.addItem(addItemRequest);
         }
+
+        Long cartId = addItemRequest.getCartId();
+        cartService.updateCart(cartId);
+
         return RedirectMappings.REDIRECT_INDEX;
     }
 
@@ -74,30 +78,19 @@ public class CartController {
         if (quantity > 0) {
             cartService.decreaseQuantity(removeItemRequest);
             cartService.decreaseTotalPrice(removeItemRequest);
-        } else if (quantity <= 0) {
+        } else {
             cartService.removeItem(removeItemRequest);
         }
-
-        cartService.removeItem(removeItemRequest);
-        //cartService.decreaseTotalPrice(removeItemRequest);
 
         Long userId = removeItemRequest.getUserId();
         CartResponse cart = cartService.getCart(userId);
         model.addAttribute(ModelAttributeNames.CART, cart);
 
         Long cartId = cart.getCartId();
+        cartService.updateCart(cartId);
         List<CartItemResponse> cartItemList = cartService.getUserCartItems(cartId);
         model.addAttribute(ModelAttributeNames.CART_ITEM_LIST, cartItemList);
 
         return new RedirectView("/user/cart/" + userId);
-    }
-
-    /*
-        페이지 디자인 작업용으로 사용하는 임시 GET 요청.
-        실제 동작은 /order/cart/{id}로 사용할 것. (id는 회원의 id)
-     */
-    @GetMapping("/cart")
-    public String cart() {
-        return "order/shoppingCart";
     }
 }

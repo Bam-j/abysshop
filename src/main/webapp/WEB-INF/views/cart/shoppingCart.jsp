@@ -48,14 +48,13 @@
       </tr>
       </thead>
       <tbody>
-      <%--cartItemList--%>
       <c:forEach items="${cartItemList}" var="item">
         <tr>
           <td>${item.productName}</td>
           <td>${item.price}</td>
           <td>
-          <%-- TODO: 증감 설정 버튼 CSS 입히기 --%>
-          <%-- 페이지에 보여질 totalPoints(price), quantity는 스크립트에서 계산, order 저장시는 백엔드에서 계산 --%>
+              <%-- TODO: 증감 설정 버튼 CSS 입히기 --%>
+              <%-- 페이지에 보여질 totalPoints(price), quantity는 스크립트에서 계산, order 저장시는 백엔드에서 계산 --%>
             <div style='display: flex;'>
               <input type='button'
                      onclick='count("plus")'
@@ -67,7 +66,6 @@
             </div>
           </td>
           <td>
-          <%--cart--%>
             <form action="/cart/item/remove" method="post">
               <input type="hidden" name="cartId" value="${cart.cartId}">
               <input type="hidden" name="productId" value="${item.productId}">

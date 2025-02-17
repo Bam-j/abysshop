@@ -16,4 +16,7 @@ public enum ResultStatus {
     DUPLICATE_NICKNAME,
     SAME_NICKNAME,
     SAME_PASSWORD,
+
+    //주문 관련 실패 상태
+    INSUFFICIENT_POINTS
 }

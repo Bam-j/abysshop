@@ -2,6 +2,7 @@ package com.joo.abysshop.service.order;
 
 import com.joo.abysshop.dto.order.CreateOrderRequest;
 import com.joo.abysshop.entity.order.CreateOrderEntity;
+import com.joo.abysshop.enums.ResultStatus;
 import com.joo.abysshop.mapper.mybatis.OrderMapper;
 import com.joo.abysshop.mapper.mybatis.UserMapper;
 import com.joo.abysshop.service.cart.CartService;
@@ -18,15 +19,14 @@ public class OrderService {
     private final OrderMapper orderMapper;
     private final UserMapper userMapper;
 
-    public void createOrder(CreateOrderRequest createOrderRequest) {
+    public ResultStatus createOrder(CreateOrderRequest createOrderRequest) {
         Long cartId = createOrderRequest.getCartId();
         Long userId = createOrderRequest.getUserId();
         Long totalPoints = cartService.getTotalPoints(cartId);
         Long userPoints = userMapper.getUserPoints(userId);
 
         if (userPoints < totalPoints) {
-            //TODO: 프론트에 응답 보내고 실패 메세지 띄우기
-            return;
+            return ResultStatus.INSUFFICIENT_POINTS;
         }
 
         CreateOrderEntity createOrderEntity = CreateOrderEntity.builder()
@@ -40,5 +40,7 @@ public class OrderService {
         remainPointsMap.put("userId", userId);
         remainPointsMap.put("remainPoints", remainPoints);
         userMapper.consumePoint(remainPointsMap);
+
+        return ResultStatus.SUCCESS;
     }
 }

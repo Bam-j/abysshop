@@ -32,11 +32,9 @@
 <body>
 <%@ include file="../common/header.jsp" %>
 <nav>
-  <form action="/" method="get">
-    <button type="button" class="btn btn-outline-dark">
-      <i class="bi bi-arrow-left"></i>메인으로
-    </button>
-  </form>
+  <a href="/">
+    <i class="bi bi-arrow-left"></i>메인으로
+  </a>
 </nav>
 <main>
   <section>

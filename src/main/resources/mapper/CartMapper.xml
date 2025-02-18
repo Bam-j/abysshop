@@ -116,4 +116,17 @@
         quantity = #{totalQuantity}
     WHERE cart_id = #{cartId}
   </update>
+
+  <delete id="deleteCartItems" parameterType="java.lang.Long">
+    DELETE
+    FROM cart_items_table
+    WHERE cart_id = #{cartId}
+  </delete>
+
+  <update id="resetCartValues" parameterType="java.lang.Long">
+    UPDATE carts_table
+    SET quantity = 0,
+        total_points = 0
+    WHERE cart_id = #{cartId}
+  </update>
 </mapper>

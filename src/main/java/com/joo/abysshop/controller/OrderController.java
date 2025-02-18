@@ -1,11 +1,11 @@
 package com.joo.abysshop.controller;
 
 import com.joo.abysshop.constants.Messages;
-import com.joo.abysshop.constants.RedirectMappings;
 import com.joo.abysshop.constants.ViewNames;
 import com.joo.abysshop.dto.order.CreateOrderRequest;
 import com.joo.abysshop.dto.user.UserInfoResponse;
 import com.joo.abysshop.enums.ResultStatus;
+import com.joo.abysshop.service.cart.CartService;
 import com.joo.abysshop.service.order.OrderService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -22,10 +22,13 @@ import org.springframework.web.servlet.view.RedirectView;
 public class OrderController {
 
     private final OrderService orderService;
+    private final CartService cartService;
 
     @GetMapping("/order/complete")
-    public String complete(HttpSession session, Model model) {
-        UserInfoResponse user =  (UserInfoResponse) session.getAttribute("user");
+    public String getOrderCompletePage(@ModelAttribute("cartId") Long cartId, HttpSession session,
+        Model model) {
+        cartService.clearCart(cartId);
+        UserInfoResponse user = (UserInfoResponse) session.getAttribute("user");
         model.addAttribute("user", user);
         return ViewNames.ORDER_COMPLETE_PAGE;
     }
@@ -33,10 +36,6 @@ public class OrderController {
     @PostMapping("/order/create")
     public RedirectView createOrder(@ModelAttribute CreateOrderRequest createOrderRequest,
         RedirectAttributes redirectAttributes) {
-        /*
-            1. 주문 시 carts_table을 비움
-            2. 주문 시 cart_items_table을 비움. cartId만!
-         */
         ResultStatus createOrderResult = orderService.createOrder(createOrderRequest);
 
         if (createOrderResult.equals(ResultStatus.INSUFFICIENT_POINTS)) {
@@ -44,6 +43,8 @@ public class OrderController {
             return new RedirectView("/user/cart/" + createOrderRequest.getUserId());
         }
 
+        Long cartId = createOrderRequest.getUserId();
+        redirectAttributes.addFlashAttribute("cartId", cartId);
         return new RedirectView("/order/complete");
     }
 }

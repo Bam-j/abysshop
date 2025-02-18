@@ -8,6 +8,7 @@ import com.joo.abysshop.dto.product.ProductInfoRequest;
 import com.joo.abysshop.entity.cart.AddCartItemEntity;
 import com.joo.abysshop.entity.cart.CartEntity;
 import com.joo.abysshop.entity.cart.CartItemEntity;
+import com.joo.abysshop.enums.ResultStatus;
 import com.joo.abysshop.mapper.dto.ToCartDTOMapper;
 import com.joo.abysshop.mapper.entity.ToCartEntityMapper;
 import com.joo.abysshop.mapper.mybatis.CartMapper;
@@ -114,5 +115,14 @@ public class CartService {
         Long totalQuantity = getQuantity(cartId);
 
         cartMapper.updateCart(cartId, totalPoints, totalQuantity);
+    }
+
+    public void clearCart(Long cartId) {
+        if (cartId == null) {
+            return;
+        }
+
+        cartMapper.deleteCartItems(cartId);
+        cartMapper.resetCartValues(cartId);
     }
 }

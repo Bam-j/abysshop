@@ -42,4 +42,8 @@ public interface CartMapper {
 
     void updateCart(@Param("cartId") Long cartId, @Param("totalPoints") Long totalPoints,
         @Param("totalQuantity") Long totalQuantity);
+
+    void deleteCartItems(Long cartId);
+
+    void resetCartValues(Long cartId);
 }

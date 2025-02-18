@@ -42,11 +42,10 @@
     <a type="button" class="btn btn-primary" href="/">
       <i class="bi bi-house-door"></i> 메인으로
     </a>
-    <form action="/user/my-page/${user.userId}" method="get">
-      <button type="submit" class="btn btn-success">
-        <i class="bi bi-card-list"></i> 주문 내역으로
-      </button>
-    </form>
+    <a type="button" class="btn btn-success"
+       href="/user/my-page/${user.userId}?menu=order-management">
+      <i class="bi bi-card-list"></i> 주문 내역으로
+    </a>
   </section>
 </main>
 </body>

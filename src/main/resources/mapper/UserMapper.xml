@@ -37,7 +37,7 @@
 
   <update id="consumePoint" parameterType="java.util.Map">
     UPDATE users_table
-    SET points = points - #{remainPoints}
+    SET points = #{remainPoints}
     WHERE user_id = #{userId}
   </update>
 

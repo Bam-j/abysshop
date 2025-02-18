@@ -34,8 +34,8 @@ public class OrderController {
     public RedirectView createOrder(@ModelAttribute CreateOrderRequest createOrderRequest,
         RedirectAttributes redirectAttributes) {
         /*
-            1. carts_table의 정보를 기반으로 orders_table의 레코드 생성
-            2. carts_table, carts_item_table에서 해당 레코드들 삭제 (item은 delete cascade이므로 carts만 삭제)
+            1. 주문 시 carts_table을 비움
+            2. 주문 시 cart_items_table을 비움. cartId만!
          */
         ResultStatus createOrderResult = orderService.createOrder(createOrderRequest);
 

@@ -33,7 +33,7 @@
   </div>
   <ul>
     <c:choose>
-      <c:when test="${isLoggedIn}">
+      <c:when test="${not empty sessionScope.user}">
         <li class="divider-elem">
           보유 포인트: ${user.points}
         </li>

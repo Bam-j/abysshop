@@ -55,7 +55,6 @@ public class AccountController {
 
             UserInfoResponse userInfo = userService.getUserInfo(accountSignInRequest.getUsername());
             session.setAttribute("user", userInfo);
-            session.setAttribute("isLoggedIn", true);
 
             //String token = jwtUtil.generateToken(accountSignInRequest.getUsername());
 

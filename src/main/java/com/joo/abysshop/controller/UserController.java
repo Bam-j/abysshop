@@ -2,8 +2,11 @@ package com.joo.abysshop.controller;
 
 import com.joo.abysshop.constants.ModelAttributeNames;
 import com.joo.abysshop.constants.ViewNames;
+import com.joo.abysshop.dto.cart.CartResponse;
 import com.joo.abysshop.dto.order.OrderListResponse;
 import com.joo.abysshop.dto.point.PointRechargeListResponse;
+import com.joo.abysshop.dto.user.UserInfoResponse;
+import com.joo.abysshop.service.cart.CartService;
 import com.joo.abysshop.service.user.UserService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -18,10 +21,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class UserController {
 
     private final UserService userService;
+    private final CartService cartService;
 
     @GetMapping("/user/my-page/{userId}")
     public String getUserMyPage(@PathVariable("userId") Long userId,
         @RequestParam("menu") String menu, Model model) {
+        CartResponse cart = cartService.getCart(userId);
+        model.addAttribute(ModelAttributeNames.CART, cart);
+
         if ("order-management".equals(menu)) {
             List<OrderListResponse> userOrderList = userService.getOrderList(userId);
             model.addAttribute(ModelAttributeNames.USER_ORDER_LIST, userOrderList);

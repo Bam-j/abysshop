@@ -22,11 +22,9 @@
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
 <body>
-<c:set var="isLoggedIn" value="false" scope="session" />
-<%-- <c:set var="isLoggedIn" value="${isLoggedIn}" scope="session" /> --%>
 <nav>
   <c:choose>
-    <c:when test="${isLoggedIn}">
+    <c:when test="${not empty sessionScope.user}">
       <button id="point-recharge-button" type="button" class="btn btn-primary"
               data-bs-toggle="modal"
               data-bs-target="#point-recharge-modal">
@@ -47,7 +45,6 @@
         </div>
         <div class="modal-body">
           <div class="alert alert-warning" role="alert">
-            <%-- TODO: 숫자 외 입력에 대한 처리 스크립트 작성 --%>
             요청 포인트를 작성해주세요.
             <h3><strong>[계좌 번호를 적을 공간]</strong></h3>
             <ul>
@@ -57,14 +54,13 @@
               <li>결제 과정에서 문의는 디스코드(또는 이메일)에서 받고있습니다.</li>
             </ul>
           </div>
-          <%-- <input type="text" name="points" placeholder="요청 포인트"> --%>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-          <form action="/point/recharge/request" method="post">
+          <form id="recharge-request-form" action="/point/recharge/request" method="post">
             <input type="hidden" name="userId" value="${user.userId}">
             <input type="hidden" name="nickname" value="${user.nickname}">
-            <input type="text" name="points" placeholder="요청 포인트">
+            <input type="text" id="point-input" name="points" placeholder="요청 포인트">
             <button type="submit" class="btn btn-primary">포인트 충전 요청</button>
           </form>
         </div>
@@ -73,4 +69,6 @@
   </div>
 </nav>
 </body>
+
+<script src="../../resources/static/js/point/pointRechargeFormValidation.js"></script>
 </html>

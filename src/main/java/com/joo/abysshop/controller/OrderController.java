@@ -25,9 +25,14 @@ public class OrderController {
     private final CartService cartService;
 
     @GetMapping("/order/complete")
-    public String getOrderCompletePage(@ModelAttribute("cartId") Long cartId, HttpSession session,
-        Model model) {
-        cartService.clearCart(cartId);
+    public String getOrderCompletePage(HttpSession session, Model model) {
+        Long cartId = (Long) session.getAttribute("cartId");
+
+        if (cartId != null) {
+            //포인트 충전 후 complete 페이지 이동시에는 cart를 비우지 않도록
+            cartService.clearCart(cartId);
+        }
+
         UserInfoResponse user = (UserInfoResponse) session.getAttribute("user");
         model.addAttribute("user", user);
         return ViewNames.ORDER_COMPLETE_PAGE;

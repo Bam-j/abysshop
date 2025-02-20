@@ -2,13 +2,16 @@ package com.joo.abysshop.controller;
 
 import com.joo.abysshop.constants.ModelAttributeNames;
 import com.joo.abysshop.constants.RedirectMappings;
+import com.joo.abysshop.constants.ViewNames;
 import com.joo.abysshop.dto.point.CreatePointRechargeRequest;
 import com.joo.abysshop.dto.point.PointRechargeDetailListResponse;
 import com.joo.abysshop.dto.point.PointRechargeListResponse;
 import com.joo.abysshop.dto.point.UpdatePointRechargeDetailRequest;
+import com.joo.abysshop.dto.user.UserInfoResponse;
 import com.joo.abysshop.service.admin.AdminPointManagementService;
 import com.joo.abysshop.service.point.PointRechargeManagementService;
 import com.joo.abysshop.service.point.PointRechargeService;
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -16,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
@@ -28,8 +32,10 @@ public class PointController {
 
     @PostMapping("/point/recharge/request")
     public String createPointRecharge(
-        @ModelAttribute CreatePointRechargeRequest createPointRechargeRequest) {
+        @ModelAttribute CreatePointRechargeRequest createPointRechargeRequest,
+        RedirectAttributes redirectAttributes, HttpSession session, Model model) {
         pointRechargeService.createPointRecharge(createPointRechargeRequest);
+
         return RedirectMappings.REDIRECT_ORDER_COMPLETE;
     }
 

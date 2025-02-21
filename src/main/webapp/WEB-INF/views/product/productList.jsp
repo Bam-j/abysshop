@@ -23,6 +23,7 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="../../../resources/static/styles/product/productList.css">
+  <link rel="stylesheet" href="../../../resources/static/style/common/pagination.css">
 </head>
 <body>
 <section>
@@ -42,6 +43,25 @@
       </div>
     </c:forEach>
   </div>
+
+  <%-- 페이지네이션 UI --%>
+  <div class="pagination">
+    <%-- 이전 버튼 (첫 페이지가 아닐 때만 활성화) --%>
+    <c:if test="${currentPage > 1}">
+      <a href="?page=${currentPage - 1}" class="page-link">이전</a>
+    </c:if>
+
+    <%-- 페이지 번호 표시 --%>
+    <c:forEach var="i" begin="1" end="${totalPages}">
+      <a href="?page=${i}" class="page-link ${i == currentPage ? 'active' : ''}">${i}</a>
+    </c:forEach>
+
+    <%-- 다음 버튼 (마지막 페이지가 아닐 때만 활성화) --%>
+    <c:if test="${currentPage < totalPages}">
+      <a href="?page=${currentPage + 1}" class="page-link">다음</a>
+    </c:if>
+  </div>
+
 </section>
 </body>
 </html>

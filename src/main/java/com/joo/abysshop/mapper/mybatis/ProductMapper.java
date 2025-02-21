@@ -5,6 +5,7 @@ import com.joo.abysshop.entity.product.ProductImageEntity;
 import java.util.List;
 import java.util.Optional;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface ProductMapper {
@@ -16,4 +17,9 @@ public interface ProductMapper {
     Long findProductIdByProductName(String productName);
 
     Optional<ProductImageEntity> findProductImageEntityByProductId(Long productId);
+
+    int countAllProducts();
+
+    List<ProductEntity> findPagedProducts(@Param("offset") int offset,
+        @Param("pageSize") int pageSize);
 }

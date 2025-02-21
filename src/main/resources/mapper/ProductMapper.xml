@@ -48,4 +48,15 @@
     FROM product_image_table
     WHERE product_id = #{productId}
   </select>
+
+  <select id="countAllProducts" resultType="int">
+    SELECT COUNT(*)
+    FROM products_table
+  </select>
+
+  <select id="findPagedProducts" resultType="java.util.List" resultMap="productEntityResultMap">
+    SELECT *
+    FROM products_table
+    LIMIT #{pageSize} OFFSET #{offset}
+  </select>
 </mapper>

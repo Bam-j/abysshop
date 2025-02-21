@@ -43,7 +43,6 @@
       <tr data-index="${status.index}">
         <td>${order.orderId}</td>
         <td>${order.userId}</td>
-          <%--<td>${order.items}</td>--%>
         <td>${order.totalPoints}</td>
         <td><fmt:formatDate value="${order.orderDate}" pattern="yyyy-MM-dd" /></td>
         <td>

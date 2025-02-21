@@ -64,6 +64,7 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 <script src="../../resources/static/js/common/navEvent.js"></script>
+<script src="../../resources/static/js/common/translateStateToKOR.js"></script>
 <script src="../../resources/static/js/admin/changeState.js"></script>
 <script src="../../resources/static/js/admin/addProductValidation.js"></script>
 </body>

@@ -16,7 +16,6 @@ import com.joo.abysshop.service.account.AccountService;
 import com.joo.abysshop.service.product.ProductService;
 import com.joo.abysshop.service.user.UserService;
 import com.joo.abysshop.util.JwtUtil;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -35,7 +34,6 @@ public class AccountController {
     private final AccountService accountService;
     private final ProductService productService;
     private final UserService userService;
-    private final JwtUtil jwtUtil;
 
     @GetMapping("/account/sign-in")
     public String getSignInPage() {
@@ -44,20 +42,20 @@ public class AccountController {
 
     @PostMapping("/account/sign-in")
     public String signIn(@ModelAttribute AccountSignInRequest accountSignInRequest,
-        HttpSession session, //HttpServletResponse response,
-        Model model,
-        RedirectAttributes redirectAttributes) {
+        HttpSession session, RedirectAttributes redirectAttributes) {
         ResultStatus signInResult = accountService.signIn(accountSignInRequest);
 
         if (signInResult == ResultStatus.SUCCESS) {
+            /*
+            //TODO: redirect 요청에 대해 불필요한 데이터 삽입 연산 모두 찾아서 제거하기
             List<ProductListResponse> productList = productService.findAllProducts();
             model.addAttribute(ModelAttributeNames.PRODUCT_LIST, productList);
+            */
 
             UserInfoResponse userInfo = userService.getUserInfo(accountSignInRequest.getUsername());
             session.setAttribute("user", userInfo);
 
             //String token = jwtUtil.generateToken(accountSignInRequest.getUsername());
-
             //response.setHeader("Authorization", "Bearer " + token);
 
             return RedirectMappings.REDIRECT_INDEX;

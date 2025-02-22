@@ -31,7 +31,6 @@ public class HomeController {
 
         List<ProductListResponse> pagedProductList = productService.findPagedProducts(page,
             pageSize);
-        //List<ProductListResponse> productList = productService.findAllProducts();
         model.addAttribute(ModelAttributeNames.PRODUCT_LIST, pagedProductList);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", totalPages);

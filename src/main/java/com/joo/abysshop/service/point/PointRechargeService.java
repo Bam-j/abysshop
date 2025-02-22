@@ -29,4 +29,8 @@ public class PointRechargeService {
 
         pointMapper.changePointRechargeState(changeStateMap);
     }
+
+    public int getTotalPointRechargeCount() {
+        return pointMapper.countAllPointRecharges();
+    }
 }

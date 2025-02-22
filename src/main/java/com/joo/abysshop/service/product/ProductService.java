@@ -63,7 +63,7 @@ public class ProductService {
     public List<ProductListResponse> findPagedProducts(int page, int pageSize) {
         int offset = (page - 1) * pageSize;
 
-        List<ProductEntity> productEntityList = productMapper.findPagedProducts(offset, pageSize);
+        List<ProductEntity> productEntityList = productMapper.findPagedProducts(pageSize, offset);
         List<ProductListResponse> productList = new ArrayList<>();
 
         for (ProductEntity productEntity : productEntityList) {

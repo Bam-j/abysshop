@@ -62,4 +62,19 @@ public class AdminPointManagementService {
 
         adminMapper.changePointRechargeState(changeStateMap);
     }
+
+    public List<PointRechargeListResponse> getPagedPointRecharge(int page, int pageSize) {
+        int offset = (page - 1) * pageSize;
+
+        List<PointRechargeEntity> pointRechargeEntityList = pointMapper.findPagedPointRecharges(
+            pageSize, offset);
+        List<PointRechargeListResponse> pointRechargeList = new ArrayList<>();
+
+        for (PointRechargeEntity pointRechargeEntity : pointRechargeEntityList) {
+            pointRechargeList.add(
+                toPointDTOMapper.toPointRechargeListResponse(pointRechargeEntity));
+        }
+
+        return pointRechargeList;
+    }
 }

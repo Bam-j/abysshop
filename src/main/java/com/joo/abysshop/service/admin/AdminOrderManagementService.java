@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -36,5 +37,18 @@ public class AdminOrderManagementService {
         changeStateMap.put("newState", changeOrderStateRequest.getNewState());
 
         adminMapper.changeOrderState(changeStateMap);
+    }
+
+    public List<OrderListResponse> findPagedOrders(int page, int pageSize) {
+        int offset =  (page - 1) * pageSize;
+
+        List<OrderEntity> orderEntityList = adminMapper.findPagedOrders(pageSize, offset);
+        List<OrderListResponse> orderList = new ArrayList<>();
+
+        for (OrderEntity orderEntity : orderEntityList) {
+            orderList.add(toOrderDTOMapper.toOrderListResponse(orderEntity));
+        }
+
+        return orderList;
     }
 }

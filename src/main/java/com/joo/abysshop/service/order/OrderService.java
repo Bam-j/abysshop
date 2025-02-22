@@ -43,4 +43,8 @@ public class OrderService {
 
         return ResultStatus.SUCCESS;
     }
+
+    public int getTotalOrderCount() {
+        return orderMapper.countAllOrders();
+    }
 }

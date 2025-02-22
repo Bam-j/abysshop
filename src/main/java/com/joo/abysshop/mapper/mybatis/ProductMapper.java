@@ -20,6 +20,5 @@ public interface ProductMapper {
 
     int countAllProducts();
 
-    List<ProductEntity> findPagedProducts(@Param("offset") int offset,
-        @Param("pageSize") int pageSize);
+    List<ProductEntity> findPagedProducts(@Param("pageSize") int pageSize, @Param("offset") int offset);
 }

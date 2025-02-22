@@ -65,4 +65,17 @@ public class AdminMyPageService {
     public void removeProduct(Long productId) {
         adminMapper.deleteByProductId(productId);
     }
+
+    public List<ProductListResponse> getPagedProducts(int page, int pageSize) {
+        int offset = (page - 1) * pageSize;
+
+        List<ProductEntity> productEntityList = productMapper.findPagedProducts(pageSize, offset);
+        List<ProductListResponse> productList = new ArrayList<>();
+
+        for (ProductEntity productEntity : productEntityList) {
+            productList.add(toProductDTOMapper.toProductListResponse(productEntity));
+        }
+
+        return productList;
+    }
 }

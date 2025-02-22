@@ -42,4 +42,26 @@ public class PointRechargeManagementService {
             updatePointRechargeDetailRequest);
         pointMapper.updatePointRechargeDetail(updatePointRechargeDetailEntity);
     }
+
+    public int getTotalPointRechargeDetailCount() {
+        return pointMapper.countAllPointRechargeDetails();
+    }
+
+    public List<PointRechargeDetailListResponse> getPagedPointRechargeDetail(int page,
+        int pageSize) {
+        int offset = (page - 1) * pageSize;
+
+        List<PointRechargeDetailEntity> pointRechargeDetailEntityList = pointMapper.findPagedPointRechargeDetails(
+            pageSize, offset);
+        List<PointRechargeDetailListResponse> pointRechargeDetailList = new ArrayList<>();
+
+        for (PointRechargeDetailEntity pointRechargeDetailEntity : pointRechargeDetailEntityList) {
+            String nickname = userMapper.getNickname(pointRechargeDetailEntity.getUserId());
+            pointRechargeDetailList.add(
+                toPointDTOMapper.toPointRechargeDetailResponse(pointRechargeDetailEntity,
+                    nickname));
+        }
+
+        return pointRechargeDetailList;
+    }
 }

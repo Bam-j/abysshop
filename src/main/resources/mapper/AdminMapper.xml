@@ -50,4 +50,10 @@
     SET recharge_request_state = #{newState}
     WHERE recharge_id = #{rechargeId}
   </update>
+
+  <select id="findPagedOrders" resultType="java.util.List" resultMap="orderEntityResultMap">
+    SELECT *
+    FROM orders_table
+    LIMIT #{pageSize} OFFSET #{offset}
+  </select>
 </mapper>

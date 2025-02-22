@@ -13,7 +13,10 @@ import com.joo.abysshop.dto.product.ProductListResponse;
 import com.joo.abysshop.service.admin.AdminMyPageService;
 import com.joo.abysshop.service.admin.AdminOrderManagementService;
 import com.joo.abysshop.service.admin.AdminPointManagementService;
+import com.joo.abysshop.service.order.OrderService;
 import com.joo.abysshop.service.point.PointRechargeManagementService;
+import com.joo.abysshop.service.point.PointRechargeService;
+import com.joo.abysshop.service.product.ProductService;
 import java.io.IOException;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -33,24 +36,50 @@ public class AdminController {
     private final AdminOrderManagementService adminOrderManagementService;
     private final AdminPointManagementService adminPointManagementService;
     private final PointRechargeManagementService pointRechargeManagementService;
+    private final OrderService orderService;
+    private final PointRechargeService pointRechargeService;
+    private final ProductService productService;
 
     @GetMapping("/admin/my-page")
     public String getAdminMyPage(
-        @RequestParam(value = "menu", defaultValue = "order-management") String menu, Model model) {
+        @RequestParam(value = "menu", defaultValue = "order-management") String menu,
+        @RequestParam(defaultValue = "1") int page, Model model) {
+        int pageSize = 10;
+
         if ("order-management".equals(menu)) {
-            List<OrderListResponse> orderList = adminOrderManagementService.getAllOrders();
+            int totalOrders = orderService.getTotalOrderCount();
+            int totalPages = (int) Math.ceil((double) totalOrders / pageSize);
+            List<OrderListResponse> orderList = adminOrderManagementService.findPagedOrders(page,
+                pageSize);
             model.addAttribute(ModelAttributeNames.ORDER_LIST, orderList);
+            model.addAttribute(ModelAttributeNames.CURRENT_PAGE, page);
+            model.addAttribute(ModelAttributeNames.TOTAL_PAGES, totalPages);
         } else if ("point-recharge-management".equals(menu)) {
-            List<PointRechargeListResponse> pointRechargeList = adminPointManagementService.getAllPointRecharge();
+            int totalPointRecharges = pointRechargeService.getTotalPointRechargeCount();
+            int totalPages = (int) Math.ceil((double) totalPointRecharges / pageSize);
+            List<PointRechargeListResponse> pointRechargeList =
+                adminPointManagementService.getPagedPointRecharge(page, pageSize);
             model.addAttribute(ModelAttributeNames.POINT_RECHARGE_LIST, pointRechargeList);
+            model.addAttribute(ModelAttributeNames.CURRENT_PAGE, page);
+            model.addAttribute(ModelAttributeNames.CURRENT_PAGE, totalPages);
         } else if ("point-recharge-detail".equals(menu)) {
-            List<PointRechargeDetailListResponse> pointRechargeDetailList = pointRechargeManagementService.getAllPointRechargeDetail();
+            int totalPointRechargeDetails = pointRechargeManagementService.getTotalPointRechargeDetailCount();
+            int totalPages = (int) Math.ceil((double) totalPointRechargeDetails / pageSize);
+            List<PointRechargeDetailListResponse> pointRechargeDetailList =
+                pointRechargeManagementService.getPagedPointRechargeDetail(page, pageSize);
             model.addAttribute(ModelAttributeNames.POINT_RECHARGE_DETAIL_LIST,
                 pointRechargeDetailList);
+            model.addAttribute(ModelAttributeNames.CURRENT_PAGE, page);
+            model.addAttribute(ModelAttributeNames.CURRENT_PAGE, totalPages);
         } else if ("add-product".equals(menu)) {
         } else if ("remove-product".equals(menu)) {
-            List<ProductListResponse> productList = adminMyPageService.getAllProducts();
+            int totalProducts = productService.getTotalProductCount();
+            int totalPages = (int) Math.ceil((double) totalProducts / pageSize);
+            List<ProductListResponse> productList =
+                adminMyPageService.getPagedProducts(page, pageSize);
             model.addAttribute(ModelAttributeNames.PRODUCT_LIST, productList);
+            model.addAttribute(ModelAttributeNames.CURRENT_PAGE, page);
+            model.addAttribute(ModelAttributeNames.CURRENT_PAGE, totalPages);
         }
 
         return ViewNames.ADMIN_MY_PAGE;

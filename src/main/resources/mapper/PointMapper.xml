@@ -62,4 +62,29 @@
         account_number = #{accountNumber}
     WHERE recharge_detail_id = #{rechargeDetailId}
   </update>
+
+  <select id="countAllPointRecharges" resultType="int">
+    SELECT COUNT(*)
+    FROM point_recharge_table
+  </select>
+
+  <select id="findPagedPointRecharges" resultType="java.util.List"
+    resultMap="pointRechargeEntityResultMap">
+    SELECT *
+    FROM point_recharge_table
+    LIMIT #{pageSize} OFFSET #{offset}
+  </select>
+
+  <select id="countAllPointRechargeDetails" resultType="int">
+    SELECT COUNT(*)
+    FROM point_recharge_detail_table
+  </select>
+
+  <select id="findPagedPointRechargeDetails"
+    resultType="com.joo.abysshop.entity.point.PointRechargeDetailEntity"
+    resultMap="pointRechargeDetailEntityResultMap">
+    SELECT *
+    FROM point_recharge_detail_table
+    LIMIT #{pageSize} OFFSET #{offset}
+  </select>
 </mapper>

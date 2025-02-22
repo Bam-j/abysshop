@@ -21,4 +21,9 @@
     FROM orders_table
     WHERE user_id = #{userId}
   </select>
+
+  <select id="countAllOrders" resultType="int">
+    SELECT COUNT(*)
+    FROM orders_table
+  </select>
 </mapper>

@@ -18,4 +18,7 @@ public class ModelAttributeNames {
     public static final String POINT_RECHARGE_LIST = "pointRechargeList";
     public static final String USER_POINT_RECHARGE_LIST = "userPointRechargeList";
     public static final String POINT_RECHARGE_DETAIL_LIST = "pointRechargeDetailList";
+
+    public static final String CURRENT_PAGE = "currentPage";
+    public static final String TOTAL_PAGES = "totalPages";
 }

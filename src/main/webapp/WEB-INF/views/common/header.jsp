@@ -35,6 +35,7 @@
     <c:choose>
       <c:when test="${not empty sessionScope.user}">
         <li class="divider-elem">
+          <%-- TODO: points가 차감되도 즉각 반영되지 않음 --%>
           보유 포인트: ${user.points}
         </li>
         <c:choose>
@@ -57,7 +58,6 @@
             </li>
 
             <li class="divider-elem">
-                <%-- nav 메뉴 클릭시 쿼리 파라미터가 변경되도록 바꾸기 --%>
               <a href="/user/my-page/${user.userId}?menu=order-management" class="btn btn-primary">
                 마이페이지
               </a>

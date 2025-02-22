@@ -3,7 +3,6 @@ package com.joo.abysshop.mapper.mybatis;
 import com.joo.abysshop.entity.admin.AddProductEntity;
 import com.joo.abysshop.entity.admin.AddProductImageEntity;
 import com.joo.abysshop.entity.order.OrderEntity;
-import com.joo.abysshop.entity.product.ProductImageEntity;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
@@ -26,4 +25,6 @@ public interface AdminMapper {
     void deleteByProductId(Long productId);
 
     void changePointRechargeState(Map<String, Object> changeStateMap);
+
+    List<OrderEntity> findPagedOrders(@Param("pageSize") int pageSize, @Param("offset") int offset);
 }

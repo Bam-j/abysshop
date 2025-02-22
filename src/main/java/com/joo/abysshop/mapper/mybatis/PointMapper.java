@@ -7,6 +7,7 @@ import com.joo.abysshop.entity.point.UpdatePointRechargeDetailEntity;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface PointMapper {
@@ -22,4 +23,14 @@ public interface PointMapper {
     List<PointRechargeDetailEntity> findAllPointRechargeDetail();
 
     void updatePointRechargeDetail(UpdatePointRechargeDetailEntity updatePointRechargeDetailEntity);
+
+    int countAllPointRecharges();
+
+    List<PointRechargeEntity> findPagedPointRecharges(@Param("pageSize") int pageSize,
+        @Param("offset") int offset);
+
+    int countAllPointRechargeDetails();
+
+    List<PointRechargeDetailEntity> findPagedPointRechargeDetails(@Param("pageSize") int pageSize,
+        @Param("offset") int offset);
 }

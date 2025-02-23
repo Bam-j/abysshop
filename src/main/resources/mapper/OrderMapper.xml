@@ -15,13 +15,6 @@
     VALUES (#{userId}, NOW(), #{totalPoints}, 'shipping')
   </insert>
 
-  <select id="getUserOrders" parameterType="java.lang.Long" resultType="java.util.List"
-    resultMap="orderEntityResultMap">
-    SELECT *
-    FROM orders_table
-    WHERE user_id = #{userId}
-  </select>
-
   <select id="countAllOrders" resultType="int">
     SELECT COUNT(*)
     FROM orders_table

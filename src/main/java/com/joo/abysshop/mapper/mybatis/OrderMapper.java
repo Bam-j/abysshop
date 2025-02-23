@@ -9,8 +9,6 @@ public interface OrderMapper {
 
     void insertOrder(CreateOrderEntity createOrderEntity);
 
-    List<OrderEntity> getUserOrders(Long userId);
-
     int countAllOrders();
 
     int countUserOrders(Long userId);

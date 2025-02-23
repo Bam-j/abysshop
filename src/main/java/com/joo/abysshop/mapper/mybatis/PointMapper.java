@@ -18,8 +18,6 @@ public interface PointMapper {
 
     void changePointRechargeState(Map<String, Object> changeStateMap);
 
-    List<PointRechargeEntity> getUserPointRecharges(Long userId);
-
     List<PointRechargeDetailEntity> findAllPointRechargeDetail();
 
     void updatePointRechargeDetail(UpdatePointRechargeDetailEntity updatePointRechargeDetailEntity);

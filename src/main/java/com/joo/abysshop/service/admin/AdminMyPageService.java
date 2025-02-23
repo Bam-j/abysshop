@@ -5,7 +5,6 @@ import com.joo.abysshop.dto.product.ProductListResponse;
 import com.joo.abysshop.entity.admin.AddProductEntity;
 import com.joo.abysshop.entity.admin.AddProductImageEntity;
 import com.joo.abysshop.entity.product.ProductEntity;
-import com.joo.abysshop.enums.UserType;
 import com.joo.abysshop.mapper.dto.ToProductDTOMapper;
 import com.joo.abysshop.mapper.entity.ToProductEntityMapper;
 import com.joo.abysshop.mapper.mybatis.AdminMapper;
@@ -30,21 +29,6 @@ public class AdminMyPageService {
     private final ToProductEntityMapper toProductEntityMapper;
     private final UserService userService;
     private final SqlSession sqlSession;
-
-    public UserType getUserType(final Long userId) {
-        return userService.getUserType(userId);
-    }
-
-    public List<ProductListResponse> getAllProducts() {
-        List<ProductEntity> productEntityList = productMapper.findAllProducts();
-        List<ProductListResponse> productList = new ArrayList<>();
-
-        for (ProductEntity productEntity : productEntityList) {
-            productList.add(toProductDTOMapper.toProductListResponse(productEntity));
-        }
-
-        return productList;
-    }
 
     public void addProduct(AddProductRequest addProductRequest) throws IOException {
         MultipartFile imageFile = addProductRequest.getImage();

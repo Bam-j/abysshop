@@ -6,7 +6,6 @@ import com.joo.abysshop.dto.user.UserInfoResponse;
 import com.joo.abysshop.entity.order.OrderEntity;
 import com.joo.abysshop.entity.point.PointRechargeEntity;
 import com.joo.abysshop.entity.user.UserEntity;
-import com.joo.abysshop.enums.UserType;
 import com.joo.abysshop.mapper.dto.ToOrderDTOMapper;
 import com.joo.abysshop.mapper.dto.ToPointDTOMapper;
 import com.joo.abysshop.mapper.dto.ToUserDTOMapper;
@@ -31,34 +30,6 @@ public class UserService {
     private final ToUserDTOMapper toUserDTOMapper;
     private final ToOrderDTOMapper toOrderDTOMapper;
     private final ToPointDTOMapper toPointDTOMapper;
-
-    public List<OrderListResponse> getOrderList(Long userId) {
-        List<OrderEntity> orderEntityList = orderMapper.getUserOrders(userId);
-        List<OrderListResponse> orderListResponses = new ArrayList<>();
-
-        for (OrderEntity orderEntity : orderEntityList) {
-            orderListResponses.add(toOrderDTOMapper.toOrderListResponse(orderEntity));
-        }
-
-        return orderListResponses;
-    }
-
-    public List<PointRechargeListResponse> getPointRechargeList(Long userId) {
-        List<PointRechargeEntity> pointRechargeEntityList = pointMapper.getUserPointRecharges(
-            userId);
-        List<PointRechargeListResponse> pointRechargeList = new ArrayList<>();
-
-        for (PointRechargeEntity pointRechargeEntity : pointRechargeEntityList) {
-            pointRechargeList.add(
-                toPointDTOMapper.toPointRechargeListResponse(pointRechargeEntity));
-        }
-
-        return pointRechargeList;
-    }
-
-    public UserType getUserType(final Long userId) {
-        return userMapper.getUserType(userId);
-    }
 
     public UserInfoResponse getUserInfo(final String username) {
         Optional<UserEntity> optionalUserEntity = userMapper.findByUsername(username);
@@ -99,7 +70,6 @@ public class UserService {
         int pageSize) {
         int offset = (page - 1) * pageSize;
 
-        //List<PointRechargeEntity> pointRechargeEntityList = pointMapper.getUserPointRecharges(userId);
         List<PointRechargeEntity> pointRechargeEntityList =
             pointMapper.findPagedUserPointRecharges(userId, pageSize, offset);
         List<PointRechargeListResponse> pointRechargeList = new ArrayList<>();

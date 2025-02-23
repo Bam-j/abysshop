@@ -26,15 +26,15 @@
 </head>
 <body>
 <nav class="nav">
-  <a class="nav-link active" aria-current="page" href="/admin/my-page?menu=order-management"
+  <a class="nav-link active" aria-current="page" href="/admin/my-page?menu=order-management&page=1"
      onclick="changeURL('order-management')">주문 관리</a>
-  <a class="nav-link" href="/admin/my-page?menu=point-recharge-management"
+  <a class="nav-link" href="/admin/my-page?menu=point-recharge-management&page=1"
      onclick="changeURL('point-recharge-management')">포인트 지급 요청</a>
-  <a class="nav-link" href="/admin/my-page?menu=point-recharge-detail"
+  <a class="nav-link" href="/admin/my-page?menu=point-recharge-detail&page=1"
      onclick="changeURL('point-recharge-detail')">포인트 지급 요청 정보 관리</a>
   <a class="nav-link" href="/admin/my-page?menu=add-product"
      onclick="changeURL('add-product')">상품 추가</a>
-  <a class="nav-link" href="/admin/my-page?menu=remove-product"
+  <a class="nav-link" href="/admin/my-page?menu=remove-product&page=1"
      onclick="changeURL('remove-product')">상품 삭제</a>
 </nav>
 
@@ -47,9 +47,9 @@
     } else if (menu === "point-recharge-detail") {
       history.replaceState(null, null, "/admin/my-page?menu=point-recharge-detail");
     } else if (menu === "add-product") {
-      history.replaceState(null, null, "/admin/my-page?menu=user-info");
+      history.replaceState(null, null, "/admin/my-page?menu=add-product");
     } else if (menu === "remove-product") {
-      history.replaceState(null, null, "/admin/my-page?menu=point-request");
+      history.replaceState(null, null, "/admin/my-page?menu=remove-product");
     }
   }
 </script>

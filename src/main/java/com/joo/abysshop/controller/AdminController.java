@@ -61,7 +61,7 @@ public class AdminController {
                 adminPointManagementService.getPagedPointRecharge(page, pageSize);
             model.addAttribute(ModelAttributeNames.POINT_RECHARGE_LIST, pointRechargeList);
             model.addAttribute(ModelAttributeNames.CURRENT_PAGE, page);
-            model.addAttribute(ModelAttributeNames.CURRENT_PAGE, totalPages);
+            model.addAttribute(ModelAttributeNames.TOTAL_PAGES, totalPages);
         } else if ("point-recharge-detail".equals(menu)) {
             int totalPointRechargeDetails = pointRechargeManagementService.getTotalPointRechargeDetailCount();
             int totalPages = (int) Math.ceil((double) totalPointRechargeDetails / pageSize);
@@ -70,7 +70,7 @@ public class AdminController {
             model.addAttribute(ModelAttributeNames.POINT_RECHARGE_DETAIL_LIST,
                 pointRechargeDetailList);
             model.addAttribute(ModelAttributeNames.CURRENT_PAGE, page);
-            model.addAttribute(ModelAttributeNames.CURRENT_PAGE, totalPages);
+            model.addAttribute(ModelAttributeNames.TOTAL_PAGES, totalPages);
         } else if ("add-product".equals(menu)) {
         } else if ("remove-product".equals(menu)) {
             int totalProducts = productService.getTotalProductCount();
@@ -79,7 +79,7 @@ public class AdminController {
                 adminMyPageService.getPagedProducts(page, pageSize);
             model.addAttribute(ModelAttributeNames.PRODUCT_LIST, productList);
             model.addAttribute(ModelAttributeNames.CURRENT_PAGE, page);
-            model.addAttribute(ModelAttributeNames.CURRENT_PAGE, totalPages);
+            model.addAttribute(ModelAttributeNames.TOTAL_PAGES, totalPages);
         }
 
         return ViewNames.ADMIN_MY_PAGE;

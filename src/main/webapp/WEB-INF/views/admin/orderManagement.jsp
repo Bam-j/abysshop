@@ -96,7 +96,6 @@
       <a href="?menu=order-management&page=${currentPage + 1}" class="page-link">다음</a>
     </c:if>
   </div>
-
 </section>
 </body>
 </html>

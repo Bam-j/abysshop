@@ -65,8 +65,7 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 <script src="../../resources/static/js/common/navEvent.js"></script>
-<%-- TODO: 요청 상대가 처음에만 번역되고 탭 이동 후에는 영어로 나옴. (스크립트 로드 방법 찾기) --%>
-<script src="../../resources/static/js/common/translateStateToKOR.js"></script>
+<script src="../../resources/static/js/common/translateState.js"></script>
 <script src="../../resources/static/js/admin/changeState.js"></script>
 <script src="../../resources/static/js/admin/addProductValidation.js"></script>
 </body>

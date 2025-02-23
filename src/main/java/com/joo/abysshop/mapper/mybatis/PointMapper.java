@@ -33,4 +33,9 @@ public interface PointMapper {
 
     List<PointRechargeDetailEntity> findPagedPointRechargeDetails(@Param("pageSize") int pageSize,
         @Param("offset") int offset);
+
+    int countUserPointRecharges(Long userId);
+
+    List<PointRechargeEntity> findPagedUserPointRecharges(@Param("userId") Long userId,
+        @Param("pageSize") int pageSize, @Param("offset") int offset);
 }

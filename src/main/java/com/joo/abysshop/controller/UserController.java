@@ -5,8 +5,8 @@ import com.joo.abysshop.constants.ViewNames;
 import com.joo.abysshop.dto.cart.CartResponse;
 import com.joo.abysshop.dto.order.OrderListResponse;
 import com.joo.abysshop.dto.point.PointRechargeListResponse;
-import com.joo.abysshop.dto.user.UserInfoResponse;
 import com.joo.abysshop.service.cart.CartService;
+import com.joo.abysshop.service.order.OrderService;
 import com.joo.abysshop.service.user.UserService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -25,22 +25,35 @@ public class UserController {
 
     @GetMapping("/user/my-page/{userId}")
     public String getUserMyPage(@PathVariable("userId") Long userId,
-        @RequestParam("menu") String menu, Model model) {
+        @RequestParam("menu") String menu,
+        @RequestParam(defaultValue = "1") int page,
+        Model model) {
         CartResponse cart = cartService.getCart(userId);
         model.addAttribute(ModelAttributeNames.CART, cart);
 
+        int pageSize = 10;
+
         if ("order-management".equals(menu)) {
-            List<OrderListResponse> userOrderList = userService.getOrderList(userId);
+            int totalOrders = userService.getUserTotalOrderCount(userId);
+            int totalPages = (int) Math.ceil((double) totalOrders / pageSize);
+
+            List<OrderListResponse> userOrderList =
+                userService.getPagedOrderList(userId, page, pageSize);
             model.addAttribute(ModelAttributeNames.USER_ORDER_LIST, userOrderList);
+            model.addAttribute(ModelAttributeNames.CURRENT_PAGE, page);
+            model.addAttribute(ModelAttributeNames.TOTAL_PAGES, totalPages);
         } else if ("user-info".equals(menu)) {
-            // 계정 관리 페이지 처리 로직
         } else if ("point-request".equals(menu)) {
-            List<PointRechargeListResponse> userPointRechargeList = userService.getPointRechargeList(
-                userId);
+            int totalPointRecharges = userService.getUserTotalPointRechargeCount(userId);
+            int totalPages = (int) Math.ceil((double) totalPointRecharges / pageSize);
+
+            List<PointRechargeListResponse> userPointRechargeList =
+                userService.getPagedPointRechargeList(userId, page, pageSize);
             model.addAttribute(ModelAttributeNames.USER_POINT_RECHARGE_LIST, userPointRechargeList);
-        } else {
-            // 잘못된 메뉴 요청 처리 로직
+            model.addAttribute(ModelAttributeNames.CURRENT_PAGE, page);
+            model.addAttribute(ModelAttributeNames.TOTAL_PAGES, totalPages);
         }
+
         return ViewNames.USER_MY_PAGE;
     }
 }

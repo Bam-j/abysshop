@@ -68,8 +68,47 @@ public class UserService {
         }
 
         UserEntity userEntity = optionalUserEntity.get();
-        Long userId =  userEntity.getUserId();
+        Long userId = userEntity.getUserId();
         Long cartId = cartMapper.getCartIdByUserId(userId);
         return toUserDTOMapper.toUserInfoResponse(userEntity, cartId);
+    }
+
+    public int getUserTotalOrderCount(Long userId) {
+        return orderMapper.countUserOrders(userId);
+    }
+
+    public List<OrderListResponse> getPagedOrderList(Long userId, int page, int pageSize) {
+        int offset = (page - 1) * pageSize;
+
+        List<OrderEntity> orderEntityList =
+            orderMapper.findPagedUserOrders(userId, pageSize, offset);
+        List<OrderListResponse> orderListResponses = new ArrayList<>();
+
+        for (OrderEntity orderEntity : orderEntityList) {
+            orderListResponses.add(toOrderDTOMapper.toOrderListResponse(orderEntity));
+        }
+
+        return orderListResponses;
+    }
+
+    public int getUserTotalPointRechargeCount(Long userId) {
+        return pointMapper.countUserPointRecharges(userId);
+    }
+
+    public List<PointRechargeListResponse> getPagedPointRechargeList(Long userId, int page,
+        int pageSize) {
+        int offset = (page - 1) * pageSize;
+
+        //List<PointRechargeEntity> pointRechargeEntityList = pointMapper.getUserPointRecharges(userId);
+        List<PointRechargeEntity> pointRechargeEntityList =
+            pointMapper.findPagedUserPointRecharges(userId, pageSize, offset);
+        List<PointRechargeListResponse> pointRechargeList = new ArrayList<>();
+
+        for (PointRechargeEntity pointRechargeEntity : pointRechargeEntityList) {
+            pointRechargeList.add(
+                toPointDTOMapper.toPointRechargeListResponse(pointRechargeEntity));
+        }
+
+        return pointRechargeList;
     }
 }

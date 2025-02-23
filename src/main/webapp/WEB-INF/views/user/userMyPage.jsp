@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="../../../resources/static/styles/common/header.css">
   <link rel="stylesheet" href="../../../resources/static/styles/common/footer.css">
   <link rel="stylesheet" href="../../../resources/static/styles/common/table.css">
+  <link rel="stylesheet" href="../../../resources/static/style/common/pagination.css">
   <link rel="stylesheet" href="../../../resources/static/styles/user/userInfo.css">
   <link rel="stylesheet" href="../../../resources/static/styles/user/userOrderManagement.css">
   <%--<link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">--%>

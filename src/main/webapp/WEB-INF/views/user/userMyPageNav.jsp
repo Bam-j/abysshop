@@ -26,11 +26,11 @@
 <body>
 <nav class="nav">
   <a class="nav-link active" aria-current="page"
-     href="/user/my-page/${user.userId}?menu=order-management"
+     href="/user/my-page/${user.userId}?menu=order-management&page=1"
      onclick="changeURL('order-management')">주문 관리</a>
-  <a class="nav-link" href="/user/my-page/${user.userId}?menu=user-info"
+  <a class="nav-link" href="/user/my-page/${user.userId}?menu=user-info&"
      onclick="changeURL('user-info')">계정 관리</a>
-  <a class=" nav-link" href="/user/my-page/${user.userId}?menu=point-request"
+  <a class=" nav-link" href="/user/my-page/${user.userId}?menu=point-request&page=1"
      onclick="changeURL('point-request')">포인트 지급 요청</a>
 </nav>
 

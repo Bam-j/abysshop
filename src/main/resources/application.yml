@@ -17,6 +17,9 @@ spring:
     view:
       suffix: .jsp
       prefix: /WEB-INF/views/
+  devtools:
+    livereload:
+      enabled: true
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml, classpath:mapper/**/*.xml

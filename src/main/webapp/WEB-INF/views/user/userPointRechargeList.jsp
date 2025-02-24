@@ -49,7 +49,7 @@
   <div class="pagination">
     <%-- 이전 버튼 (첫 페이지가 아닐 때만 활성화) --%>
     <c:if test="${currentPage > 1}">
-      <a href="?menu=point-request&page=${currentPage - 1}" class="page-link">이전</a>
+      <a href="?menu=point-request&page=${currentPage - 1}" class="page-link">&laquo;</a>
     </c:if>
 
     <%-- 페이지 번호 표시 --%>
@@ -60,7 +60,7 @@
 
     <%-- 다음 버튼 (마지막 페이지가 아닐 때만 활성화) --%>
     <c:if test="${currentPage < totalPages}">
-      <a href="?menu=point-request&page=${currentPage + 1}" class="page-link">다음</a>
+      <a href="?menu=point-request&page=${currentPage + 1}" class="page-link">&raquo;</a>
     </c:if>
   </div>
 </section>

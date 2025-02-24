@@ -2,15 +2,15 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1.25rem;
-  margin-top: 0.25rem;
+  margin: 0.825rem 1rem;
+
+  border: 1px solid red;
 }
 
 .square-logo img {
-  width: 50%;
-  height: 50%;
   margin-top: 0.625rem;
   margin-left: 0.625rem;
+  margin-bottom: 0.625rem;
   object-fit: scale-down;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -18,10 +18,17 @@ footer {
   user-select: none;
 }
 
-footer ul li {
-  position: relative;
-  margin: 0.625rem;
+.address-menu {
+  display: flex;
+  align-items: center;
   list-style: none;
+  padding: 0;
+  margin: 0.625rem;
+}
+
+#server-address,
+#discord-address {
+  padding: 0 0.625rem;
 }
 
 #server-address:hover,
@@ -30,15 +37,4 @@ footer ul li {
 #discord-address:active {
   cursor: pointer;  !important;
   font-weight: bold;  !important;
-}
-
-.divider-elem::after {
-  content: "";
-  position: absolute;
-  right: -10px;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 50px;
-  width: 2px;
-  background-color: #ccc;
 }

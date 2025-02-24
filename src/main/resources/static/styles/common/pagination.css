@@ -1,8 +1,12 @@
 .pagination {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   justify-content: center;
-  margin-top: 20px;
 }
+
 .page-link {
   padding: 10px 15px;
   margin: 0 5px;
@@ -11,11 +15,13 @@
   border: 1px solid #ddd;
   border-radius: 5px;
 }
+
 .page-link.active {
   background-color: #007bff;
   color: white;
   border: 1px solid #007bff;
 }
+
 .page-link:hover {
   background-color: #f0f0f0;
 }

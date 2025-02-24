@@ -12,6 +12,7 @@
     pageEncoding="UTF-8"
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +24,7 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="../../../resources/static/styles/product/productList.css">
-  <link rel="stylesheet" href="../../../resources/static/style/common/pagination.css">
+  <link rel="stylesheet" href="../../../resources/static/styles/common/pagination.css">
 </head>
 <body>
 <section>
@@ -36,7 +37,7 @@
                alt="${product.productName}">
           <div class="card-body">
             <h5 class="card-title">${product.productName}</h5>
-            <p class="card-text">${product.price}</p>
+            <p class="card-text"><fmt:formatNumber value="${product.price}" pattern="#,###" /> </p>
           </div>
         </a>
       </div>
@@ -47,7 +48,7 @@
   <div class="pagination">
     <%-- 이전 버튼 (첫 페이지가 아닐 때만 활성화) --%>
     <c:if test="${currentPage > 1}">
-      <a href="?page=${currentPage - 1}" class="page-link">이전</a>
+      <a href="?page=${currentPage - 1}" class="page-link">&laquo;</a>
     </c:if>
 
     <%-- 페이지 번호 표시 --%>
@@ -57,7 +58,7 @@
 
     <%-- 다음 버튼 (마지막 페이지가 아닐 때만 활성화) --%>
     <c:if test="${currentPage < totalPages}">
-      <a href="?page=${currentPage + 1}" class="page-link">다음</a>
+      <a href="?page=${currentPage + 1}" class="page-link">&raquo;</a>
     </c:if>
   </div>
 

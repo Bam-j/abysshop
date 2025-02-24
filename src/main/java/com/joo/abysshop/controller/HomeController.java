@@ -25,7 +25,7 @@ public class HomeController {
     @GetMapping("/")
     public String home(@RequestParam(defaultValue = "1") int page, HttpSession session,
         Model model) {
-        int pageSize = 8;
+        int pageSize = 12;
         int totalProducts = productService.getTotalProductCount();
         int totalPages = (int) Math.ceil((double) totalProducts / pageSize);
 

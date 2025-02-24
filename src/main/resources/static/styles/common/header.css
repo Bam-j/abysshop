@@ -1,14 +1,16 @@
 header {
   display: flex;
   justify-content: space-between;
-  margin: 0.125rem 1.25rem;
+  margin: 0.825rem 1rem;
+
+  /* TODO: 디자인용 border 마지막에 전부 삭제하기 */
+  border: 1px solid red;
 }
 
 .square-logo img {
-  width: 50%;
-  height: 50%;
   margin-top: 0.625rem;
   margin-left: 0.625rem;
+  margin-bottom: 0.625rem;
   object-fit: scale-down;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -16,21 +18,19 @@ header {
   user-select: none;
 }
 
-ul {
+#header-logo {
+  width: 70%;
+  height: 70%;
+}
+
+.action-menu {
   display: flex;
-}
-
-header ul li {
   list-style: none;
+  margin-top: 0.625rem;
+  margin-right: 0.625rem;
+  padding: 0;
 }
 
-.divider-elem::after {
-  content: "";
-  position: absolute;
-  right: -10px;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 50px;
-  width: 2px;
-  background-color: #ccc;
+.action-menu li {
+  margin-left: 0.5rem;
 }

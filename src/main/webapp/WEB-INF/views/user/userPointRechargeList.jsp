@@ -22,9 +22,9 @@
 </head>
 <body>
 <section>
-  <table>
+  <table class="table table-hover">
     <thead>
-    <tr>
+    <tr class="table-primary">
       <th>요청 번호</th>
       <th>요청 포인트</th>
       <th>요청일</th>

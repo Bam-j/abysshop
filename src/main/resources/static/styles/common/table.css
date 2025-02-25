@@ -1,16 +1,4 @@
-table, th, td {
+table {
+  width: 100%;
   border-collapse: collapse;
-  text-align: center;
-}
-
-thead {
-  background-color: var(--fourth-color);
-}
-
-thead th {
-  line-height: 1.2;
-}
-
-tbody td {
-  line-height: 1.5;
 }

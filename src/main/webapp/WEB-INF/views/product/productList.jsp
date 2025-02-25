@@ -35,7 +35,7 @@
                alt="${product.productName}">
           <div class="card-body">
             <h5 class="card-title">${product.productName}</h5>
-            <p class="card-text"><fmt:formatNumber value="${product.price}" pattern="#,###" /> </p>
+            <p class="card-text"><fmt:formatNumber value="${product.price}" pattern="#,###" /></p>
           </div>
         </a>
       </div>

@@ -24,9 +24,10 @@
 </head>
 <body>
 <section>
-  <table>
+  <table class="table table-hover">
     <thead>
-    <tr>
+    <tr class="table-primary">
+      <%-- TODO: 어떤 상품을 주문했는지 상품명도 나오면 좋을듯! EX) oooo 외 0건 --%>
       <th>주문 번호</th>
       <th>주문 총 포인트</th>
       <th>구매일</th>
@@ -37,7 +38,7 @@
     <c:forEach items="${userOrderList}" var="order">
       <tr>
         <td>${order.orderId}</td>
-        <td>${order.totalPoints}</td>
+        <td><fmt:formatNumber value="${order.totalPoints}" pattern="#,###" /></td>
         <td><fmt:formatDate value="${order.orderDate}" pattern="yyyy-MM-dd" /></td>
         <td>${order.orderState}</td>
       </tr>

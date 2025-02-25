@@ -11,6 +11,7 @@
     language="java"
     pageEncoding="UTF-8"
 %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +42,8 @@
     <img src="/upload/${product.originalFileName}" id="product-detail-image" alt="상품 이미지">
     <ul>
       <li><h2><strong>${product.productName}</strong></h2></li>
-      <li><h3><strong>${product.price} 포인트</strong></h3></li>
+
+      <li><h3><strong><fmt:formatNumber value="${product.price} 포인트" pattern="#,###" /></strong></h3></li>
       <li id="product-description">${product.description}</li>
       <li>
         <form action="/cart/item/add" method="post">

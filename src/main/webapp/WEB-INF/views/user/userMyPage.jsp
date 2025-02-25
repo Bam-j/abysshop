@@ -23,8 +23,8 @@
   <link rel="stylesheet" href="../../../resources/static/styles/common/common.css">
   <link rel="stylesheet" href="../../../resources/static/styles/common/header.css">
   <link rel="stylesheet" href="../../../resources/static/styles/common/footer.css">
-  <link rel="stylesheet" href="../../../resources/static/styles/common/table.css">
-  <link rel="stylesheet" href="../../../resources/static/style/common/pagination.css">
+  <link rel="stylesheet" href="../../../resources/static/styles/common/pagination.css">
+  <%-- TODO: userInfo.css를 적용하면 header의 버튼들이 지그재그 형태로 나타남 --%>
   <link rel="stylesheet" href="../../../resources/static/styles/user/userInfo.css">
   <link rel="stylesheet" href="../../../resources/static/styles/user/userOrderManagement.css">
   <%--<link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">--%>

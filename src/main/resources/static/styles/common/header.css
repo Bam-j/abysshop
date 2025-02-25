@@ -25,6 +25,8 @@ header {
 
 .action-menu {
   display: flex;
+  justify-content: space-around;
+  align-items: center;
   list-style: none;
   margin-top: 0.625rem;
   margin-right: 0.625rem;

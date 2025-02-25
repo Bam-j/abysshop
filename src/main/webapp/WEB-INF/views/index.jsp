@@ -21,12 +21,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Abysshop 홈</title>
+  <%-- 기존 바닐라 부트스트랩 CDN
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
         crossorigin="anonymous">
-  <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/cosmo/bootstrap.min.css"
-        rel="stylesheet">
+  --%>
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/cosmo/bootstrap.min.css">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="../../resources/static/styles/common/common.css">
@@ -84,9 +86,10 @@
 </aside>
 
 <%--<%@ include file="product/productNav.jsp" %>--%>
-
-<%@ include file="point/pointRechargeRequestForm.jsp" %>
-<%@ include file="order/transferAndRefundInfo.jsp" %>
+<nav id="point-menu">
+  <%@ include file="point/pointRechargeRequestForm.jsp" %>
+  <%@ include file="order/transferAndRefundInfo.jsp" %>
+</nav>
 
 <main id="index-main-content">
   <div id="content">

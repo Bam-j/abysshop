@@ -15,21 +15,21 @@
 <head>
   <title>계좌 이체와 환불 안내</title>
   <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-        crossorigin="anonymous">
-  <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/cosmo/bootstrap.min.css"
-        rel="stylesheet">
+        href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/cosmo/bootstrap.min.css">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
 <body>
 <nav>
-  <button id="transfer-refund-button" type="button" class="btn btn-primary"
-          data-bs-toggle="modal"
-          data-bs-target="#transfer-refund-modal">
-    계좌 이체 & 환불 안내 사항
-  </button>
+  <c:choose>
+    <c:when test="${not empty sessionScope.user}">
+      <button id="transfer-refund-button" type="button" class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#transfer-refund-modal">
+        계좌 이체 & 환불 안내 사항
+      </button>
+    </c:when>
+  </c:choose>
 
   <div class="modal fade" id="transfer-refund-modal" tabindex="-1"
        aria-labelledby="transfer-refund-modal-label"
@@ -37,7 +37,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="transfer-refund-modal-label">포인트 충전 요청</h1>
+          <h1 class="modal-title fs-5" id="transfer-refund-modal-label">포인트 충전 요청 & 환불 안내</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal"
                   aria-label="Close"></button>
         </div>
@@ -47,7 +47,7 @@
             <h3><strong>[계좌 번호를 적을 공간]</strong></h3>
             <ul>
               <li>송금하실 때 송금자를 닉네임과 동일하게 설정해주세요.</li>
-              <li>입금 후 포인트 지급까지 10분에서 24시간까지 소요될 수 있습니다.</li>
+              <li>입금 후 포인트 지급까지 <strong>10분에서 24시간</strong>까지 소요될 수 있습니다.</li>
               <li>결제 과정에서 문의는 디스코드(또는 이메일)에서 받고있습니다.</li>
             </ul>
             <hr>

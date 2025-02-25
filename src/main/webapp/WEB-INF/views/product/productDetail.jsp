@@ -27,20 +27,22 @@
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>
+
 <nav>
   <form action="/" method="get">
-    <button type="submit" class="btn btn-outline-dark">
-      <i class="bi bi-arrow-left"></i>메인으로
+    <button type="submit" class="btn btn-outline-dark btn-sm">
+      <i class="bi bi-arrow-left"></i>목록으로
     </button>
   </form>
 </nav>
+
 <main>
   <section>
-    <img src="" alt="상품 이미지">
+    <img src="/upload/${product.originalFileName}" id="product-detail-image" alt="상품 이미지">
     <ul>
       <li><h2><strong>${product.productName}</strong></h2></li>
-      <li><h3>${product.price}</h3></li>
-      <li>${product.description}</li>
+      <li><h3><strong>${product.price} 포인트</strong></h3></li>
+      <li id="product-description">${product.description}</li>
       <li>
         <form action="/cart/item/add" method="post">
           <input type="hidden" name="cartId" value="${user.cartId}">
@@ -53,6 +55,7 @@
     </ul>
   </section>
 </main>
+
 <%@ include file="../common/footer.jsp" %>
 </body>
 </html>

@@ -1,17 +1,60 @@
+nav {
+  margin: 0 0.825rem;
+  padding: 0;
+}
+
 main {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  margin: 0.125rem 0.825rem;
+
+  border: 1px solid green;
 }
 
 section {
-  width: 100%;
-  padding: 1.25px;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin: 0.625rem;
 }
 
-img {
-  width: 30%;
+#product-detail-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
 }
 
 ul {
-  width: 70%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#product-description {
+  min-height: 60px; /* 최소 높이를 지정하여 더 넓은 영역 확보 */
+  padding: 10px 0; /* 위아래 패딩 추가 */
+  display: flex;
+  align-items: center; /* 내용이 중앙에 정렬되도록 설정 */
+}
+
+li h2,
+li h3 {
+  margin: 0;
+}
+
+form {
+  margin-top: 10px;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }

@@ -17,6 +17,7 @@ public class ProductController {
 
     @GetMapping("/product/detail/{productId}")
     public String getProductDetail(@PathVariable Long productId, Model model) {
+        //TODO: filename 가져오는 로직 누락으로 detail 페이지에서 이미지가 나타나지 않음.
         model.addAttribute(ModelAttributeNames.PRODUCT, productService.findById(productId));
         return ViewNames.PRODUCT_DETAIL_PAGE;
     }

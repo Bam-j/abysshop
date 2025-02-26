@@ -24,9 +24,8 @@
   <link rel="stylesheet" href="../../../resources/static/styles/common/header.css">
   <link rel="stylesheet" href="../../../resources/static/styles/common/footer.css">
   <link rel="stylesheet" href="../../../resources/static/styles/common/pagination.css">
-  <%-- TODO: userInfo.css를 적용하면 header의 버튼들이 지그재그 형태로 나타남 --%>
+  <link rel="stylesheet" href="../../../resources/static/styles/user/userMyPage.css">
   <link rel="stylesheet" href="../../../resources/static/styles/user/userInfo.css">
-  <link rel="stylesheet" href="../../../resources/static/styles/user/userOrderManagement.css">
   <%--<link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">--%>
 </head>
 <body>
@@ -35,7 +34,7 @@
 <%@ include file="userMyPageNav.jsp" %>
 
 <main>
-  <div id="content">
+  <div id="content" class="user-my-page-content">
     <c:choose>
       <c:when test="${param.menu eq 'user-info'}">
         <jsp:include page="userInfo.jsp" />
@@ -56,6 +55,7 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 <script src="../../resources/static/js/common/navEvent.js"></script>
+<%-- TODO: 회원 마이페이지에서 번역 스크립트가 동작하지 않는 상태 --%>
 <script src="../../resources/static/js/common/translateState.js"></script>
 </body>
 </html>

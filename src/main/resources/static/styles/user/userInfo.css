@@ -1,7 +1,6 @@
 #user-info-section {
   display: flex;
   flex-direction: column;
-  margin-left: 0.25rem;
   position: relative;
 }
 
@@ -10,8 +9,8 @@
   margin-bottom: 0.125rem;
 }
 
-#change-nickname-form button,
-#change-password-form button {
+#change-nickname-form  button,
+#change-password-form  button {
   margin-top: 0.25rem;
 }
 

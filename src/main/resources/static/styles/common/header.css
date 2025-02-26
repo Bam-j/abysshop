@@ -2,9 +2,6 @@ header {
   display: flex;
   justify-content: space-between;
   margin: 0.825rem 1rem;
-
-  /* TODO: 디자인용 border 마지막에 전부 삭제하기 */
-  border: 1px solid red;
 }
 
 .square-logo img {

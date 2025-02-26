@@ -2,8 +2,6 @@ section {
   margin: 0.625rem;
   position: relative;
   padding-bottom: 2rem;
-
-  border: 1px solid blue;
 }
 
 section > h2 {

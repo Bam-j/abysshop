@@ -9,11 +9,12 @@
   margin-bottom: 0.125rem;
 }
 
-#change-nickname-form  button,
-#change-password-form  button {
+#change-nickname-form button,
+#change-password-form button {
   margin-top: 0.25rem;
 }
 
 #withdraw-button {
   width: 300px;
+  font-weight: bold;
 }

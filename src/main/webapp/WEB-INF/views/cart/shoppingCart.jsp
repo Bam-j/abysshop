@@ -24,24 +24,24 @@
   <link rel="stylesheet" href="../../../resources/static/styles/common/header.css">
   <link rel="stylesheet" href="../../../resources/static/styles/common/footer.css">
   <link rel="stylesheet" href="../../../resources/static/styles/common/table.css">
-  <link rel="stylesheet" href="../../../resources/static/styles/order/shoppingCart.css">
+  <link rel="stylesheet" href="../../../resources/static/styles/cart/shoppingCart.css">
   <%--<link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">--%>
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>
-<nav>
-  <a href="/">
+<nav class="cart-content">
+  <a href="/" type="button" class="btn btn-outline-primary">
     <i class="bi bi-arrow-left"></i>메인으로
   </a>
 </nav>
-<main>
+<main class="cart-content">
   <section>
-    <table>
+    <table id="cart-table" class="table table-hover">
       <thead>
-      <tr>
+      <tr class="table-primary">
         <th>상품명</th>
         <th>포인트</th>
-        <th>수량</th>
+        <%--<th>수량</th>--%>
         <th>삭제</th>
       </tr>
       </thead>
@@ -50,25 +50,25 @@
         <tr>
           <td>${item.productName}</td>
           <td>${item.price}</td>
-          <td>
-              <%-- TODO: 증감 설정 버튼 CSS 입히기 --%>
-              <%-- 페이지에 보여질 totalPoints(price), quantity는 스크립트에서 계산, order 저장시는 백엔드에서 계산 --%>
-            <div style='display: flex;'>
-              <input type='button'
-                     onclick='count("plus")'
-                     value='+' />
-              <div id='result'>${item.quantity}</div>
-              <input type='button'
-                     onclick='count("minus")'
-                     value='-' />
-            </div>
-          </td>
+            <%--<td>
+                &lt;%&ndash; TODO: 증감 설정 버튼 CSS 입히기 &ndash;%&gt;
+                &lt;%&ndash; 페이지에 보여질 totalPoints(price), quantity는 스크립트에서 계산, order 저장시는 백엔드에서 계산 &ndash;%&gt;
+              <div style='display: flex;'>
+                <input type='button'
+                       onclick='count("plus")'
+                       value='+' />
+                <div id='result'>${item.quantity}</div>
+                <input type='button'
+                       onclick='count("minus")'
+                       value='-' />
+              </div>
+            </td>--%>
           <td>
             <form action="/cart/item/remove" method="post">
               <input type="hidden" name="cartId" value="${cart.cartId}">
               <input type="hidden" name="productId" value="${item.productId}">
               <input type="hidden" name="userId" value="${user.userId}">
-              <button id="item-remove-button">X</button>
+              <button id="item-remove-button" class="btn btn-danger">X</button>
             </form>
           </td>
         </tr>
@@ -82,7 +82,7 @@
           <form action="/order/create" method="post">
             <input type="hidden" name="userId" value="${user.userId}">
             <input type="hidden" name="cartId" value="${cart.cartId}">
-            <button type="submit">구매하기</button>
+            <button type="submit" class="btn btn-success">구매하기</button>
           </form>
         </td>
       </tr>

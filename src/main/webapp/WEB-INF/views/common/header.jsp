@@ -50,7 +50,7 @@
                 <input type="hidden" name="userId" value="${user.userId}">
                 <button type="submit" class="btn btn-primary">
                   <i class="bi bi-cart"></i>
-                  장바구니 <span class="badge text-bg-secondary">${cart.quantity}</span>
+                  장바구니 <span class="badge bg-secondary">${cart.quantity}</span>
                 </button>
               </form>
             </li>

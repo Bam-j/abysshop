@@ -26,15 +26,18 @@
 <header>
   <div class="square-logo">
     <a href="/">
-      <img id="header-logo" src="../../../resources/static/images/abyssblock_square_64x64.png" alt="어비스 블록 미니멀 로고">
+      <img id="header-logo" src="../../../resources/static/images/abyssblock_square_64x64.png"
+           alt="어비스 블록 미니멀 로고">
     </a>
   </div>
   <ul class="action-menu">
     <c:choose>
       <c:when test="${not empty sessionScope.user}">
         <li>
-          <%-- TODO: points가 차감되도 즉각 반영되지 않음 --%>
-          보유 포인트: ${user.points}
+          <button type="button" class="btn btn-success disabled">
+              <%-- TODO: points가 차감되도 즉각 반영되지 않음 --%>
+            ${user.points} 포인트
+          </button>
         </li>
         <c:choose>
           <c:when test="${user.userType == 'admin'}">

@@ -12,6 +12,7 @@
     pageEncoding="UTF-8"
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,13 +24,13 @@
 </head>
 <body>
 <section>
-  <table>
+  <table class="table table-hover">
     <thead>
-    <tr>
-      <td>상품 번호</td>
-      <td>상품명</td>
-      <td>가격</td>
-      <td>삭제</td>
+    <tr class="table-primary">
+      <th>상품 번호</th>
+      <th>상품명</th>
+      <th>가격</th>
+      <th>삭제</th>
     </tr>
     </thead>
     <tbody>
@@ -37,11 +38,12 @@
       <tr>
         <td>${product.productId}</td>
         <td>${product.productName}</td>
-        <td>${product.price}</td>
+        <td><fmt:formatNumber value="${product.price}" pattern="#,###" /></td>
         <td>
           <form action="/admin/product/remove" method="post">
             <input type="hidden" name="productId" value="${product.productId}">
-            <button type="submit" class="btn btn-warning">품목 삭제</button>
+            <%-- TODO: 삭제 버튼 클릭시 재확인하는 modal이나 alert 넣기 --%>
+            <button type="submit" class="btn btn-danger">품목 삭제</button>
           </form>
         </td>
       </tr>

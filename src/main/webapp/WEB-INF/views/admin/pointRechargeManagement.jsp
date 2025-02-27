@@ -22,10 +22,10 @@
 </head>
 <body>
 <section>
-  <h3><strong>포인트 지급 전 반드시 상세 정보에 정보를 입력해주세요.</strong></h3>
-  <table>
+  <h3 class="alert alert-warning"><strong>포인트 지급 전 반드시 요청 정보에 정보를 입력해주세요.</strong></h3>
+  <table class="table table-hover">
     <thead>
-    <tr>
+    <tr class="table-primary">
       <th>요청 번호</th>
       <th>요청자</th>
       <th>요청 포인트</th>
@@ -39,11 +39,11 @@
       <tr data-index="${status.index}">
         <td>${pointRecharge.rechargeId}</td>
         <td>${pointRecharge.nickname}</td>
-        <td>${pointRecharge.points}</td>
+        <td><fmt:formatNumber value="${pointRecharge.points}" pattern="#,###" /></td>
         <td><fmt:formatDate value="${pointRecharge.requestTime}" pattern="yyyy-MM-dd" /></td>
         <td>
           <div class="btn-group" data-index="${status.index}">
-            <button type="button" id="dropdown-button" class="btn btn-info dropdown-toggle"
+            <button type="button" id="dropdown-button" class="btn btn-success dropdown-toggle"
                     data-bs-toggle="dropdown"
                     aria-expanded="false">
                 ${pointRecharge.rechargeRequestState}
@@ -76,7 +76,8 @@
           <form action="/admin/point/provide" method="post" id="provide-confirm-form">
             <input type="hidden" name="userId" value="${pointRecharge.userId}" />
             <input type="hidden" name="point" value="${pointRecharge.points}" />
-            <button type="submit" id="provide-confirm-button" data-index="${status.index}"
+            <button type="submit" id="provide-confirm-button" class="btn btn-success"
+                    data-index="${status.index}"
               ${pointRecharge.rechargeRequestState == "completed" ||
                   pointRecharge.rechargeRequestState == "refunded" ? "disabled" : ""}>
               지급 승인
@@ -92,7 +93,8 @@
   <div class="pagination">
     <%-- 이전 버튼 (첫 페이지가 아닐 때만 활성화) --%>
     <c:if test="${currentPage > 1}">
-      <a href="?menu=point-recharge-management&page=${currentPage - 1}" class="page-link">&laquo;</a>
+      <a href="?menu=point-recharge-management&page=${currentPage - 1}"
+         class="page-link">&laquo;</a>
     </c:if>
 
     <%-- 페이지 번호 표시 --%>
@@ -103,7 +105,8 @@
 
     <%-- 다음 버튼 (마지막 페이지가 아닐 때만 활성화) --%>
     <c:if test="${currentPage < totalPages}">
-      <a href="?menu=point-recharge-management&page=${currentPage + 1}" class="page-link">&raquo;</a>
+      <a href="?menu=point-recharge-management&page=${currentPage + 1}"
+         class="page-link">&raquo;</a>
     </c:if>
   </div>
 

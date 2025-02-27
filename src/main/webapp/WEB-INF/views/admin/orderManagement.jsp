@@ -25,9 +25,9 @@
 </head>
 <body>
 <section>
-  <table>
+  <table class="table table-hover">
     <thead>
-    <tr>
+    <tr class="table-primary">
       <th>주문 번호</th>
       <th>주문자</th>
       <%--<th>주문 상품</th>--%>
@@ -40,12 +40,13 @@
     <c:forEach items="${orderList}" var="order" varStatus="status">
       <tr data-index="${status.index}">
         <td>${order.orderId}</td>
+        <%-- TODO: userId 대신 nickname으로 나오게 변경 --%>
         <td>${order.userId}</td>
-        <td>${order.totalPoints}</td>
+        <td><fmt:formatNumber value="${order.totalPoints}" pattern="#,###" /></td>
         <td><fmt:formatDate value="${order.orderDate}" pattern="yyyy-MM-dd" /></td>
         <td>
-          <div class="btn-group" data-index="${status.index}">
-            <button type="button" id="dropdown-button" class="btn btn-info dropdown-toggle"
+          <div class="btn-group" role="group" data-index="${status.index}">
+            <button type="button" id="dropdown-button" class="btn btn-success dropdown-toggle"
                     data-bs-toggle="dropdown"
                     aria-expanded="false">
                 ${order.orderState}

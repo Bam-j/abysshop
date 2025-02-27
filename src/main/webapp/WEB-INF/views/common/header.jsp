@@ -33,12 +33,6 @@
   <ul class="action-menu">
     <c:choose>
       <c:when test="${not empty sessionScope.user}">
-        <li>
-          <button type="button" class="btn btn-success disabled">
-              <%-- TODO: points가 차감되도 즉각 반영되지 않음 --%>
-            ${user.points} 포인트
-          </button>
-        </li>
         <c:choose>
           <c:when test="${user.userType == 'admin'}">
             <li class="divider-elem">
@@ -48,6 +42,12 @@
             </li>
           </c:when>
           <c:otherwise>
+            <li>
+              <button type="button" class="btn btn-success disabled">
+                  <%-- TODO: points가 차감되도 즉각 반영되지 않음 --%>
+                  ${user.points} 포인트
+              </button>
+            </li>
             <li>
               <form action="/user/cart/${user.cartId}" method="get">
                 <input type="hidden" name="userId" value="${user.userId}">

@@ -18,9 +18,9 @@
 </head>
 <body>
 <section>
-  <table>
+  <table class="table table-hover">
     <thead>
-    <tr>
+    <tr class="table-primary">
       <th>요청 정보 번호</th>
       <th>요청 번호</th>
       <th>주문자</th>
@@ -41,18 +41,20 @@
         <td><fmt:formatDate value="${pointRechargeDetail.depositConfirmedTime}"
                             pattern="yyyy-MM-dd" /></td>
         <form action="/point/recharge/detail" method="post">
-          <td><input type="text"
-                     name="bank"
-                     value="${pointRechargeDetail.bank != null ? pointRechargeDetail.bank : ''}"
-                     placeholder="은행" /></td>
-          <td><input type="text"
-                     name="accountNumber"
-                     value="${pointRechargeDetail.accountNumber != null ? pointRechargeDetail.accountNumber : ''}"
-                     placeholder="계좌번호" /></td>
+          <td>
+            <input type="text" class="form-control" name="bank"
+                   value="${pointRechargeDetail.bank != null ? pointRechargeDetail.bank : ''}"
+                   placeholder="은행" />
+          </td>
+          <td>
+            <input type="text" class="form-control" name="accountNumber"
+                   value="${pointRechargeDetail.accountNumber != null ? pointRechargeDetail.accountNumber : ''}"
+                   placeholder="계좌번호" />
+          </td>
           <td>
             <input type="hidden" name="rechargeDetailId"
                    value="${pointRechargeDetail.rechargeDetailId}" data-index="${status.index}" />
-            <button type="submit" data-index="${status.index}">입력</button>
+            <button type="submit" class="btn btn-success" data-index="${status.index}">입력</button>
           </td>
         </form>
       </tr>

@@ -23,15 +23,17 @@
 </head>
 <body>
 <section>
+  <hr>
   <form id="add-product-form" action="/admin/product/add" method="post"
         enctype="multipart/form-data">
-    <label for="product-image">
-      상품 이미지: <input type="file" id="product-image" name="image" multiple>
-    </label>
-    <input type="text" id="product-name" name="productName" placeholder="상품명">
-    <input type="text" id="product-price" name="price" placeholder="상품 가격">
-    <textarea id="product-description" name="description" placeholder="상품 설명"></textarea>
-    <button type="submit" class="btn btn-primary">상품 등록</button>
+    <label for="product-image" class="form-label mt-4">상품 이미지: </label>
+    <input type="file" id="product-image" class="form-control" name="image" multiple>
+    <hr>
+    <input type="text" id="product-name" class="form-control" name="productName" placeholder="상품명">
+    <input type="text" id="product-price" class="form-control" name="price" placeholder="상품 가격">
+    <%-- TODO: 입력한 그대로 저장되게 만들자 --%>
+    <textarea id="product-description" class="form-control" name="description" placeholder="상품 설명"></textarea>
+    <button type="submit" class="btn btn-success">상품 등록</button>
   </form>
 </section>
 </body>

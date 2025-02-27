@@ -8,11 +8,12 @@ import org.springframework.stereotype.Component;
 public class ToAccountEntityMapperImpl implements ToAccountEntityMapper {
 
     @Override
-    public SignUpEntity toSignUpEntity(AccountSignUpRequest accountSignUpRequest) {
+    public SignUpEntity toSignUpEntity(AccountSignUpRequest accountSignUpRequest,
+        String encryptedPassword) {
         return SignUpEntity.builder()
             .username(accountSignUpRequest.getUsername())
             .nickname(accountSignUpRequest.getNickname())
-            .password(accountSignUpRequest.getPassword())
+            .password(encryptedPassword)
             .build();
     }
 }

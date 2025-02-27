@@ -5,5 +5,5 @@ import com.joo.abysshop.entity.account.SignUpEntity;
 
 public interface ToAccountEntityMapper {
 
-    SignUpEntity toSignUpEntity(AccountSignUpRequest accountSignUpRequest);
+    SignUpEntity toSignUpEntity(AccountSignUpRequest accountSignUpRequest, String encryptedPassword);
 }

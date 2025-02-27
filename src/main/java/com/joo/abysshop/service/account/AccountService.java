@@ -15,6 +15,7 @@ import com.joo.abysshop.mapper.dto.ToAccountDTOMapper;
 import com.joo.abysshop.mapper.entity.ToAccountEntityMapper;
 import com.joo.abysshop.mapper.mybatis.AccountMapper;
 import com.joo.abysshop.mapper.mybatis.UserMapper;
+import com.joo.abysshop.util.security.PasswordSecurity;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -36,21 +37,19 @@ public class AccountService {
         //잘못된 username
         if (optionalAccountEntity.isEmpty()) {
             return ResultStatus.INVALID_USERNAME;
-        } else {
-            AccountEntity accountEntity = optionalAccountEntity.get();
-            signInEntity = SignInEntity.builder()
-                .username(accountEntity.getUsername())
-                .nickname(accountEntity.getNickname())
-                .password(accountEntity.getPassword())
-                .build();
         }
 
-        AccountSignInResponse accountSignInResponse = toAccountDTOMapper.toAccountSignInResponse(
-            signInEntity);
-        String password = accountSignInRequest.getPassword();
-        String savedPassword = accountSignInResponse.getPassword();
+        AccountEntity accountEntity = optionalAccountEntity.get();
+        signInEntity = SignInEntity.builder()
+            .username(accountEntity.getUsername())
+            .nickname(accountEntity.getNickname())
+            .password(accountEntity.getPassword())
+            .build();
 
-        if (password.equals(savedPassword)) {
+        String inputPassword = accountSignInRequest.getPassword();
+        String encodedPassword = signInEntity.getPassword();
+
+        if (PasswordSecurity.matches(inputPassword, encodedPassword)) {
             return ResultStatus.SUCCESS;
         } else {
             return ResultStatus.INVALID_PASSWORD;
@@ -74,7 +73,11 @@ public class AccountService {
             return ResultStatus.DUPLICATE_NICKNAME;
         }
 
-        SignUpEntity signUpEntity = toAccountEntityMapper.toSignUpEntity(accountSignUpRequest);
+        String encryptedPassword = PasswordSecurity
+            .encryptPassword(accountSignUpRequest.getPassword());
+
+        SignUpEntity signUpEntity = toAccountEntityMapper
+            .toSignUpEntity(accountSignUpRequest, encryptedPassword);
         accountMapper.insertUser(signUpEntity);
 
         return ResultStatus.SUCCESS;
@@ -139,7 +142,7 @@ public class AccountService {
 
     public ResultStatus withdraw(AccountWithdrawRequest accountWithdrawRequest) {
         Long userId = accountWithdrawRequest.getUserId();
-        String password = accountWithdrawRequest.getPassword();
+        String inputPassword = accountWithdrawRequest.getPassword();
         Optional<UserEntity> optionalUserEntity = userMapper.findByUserId(userId);
 
         if (optionalUserEntity.isEmpty()) {
@@ -147,9 +150,9 @@ public class AccountService {
             return ResultStatus.BAD_REQUEST;
         }
 
-        UserEntity userEntity = optionalUserEntity.get();
+        String encodedPassword = optionalUserEntity.get().getPassword();
 
-        if (!password.equals(userEntity.getPassword())) {
+        if (!PasswordSecurity.matches(inputPassword, encodedPassword)) {
             //유저의 password와 입력된 password가 불일치함
             return ResultStatus.INVALID_PASSWORD;
         }

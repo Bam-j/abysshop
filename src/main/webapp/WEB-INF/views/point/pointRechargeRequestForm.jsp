@@ -23,11 +23,15 @@
 <nav>
   <c:choose>
     <c:when test="${not empty sessionScope.user}">
-      <button id="point-recharge-button" type="button" class="btn btn-primary"
-              data-bs-toggle="modal"
-              data-bs-target="#point-recharge-modal">
-        포인트 충전
-      </button>
+      <c:choose>
+        <c:when test="${user.userType == 'user'}">
+          <button id="point-recharge-button" type="button" class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#point-recharge-modal">
+            포인트 충전
+          </button>
+        </c:when>
+      </c:choose>
     </c:when>
   </c:choose>
 

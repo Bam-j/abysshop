@@ -6,7 +6,6 @@ import com.joo.abysshop.dto.cart.CartResponse;
 import com.joo.abysshop.dto.order.OrderListResponse;
 import com.joo.abysshop.dto.point.PointRechargeListResponse;
 import com.joo.abysshop.service.cart.CartService;
-import com.joo.abysshop.service.order.OrderService;
 import com.joo.abysshop.service.user.UserService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;

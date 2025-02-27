@@ -54,6 +54,7 @@
           <td>
             <input type="hidden" name="rechargeDetailId"
                    value="${pointRechargeDetail.rechargeDetailId}" data-index="${status.index}" />
+            <%-- TODO: 정보 상세 입력 버튼이 동작하지 않음 --%>
             <button type="submit" class="btn btn-success" data-index="${status.index}">입력</button>
           </td>
         </form>

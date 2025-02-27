@@ -1,7 +1,6 @@
 package com.joo.abysshop.controller;
 
 import com.joo.abysshop.constants.Messages;
-import com.joo.abysshop.constants.ModelAttributeNames;
 import com.joo.abysshop.constants.RedirectMappings;
 import com.joo.abysshop.constants.ViewNames;
 import com.joo.abysshop.dto.account.AccountSignInRequest;
@@ -9,14 +8,12 @@ import com.joo.abysshop.dto.account.AccountSignUpRequest;
 import com.joo.abysshop.dto.account.AccountWithdrawRequest;
 import com.joo.abysshop.dto.account.ChangeNicknameRequest;
 import com.joo.abysshop.dto.account.ChangePasswordRequest;
-import com.joo.abysshop.dto.product.ProductListResponse;
 import com.joo.abysshop.dto.user.UserInfoResponse;
 import com.joo.abysshop.enums.ResultStatus;
 import com.joo.abysshop.service.account.AccountService;
 import com.joo.abysshop.service.product.ProductService;
 import com.joo.abysshop.service.user.UserService;
 import jakarta.servlet.http.HttpSession;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,13 +42,8 @@ public class AccountController {
         ResultStatus signInResult = accountService.signIn(accountSignInRequest);
 
         if (signInResult == ResultStatus.SUCCESS) {
-            //TODO: redirect 요청에 대해 불필요한 데이터 삽입 연산 모두 찾아서 제거하기
             UserInfoResponse userInfo = userService.getUserInfo(accountSignInRequest.getUsername());
             session.setAttribute("user", userInfo);
-
-            //String token = jwtUtil.generateToken(accountSignInRequest.getUsername());
-            //response.setHeader("Authorization", "Bearer " + token);
-
             return RedirectMappings.REDIRECT_INDEX;
         } else if (signInResult == ResultStatus.INVALID_USERNAME) {
             redirectAttributes.addFlashAttribute(Messages.FAILURE_MESSAGE, "존재하지 않는 계정입니다.");
@@ -147,10 +139,6 @@ public class AccountController {
     @PostMapping("/account/logout")
     public String logout(HttpSession session, Model model) {
         session.invalidate();
-
-        List<ProductListResponse> productList = productService.findAllProducts();
-        model.addAttribute(ModelAttributeNames.PRODUCT_LIST, productList);
-
         return RedirectMappings.REDIRECT_INDEX;
     }
 
@@ -161,10 +149,6 @@ public class AccountController {
 
         if (withdrawResult == ResultStatus.SUCCESS) {
             session.invalidate();
-
-            List<ProductListResponse> productList = productService.findAllProducts();
-            model.addAttribute(ModelAttributeNames.PRODUCT_LIST, productList);
-
             return new RedirectView(ViewNames.INDEX_PAGE);
         } else {
             Long userId = accountWithdrawRequest.getUserId();

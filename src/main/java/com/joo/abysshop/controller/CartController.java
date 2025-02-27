@@ -36,7 +36,6 @@ public class CartController {
         Long cartId = cart.getCartId();
         List<CartItemResponse> cartItemList = cartService.getUserCartItems(cartId);
         model.addAttribute(ModelAttributeNames.CART_ITEM_LIST, cartItemList);
-
         return ViewNames.SHOPPING_CART_PAGE;
     }
 
@@ -66,7 +65,6 @@ public class CartController {
 
         Long cartId = addItemRequest.getCartId();
         cartService.updateCart(cartId);
-
         return RedirectMappings.REDIRECT_INDEX;
     }
 
@@ -88,9 +86,6 @@ public class CartController {
 
         Long cartId = cart.getCartId();
         cartService.updateCart(cartId);
-        List<CartItemResponse> cartItemList = cartService.getUserCartItems(cartId);
-        model.addAttribute(ModelAttributeNames.CART_ITEM_LIST, cartItemList);
-
         return new RedirectView("/user/cart/" + userId);
     }
 }

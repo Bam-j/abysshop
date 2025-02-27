@@ -89,10 +89,6 @@ public class AdminController {
     public RedirectView changeOrderState(
         @ModelAttribute ChangeOrderStateRequest changeOrderStateRequest, Model model) {
         adminOrderManagementService.changeOrderState(changeOrderStateRequest);
-
-        List<OrderListResponse> orderList = adminOrderManagementService.getAllOrders();
-        model.addAttribute(ModelAttributeNames.ORDER_LIST, orderList);
-
         return new RedirectView("/admin/my-page");
     }
 
@@ -118,13 +114,8 @@ public class AdminController {
 
     @PostMapping("/admin/recharge/change-state")
     public RedirectView changePointRechargeState(
-        @ModelAttribute ChangePointRechargeStateRequest changePointRechargeStateRequest,
-        Model model) {
+        @ModelAttribute ChangePointRechargeStateRequest changePointRechargeStateRequest) {
         adminPointManagementService.changePointRechargeState(changePointRechargeStateRequest);
-
-        List<PointRechargeListResponse> pointRechargeList = adminPointManagementService.getAllPointRecharge();
-        model.addAttribute(ModelAttributeNames.POINT_RECHARGE_LIST, pointRechargeList);
-
         return new RedirectView("/admin/my-page?menu=point-recharge-management");
     }
 }

@@ -44,7 +44,6 @@
           <c:otherwise>
             <li>
               <button type="button" class="btn btn-success disabled">
-                  <%-- TODO: points가 차감되도 즉각 반영되지 않음 --%>
                   ${user.points} 포인트
               </button>
             </li>

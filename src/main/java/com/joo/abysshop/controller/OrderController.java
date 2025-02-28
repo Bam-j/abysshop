@@ -7,6 +7,7 @@ import com.joo.abysshop.dto.user.UserInfoResponse;
 import com.joo.abysshop.enums.ResultStatus;
 import com.joo.abysshop.service.cart.CartService;
 import com.joo.abysshop.service.order.OrderService;
+import com.joo.abysshop.service.user.UserService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -23,9 +24,10 @@ public class OrderController {
 
     private final OrderService orderService;
     private final CartService cartService;
+    private final UserService userService;
 
     @GetMapping("/order/complete")
-    public String getOrderCompletePage(HttpSession session, Model model) {
+    public String getOrderCompletePage(HttpSession session) {
         Long cartId = (Long) session.getAttribute("cartId");
 
         if (cartId != null) {
@@ -34,7 +36,9 @@ public class OrderController {
         }
 
         UserInfoResponse user = (UserInfoResponse) session.getAttribute("user");
-        model.addAttribute("user", user);
+        UserInfoResponse updatedUser = userService.getUserInfo(user.getNickname());
+        session.setAttribute("user", updatedUser);
+
         return ViewNames.ORDER_COMPLETE_PAGE;
     }
 

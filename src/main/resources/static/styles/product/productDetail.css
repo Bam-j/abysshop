@@ -9,8 +9,6 @@ main {
   align-items: center;
   gap: 1.25rem;
   margin: 0.125rem 0.825rem;
-
-  border: 1px solid green;
 }
 
 section {
@@ -26,7 +24,7 @@ section {
   object-fit: cover;
 }
 
-ul {
+#product-detail-info {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -42,16 +40,16 @@ ul {
   align-items: center; /* 내용이 중앙에 정렬되도록 설정 */
 }
 
-li h2,
-li h3 {
+#product-detail-info li h2,
+#product-detail-info li h3 {
   margin: 0;
 }
 
-form {
+#product-detail-info form {
   margin-top: 10px;
 }
 
-button {
+#product-detail-info button {
   padding: 10px 15px;
   border: none;
   display: flex;

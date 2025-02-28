@@ -31,7 +31,7 @@
 
 <nav>
   <form action="/" method="get">
-    <button type="submit" class="btn btn-outline-dark btn-sm">
+    <button type="submit" class="btn btn-outline-primary btn-sm">
       <i class="bi bi-arrow-left"></i>목록으로
     </button>
   </form>
@@ -40,10 +40,10 @@
 <main>
   <section>
     <img src="/upload/${product.originalFileName}" id="product-detail-image" alt="상품 이미지">
-    <ul>
+    <ul id="product-detail-info">
       <li><h2><strong>${product.productName}</strong></h2></li>
 
-      <li><h3><strong><fmt:formatNumber value="${product.price} 포인트" pattern="#,###" /></strong></h3></li>
+      <li><h3><strong><fmt:formatNumber value="${product.price}" pattern="#,###" /> 포인트</strong></h3></li>
       <li id="product-description">${product.description}</li>
       <li>
         <form action="/cart/item/add" method="post">

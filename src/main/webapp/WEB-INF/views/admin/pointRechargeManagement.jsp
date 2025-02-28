@@ -56,7 +56,6 @@
                 <a class="dropdown-item" data-value="pending_point_deposit" href="#">포인트 지급 대기</a>
               </li>
               <li>
-                <%-- TODO: 번역 시 포인트 지급 완료가 상품으로 나옴. --%>
                 <a class="dropdown-item" data-value="completed" href="#">포인트 지급 완료</a>
               </li>
               <li>

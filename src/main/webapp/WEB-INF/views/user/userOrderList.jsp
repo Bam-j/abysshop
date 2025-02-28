@@ -40,7 +40,7 @@
         <td>${order.orderId}</td>
         <td><fmt:formatNumber value="${order.totalPoints}" pattern="#,###" /></td>
         <td><fmt:formatDate value="${order.orderDate}" pattern="yyyy-MM-dd" /></td>
-        <td>${order.orderState}</td>
+        <td data-state="${order.orderState}">${order.orderState}</td>
       </tr>
     </c:forEach>
     </tbody>

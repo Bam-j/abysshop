@@ -37,7 +37,7 @@
         <td>${request.rechargeId}</td>
         <td>${request.points}</td>
         <td><fmt:formatDate value="${request.requestTime}" pattern="yyyy-MM-dd" /></td>
-        <td>${request.rechargeRequestState}</td>
+        <td data-state="${request.rechargeRequestState}">${request.rechargeRequestState}</td>
       </tr>
     </c:forEach>
     </tbody>

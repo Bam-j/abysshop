@@ -55,7 +55,6 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 <script src="../../resources/static/js/common/navEvent.js"></script>
-<%-- TODO: 회원 마이페이지에서 번역 스크립트가 동작하지 않는 상태 --%>
 <script src="../../resources/static/js/common/translateState.js"></script>
 </body>
 </html>

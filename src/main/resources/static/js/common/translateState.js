@@ -7,7 +7,7 @@ const orderStateMapping = {
 const rechargeStateMapping = {
   pending_payment: "송금 확인 대기",
   pending_point_deposit: "포인트 지급 대기",
-  completed: "상품 지급 완료",
+  completed: "포인트 지급 완료",
   refunded: "환불 처리 완료"
 };
 
@@ -19,6 +19,15 @@ const translateState = () => {
       button.textContent = orderStateMapping[state];
     } else if (rechargeStateMapping[state]) {
       button.textContent = rechargeStateMapping[state];
+    }
+  });
+
+  document.querySelectorAll("[data-state]").forEach(td => {
+    const state = td.getAttribute("data-state").trim();
+    if (orderStateMapping[state]) {
+      td.textContent = orderStateMapping[state];
+    } else if (rechargeStateMapping[state]) {
+      td.textContent = rechargeStateMapping[state];
     }
   });
 };

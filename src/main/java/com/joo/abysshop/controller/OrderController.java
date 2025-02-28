@@ -35,22 +35,28 @@ public class OrderController {
             cartService.clearCart(cartId);
         }
 
-        UserInfoResponse user = (UserInfoResponse) session.getAttribute("user");
-        UserInfoResponse updatedUser = userService.getUserInfo(user.getNickname());
-        session.setAttribute("user", updatedUser);
-
         return ViewNames.ORDER_COMPLETE_PAGE;
     }
 
     @PostMapping("/order/create")
     public RedirectView createOrder(@ModelAttribute CreateOrderRequest createOrderRequest,
-        RedirectAttributes redirectAttributes) {
+        RedirectAttributes redirectAttributes, HttpSession session) {
         ResultStatus createOrderResult = orderService.createOrder(createOrderRequest);
 
         if (createOrderResult.equals(ResultStatus.INSUFFICIENT_POINTS)) {
             redirectAttributes.addFlashAttribute(Messages.FAILURE_MESSAGE, "포인트가 부족합니다.");
             return new RedirectView("/user/cart/" + createOrderRequest.getUserId());
         }
+
+        UserInfoResponse user =  (UserInfoResponse) session.getAttribute("user");
+        UserInfoResponse updatedUser = UserInfoResponse.builder()
+            .userId(user.getUserId())
+            .cartId(user.getCartId())
+            .nickname(user.getNickname())
+            .userType(user.getUserType())
+            .points(userService.getPoints(user.getUserId()))
+            .build();
+        session.setAttribute("user", updatedUser);
 
         Long cartId = createOrderRequest.getUserId();
         redirectAttributes.addFlashAttribute("cartId", cartId);

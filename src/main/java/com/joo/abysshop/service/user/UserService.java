@@ -81,4 +81,8 @@ public class UserService {
 
         return pointRechargeList;
     }
+
+    public Long getPoints(final Long userId) {
+        return userMapper.getUserPoints(userId);
+    }
 }

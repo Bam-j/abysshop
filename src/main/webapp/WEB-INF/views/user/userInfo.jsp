@@ -38,8 +38,7 @@
   <form id="change-password-form" action="/account/change/password" method="post">
     <div class="input-group mb-3">
       <input type="hidden" name="userId" value="${user.userId}">
-      <%-- TODO: 개발 완료시 type:"password"로 비밀번호 입력 가리기 --%>
-      <input type="text" class="password-input" name="newPassword" placeholder="변경할 비밀번호 입력">
+      <input type="password" class="password-input" name="newPassword" placeholder="변경할 비밀번호 입력">
       <button type="submit" class="btn btn-primary">비밀번호 변경</button>
     </div>
   </form>

@@ -39,8 +39,7 @@
       <input class="nickname-input" name="nickname" type="text" data-bs-toggle="tooltip"
              data-bs-placement="right" data-bs-html="true"
              title="인게임 닉네임과 동일하게 가입해주세요.<br>거래 과정에서 문제가 발생할 수 있습니다." placeholder="마인크래프트 닉네임">
-      <%-- TODO: 개발 완료시 type:"password"로 비밀번호 입력 가리기 --%>
-      <input class="password-input" name="password" type="text" placeholder="비밀번호">
+      <input class="password-input" name="password" type="password" placeholder="비밀번호">
       <button type="submit" class="btn btn-primary">회원가입</button>
     </form>
   </section>

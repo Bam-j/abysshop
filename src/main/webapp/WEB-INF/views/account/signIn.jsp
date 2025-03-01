@@ -36,8 +36,7 @@
     </div>
     <form id="sign-in-form" action="/account/sign-in" method="post">
       <input class="username-input" name="username" type="text" placeholder="계정">
-      <%-- TODO: 개발 완료시 type:"password"로 비밀번호 입력 가리기 --%>
-      <input class="password-input" name="password" type="text" placeholder="비밀번호">
+      <input class="password-input" name="password" type="password" placeholder="비밀번호">
       <button type="submit" class="btn btn-primary">로그인</button>
     </form>
     <form action="/account/sign-up" method="get">

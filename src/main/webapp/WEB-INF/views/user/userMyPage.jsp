@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="../../../resources/static/styles/common/pagination.css">
   <link rel="stylesheet" href="../../../resources/static/styles/user/userMyPage.css">
   <link rel="stylesheet" href="../../../resources/static/styles/user/userInfo.css">
-  <%--<link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">--%>
+  <link rel="shortcut icon" href="../../../resources/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>

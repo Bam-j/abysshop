@@ -2,3 +2,6 @@
 > 원인을 모르겠음!!!
 
 4. detail 페이지에서 original file name을 받아와서 이미지가 표시되도록 만들기
+
+
+5. 주문 후 cart에서 상품 레코드 drop이 안됨

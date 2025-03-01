@@ -11,7 +11,6 @@ import com.joo.abysshop.service.user.UserService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,6 +32,7 @@ public class OrderController {
         if (cartId != null) {
             //포인트 충전 후 complete 페이지 이동시에는 cart를 비우지 않도록
             cartService.clearCart(cartId);
+            session.removeAttribute("cartId");
         }
 
         return ViewNames.ORDER_COMPLETE_PAGE;
@@ -59,7 +59,7 @@ public class OrderController {
         session.setAttribute("user", updatedUser);
 
         Long cartId = createOrderRequest.getUserId();
-        redirectAttributes.addFlashAttribute("cartId", cartId);
+        session.setAttribute("cartId", cartId);
         return new RedirectView("/order/complete");
     }
 }

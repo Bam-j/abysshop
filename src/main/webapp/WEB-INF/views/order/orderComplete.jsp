@@ -30,20 +30,20 @@
       <img src="../resources/static/images/abyssblock_mark_sd.png" alt="abyssblock 로고">
     </div>
     <h3>주문이 완료되었습니다.</h3>
-    <div>
+    <div id="order-complete-info" class="alert alert-dismissible alert-success">
       <ol>
         <li>주문 상태는 '마이 페이지'의 '주문 관리' 또는 '포인트 지급 요청'에서 확인하실 수 있습니다.</li>
-        <li>입금 후 포인트/상품 지급까지 5분에서 최대 24시간까지 소요될 수 있습니다.</li>
-        <li>결제 과정에서 문의는 디스코드에서 받고있습니다.</li>
+        <li>입금 후 포인트/상품 지급까지 <strong>10분에서 최대 24시간까지</strong> 소요될 수 있습니다.</li>
+        <li>결제 과정의 문의나 환불 및 QnA는 디스코드에서 받고있습니다.</li>
       </ol>
     </div>
-    <a type="button" class="btn btn-primary" href="/">
+    <button type="button" class="btn btn-primary" href="/">
       <i class="bi bi-house-door"></i> 메인으로
-    </a>
-    <a type="button" class="btn btn-success"
+    </button>
+    <button type="button" class="btn btn-success"
        href="/user/my-page/${user.userId}?menu=order-management">
       <i class="bi bi-card-list"></i> 주문 내역으로
-    </a>
+    </button>
   </section>
 </main>
 </body>

@@ -7,8 +7,8 @@ main {
   margin: 0.5rem auto;
   padding: 0;
   border-radius: 10px;
-  width: 500px;
-  height: 425px;
+  width: 31.25rem;
+  height: 27.125rem;
 }
 
 section {
@@ -17,8 +17,13 @@ section {
   align-items: center;
 }
 
+#order-complete-info {
+  margin: 0 2rem; !important;
+  border-radius: 10px;
+}
+
 .mark-logo > img {
-  margin-top: 1rem;
+  margin-top: 0.825rem;
   width: 300px;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -27,6 +32,6 @@ section {
 }
 
 button {
-  width: 200px;
-  margin-bottom: 1rem;
+  width: 200px; !important;
+  margin: 0.25rem 0; !important;
 }

@@ -12,6 +12,7 @@
     pageEncoding="UTF-8"
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,8 +41,8 @@
       <thead>
       <tr class="table-primary">
         <th>상품명</th>
+        <td>수량</td>
         <th>포인트</th>
-        <%--<th>수량</th>--%>
         <th>삭제</th>
       </tr>
       </thead>
@@ -49,20 +50,23 @@
       <c:forEach items="${cartItemList}" var="item">
         <tr>
           <td>${item.productName}</td>
-          <td>${item.price}</td>
-            <%--<td>
-                &lt;%&ndash; TODO: 증감 설정 버튼 CSS 입히기 &ndash;%&gt;
-                &lt;%&ndash; 페이지에 보여질 totalPoints(price), quantity는 스크립트에서 계산, order 저장시는 백엔드에서 계산 &ndash;%&gt;
-              <div style='display: flex;'>
-                <input type='button'
-                       onclick='count("plus")'
-                       value='+' />
-                <div id='result'>${item.quantity}</div>
-                <input type='button'
-                       onclick='count("minus")'
-                       value='-' />
-              </div>
-            </td>--%>
+          <td>
+              <%--페이지에 보여질 totalPoints(price), quantity는 스크립트에서 계산, order 저장시는 백엔드에서 계산--%>
+            <div class="quantity-controller">
+              <button id="plus-button" class="btn btn-primary"
+                      data-cart-id="${cart.cartId}" data-user-id="${user.userId}"
+                      data-product-id="${item.productId}">
+                +
+              </button>
+              <p id="quantity"><strong>${item.quantity}</strong></p>
+              <button id="minus-button" class="btn btn-primary"
+                      data-cart-id="${cart.cartId}" data-user-id="${user.userId}"
+                      data-product-id="${item.productId}">
+                -
+              </button>
+            </div>
+          </td>
+          <td><fmt:formatNumber value="${item.price}" pattern="#,###" /></td>
           <td>
             <form action="/cart/item/remove" method="post">
               <input type="hidden" name="cartId" value="${cart.cartId}">
@@ -76,7 +80,7 @@
       </tbody>
       <tfoot>
       <tr>
-        <td>주문 합계 포인트: ${cart.totalPoints}</td>
+        <td>주문 합계 포인트: <fmt:formatNumber value="${cart.totalPoints}" pattern="#,###" /></td>
         <td>총 수량: ${cart.quantity}</td>
         <td>
           <form action="/order/create" method="post">

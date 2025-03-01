@@ -8,7 +8,9 @@ import com.joo.abysshop.dto.cart.AddItemRequest;
 import com.joo.abysshop.dto.cart.CartItemResponse;
 import com.joo.abysshop.dto.cart.CartResponse;
 import com.joo.abysshop.dto.cart.RemoveItemRequest;
+import com.joo.abysshop.dto.cart.UpdateQuantityRequest;
 import com.joo.abysshop.dto.user.UserInfoResponse;
+import com.joo.abysshop.mapper.dto.ToCartDTOMapper;
 import com.joo.abysshop.service.cart.CartService;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
@@ -27,6 +29,7 @@ import org.springframework.web.servlet.view.RedirectView;
 public class CartController {
 
     private final CartService cartService;
+    private final ToCartDTOMapper toCartDTOMapper;
 
     @GetMapping("/user/cart/{userId}")
     public String getUserCartPage(@PathVariable("userId") Long userId, Model model) {
@@ -39,6 +42,7 @@ public class CartController {
         return ViewNames.SHOPPING_CART_PAGE;
     }
 
+    //detail 페이지의 장바구니 추가 버튼에 대한 quantity 증가 or 상품 추가 컨트롤러
     @PostMapping("/cart/item/add")
     public String addItemToCart(@ModelAttribute AddItemRequest addItemRequest, HttpSession session,
         RedirectAttributes redirectAttributes) {
@@ -68,17 +72,21 @@ public class CartController {
         return RedirectMappings.REDIRECT_INDEX;
     }
 
+    //cart에서 삭제 버튼을 클릭했을 때 상품 레코드를 제거하는 컨트롤러
     @PostMapping("/cart/item/remove")
     public RedirectView removeItemFromCart(@ModelAttribute RemoveItemRequest removeItemRequest,
         Model model) {
-        Long quantity = cartService.getItemQuantity(removeItemRequest);
+        //Long quantity = cartService.getItemQuantity(removeItemRequest);
 
+        /* 수량 조절 기능 추가에 따라 remove만 남도록 변경 안정성 확인 후 삭제
         if (quantity > 0) {
             cartService.decreaseQuantity(removeItemRequest);
             cartService.decreaseTotalPrice(removeItemRequest);
         } else {
             cartService.removeItem(removeItemRequest);
-        }
+        }*/
+
+        cartService.removeItem(removeItemRequest);
 
         Long userId = removeItemRequest.getUserId();
         CartResponse cart = cartService.getCart(userId);
@@ -86,6 +94,28 @@ public class CartController {
 
         Long cartId = cart.getCartId();
         cartService.updateCart(cartId);
+        return new RedirectView("/user/cart/" + userId);
+    }
+
+    //cart에서 증감 버튼 클릭 시 quantity를 조정하는 메소드
+    @PostMapping("/cart/item/update/quantity")
+    public RedirectView updateQuantity(@ModelAttribute UpdateQuantityRequest updateQuantityRequest) {
+        String operator = updateQuantityRequest.getOperator();
+
+        if (operator.equals("increase")) {
+            AddItemRequest addItemRequest = toCartDTOMapper.toAddItemRequest(updateQuantityRequest);
+            cartService.increaseQuantity(addItemRequest);
+            cartService.increaseTotalPrice(addItemRequest);
+        } else {
+            RemoveItemRequest removeItemRequest = toCartDTOMapper.toRemoveItemRequest(updateQuantityRequest);
+            cartService.decreaseQuantity(removeItemRequest);
+            cartService.decreaseTotalPrice(removeItemRequest);
+        }
+
+        Long cartId = updateQuantityRequest.getCartId();
+        cartService.updateCart(cartId);
+
+        Long userId = updateQuantityRequest.getUserId();
         return new RedirectView("/user/cart/" + userId);
     }
 }

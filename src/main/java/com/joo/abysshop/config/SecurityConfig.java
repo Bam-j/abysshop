@@ -9,7 +9,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-//TODO: 추후에 재설정 reqeustMatchers에 비인증 페이지 모두 넣기. 현재 403 HTTP 코드를 뱉어냄.
 /*
 @Configuration
 @EnableWebSecurity

@@ -47,8 +47,8 @@ public class ProductService {
 
     public ProductDetailResponse findById(Long productId) {
         ProductEntity productEntity = productMapper.findById(productId);
-
-        return toProductDTOMapper.toProductDetailResponse(productEntity);
+        String originalFileName = productMapper.findOriginalFilename(productId);
+        return toProductDTOMapper.toProductDetailResponse(productEntity, originalFileName);
     }
 
     public ProductInfoRequest getProductInfo(Long productId) {

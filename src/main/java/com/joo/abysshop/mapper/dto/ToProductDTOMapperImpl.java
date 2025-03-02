@@ -31,12 +31,14 @@ public class ToProductDTOMapperImpl implements ToProductDTOMapper {
     }
 
     @Override
-    public ProductDetailResponse toProductDetailResponse(ProductEntity productEntity) {
+    public ProductDetailResponse toProductDetailResponse(ProductEntity productEntity,
+        String originalFileName) {
         return ProductDetailResponse.builder()
             .productId(productEntity.getProductId())
             .productName(productEntity.getProductName())
             .price(productEntity.getPrice())
             .description(productEntity.getDescription())
+            .originalFileName(originalFileName)
             .build();
     }
 

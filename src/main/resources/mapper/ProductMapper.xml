@@ -59,4 +59,10 @@
     FROM products_table
     LIMIT #{pageSize} OFFSET #{offset}
   </select>
+
+  <select id="findOriginalFilename" parameterType="java.lang.Long" resultType="java.lang.String">
+    SELECT original_file_name
+    FROM product_image_table
+    WHERE product_id = #{productId}
+  </select>
 </mapper>

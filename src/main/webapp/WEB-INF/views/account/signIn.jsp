@@ -44,7 +44,9 @@
     </form>
   </section>
 </main>
+<%-- 에러 처리를 스프링 컨트롤러에서 처리하므로 스크립트는 제외
 <script src="../../../../resources/static/js/account/signInValidation.js"></script>
+--%>
 <script>
   //window.alert 대신 모달 alert 형식으로 변경할 것을 고려
   window.onload = () => {

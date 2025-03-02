@@ -77,7 +77,9 @@
   </div>
 </section>
 
+<%-- 에러 처리를 스프링 컨트롤러에서 처리하므로 스크립트는 제외
 <script src="../../../../resources/static/js/user/userInfoValidation.js"></script>
+--%>
 <script>
   window.onload = () => {
     let failureMessage = "${failureMessage}";

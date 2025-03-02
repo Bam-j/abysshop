@@ -12,6 +12,7 @@ public class OrderListResponse {
 
     private Long orderId;
     private Long userId;
+    private String nickname;
     private Date orderDate;
     private Long totalPoints;
     private String orderState;

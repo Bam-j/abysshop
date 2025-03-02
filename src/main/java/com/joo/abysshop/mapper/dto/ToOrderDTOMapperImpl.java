@@ -17,4 +17,16 @@ public class ToOrderDTOMapperImpl implements ToOrderDTOMapper {
             .orderState(orderEntity.getOrderState())
             .build();
     }
+
+    @Override
+    public OrderListResponse toOrderListResponse(OrderEntity orderEntity, String nickname) {
+        return OrderListResponse.builder()
+            .orderId(orderEntity.getOrderId())
+            .userId(orderEntity.getUserId())
+            .nickname(nickname)
+            .orderDate(orderEntity.getOrderDate())
+            .totalPoints(orderEntity.getTotalPoints())
+            .orderState(orderEntity.getOrderState())
+            .build();
+    }
 }

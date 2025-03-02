@@ -49,6 +49,7 @@ public class AdminController {
         if ("order-management".equals(menu)) {
             int totalOrders = orderService.getTotalOrderCount();
             int totalPages = (int) Math.ceil((double) totalOrders / pageSize);
+
             List<OrderListResponse> orderList = adminOrderManagementService.findPagedOrders(page,
                 pageSize);
             model.addAttribute(ModelAttributeNames.ORDER_LIST, orderList);

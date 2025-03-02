@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class ProductImageController {
 
-    private final String IMAGE_DIR = "C:/abysshop_img/";
+    private final String IMAGE_DIR = "C:/Users/juhyu/abysshop_img/";
 
     @GetMapping("/image/{originalFileName}")
     public Resource getImage(@PathVariable String originalFileName, Model model)

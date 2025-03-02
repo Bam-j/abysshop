@@ -40,6 +40,12 @@ section {
   align-items: center; /* 내용이 중앙에 정렬되도록 설정 */
 }
 
+#product-description pre {
+  font-family: inherit;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
 #product-detail-info li h2,
 #product-detail-info li h3 {
   margin: 0;

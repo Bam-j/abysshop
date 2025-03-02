@@ -12,7 +12,7 @@ public class WebConfig implements WebMvcConfigurer {
     private String resourcePath = "/static/**";
     private String classpath = "classpath:/static/";
     private String imgResourcePath = "/upload/**";
-    private String imgSavePath = "file:///C:/abysshop_img/";
+    private String imgSavePath = "file:///C:/Users/juhyu/abysshop_img/";
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {

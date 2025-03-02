@@ -103,7 +103,6 @@ public class AdminController {
         throws IOException {
         adminMyPageService.addProduct(addProductRequest);
         return new RedirectView("/admin/my-page?menu=add-product");
-
     }
 
     @PostMapping("/admin/product/remove")

@@ -34,6 +34,7 @@ public class AdminMyPageService {
         MultipartFile imageFile = addProductRequest.getImage();
         String originalFileName = imageFile.getOriginalFilename();
         String savePath = "C:/abysshop_img/" + originalFileName;
+        //TODO: transferTo() 저장 과정에서 권한 문제 발생 > 원인 미상 일단 보류
         imageFile.transferTo(new File(savePath));
 
         AddProductEntity addProductEntity = toProductEntityMapper.toAddProductEntity(

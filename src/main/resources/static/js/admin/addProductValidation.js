@@ -20,13 +20,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     //price가 숫자가 아닌 입력이 들어왔는지 검증
-    if (isNaN(productPriceInput)) {
+    if (isNaN(productPriceInput.value)) {
       window.alert("숫자만 입력이 가능합니다.");
       event.preventDefault();
     }
 
     //price가 0원 이하로 입력됐는지 검증
-    if (Number(productPriceInput) <= 0) {
+    if (Number(productPriceInput.value) <= 0) {
       window.alert("0원 이하의 값은 입력할 수 없습니다.");
       event.preventDefault();
     }

@@ -12,6 +12,7 @@
     pageEncoding="UTF-8"
 %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,8 +44,9 @@
     <ul id="product-detail-info">
       <li><h2><strong>${product.productName}</strong></h2></li>
 
-      <li><h3><strong><fmt:formatNumber value="${product.price}" pattern="#,###" /> 포인트</strong></h3></li>
-      <li id="product-description">${product.description}</li>
+      <li><h3><strong><fmt:formatNumber value="${product.price}" pattern="#,###" /> 포인트</strong>
+      </h3></li>
+      <li id="product-description">${fn:replace(product.description, "\n", "<br>")}</li>
       <li>
         <form action="/cart/item/add" method="post">
           <input type="hidden" name="cartId" value="${user.cartId}">

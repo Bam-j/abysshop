@@ -1,7 +1,7 @@
 package com.joo.abysshop.exception;
 
-import com.joo.abysshop.constants.Messages;
-import com.joo.abysshop.constants.RedirectMappings;
+import com.joo.abysshop.util.constants.Messages;
+import com.joo.abysshop.util.constants.RedirectMappings;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

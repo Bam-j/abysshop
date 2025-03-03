@@ -3,7 +3,7 @@ package com.joo.abysshop.account;
 import com.joo.abysshop.dto.account.AccountSignInRequest;
 import com.joo.abysshop.dto.account.AccountSignUpRequest;
 import com.joo.abysshop.dto.account.AccountWithdrawRequest;
-import com.joo.abysshop.enums.ResultStatus;
+import com.joo.abysshop.util.enums.ResultStatus;
 import com.joo.abysshop.service.account.AccountService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,7 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class AccountServiceTest {

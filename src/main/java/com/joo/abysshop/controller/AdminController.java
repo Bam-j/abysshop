@@ -1,8 +1,8 @@
 package com.joo.abysshop.controller;
 
 import com.joo.abysshop.annotation.AdminOnly;
-import com.joo.abysshop.constants.ModelAttributeNames;
-import com.joo.abysshop.constants.ViewNames;
+import com.joo.abysshop.util.constants.ModelAttributeNames;
+import com.joo.abysshop.util.constants.ViewNames;
 import com.joo.abysshop.dto.admin.AddProductRequest;
 import com.joo.abysshop.dto.admin.ChangeOrderStateRequest;
 import com.joo.abysshop.dto.admin.ChangePointRechargeStateRequest;

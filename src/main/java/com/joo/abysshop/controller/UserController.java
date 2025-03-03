@@ -1,8 +1,8 @@
 package com.joo.abysshop.controller;
 
 import com.joo.abysshop.annotation.CurrentUserOnly;
-import com.joo.abysshop.constants.ModelAttributeNames;
-import com.joo.abysshop.constants.ViewNames;
+import com.joo.abysshop.util.constants.ModelAttributeNames;
+import com.joo.abysshop.util.constants.ViewNames;
 import com.joo.abysshop.dto.cart.CartResponse;
 import com.joo.abysshop.dto.order.OrderListResponse;
 import com.joo.abysshop.dto.point.PointRechargeListResponse;

@@ -1,6 +1,6 @@
 package com.joo.abysshop.controller;
 
-import com.joo.abysshop.constants.RedirectMappings;
+import com.joo.abysshop.util.constants.RedirectMappings;
 import com.joo.abysshop.dto.point.CreatePointRechargeRequest;
 import com.joo.abysshop.dto.point.UpdatePointRechargeDetailRequest;
 import com.joo.abysshop.service.admin.AdminPointManagementService;

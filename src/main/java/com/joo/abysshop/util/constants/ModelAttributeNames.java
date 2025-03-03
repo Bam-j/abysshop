@@ -1,4 +1,4 @@
-package com.joo.abysshop.constants;
+package com.joo.abysshop.util.constants;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

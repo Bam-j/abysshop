@@ -1,15 +1,15 @@
 package com.joo.abysshop.controller;
 
-import com.joo.abysshop.constants.Messages;
-import com.joo.abysshop.constants.RedirectMappings;
-import com.joo.abysshop.constants.ViewNames;
+import com.joo.abysshop.util.constants.Messages;
+import com.joo.abysshop.util.constants.RedirectMappings;
+import com.joo.abysshop.util.constants.ViewNames;
 import com.joo.abysshop.dto.account.AccountSignInRequest;
 import com.joo.abysshop.dto.account.AccountSignUpRequest;
 import com.joo.abysshop.dto.account.AccountWithdrawRequest;
 import com.joo.abysshop.dto.account.ChangeNicknameRequest;
 import com.joo.abysshop.dto.account.ChangePasswordRequest;
 import com.joo.abysshop.dto.user.UserInfoResponse;
-import com.joo.abysshop.enums.ResultStatus;
+import com.joo.abysshop.util.enums.ResultStatus;
 import com.joo.abysshop.service.account.AccountService;
 import com.joo.abysshop.service.product.ProductService;
 import com.joo.abysshop.service.user.UserService;

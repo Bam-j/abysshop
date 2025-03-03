@@ -9,7 +9,7 @@ import com.joo.abysshop.entity.account.AccountEntity;
 import com.joo.abysshop.entity.account.SignInEntity;
 import com.joo.abysshop.entity.account.SignUpEntity;
 import com.joo.abysshop.entity.user.UserEntity;
-import com.joo.abysshop.enums.ResultStatus;
+import com.joo.abysshop.util.enums.ResultStatus;
 import com.joo.abysshop.mapper.dto.ToAccountDTOMapper;
 import com.joo.abysshop.mapper.entity.ToAccountEntityMapper;
 import com.joo.abysshop.mapper.mybatis.AccountMapper;

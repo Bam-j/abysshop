@@ -1,7 +1,7 @@
 package com.joo.abysshop.controller;
 
-import com.joo.abysshop.constants.ModelAttributeNames;
-import com.joo.abysshop.constants.ViewNames;
+import com.joo.abysshop.util.constants.ModelAttributeNames;
+import com.joo.abysshop.util.constants.ViewNames;
 import com.joo.abysshop.service.product.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

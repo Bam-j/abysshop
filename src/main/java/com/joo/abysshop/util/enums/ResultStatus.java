@@ -1,4 +1,4 @@
-package com.joo.abysshop.enums;
+package com.joo.abysshop.util.enums;
 
 public enum ResultStatus {
     //일반 요청에 대한 성공 & 실패

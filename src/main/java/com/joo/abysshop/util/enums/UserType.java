@@ -1,4 +1,4 @@
-package com.joo.abysshop.enums;
+package com.joo.abysshop.util.enums;
 
 public enum UserType {
     USER,

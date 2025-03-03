@@ -1,10 +1,10 @@
 package com.joo.abysshop.controller;
 
-import com.joo.abysshop.constants.Messages;
-import com.joo.abysshop.constants.ViewNames;
+import com.joo.abysshop.util.constants.Messages;
+import com.joo.abysshop.util.constants.ViewNames;
 import com.joo.abysshop.dto.order.CreateOrderRequest;
 import com.joo.abysshop.dto.user.UserInfoResponse;
-import com.joo.abysshop.enums.ResultStatus;
+import com.joo.abysshop.util.enums.ResultStatus;
 import com.joo.abysshop.service.cart.CartService;
 import com.joo.abysshop.service.order.OrderService;
 import com.joo.abysshop.service.user.UserService;

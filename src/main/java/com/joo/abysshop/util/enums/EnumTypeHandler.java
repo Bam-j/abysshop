@@ -1,4 +1,4 @@
-package com.joo.abysshop.enums;
+package com.joo.abysshop.util.enums;
 
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;

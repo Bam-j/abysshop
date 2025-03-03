@@ -17,4 +17,6 @@ public interface UserMapper {
     Optional<UserEntity> findByUsername(String username);
 
     String getNickname(Long userId);
+
+    String getUserType(Long userId);
 }

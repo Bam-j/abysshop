@@ -1,5 +1,6 @@
 package com.joo.abysshop.controller;
 
+import com.joo.abysshop.annotation.AdminOnly;
 import com.joo.abysshop.constants.ModelAttributeNames;
 import com.joo.abysshop.constants.ViewNames;
 import com.joo.abysshop.dto.admin.AddProductRequest;
@@ -40,6 +41,7 @@ public class AdminController {
     private final PointRechargeService pointRechargeService;
     private final ProductService productService;
 
+    @AdminOnly
     @GetMapping("/admin/my-page")
     public String getAdminMyPage(
         @RequestParam(value = "menu", defaultValue = "order-management") String menu,
@@ -86,6 +88,7 @@ public class AdminController {
         return ViewNames.ADMIN_MY_PAGE;
     }
 
+    @AdminOnly
     @PostMapping("/admin/order/change-state")
     public RedirectView changeOrderState(
         @ModelAttribute ChangeOrderStateRequest changeOrderStateRequest, Model model) {
@@ -93,12 +96,14 @@ public class AdminController {
         return new RedirectView("/admin/my-page");
     }
 
+    @AdminOnly
     @PostMapping("/admin/point/provide")
     public RedirectView providePoint(@ModelAttribute ProvidePointRequest providePointRequest) {
         adminPointManagementService.providePoint(providePointRequest);
         return new RedirectView("/admin/my-page?menu=point-recharge-management");
     }
 
+    @AdminOnly
     @PostMapping("/admin/product/add")
     public RedirectView addProduct(@ModelAttribute AddProductRequest addProductRequest)
         throws IOException {
@@ -106,12 +111,14 @@ public class AdminController {
         return new RedirectView("/admin/my-page?menu=add-product");
     }
 
+    @AdminOnly
     @PostMapping("/admin/product/remove")
     public RedirectView removeProduct(@RequestParam("productId") Long productId) {
         adminMyPageService.removeProduct(productId);
         return new RedirectView("/admin/my-page?menu=remove-product");
     }
 
+    @AdminOnly
     @PostMapping("/admin/recharge/change-state")
     public RedirectView changePointRechargeState(
         @ModelAttribute ChangePointRechargeStateRequest changePointRechargeStateRequest) {

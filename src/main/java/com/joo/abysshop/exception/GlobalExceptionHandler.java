@@ -14,7 +14,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(UnauthorizedAccessException.class)
     @ResponseStatus(HttpStatus.FORBIDDEN)
-    public RedirectView handleUnauthorizedAccessException(UnauthorizedAccessException ex, RedirectAttributes redirectAttributes) {
+    public RedirectView handleUnauthorizedAccessException(RedirectAttributes redirectAttributes) {
         redirectAttributes.addFlashAttribute(Messages.FAILURE_MESSAGE, "권한이 없습니다.");
         return new RedirectView(RedirectMappings.REDIRECT_INDEX);
     }

@@ -1,5 +1,6 @@
 package com.joo.abysshop.controller;
 
+import com.joo.abysshop.annotation.CurrentUserOnly;
 import com.joo.abysshop.constants.ModelAttributeNames;
 import com.joo.abysshop.constants.ViewNames;
 import com.joo.abysshop.dto.cart.CartResponse;
@@ -22,6 +23,7 @@ public class UserController {
     private final UserService userService;
     private final CartService cartService;
 
+    @CurrentUserOnly
     @GetMapping("/user/my-page/{userId}")
     public String getUserMyPage(@PathVariable("userId") Long userId,
         @RequestParam("menu") String menu,

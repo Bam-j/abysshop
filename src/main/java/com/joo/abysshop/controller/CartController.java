@@ -1,5 +1,6 @@
 package com.joo.abysshop.controller;
 
+import com.joo.abysshop.annotation.CurrentUserOnly;
 import com.joo.abysshop.constants.Messages;
 import com.joo.abysshop.constants.ModelAttributeNames;
 import com.joo.abysshop.constants.RedirectMappings;
@@ -31,6 +32,7 @@ public class CartController {
     private final CartService cartService;
     private final ToCartDTOMapper toCartDTOMapper;
 
+    @CurrentUserOnly
     @GetMapping("/user/cart/{userId}")
     public String getUserCartPage(@PathVariable("userId") Long userId, Model model) {
         CartResponse cart = cartService.getCart(userId);
@@ -76,16 +78,6 @@ public class CartController {
     @PostMapping("/cart/item/remove")
     public RedirectView removeItemFromCart(@ModelAttribute RemoveItemRequest removeItemRequest,
         Model model) {
-        //Long quantity = cartService.getItemQuantity(removeItemRequest);
-
-        /* 수량 조절 기능 추가에 따라 remove만 남도록 변경 안정성 확인 후 삭제
-        if (quantity > 0) {
-            cartService.decreaseQuantity(removeItemRequest);
-            cartService.decreaseTotalPrice(removeItemRequest);
-        } else {
-            cartService.removeItem(removeItemRequest);
-        }*/
-
         cartService.removeItem(removeItemRequest);
 
         Long userId = removeItemRequest.getUserId();

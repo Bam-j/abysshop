@@ -1,7 +1,7 @@
 package com.joo.abysshop.aspect;
 
 import com.joo.abysshop.dto.user.UserInfoResponse;
-import com.joo.abysshop.exception.UnauthorizedAccessException;
+import com.joo.abysshop.util.exception.UnauthorizedAccessException;
 import com.joo.abysshop.mapper.mybatis.UserMapper;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;

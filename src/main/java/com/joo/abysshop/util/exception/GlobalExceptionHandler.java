@@ -1,4 +1,4 @@
-package com.joo.abysshop.exception;
+package com.joo.abysshop.util.exception;
 
 import com.joo.abysshop.util.constants.Messages;
 import com.joo.abysshop.util.constants.RedirectMappings;

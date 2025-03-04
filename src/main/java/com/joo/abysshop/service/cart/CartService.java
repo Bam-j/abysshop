@@ -90,12 +90,6 @@ public class CartService {
         cartMapper.increaseTotalPrice(cartId, productId, price);
     }
 
-    public Long getItemQuantity(RemoveItemRequest removeItemRequest) {
-        Long cartId = removeItemRequest.getCartId();
-        Long productId = removeItemRequest.getProductId();
-        return cartMapper.getItemQuantity(cartId, productId);
-    }
-
     public void decreaseQuantity(RemoveItemRequest removeItemRequest) {
         Long cartId = removeItemRequest.getCartId();
         Long productId = removeItemRequest.getProductId();
@@ -109,9 +103,17 @@ public class CartService {
         cartMapper.decreaseTotalPrice(cartId, productId, price);
     }
 
+
     public void updateCart(Long cartId) {
-        Long totalPoints = cartMapper.getTotalPoints(cartId);
         Long totalQuantity = getQuantity(cartId);
+        if (totalQuantity == null) {
+            totalQuantity = 0L;
+        }
+
+        Long totalPoints = getTotalPoints(cartId);
+        if (totalPoints == null) {
+            totalPoints = 0L;
+        }
 
         cartMapper.updateCart(cartId, totalPoints, totalQuantity);
     }

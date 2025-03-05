@@ -37,7 +37,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="transfer-refund-modal-label">포인트 충전 요청 & 환불 안내</h1>
+          <h1 class="modal-title fs-5" id="transfer-refund-modal-label">계좌 이체 & 환불 안내</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal"
                   aria-label="Close"></button>
         </div>

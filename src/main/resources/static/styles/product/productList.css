@@ -9,11 +9,12 @@ section > h2 {
 }
 
 .item-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.1rem;
-  margin-bottom: 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 0.5rem;
   justify-content: center;
+  margin-bottom: 1.25rem;
 }
 
 .item {

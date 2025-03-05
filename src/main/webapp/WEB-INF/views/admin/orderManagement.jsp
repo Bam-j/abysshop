@@ -40,7 +40,7 @@
     <c:forEach items="${orderList}" var="order" varStatus="status">
       <tr data-index="${status.index}">
         <td>${order.orderId}</td>
-        <td>{order.userId}.${order.nickname}</td>
+        <td>${order.nickname}</td>
         <td><fmt:formatNumber value="${order.totalPoints}" pattern="#,###" /></td>
         <td><fmt:formatDate value="${order.orderDate}" pattern="yyyy-MM-dd" /></td>
         <td>

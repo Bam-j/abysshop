@@ -1,5 +1,6 @@
 # Abysshop
 - 어비스 블록 후원 상점 웹 페이지
+- 프로젝트에 대해 더 상세한 내용은 [블로그](https://velog.io/@bami/abysshop-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%9B%B9-%EC%87%BC%ED%95%91%EB%AA%B0-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B0%9C%EC%9A%94)에서 소개드리고 있습니다.
 
 ---
 ## 프로젝트 개요

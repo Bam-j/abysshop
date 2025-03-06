@@ -117,7 +117,3 @@ ALTER TABLE `cart_items_table`
 
 ALTER TABLE `cart_items_table`
   ADD CONSTRAINT `FK_products_table_TO_cart_items_table_1` FOREIGN KEY (`product_id`) REFERENCES `products_table` (`product_id`) ON DELETE CASCADE;
-
-# 테스트용 관리자 계정 생성 쿼리
-INSERT INTO users_table (username, nickname, password, user_type, points)
-VALUES ('admin', 'admin_test', 'admin', 'admin', 100000);

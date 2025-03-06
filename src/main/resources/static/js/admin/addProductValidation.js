@@ -1,13 +1,9 @@
-console.log("🔹 addProductValidation.js 로드 완료");
-
-// 페이지의 변경을 감지하는 MutationObserver 사용
 const observer = new MutationObserver(() => {
   const addProductForm = document.getElementById("add-product-form");
 
   if (addProductForm && !addProductForm.hasAttribute("data-listener")) {
-    console.log("✅ add-product-form이 감지됨, 이벤트 리스너 등록");
 
-    addProductForm.setAttribute("data-listener", "true"); // 중복 방지
+    addProductForm.setAttribute("data-listener", "true");
     addProductForm.addEventListener("submit", event => {
       const productNameInput = document.getElementById("product-name");
       const productPriceInput = document.getElementById("product-price");

@@ -51,8 +51,9 @@
   <update id="updatePointRechargeDetail"
     parameterType="com.joo.abysshop.entity.point.UpdatePointRechargeDetailEntity">
     UPDATE point_recharge_detail_table
-    SET bank           = #{bank},
-        account_number = #{accountNumber}
+    SET deposit_confirmed_time = NOW(),
+        bank                   = #{bank},
+        account_number         = #{accountNumber}
     WHERE recharge_detail_id = #{rechargeDetailId}
   </update>
 
